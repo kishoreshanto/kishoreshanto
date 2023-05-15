@@ -6,12 +6,7 @@
 
 <main class="space-y-10 md:space-y-14 py-20 sm:space-y-32 sm:py-32">
 
-    <script>
-import Date from "./timeline/Date.svelte";
-export let date, type, repository, link, contribution, addition, subtraction;
-</script>
-
-<article class="scroll-mt-16">
+    <article class="scroll-mt-16">
         <Date date="May 3rd, 2023"/>
 
         <div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
@@ -20,10 +15,10 @@ export let date, type, repository, link, contribution, addition, subtraction;
                             typography p-4 rounded-xl bg-zinc-100 dark:bg-zinc-900 shadow-lg dark:shadow-sky-500/40 shadow-sky-300/40">
                     <div class="flex gap-4 align-middle items-center">
                         <img alt="united international university" src="/src/assets/img/award.png"
-                         class="h-12 w-12 md:h-10 md:w-10 rounded-full"/>
+                             class="h-12 w-12 md:h-10 md:w-10 rounded-full"/>
                         <h2 class="font-extrabold text-sky-900 dark:text-sky-200 text-lg lg:text-xl">
                             Awarded in <br><a href="https://github.com/mariamuna04/LandSphere"
-                                                  class="hover:underline font-light font-mono text-lg">
+                                              class="hover:underline font-light font-mono text-lg">
                             mariamuna04/LandSphere
                         </a>
                         </h2>
