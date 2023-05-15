@@ -2,6 +2,7 @@
     import Date from "../components/timeline/Date.svelte";
     import University from "../components/University.svelte";
     import GitHub from "../components/GitHub.svelte";
+    import logo from "../lib/assets/img/award.png";
 </script>
 
 <main class="space-y-10 md:space-y-14 py-20 sm:space-y-32 sm:py-32">
@@ -14,7 +15,7 @@
                 <div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto border-b-2 dark:border-sky-800 border-sky-300
                             typography p-4 rounded-xl bg-zinc-100 dark:bg-zinc-900 shadow-lg dark:shadow-sky-500/40 shadow-sky-300/40">
                     <div class="flex gap-4 align-middle items-center">
-                        <img alt="united international university" src="/src/assets/img/award.png"
+                        <img alt="united international university" src="{logo}"
                              class="h-12 w-12 md:h-10 md:w-10 rounded-full"/>
                         <h2 class="font-extrabold text-sky-900 dark:text-sky-200 text-lg lg:text-xl">
                             Awarded in <br><a href="https://github.com/mariamuna04/LandSphere"

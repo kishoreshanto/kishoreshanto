@@ -11,7 +11,7 @@
             <div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto border-b-2 dark:border-sky-800 border-sky-300
                             typography p-4 rounded-xl bg-zinc-100 dark:bg-zinc-900 shadow-lg dark:shadow-sky-500/40 shadow-sky-300/40">
                 <div class="flex gap-4 align-middle items-center">
-                    <img alt="united international university" src="/src/assets/img/uiu.png"
+                    <img alt="united international university" src="/src/lib/assets/img/uiu.png"
                          class="h-12 w-12 md:h-10 md:w-10 rounded-full"/>
                     <h2 class="font-extrabold text-sky-900 dark:text-sky-200 text-lg lg:text-xl">
                         Student at <a href="http://www.uiu.ac.bd/" class="hover:underline">United International
