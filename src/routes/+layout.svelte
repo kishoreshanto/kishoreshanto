@@ -2,4 +2,4 @@
     import '../styles/global.css'
 </script>
 
-<slot></slot>
+<slot class="antialiased"></slot>
