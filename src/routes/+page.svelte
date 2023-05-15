@@ -9,7 +9,6 @@
     const email = data.mail;
 
 
-
 </script>
 
 <main class="flex min-h-full flex-col bg-white dark:bg-gray-950">
@@ -67,7 +66,7 @@
                         <a class="text-sky-500 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500 font-medium"
                            href="mailto:{email}">{email}</a>
                         <a class="text-sky-500 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500 font-medium"
-                        href="/static/resume.pdf">
+                           href="/static/resume.pdf">
                             View Resume</a>
                     </div>
                     <div class="flex gap-8 mt-1">
@@ -129,47 +128,47 @@
         <main class="space-y-20 py-20 sm:space-y-32 sm:py-32">
 
             <article class="scroll-mt-16">
-                <div>
-                    <header class="relative mb-10 xl:mb-0">
-                        <div class="pointer-events-none absolute left-[max(-0.5rem,calc(50%-18.625rem))] top-0 z-50 flex h-4 items-center justify-end gap-x-2 lg:left-0 lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem] xl:h-8">
-                            <a class="inline-flex">
-                                <time class="hidden xl:pointer-events-auto xl:block xl:text-2xs/4 xl:font-medium text-zinc-600 dark:text-gray-200">
-                                    Apr 6, 2023
-                                </time>
-                            </a>
-                            <div class="h-[0.0625rem] w-3.5 bg-sky-800 lg:-mr-3.5 xl:mr-0 xl:bg-gray-900 dark:xl:bg-sky-400"></div>
-                        </div>
-                        <div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
-                            <div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
-                                <div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto">
-                                    <div class="flex">
-                                        <a class="inline-flex">
-                                            <time datetime="2023-04-06T00:00:00.000Z"
-                                                  class="text-2xs/4 font-medium text-zinc-600 dark:text-gray-200 xl:hidden">
-                                                Apr 6, 2023
-                                            </time>
-                                        </a>
-                                    </div>
+                <header class="relative mb-10 xl:mb-0">
+                    <div class="pointer-events-none absolute left-[max(-0.5rem,calc(50%-18.625rem))] top-0 z-50 flex h-4 items-center justify-end gap-x-2 lg:left-0 lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem] xl:h-8">
+                        <a class="inline-flex">
+                            <time class="hidden xl:pointer-events-auto xl:block xl:text-2xs/4 xl:font-medium text-zinc-600 dark:text-gray-200">
+                                Apr 6, 2023
+                            </time>
+                        </a>
+                        <div class="h-[0.0625rem] w-3.5 bg-sky-800 lg:-mr-3.5 xl:mr-0 bg-gray-900 dark:xl:bg-sky-400"></div>
+                    </div>
+                    <div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
+                        <div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
+                            <div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto">
+                                <div class="flex">
+                                    <a class="inline-flex">
+                                        <time datetime="2023-04-06T00:00:00.000Z"
+                                              class="text-2xs/4 font-medium text-zinc-600 dark:text-gray-200 xl:hidden">
+                                            Apr 6, 2023
+                                        </time>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </header>
+                    </div>
+                </header>
 
-                    <div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
-                        <div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
-                            <div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto
-                            typography p-4 rounded-2xl bg-white dark:bg-zinc-950 drop-shadow-2xl shadow shadow-amber-400">
-                                <h2 class="font-extrabold text-sky-900 dark:text-sky-200 text-2xl">
-                                    United International University</h2>
-                                <hr class="border-2 border-sky-200 rounded-full my-2">
-                                <h2 class="font-bold text-gray-500 pb-4">2018 - present</h2>
-                                <p>
-                                    Description
-                                </p>
-                            </div>
+                <div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
+                    <div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
+                        <div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto border-b-4 dark:border-sky-800 border-sky-300
+                            typography p-4 rounded-xl bg-white dark:bg-zinc-950 shadow-2xl shadow-sky-500/40">
+                            <h2 class="font-extrabold text-sky-900 dark:text-sky-200 text-2xl">
+                                United International University</h2>
+
+                            <h2 class="font-light text-gray-400">Bachelor of Computer Science and Engineering</h2>
+                            <h2 class="font-bold text-gray-500 pb-4 font-mono">2018 - present</h2>
+                            <p>
+                                Description
+                            </p>
                         </div>
                     </div>
                 </div>
+
 
             </article>
 
