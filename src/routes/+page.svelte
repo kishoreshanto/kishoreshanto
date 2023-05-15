@@ -2,7 +2,7 @@
     import Date from "../components/timeline/Date.svelte";
     import University from "../components/University.svelte";
     import GitHub from "../components/GitHub.svelte";
-    import logo from "../lib/assets/img/award.png";
+    import logo from "$lib/assets/img/award.png";
 </script>
 
 <main class="space-y-10 md:space-y-14 py-20 sm:space-y-32 sm:py-32">
