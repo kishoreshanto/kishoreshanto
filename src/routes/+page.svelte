@@ -1,45 +1,80 @@
-<main class="space-y-20 py-20 sm:space-y-32 sm:py-32">
-    <article class="scroll-mt-16 ">
-        <header class="relative mb-10 xl:mb-0">
-            <div class="pointer-events-none absolute left-[max(-0.5rem,calc(50%-18.625rem))] top-0 z-50 flex h-4 items-center justify-end gap-x-2 lg:left-0 lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem] xl:h-8">
-                <div class="inline-flex">
-                    <time class="hidden xl:pointer-events-auto xl:block xl:text-2xs/4 xl:font-medium text-zinc-600 dark:text-gray-200">
-                        May 15, 2023
-                    </time>
-                </div>
-                <div class="h-[0.0625rem] w-3.5 bg-sky-800 lg:-mr-3.5 xl:mr-0 dark:xl:bg-sky-400"></div>
-            </div>
-            <div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
-                <div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
-                    <div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto">
-                        <div class="flex">
-                            <div class="inline-flex">
-                                <time datetime="2023-04-06T00:00:00.000Z"
-                                      class="text-2xs/4 font-medium text-zinc-600 dark:text-gray-200 xl:hidden">
-                                    May 15, 2023
-                                </time>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+<script>
+    import Date from "../components/timeline/Date.svelte";
+    import University from "../components/University.svelte";
+    import GitHub from "../components/GitHub.svelte";
+</script>
+
+<main class="space-y-10 md:space-y-14 py-20 sm:space-y-32 sm:py-32">
+
+    <script>
+import Date from "./timeline/Date.svelte";
+export let date, type, repository, link, contribution, addition, subtraction;
+</script>
+
+<article class="scroll-mt-16">
+        <Date date="May 3rd, 2023"/>
 
         <div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
             <div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
-                <div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto border-b-4 dark:border-sky-800 border-sky-300
-                            typography p-4 rounded-lg bg-white dark:bg-zinc-950 shadow-2xl shadow-sky-500/40">
-                    <h2 class="font-extrabold text-sky-900 dark:text-sky-200 text-2xl">
-                        This section is under maintenance</h2>
-                    <p class="text-gray-500 dark:text-gray-300">
-                        Please Check back later
+                <div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto border-b-2 dark:border-sky-800 border-sky-300
+                            typography p-4 rounded-xl bg-zinc-100 dark:bg-zinc-900 shadow-lg dark:shadow-sky-500/40 shadow-sky-300/40">
+                    <div class="flex gap-4 align-middle items-center">
+                        <img alt="united international university" src="/src/assets/img/award.png"
+                         class="h-12 w-12 md:h-10 md:w-10 rounded-full"/>
+                        <h2 class="font-extrabold text-sky-900 dark:text-sky-200 text-lg lg:text-xl">
+                            Awarded in <br><a href="https://github.com/mariamuna04/LandSphere"
+                                                  class="hover:underline font-light font-mono text-lg">
+                            mariamuna04/LandSphere
+                        </a>
+                        </h2>
+                    </div>
+
+                    <p class="ml-16 md:ml-14 font-medium text-gray-600 dark:text-gray-300 text-sm mt-4">
+                        <span class="text-sky-600 font-bold">Champion</span> in CSE Project Show 231 in category<br/>
+                        <span class="text-sky-600 font-bold">Database Management Systems</span> at
+                        United International University
                     </p>
                 </div>
             </div>
         </div>
 
-
     </article>
 
+    <GitHub date="Mar 17, 2023"
+            type="Collaborated"
+            repository="mariamuna04/LandSphere"
+            link="https://github.com/mariamuna04/LandSphere"
+            contribution="Created User Interface and Backend"
+            addition="40,271 ++"
+            subtraction="23,680 --"
+    />
 
+    <GitHub date="Nov 16th, 2022"
+            type="Collaborated"
+            repository="mariamuna04/MomentTap"
+            link="https://github.com/mariamuna04/MomentTap"
+            contribution="Created User Interface and Backend"
+            addition="9,239 ++"
+            subtraction="6,579 --"
+    />
+
+    <GitHub date="Jul 26th, 2022"
+            type="Contributed"
+            repository="hunter-dibs/canteen-management-system"
+            link="https://github.com/hunter-dibs/uiu-canteen-management-system"
+            contribution="Created User Interface and Backend"
+            addition="6,235 ++"
+            subtraction="3,872 --"
+    />
+
+    <GitHub date="Apr 25th, 2022"
+            type="Contributed"
+            repository="hunter-dibs/donation-plus"
+            link="https://github.com/hunter-dibs/donation-plus"
+            contribution="Created User Interface and Design"
+            addition="4,937 ++"
+            subtraction="1,240 --"
+    />
+
+    <University/>
 </main>
