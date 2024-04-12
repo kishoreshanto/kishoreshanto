@@ -8,16 +8,16 @@
 		"preview": "vite preview"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/kit": "^1.30.4",
-		"autoprefixer": "^10.4.14",
-		"postcss": "^8.4.31",
-		"svelte": "^3.54.0",
-		"tailwindcss": "^3.3.2",
-		"vite": "^4.5.3"
+		"@sveltejs/adapter-auto": "^3.2.0",
+		"@sveltejs/kit": "^2.5.5",
+		"autoprefixer": "^10.4.19",
+		"postcss": "^8.4.38",
+		"svelte": "^4.2.13",
+		"tailwindcss": "^3.4.3",
+		"vite": "^5.2.8"
 	},
 	"type": "module",
 	"dependencies": {
-		"isbot": "^3.6.10"
+		"isbot": "^5.1.4"
 	}
 }
