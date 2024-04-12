@@ -80,7 +80,7 @@
       <path
          id="path3001"
          d="m 226,0 55,0 0,20 -32,0 0,4 32,0 0,46 -55,0 0,-21 32,0 0,-4 -32,0 z"
-         inkscape:connector-curvature="0" />
+         inkscapeconnector-curvature="0" />
       <path
          id="path3003"
          d="m 292,0 55,0 0,20 -32,0 0,4 32,0 0,46 -55,0 0,-21 32,0 0,-4 -32,0 z"
