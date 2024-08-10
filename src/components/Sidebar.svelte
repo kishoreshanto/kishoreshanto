@@ -1,19 +1,26 @@
-<script>
-    import data from "../data/intro.json";
-    import RadialGlowBackground from "./Sidebar/RadialGlowBackground.svelte";
-    import ContactInfo from "./Sidebar/ContactInfo.svelte";
-    import Footer from "./Sidebar/Footer.svelte";
-    import InterestAndPassion from "./Sidebar/InterestAndPassion.svelte";
-    import Description from "./Sidebar/Description.svelte";
-    import NameSection from "./Sidebar/NameSection.svelte";
-    import TitleSection from "./Sidebar/TitleSection.svelte";
+<!-- This file is for the left panel -->
 
-    const full_name = data.full_name;
-    const first_name = full_name.split(' ')[0];
-    const last_name = full_name.split(' ')[1];
-    const title = data.title;
-    const description = data.description;
-    const email = data.mail;
+<script lang="ts">
+    import data from "$lib/data.json";
+
+    // Imports of Personal Details Components
+    import Name from "./sidebar/Name.svelte";
+    import Title from "./sidebar/Title.svelte";
+    import Description from "./sidebar/Description.svelte";
+    import Contacts from "./sidebar/Contacts.svelte";
+    import InterestAndPassion from "./sidebar/Interests.svelte";
+
+    // Extract data
+    const name: string = data.name;
+    const titles: string[] = data.titles;
+    const description:string = data.description;
+
+    // Imports about Styles
+    import RadialGlowBackground from "./visuals/RadialGlowBackground.svelte";
+    import Signature from "./sidebar/Signature.svelte";
+    import Locals from "./sidebar/Locals.svelte";
+    import UpdatedOn from "./sidebar/UpdatedOn.svelte";
+
 </script>
 
 <div class="relative flex-none overflow-hidden px-6 lg:pointer-events-none lg:fixed lg:inset-0 lg:z-40 lg:flex lg:px-0">
@@ -25,19 +32,22 @@
          lg:overflow-y-auto lg:overflow-x-hidden lg:pl-[max(4rem,calc(50%-38rem))]">
         <div class="mx-auto mt-14 lg:mt-0 lg:mx-0 lg:flex lg:w-96 lg:max-w-none lg:flex-col lg:justify-center">
 
-            <NameSection first_name="{first_name}" last_name="{last_name}"/>
-
-            <TitleSection title="{title}"/>
-
+            <Name name="{name}"/>
+            <Title items="{titles}"/>
             <Description description="{description}"/>
 
             <hr class="border my-4 dark:border-zinc-700">
 
             <InterestAndPassion/>
+            <Contacts/>
 
-            <ContactInfo email="{email}"/>
+            <Locals/>
 
-            <Footer/>
+            <!-- Last Updated -->
+            <div class="select-none mt-4 font-display text-sm font-medium cursor-default">
+                <Signature/>
+                <UpdatedOn/>
+            </div>
 
         </div>
     </div>
