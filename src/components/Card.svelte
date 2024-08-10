@@ -1,6 +1,7 @@
 <script lang="ts">
-    export let date: string;
     import Date from "./timeline/Date.svelte";
+
+    export let date: string;
 
 </script>
 
