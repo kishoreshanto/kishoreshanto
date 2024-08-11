@@ -2,22 +2,7 @@
 
 <script lang="ts">
     export let raw_date_string: string;
-    import {isValidDate, parseDate} from "$lib/utils";
-
-    let date: string;
-    let year: string;
-    // error types: 0 = no error; 1 = invalid date; 2 = no date provided
-    let error: 0 | 1 | 2 = 0;
-
-    if (raw_date_string == undefined) {
-        error = 2
-    } else if (isValidDate(raw_date_string)) {
-        let parse_date = raw_date_string.split(' ')
-        date = parse_date[0]
-        year = parse_date[2]
-    } else {
-        error = 1
-    }
+    import {parseDate} from "$lib/utils";
 
     const parsed_date: {
         prefix: string,
