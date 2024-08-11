@@ -12,8 +12,7 @@
 		"Full-Stack Development"
 	],
 	"current_city": "BD DAC",
-	"current_gmt_offset": "+6",
-	"page_title": "Kishorè Shanto | Portfolio",
+	"current_gmt_offset": 6,
 	"mail": "tinykishore@gmail.com",
 	"resume_url": "https://drive.google.com/file/d/1z0Zjtodz47FYKl8MZPEPoO-jsqFo1tBa/view?usp=sharing",
 	"instagram_url": "https://www.instagram.com/tinykishore/",
@@ -21,6 +20,7 @@
 	"linkedin_url": "https://www.linkedin.com/in/tinykishore",
 	"orcid_url": "https://orcid.org/0009-0009-1147-0095",
 	"last_updated": "August 11th, 2024",
+	"page_title": "Kishorè Shanto | Portfolio",
 
 	"show_interests": true,
 	"show_mail": true,
