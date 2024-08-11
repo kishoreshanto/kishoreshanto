@@ -1,19 +1,20 @@
+<!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
+
 <script lang="ts">
+    import data from "$lib/data.json";
     import '../styles/global.css'
     import Sidebar from "../components/Sidebar.svelte";
     import TimeLine from "../components/visuals/TimeLine.svelte";
 
-    import data from "$lib/data.json";
-
-    let page_title = data.name
+    const page_title = data.page_title;
 </script>
 
 <svelte:head>
-    <title>{page_title} | Portfolio</title>
+    <title> {page_title} </title>
 </svelte:head>
 
-
-<main class="flex min-h-full flex-col bg-white dark:bg-gray-950">
+<main class="flex min-h-full flex-col bg-white dark:bg-gray-950 antialiased">
+    <!-- Left panel goes here, modify the files to change content -->
     <Sidebar/>
 
     <div class="relative flex-auto">
@@ -22,8 +23,7 @@
                     lg:overflow-visible">
             <TimeLine/>
         </div>
-
-        <slot class="antialiased"/>
+        <!-- Right Panel Goes here, modify `+page.svelte` to change contents -->
+        <slot/>
     </div>
-
 </main>

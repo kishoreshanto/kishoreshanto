@@ -1,12 +1,12 @@
+<!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
+
 <script lang="ts">
-    import Date from "./timeline/Date.svelte";
-
     export let date: string;
-
+    import DateComponent from "./timeline/DateComponent.svelte";
 </script>
 
 <section class="scroll-mt-16">
-    <Date raw_date={date}/>
+    <DateComponent date_string={date}/>
 
     <div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
         <div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">

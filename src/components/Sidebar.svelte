@@ -1,19 +1,12 @@
 <!-- This file is for the left panel -->
 
 <script lang="ts">
-    import data from "$lib/data.json";
-
     // Imports of Personal Details Components
     import Name from "./sidebar/Name.svelte";
     import Title from "./sidebar/Title.svelte";
     import Description from "./sidebar/Description.svelte";
     import Contacts from "./sidebar/Contacts.svelte";
     import InterestAndPassion from "./sidebar/Interests.svelte";
-
-    // Extract data
-    const name: string = data.name;
-    const titles: string[] = data.titles;
-    const description:string = data.description;
 
     // Imports about Styles
     import RadialGlowBackground from "./visuals/RadialGlowBackground.svelte";
@@ -32,9 +25,9 @@
          lg:overflow-y-auto lg:overflow-x-hidden lg:pl-[max(4rem,calc(50%-38rem))]">
         <div class="mx-auto mt-14 lg:mt-0 lg:mx-0 lg:flex lg:w-96 lg:max-w-none lg:flex-col lg:justify-center">
 
-            <Name name="{name}"/>
-            <Title items="{titles}"/>
-            <Description description="{description}"/>
+            <Name/>
+            <Title/>
+            <Description/>
 
             <hr class="border my-4 dark:border-zinc-700">
 

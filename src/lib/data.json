@@ -1,22 +1,35 @@
 {
-  "name": "Kishorè Shanto",
-  "titles": [
-    "Researcher",
-    "Developer"
-  ],
-  "description": "A highly motivated and energetic computer science student with a strong academic foundation and a passion for research and innovation. Seeking a challenging internship or entry-level role in the tech industry where I can leverage my skills and knowledge, including my research experience and publications, to contribute to cutting-edge solutions. Eager to learn from experienced professionals and contribute to a dynamic and collaborative team environment while continuing to pursue my research interests.",
-  "interest_and_passion": [
-    "Deep Learning",
-    "Data Analysis",
-    "UI Designing",
-    "Full-Stack Development"
-  ],
-  "current_city": "BD DAC",
-  "current_gmt_offset": "+6",
-  "mail": "tinykishore@gmail.com",
-  "instagram_url": "https://www.instagram.com/tinykishore/",
-  "github_url": "https://www.github.com/tinykishore/",
-  "linkedin_url": "https://www.linkedin.com/in/tinykishore",
-  "orcid_url": "https://orcid.org/0009-0009-1147-0095",
-  "last_updated": "10th August, 2024"
+	"name": "Kishorè Shanto",
+	"titles": [
+		"Researcher",
+		"Developer"
+	],
+	"description": "A highly motivated and energetic computer science student with a strong academic foundation and a passion for research and innovation. Seeking a challenging internship or entry-level role in the tech industry where I can leverage my skills and knowledge, including my research experience and publications, to contribute to cutting-edge solutions. Eager to learn from experienced professionals and contribute to a dynamic and collaborative team environment while continuing to pursue my research interests.",
+	"interest_and_passion": [
+		"Deep Learning",
+		"Data Analysis",
+		"UI Designing",
+		"Full-Stack Development"
+	],
+	"current_city": "BD DAC",
+	"current_gmt_offset": "+6",
+	"page_title": "Kishorè Shanto | Portfolio",
+	"mail": "tinykishore@gmail.com",
+	"resume_url": "https://drive.google.com/file/d/1z0Zjtodz47FYKl8MZPEPoO-jsqFo1tBa/view?usp=sharing",
+	"instagram_url": "https://www.instagram.com/tinykishore/",
+	"github_url": "https://www.github.com/tinykishore/",
+	"linkedin_url": "https://www.linkedin.com/in/tinykishore",
+	"orcid_url": "https://orcid.org/0009-0009-1147-0095",
+	"last_updated": "August 11th, 2024",
+
+	"show_interests": true,
+	"show_mail": true,
+	"show_resume": true,
+	"show_instagram": true,
+	"show_github": true,
+	"show_linkedin": true,
+	"show_orcid": true,
+	"show_locals": true,
+	"show_signature": true,
+	"show_last_updated": true
 }

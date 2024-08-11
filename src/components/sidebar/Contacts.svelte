@@ -1,16 +1,29 @@
+<!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
+
 <script lang="ts">
     import data from "$lib/data.json"
     import orcid_svg from "$lib/assets/icons/orcid.svg"
 
-    let email: string = data.mail;
-    let instagram_url: string = data.instagram_url;
-    let github_url: string = data.github_url;
-    let linkedin_url: string = data.linkedin_url;
-    let orcid_url = data.orcid_url.split('/')[3];
+    // Allow Personal Details
+    const show_mail: boolean = data.show_mail;
+    const show_resume: boolean = data.show_resume;
+    const show_instagram: boolean = data.show_instagram;
+    const show_github: boolean = data.show_github;
+    const show_linkedin: boolean = data.show_linkedin;
+    const show_orcid: boolean = data.show_orcid;
+
+    // Get Personal Details
+    const email: string = data.mail;
+    const resume_url: string = data.resume_url;
+    const instagram_url: string = data.instagram_url;
+    const github_url: string = data.github_url;
+    const linkedin_url: string = data.linkedin_url;
+    const orcid_url = data.orcid_url.split('/')[3];
 </script>
 
 <div class="mt-6 dark:text-white flex flex-col selection:bg-sky-200 selection:text-black dark:selection:text-white">
-    <div class="mb-4 flex gap-12 text-black dark:text-white text-sm xs:text-lg">
+    <div class="mb-4 flex flex-col xs:flex-row xs:gap-12 gap-2 text-black dark:text-white text-sm xs:text-lg">
+        {#if show_mail}
         <a class="text-sm text-sky-500 items-center flex gap-1 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500 font-medium transition-all duration-300"
            href="mailto:{email}">
             <span class="translate-y-[1px]">
@@ -18,13 +31,19 @@
             </span>
             {email}
         </a>
-        <a class=" text-sm select-none flex gap-1 text-sky-500 items-center hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500 font-medium transition-all duration-300"
-           href="/static/resume.pdf">
-            <span>
-            <svg class="fill-sky-500" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#e8eaed"><path d="M336-240h288v-72H336v72Zm0-144h288v-72H336v72ZM263.72-96Q234-96 213-117.15T192-168v-624q0-29.7 21.15-50.85Q234.3-864 264-864h312l192 192v504q0 29.7-21.16 50.85Q725.68-96 695.96-96H263.72ZM528-624v-168H264v624h432v-456H528ZM264-792v189-189 624-624Z"/></svg>                </span>
-            View Resume</a>
+        {/if}
+        {#if show_resume}
+        <a target="_blank" class=" text-sm select-none flex gap-1 text-sky-500 items-center hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500 font-medium transition-all duration-300"
+           href={resume_url}>
+            <span class="mr-1">
+            <svg class="fill-sky-500" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#e8eaed"><path d="M336-240h288v-72H336v72Zm0-144h288v-72H336v72ZM263.72-96Q234-96 213-117.15T192-168v-624q0-29.7 21.15-50.85Q234.3-864 264-864h312l192 192v504q0 29.7-21.16 50.85Q725.68-96 695.96-96H263.72ZM528-624v-168H264v624h432v-456H528ZM264-792v189-189 624-624Z"/></svg>
+            </span>
+            View Resume
+        </a>
+        {/if}
     </div>
     <div class="flex gap-2 flex-col xs:flex-row xs:gap-8">
+        {#if show_github}
         <a target="_blank" href="{github_url}"
            class="flex align-middle items-center gap-1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="22px" height="22px"
@@ -33,6 +52,9 @@
             </svg>
             <h1 class="text-xs xs:text-sm font-light text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:text-gray-900">/ tinykishore</h1>
         </a>
+        {/if}
+
+        {#if show_linkedin}
 
         <a target="_blank" href="{linkedin_url}"
            class="flex align-middle items-center gap-1">
@@ -42,6 +64,9 @@
             </svg>
             <h1 class="text-xs xs:text-sm font-light text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:text-gray-900">/ tinykishore</h1>
         </a>
+        {/if}
+
+        {#if show_instagram}
 
         <a target="_blank" href="{instagram_url}"
            class="flex align-middle items-center gap-1">
@@ -51,11 +76,14 @@
             </svg>
             <h1 class="text-xs xs:text-sm font-light text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:text-gray-900">/ tinykishore</h1>
         </a>
+        {/if}
 
     </div>
 
+    {#if show_orcid}
     <a target="_blank"  href="{data.orcid_url}" class="flex gap-1 mt-2 xs:mt-4 justify-center align-middle  w-fit rounded-full items-center">
         <img src="{orcid_svg}" alt="orcid_image" class="h-5 select-none mr-1">
         <span class="font-mono text-xs xs:text-sm font-light text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:text-gray-900">{orcid_url}</span>
     </a>
+    {/if}
 </div>
