@@ -1,9 +1,19 @@
 export function isValidDate(dateString: string): boolean {
+    /**
+     * Check if a date string is in the format "Month day, year"
+     * @param dateString - The date string to check
+     * @returns - A boolean indicating whether the date string is valid
+     */
     const regex = /^(January|February|March|April|May|June|July|August|September|October|November|December)\s(\d{1,2})(st|nd|rd|th),\s\d{4}$/;
     return regex.test(dateString);
 }
 
 function makeGMTString(GMT: number): string {
+    /**
+     * Create a GMT string from a GMT offset
+     * @param GMT - The GMT offset
+     * @returns - The GMT string
+     */
     let GMTString: string = 'GMT';
     if (GMT >= 0) GMTString = GMTString + "+";
     else GMTString = GMTString + "-";
