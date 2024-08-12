@@ -10,7 +10,11 @@
 </script>
 
 <svelte:head>
-    <title> {page_title} </title>
+    {#if page_title}
+        <title> {page_title} </title>
+    {:else}
+        <title> Portfolio </title>
+    {/if}
 </svelte:head>
 
 <main class="flex min-h-full flex-col bg-white dark:bg-gray-950 antialiased">

@@ -7,13 +7,21 @@
 </script>
 
 {#if items}
-    <h1 class="select-none mt-4 font-display text-2xl font-semibold dark:text-white text-black font-mono">
-        <span class="text-sky-900 dark:text-sky-600">{items[0]}</span>
-        and
-        <span class="text-sky-900 dark:text-sky-600">{items[1]}</span>
+    <h1 class="select-none xs:mt-4 mt-2 flex flex-wrap font-display xs:text-2xl text-xl font-semibold dark:text-white text-black font-mono">
+        {#each items as item, index}
+            {#if index === items.length - 1}
+                <span class="text-sky-900 dark:text-sky-600">{item}</span>
+            {:else}
+                {#if index === items.length - 2}
+                    <span class="text-sky-900 dark:text-sky-600">{item}&nbsp;</span>and&nbsp;
+                {:else}
+                    <span class="text-sky-900 dark:text-sky-600">{item}</span>,&nbsp;
+                {/if}
+            {/if}
+        {/each}
     </h1>
 {:else}
     <h1 class="select-none mt-4 font-display font-semibold dark:text-white text-black font-mono">
-        <span class="text-red-600">ERROR: No title provided</span>
+        <span class="text-red-600">No title(s) provided</span>
     </h1>
 {/if}

@@ -7,11 +7,11 @@
 </script>
 
 {#if description}
-    <p class="text-xs select-none cursor-default mt-4 xs:text-sm text-gray-600 dark:text-gray-400 tracking-tight text-justify">
+    <p class="text-xs select-none cursor-default xs:mt-4 mt-2 xs:text-sm text-gray-600 dark:text-gray-400 tracking-tight text-justify">
         {description}
     </p>
 {:else}
-    <p class="text-xs select-none cursor-default mt-4 xs:text-sm text-red-600 dark:text-red-300 tracking-tight text-justify">
-        ERROR: No description provided
+    <p class="text-xs select-none font-mono cursor-default mt-4 xs:text-sm text-red-600 dark:text-red-300 tracking-tight text-justify">
+        No description provided
     </p>
 {/if}

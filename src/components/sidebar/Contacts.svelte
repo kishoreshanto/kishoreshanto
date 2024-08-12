@@ -3,6 +3,7 @@
 <script lang="ts">
     import data from "$lib/data.json"
     import orcid_svg from "$lib/assets/icons/orcid.svg"
+    import {isEmailValid} from "$lib/utils";
 
     // Allow Personal Details
     const show_mail: boolean = data.show_mail;
@@ -21,8 +22,11 @@
     const github_username: string = data.github_username;
     const linkedin_url: string = data.linkedin_url;
     const linkedin_username: string = data.linkedin_username;
-
     const orcid_url = data.orcid_url.split('/')[3];
+
+    // Check if email is valid
+    let email_is_valid: boolean = false;
+    if (email) email_is_valid = isEmailValid(email);
 </script>
 
 <div class="mt-6 dark:text-white flex flex-col selection:bg-sky-200 selection:text-black dark:selection:text-white">
@@ -35,7 +39,15 @@
                      width="24px" fill="#e8eaed"><path
                         d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/></svg>
             </span>
-                {email}
+                {#if email}
+                    {#if email_is_valid}
+                        {email}
+                    {:else}
+                        <span class="text-red-500 dark:text-red-400 font-mono">Invalid email</span>
+                    {/if}
+                {:else}
+                    <span class="text-red-500 dark:text-red-400 font-mono">No email provided</span>
+                {/if}
             </a>
         {/if}
         {#if show_resume}
@@ -47,7 +59,11 @@
                  width="20px" fill="#e8eaed"><path
                     d="M336-240h288v-72H336v72Zm0-144h288v-72H336v72ZM263.72-96Q234-96 213-117.15T192-168v-624q0-29.7 21.15-50.85Q234.3-864 264-864h312l192 192v504q0 29.7-21.16 50.85Q725.68-96 695.96-96H263.72ZM528-624v-168H264v624h432v-456H528ZM264-792v189-189 624-624Z"/></svg>
             </span>
-                View Resume
+                {#if resume_url}
+                    View Resume
+                {:else}
+                    <span class="text-red-500 dark:text-red-400 font-mono">No resume link provided</span>
+                {/if}
             </a>
         {/if}
     </div>

@@ -19,7 +19,6 @@
                 {parsed_date.month} {parsed_date.date}<sup>{parsed_date.prefix}</sup>
             </span>
         <span class="text-sm lg:text-base font-bold">{parsed_date.year}</span>
-
     </div>
 {:else}
     <div class="xl:hidden">

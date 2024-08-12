@@ -16,10 +16,10 @@
 </script>
 
 {#if name}
-<h1 class=" dark:text-white font-black text-5xl text-black">
-    {first_name}
-    <span class="text-sky-300">{last_name}</span>
-</h1>
+    <h1 class=" dark:text-white font-black xs:text-5xl text-4xl text-black">
+        {first_name}
+        <span class="text-sky-300">{last_name}</span>
+    </h1>
 {:else}
-<h1 class=" dark:text-red-300 font-mono font-bold text-red-600">ERROR: No name provided</h1>
+    <h1 class=" dark:text-red-300 font-mono font-bold text-red-600">No name provided</h1>
 {/if}
