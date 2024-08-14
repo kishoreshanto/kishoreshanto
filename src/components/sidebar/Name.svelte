@@ -16,7 +16,7 @@
 </script>
 
 {#if name}
-    <h1 class=" dark:text-white font-black xs:text-5xl text-4xl text-black">
+    <h1 class=" my-1 dark:text-white font-black xs:text-5xl text-4xl text-black">
         {first_name}
         <span class="text-sky-300">{last_name}</span>
     </h1>

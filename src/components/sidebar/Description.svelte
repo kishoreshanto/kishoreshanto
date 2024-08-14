@@ -7,7 +7,7 @@
 </script>
 
 {#if description}
-    <p class="text-xs select-none cursor-default xs:mt-4 mt-2 xs:text-sm text-gray-600 dark:text-gray-400 tracking-tight text-justify">
+    <p class="text-xs select-none cursor-default xs:my-2 my-1 xs:text-sm text-gray-600 dark:text-gray-400 tracking-tight text-justify">
         {description}
     </p>
 {:else}

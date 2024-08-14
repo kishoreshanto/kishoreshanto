@@ -13,6 +13,8 @@
     import Signature from "./sidebar/Signature.svelte";
     import Locals from "./sidebar/Locals.svelte";
     import UpdatedOn from "./sidebar/UpdatedOn.svelte";
+    import DNDIcon from "./visuals/icons/DNDIcon.svelte";
+    import DND from "./sidebar/DND.svelte";
 
 </script>
 
@@ -33,8 +35,8 @@
 
             <InterestAndPassion/>
             <Contacts/>
-
             <Locals/>
+            <DND/>
 
             <!-- Last Updated -->
             <div class="select-none mt-4 font-display text-sm font-medium cursor-default">

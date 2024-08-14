@@ -33,5 +33,7 @@
 	"show_orcid": true,
 	"show_locals": true,
 	"show_signature": true,
-	"show_last_updated": true
+	"show_last_updated": true,
+	"request_do_not_disturb": true,
+	"request_do_not_disturb_message": "I am currently busy with my research work. Please do not reach me at social media unless it's urgent. Thank you for understanding."
 }

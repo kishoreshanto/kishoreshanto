@@ -17,18 +17,18 @@
 </script>
 
 {#if show_locals}
-    <div class="mt-4 flex flex-col xs:flex-row xs:gap-8  gap-2 select-none cursor-default">
+    <div class="my-4 text-xs xs:text-sm flex flex-wrap xs:gap-8 gap-4 select-none cursor-default">
         {#if current_city}
             <div class="flex items-center">
                 <LocationIcon/>
-                <h1 class="text-sm font-mono font-light text-gray-500 dark:text-gray-400">{current_city}</h1>
+                <h1 class=" font-mono font-light text-gray-500 dark:text-gray-400">{current_city}</h1>
             </div>
         {/if}
 
         {#if current_gmt_offset}
             <div class="flex items-center">
                 <TimeIcon/>
-                <h1 class="text-sm font-mono font-light text-gray-500 dark:text-gray-400"> {LT_GMT.local_time}
+                <h1 class=" font-mono font-light text-gray-500 dark:text-gray-400"> {LT_GMT.local_time}
                     <span class="text-zinc-400 dark:text-zinc-500">(UTC {LT_GMT.GMT})</span></h1>
             </div>
         {/if}

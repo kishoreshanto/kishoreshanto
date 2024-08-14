@@ -7,7 +7,7 @@
 </script>
 
 {#if items}
-    <h1 class="select-none xs:mt-4 mt-2 flex flex-wrap font-display xs:text-2xl text-xl font-semibold dark:text-white text-black font-mono">
+    <h1 class="my-1 select-none xs:mt-2 flex flex-wrap font-display xs:text-2xl text-xl font-semibold dark:text-white text-black font-mono">
         {#each items as item, index}
             {#if index === items.length - 1}
                 <span class="text-sky-900 dark:text-sky-600">{item}</span>
