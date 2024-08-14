@@ -31,6 +31,10 @@ hr {
     lg:overflow-y-auto lg:overflow-x-hidden lg:pl-[max(4rem,calc(50%-38rem))]
 }
 
+.left-panel-container > div {
+    @apply mx-auto mt-14 lg:mt-0 lg:mx-0 lg:flex lg:w-96 lg:max-w-none lg:flex-col lg:justify-center
+}
+
 .left-panel-footer {
     @apply select-none mt-4 text-sm font-medium cursor-default
 }

@@ -23,7 +23,9 @@
     </div>
 
     <div class="left-panel-container">
-        <div class="mx-auto mt-14 lg:mt-0 lg:mx-0 lg:flex lg:w-96 lg:max-w-none lg:flex-col lg:justify-center">
+        <div>
+
+            <!-- YOU CAN REORDER IT -->
 
             <Name/>
             <Title/>
