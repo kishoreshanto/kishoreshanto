@@ -10,7 +10,7 @@
 </script>
 
 {#if show_dnd}
-    <div class="flex mt-4 flex-nowrap items-center">
+    <div class="flex flex-nowrap items-center">
         <div class="w-fit">
             <DNDIcon/>
         </div>
