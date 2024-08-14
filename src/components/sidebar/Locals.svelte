@@ -11,9 +11,14 @@
     const current_gmt_offset: number = data.current_gmt_offset;
 
     let LT_GMT: { local_time: string, GMT: string };
-    if (current_gmt_offset) {
+
+    $: LT_GMT = getLocalTimeFromUTCOffset(current_gmt_offset);
+
+    // Update time every second (adjust interval as needed)
+    setInterval(() => {
         LT_GMT = getLocalTimeFromUTCOffset(current_gmt_offset);
-    }
+    }, 60000);
+
 </script>
 
 {#if show_locals}
