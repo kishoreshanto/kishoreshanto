@@ -3,8 +3,8 @@
 <script lang="ts">
     import data from "$lib/data.json";
     import '../styles/global.css'
-    import Sidebar from "../components/Sidebar.svelte";
     import TimeLine from "../components/visuals/TimeLine.svelte";
+    import LeftPanel from "../components/LeftPanel.svelte";
 
     const page_title = data.page_title;
 </script>
@@ -17,14 +17,12 @@
     {/if}
 </svelte:head>
 
-<main class="flex min-h-full flex-col bg-white dark:bg-gray-950 antialiased">
+<main>
     <!-- Left panel goes here, modify the files to change content -->
-    <Sidebar/>
+    <LeftPanel/>
 
-    <div class="relative flex-auto">
-        <div class="pointer-events-none absolute inset-0 z-50 overflow-hidden
-                    lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem]
-                    lg:overflow-visible">
+    <div class="right-panel">
+        <div class="right-panel-container">
             <TimeLine/>
         </div>
         <!-- Right Panel Goes here, modify `+page.svelte` to change contents -->

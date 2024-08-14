@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,4 +12,39 @@
 .no-scroll {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+hr {
+    @apply border my-4 dark:border-zinc-700
+}
+
+.radial-glow-background-container {
+    @apply absolute inset-0 -z-10 overflow-hidden dark:bg-gray-950 bg-white lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem]
+}
+
+.left-panel {
+    @apply relative flex-none overflow-hidden px-6 lg:pointer-events-none lg:fixed lg:inset-0 lg:z-40 lg:flex lg:px-0
+}
+
+.left-panel-container {
+    @apply relative flex w-full lg:pointer-events-auto lg:mr-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem]
+    lg:overflow-y-auto lg:overflow-x-hidden lg:pl-[max(4rem,calc(50%-38rem))]
+}
+
+.left-panel-footer {
+    @apply select-none mt-4 text-sm font-medium cursor-default
+}
+
+.right-panel {
+    @apply relative flex-auto
+}
+
+.right-panel-container {
+    @apply pointer-events-none absolute inset-0 z-50 overflow-hidden
+    lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem]
+    lg:overflow-visible
+}
+
+main{
+    @apply flex min-h-full flex-col bg-white dark:bg-gray-950 antialiased
 }
