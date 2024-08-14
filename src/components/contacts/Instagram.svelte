@@ -14,7 +14,7 @@
 
 {#if show_instagram}
     <a target="_blank" href="{instagram_url}"
-       class="flex align-middle items-center gap-1">
+       class="flex align-middle items-center gap-1 translate-x-[1px] xs:translate-x-0">
         <InstagramIcon/>
         <h1 class="text-xs xs:text-sm font-light text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:text-gray-900">
             / {instagram_username}</h1>

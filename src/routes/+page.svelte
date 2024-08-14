@@ -8,10 +8,53 @@
 
     <!-- Place all the cards here -->
 
-    <Card date="January 14th, 1999">
+    <Card date="January 26th, 1999">
         <!-- Card Contents Goes Here -->
-        <h1 class="text-2xl font-bold">Hello World</h1>
-        <p class="text-gray-400">This is a sample card</p>
     </Card>
+
+    <Card date="February 26th, 1999">
+        <!-- Card Contents Goes Here -->
+    </Card>
+
+    <Card date="March 26th, 1999">
+        <!-- Card Contents Goes Here -->
+    </Card>
+
+    <Card date="April 26th, 1999">
+        <!-- Card Contents Goes Here -->
+    </Card>
+
+    <Card date="May 26th, 1999">
+        <!-- Card Contents Goes Here -->
+    </Card>
+
+    <Card date="June 26th, 1999">
+        <!-- Card Contents Goes Here -->
+    </Card>
+
+    <Card date="July 26th, 1999">
+        <!-- Card Contents Goes Here -->
+    </Card>
+
+    <Card date="August 26th, 1999">
+        <!-- Card Contents Goes Here -->
+    </Card>
+
+    <Card date="September 26th, 1999">
+        <!-- Card Contents Goes Here -->
+    </Card>
+
+    <Card date="October 26th, 1999">
+        <!-- Card Contents Goes Here -->
+    </Card>
+
+    <Card date="November 26th, 1999">
+        <!-- Card Contents Goes Here -->
+    </Card>
+
+    <Card date="December 26th, 1999">
+        <!-- Card Contents Goes Here -->
+    </Card>
+
 
 </main>
