@@ -29,6 +29,7 @@
 
             <Name/>
             <Title/>
+<!--            <LegalName/>-->
             <Description/>
 
             <hr/>
