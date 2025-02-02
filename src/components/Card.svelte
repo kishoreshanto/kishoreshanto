@@ -25,7 +25,7 @@
 
 <!--<div class="mx-auto max-w-lg lg:mx-0 lg:w-0 l
                         g:max-w-xl lg:flex-auto typography border-2
-                        p-4 rounded-xl bg-gradient-to-br to-30% from-gray-50 to-zinc-100
+                        p-4 rounded-xl bg-linear-to-br to-30% from-gray-50 to-zinc-100
                         shadow-xl drop-shadow-2xl dark:border-red-500
 
                         dark:bg-zinc-700">
