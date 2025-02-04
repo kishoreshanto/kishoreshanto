@@ -3,12 +3,12 @@
 <script lang="ts">
     import data from "$lib/data.json";
 
-    const description: string | undefined = data.description;
+    const description: string | undefined = (data.description);
 </script>
 
 {#if description}
     <p class="text-xs select-none cursor-default xs:my-2 my-1 xs:text-sm text-gray-600 dark:text-gray-400 tracking-tight text-justify">
-        {description}
+        {@html description}
     </p>
 {:else}
     <p class="text-xs select-none font-mono cursor-default mt-4 xs:text-sm text-red-600 dark:text-red-300 tracking-tight text-justify">
