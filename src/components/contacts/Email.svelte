@@ -14,7 +14,7 @@
     }
 </script>
 
-<a class="text-sm text-sky-500 items-center flex gap-1 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500 font-medium transition-all duration-300"
+<a class="text-sm mt-3 text-sky-500 items-center flex gap-1 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500 font-medium transition-all duration-300"
    href="mailto:{email}">
 
     <EmailIcon/>
