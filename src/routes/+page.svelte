@@ -8,8 +8,12 @@
 
     <!-- Place all the cards here -->
 
-    <Card date="January 26th, 1999">
-        <!-- Card Contents Goes Here -->
+    <Card date="January 16th, 2000">
+        Went to United International University
+    </Card>
+
+    <Card date="January 16th, 2000">
+        Went to United International University
     </Card>
 
     <Card date="February 26th, 1999">

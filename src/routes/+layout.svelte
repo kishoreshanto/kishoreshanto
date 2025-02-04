@@ -5,6 +5,9 @@
     import '../styles/global.css'
     import TimeLine from "../components/visuals/TimeLine.svelte";
     import LeftPanel from "../components/LeftPanel.svelte";
+    import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+    injectSpeedInsights();
 
     const page_title = data.page_title;
 </script>
