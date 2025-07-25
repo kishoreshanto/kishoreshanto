@@ -11,11 +11,12 @@
 	],
 	"description": "I can make things work (eventually). <br> Feel free to contact!",
 	"interest_and_passion": [
+		"Deep Learning",
 		"Computer Vision",
-		"Neuromorphic Computing",
 		"Autoregressive and Large Language Models",
-		"Quantum Computing",
-		"UI/UX"
+		"Multi-agent CoT Models",
+		"Biomedical Signal Processing"
+
 	],
 	"current_city": "BD DAC",
 	"current_gmt_offset": 6,
@@ -28,7 +29,7 @@
 	"linkedin_url": "https://www.linkedin.com/in/tinykishore",
 	"linkedin_username": "tinykishore",
 	"orcid_url": "https://orcid.org/0009-0009-1147-0095",
-	"last_updated": "July 25th, 2025",
+	"last_updated": "April 21th, 2025",
 	"page_title": "Kishore Shanto | Portfolio",
 	"show_interests": true,
 	"show_mail": true,
