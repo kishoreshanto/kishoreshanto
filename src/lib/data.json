@@ -3,16 +3,18 @@
 	"ipa_name": "/kɪˈʃɔːr ˈʃan.to/",
 	"legal_name": "Shanta Biswas",
 	"legal_ipa": "/ˈʃan.to ˈbiʃ.ʃaʃ/",
+	"show_leagal_name": false,
 	"titles": [
-		"Developer",
-		"Researcher"
+		"Researcher",
+		"Developer"
+		
 	],
 	"description": "I can make things work (eventually). <br> Feel free to contact!",
 	"interest_and_passion": [
 		"Computer Vision",
 		"Neuromorphic Computing",
 		"Autoregressive and Large Language Models",
-		"Quantum Computing and Mechanics",
+		"Quantum Computing",
 		"UI/UX"
 	],
 	"current_city": "BD DAC",
@@ -26,7 +28,7 @@
 	"linkedin_url": "https://www.linkedin.com/in/tinykishore",
 	"linkedin_username": "tinykishore",
 	"orcid_url": "https://orcid.org/0009-0009-1147-0095",
-	"last_updated": "February 2nd, 2025",
+	"last_updated": "July 25th, 2025",
 	"page_title": "Kishore Shanto | Portfolio",
 	"show_interests": true,
 	"show_mail": true,
