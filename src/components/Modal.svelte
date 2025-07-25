@@ -5,6 +5,9 @@
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 
+	export let maxWidth: string = 'max-w-4xl'; // Default to larger width, can be overridden
+	export let maxHeight: string = 'max-h-[80vh]'; // Default max height, can be overridden
+
 	const dispatch = createEventDispatcher();
 
 	function closeModal() {
@@ -18,14 +21,14 @@
 	}
 </script>
 
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm" transition:fade={{ duration: 300 }}>
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4" transition:fade={{ duration: 300 }}>
 	<div
-		class="relative w-full max-w-2xl rounded-xl border border-zinc-100 bg-white/50 p-8 shadow-lg backdrop-blur-lg dark:border-zinc-700 dark:bg-zinc-800/50"
+		class="relative w-full {maxWidth} {maxHeight} rounded-xl border border-zinc-100 bg-white/80 shadow-lg backdrop-blur-lg dark:border-zinc-700 dark:bg-zinc-800/50 flex flex-col"
 		role="dialog"
 		aria-modal="true"
 	>
 		<button
-			class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+			class="absolute top-4 right-4 z-10 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors duration-200"
 			on:click={closeModal}
 		>
 			<svg
@@ -43,6 +46,10 @@
 				/>
 			</svg>
 		</button>
-		<slot />
+		
+		<!-- Scrollable content area -->
+		<div class="overflow-y-auto overflow-x-hidden p-8 pr-12">
+			<slot />
+		</div>
 	</div>
 </div>
