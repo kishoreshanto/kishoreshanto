@@ -1,4 +1,6 @@
 
+<svelte:window on:keydown={handleKeydown} />
+
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
@@ -8,16 +10,19 @@
 	function closeModal() {
 		dispatch('close');
 	}
+
+	function handleKeydown(event: KeyboardEvent) {
+		if (event.key === 'Escape') {
+			closeModal();
+		}
+	}
 </script>
 
-<div
-	class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
-	on:click={closeModal}
-	transition:fade={{ duration: 300 }}
->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm" transition:fade={{ duration: 300 }}>
 	<div
 		class="relative w-full max-w-2xl rounded-xl border border-zinc-100 bg-white/50 p-8 shadow-lg backdrop-blur-lg dark:border-zinc-700 dark:bg-zinc-800/50"
-		on:click|stopPropagation
+		role="dialog"
+		aria-modal="true"
 	>
 		<button
 			class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
@@ -38,13 +43,6 @@
 				/>
 			</svg>
 		</button>
-		<div class="flex items-center justify-between">
-			<h2 class="text-2xl font-bold">
-				<slot name="title" />
-			</h2>
-		</div>
-		<div class="mt-4">
-			<slot name="content" />
-		</div>
+		<slot />
 	</div>
 </div>
