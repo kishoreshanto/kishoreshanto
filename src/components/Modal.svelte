@@ -21,7 +21,7 @@
 	}
 </script>
 
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4" transition:fade={{ duration: 300 }}>
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4" transition:fade={{ duration: 200 }}>
 	<div
 		class="relative w-full {maxWidth} {maxHeight} rounded-xl border border-zinc-100 bg-white/80 shadow-lg backdrop-blur-lg dark:border-zinc-700 dark:bg-zinc-800/50 flex flex-col"
 		role="dialog"

@@ -12,8 +12,8 @@
 </script>
 
 <section
-	class="scroll-mt-16 focus-visible:outline-none"
-	in:fade={{ duration: 500 }}
+	class="scroll-mt-16 focus-visible:outline-none cursor-pointer"
+	in:fade={{ duration: 300 }}
 	on:click={showModal}
 	on:keydown={(e) => e.key === 'Enter' && showModal()}
 	role="button"
