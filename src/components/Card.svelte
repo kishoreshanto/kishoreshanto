@@ -1,35 +1,28 @@
-<!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
-
 <script lang="ts">
-    export let date: string;
-    import DateComponent from "./timeline/DateComponent.svelte";
+	import { createEventDispatcher } from 'svelte';
+	import { fade } from 'svelte/transition';
+	export let date: string;
+	import DateComponent from './timeline/DateComponent.svelte';
+
+	const dispatch = createEventDispatcher();
+
+	function showModal() {
+		dispatch('showmodal');
+	}
 </script>
 
-<section class="scroll-mt-16">
-    <DateComponent date_string={date}/>
+<section class="scroll-mt-16" in:fade={{ duration: 500 }} on:click={showModal}>
+	<DateComponent date_string={date} />
 
-    <div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
-        <div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
-            <div class="mx-auto max-w-lg lg:mx-0 lg:w-0 l
-                        g:max-w-xl lg:flex-auto typography
-                        p-4 rounded-xl bg-zinc-100 dark:bg-zinc-700
-                        drop-shadow-xl">
-                <slot>
-                    <p class="text-gray-400">Place your content here...</p>
-                </slot>
-            </div>
-        </div>
-    </div>
+	<div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
+		<div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
+			<div
+				class="mx-auto max-w-lg rounded-xl border border-zinc-300 bg-white/30 p-4 drop-shadow-xl backdrop-blur-md transition-transform duration-300 hover:scale-105 dark:border-zinc-700 dark:bg-zinc-800/30 lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto"
+			>
+				<slot>
+					<p class="text-gray-400">Place your content here...</p>
+				</slot>
+			</div>
+		</div>
+	</div>
 </section>
-
-
-<!--<div class="mx-auto max-w-lg lg:mx-0 lg:w-0 l
-                        g:max-w-xl lg:flex-auto typography border-2
-                        p-4 rounded-xl bg-linear-to-br to-30% from-gray-50 to-zinc-100
-                        shadow-xl drop-shadow-2xl dark:border-red-500
-
-                        dark:bg-zinc-700">
-                <slot>
-                    <p class="text-gray-400">Place your content here...</p>
-                </slot>
-            </div>-->
