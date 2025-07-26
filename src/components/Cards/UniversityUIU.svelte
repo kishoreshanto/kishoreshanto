@@ -4,7 +4,7 @@ import Card from "../Card.svelte";
 export let date:string;
 </script>
 
-<Card date={date}>
+<Card date={date} on:showmodal>
     <div class="space-y-4">
         <!-- Header with degree title -->
         <div class="border-b border-zinc-200 pb-3 dark:border-zinc-700">

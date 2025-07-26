@@ -4,7 +4,7 @@ import Card from "../Card.svelte";
 export let date:string;
 </script>
 
-<Card date={date}>
+<Card date={date} on:showmodal>
     <div class="space-y-4">
         <!-- Technical Report Type Badge -->
         <div class="flex items-center justify-between">
@@ -67,7 +67,7 @@ export let date:string;
             </div>
             <div class="flex items-end justify-end">
                 <a
-                        href="https://drive.google.com/file/d/1EoQmhpDo8FAeqePLlldQuuxAGK1tdUQR/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1T_7jeJqenaocxogEwshs68CtaKtrvwrT/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-lg bg-indigo-100 text-indigo-800 hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50 transition-colors duration-200"

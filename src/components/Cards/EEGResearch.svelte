@@ -5,7 +5,7 @@ export let date:string;
 
 </script>
 
-<Card date={date}>
+<Card date={date} on:showmodal>
     <div class="space-y-4">
         <!-- Technical Report Type Badge -->
         <div class="flex items-center justify-between">
