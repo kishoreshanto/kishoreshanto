@@ -1,7 +1,7 @@
 <!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
 
 <script lang="ts">
-    import data from "$lib/data.json";
+    import data from "$lib/data_en.json";
     import '../styles/global.css'
     import TimeLine from "../components/visuals/TimeLine.svelte";
     import LeftPanel from "../components/LeftPanel.svelte";

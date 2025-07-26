@@ -1,5 +1,5 @@
 <script lang="ts">
-    import data from "$lib/data.json";
+    import data from "$lib/data_en.json";
     import DNDIcon from "../visuals/icons/DNDIcon.svelte";
 
     const show_dnd: boolean = data.request_do_not_disturb;

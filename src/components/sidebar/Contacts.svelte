@@ -9,7 +9,7 @@
     import Resume from "../contacts/Resume.svelte";
 </script>
 
-<div class="mt-6 dark:text-white flex flex-col selection:bg-sky-200 selection:text-black dark:selection:text-white">
+<div class="mt-2 dark:text-white flex flex-col selection:bg-sky-200 selection:text-black dark:selection:text-white">
     <div class="mb-4 flex flex-col xs:flex-row xs:gap-12 gap-2 text-black dark:text-white text-sm xs:text-lg">
         <Email/>
         <Resume/>

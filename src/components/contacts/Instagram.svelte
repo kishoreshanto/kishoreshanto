@@ -1,5 +1,5 @@
 <script lang="ts">
-    import data from "$lib/data.json"
+    import data from "$lib/data_en.json"
     import InstagramIcon from "../visuals/icons/InstagramIcon.svelte";
 
     const show_instagram: boolean = data.show_instagram;

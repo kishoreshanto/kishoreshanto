@@ -1,5 +1,5 @@
 <script lang="ts">
-    import data from "$lib/data.json"
+    import data from "$lib/data_en.json"
     import GithubIcon from "../visuals/icons/GithubIcon.svelte";
 
     const show_github: boolean = data.show_github;

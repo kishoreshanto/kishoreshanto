@@ -1,7 +1,7 @@
 <!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
 
 <script lang="ts">
-    import data from "$lib/data.json";
+    import data from "$lib/data_en.json";
     import {parseDate} from "$lib/utils";
     import UpdatedOnIcon from "../visuals/icons/UpdatedOnIcon.svelte";
 

@@ -1,6 +1,6 @@
 <script lang="ts">
     export let current_time: string;
-    import data from "$lib/data.json";
+    import data from "$lib/data_en.json";
 
     const show_inactive: boolean = data.show_inactive;
     let inactive_start: number | undefined;

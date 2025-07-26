@@ -1,5 +1,5 @@
 <script lang="ts">
-    import data from "$lib/data.json";
+    import data from "$lib/data_en.json";
     import EmailIcon from "../visuals/icons/EmailIcon.svelte";
     import {isEmailValid} from "$lib/utils";
 

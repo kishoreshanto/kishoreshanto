@@ -14,6 +14,7 @@
 
     // Imports about Styles
     import RadialGlowBackground from "./visuals/RadialGlowBackground.svelte";
+  import Language from "./sidebar/Language.svelte";
 
 </script>
 
@@ -34,6 +35,7 @@
             <hr/>
 
             <InterestAndPassion/>
+            <Language/>
             <Contacts/>
             <Locals/>
             <DND/>
