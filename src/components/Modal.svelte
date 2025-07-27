@@ -1,17 +1,19 @@
 
-<svelte:window on:keydown={handleKeydown} />
-
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import type { Snippet } from 'svelte';
 
-	export let maxWidth: string = 'max-w-4xl'; // Default to larger width, can be overridden
-	export let maxHeight: string = 'max-h-[80vh]'; // Default max height, can be overridden
+	interface Props {
+		maxWidth?: string;
+		maxHeight?: string;
+		onclose?: () => void;
+		children: Snippet;
+	}
 
-	const dispatch = createEventDispatcher();
+	let { maxWidth = 'max-w-4xl', maxHeight = 'max-h-[80vh]', onclose, children }: Props = $props();
 
 	function closeModal() {
-		dispatch('close');
+		onclose?.();
 	}
 
 	function handleKeydown(event: KeyboardEvent) {
@@ -36,11 +38,13 @@
 	}
 </script>
 
+<svelte:window onkeydown={handleKeydown} />
+
 <div 
 	class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4" 
 	transition:fade={{ duration: 200 }}
-	on:click={handleBackdropClick}
-	on:keydown={handleBackdropKeydown}
+	onclick={handleBackdropClick}
+	onkeydown={handleBackdropKeydown}
 	role="button"
 	tabindex="-1"
 >
@@ -51,7 +55,8 @@
 	>
 		<button
 			class="absolute top-4 right-4 z-10 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors duration-200"
-			on:click={closeModal}
+			onclick={closeModal}
+			aria-label="Close modal"
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +76,7 @@
 		
 		<!-- Scrollable content area -->
 		<div class="overflow-y-auto overflow-x-hidden p-8 pr-12">
-			<slot />
+			{@render children()}
 		</div>
 	</div>
 </div>

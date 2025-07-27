@@ -1,10 +1,16 @@
 <script lang="ts">
 import Card from "../Card.svelte";
 
-export let date:string;
+interface Props {
+    date: string;
+    onshowmodal?: () => void;
+}
+
+let { date, onshowmodal }: Props = $props();
+
 </script>
 
-<Card date={date} on:showmodal>
+{#snippet cardContent()}
     <div class="space-y-4">
         <!-- Journal Type Badge -->
         <div class="flex items-center justify-between">
@@ -93,4 +99,8 @@ export let date:string;
             </div>
         </div>
     </div>
+{/snippet}
+
+<Card {date} {onshowmodal}>
+    {@render cardContent()}
 </Card>

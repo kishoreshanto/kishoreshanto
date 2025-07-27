@@ -1,10 +1,16 @@
 <script lang="ts">
-    import Card from "../Card.svelte";
+import Card from "../Card.svelte";
 
-	export let date:string;
+interface Props {
+    date: string;
+    onshowmodal?: () => void;
+}
+
+let { date, onshowmodal }: Props = $props();
+
 </script>
 
-<Card date={date} on:showmodal>
+{#snippet cardContent()}
 		<div class="space-y-4">
 			<!-- Research Type Badge -->
 			<div class="flex items-center justify-between">
@@ -68,7 +74,7 @@
 						target="_blank"
 						rel="noopener noreferrer"
 						class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-lg bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-300 dark:hover:bg-green-900/50 transition-colors duration-200"
-						on:click|stopPropagation
+						onclick={(e) => e.stopPropagation()}
 					>
 						<svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
 							<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -79,4 +85,8 @@
 				</div>
 			</div>
 		</div>
-	</Card>
+	{/snippet}
+
+<Card {date} {onshowmodal}>
+    {@render cardContent()}
+</Card>

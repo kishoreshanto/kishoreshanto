@@ -3,8 +3,8 @@
     import LinkedInIcon from "../visuals/icons/LinkedInIcon.svelte";
 
     const show_linkedin: boolean = data.show_linkedin;
-    let linkedin_url: string;
-    let linkedin_username: string;
+    let linkedin_url = $state<string>('');
+    let linkedin_username = $state<string>('');
 
     if (show_linkedin) {
         linkedin_url = data.linkedin_url;

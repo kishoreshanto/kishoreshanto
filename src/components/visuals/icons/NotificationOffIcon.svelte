@@ -1,5 +1,9 @@
 <script lang="ts">
-    export let current_time: string;
+    interface Props {
+        current_time: string;
+    }
+    
+    let { current_time }: Props = $props();
     import data from "$lib/data_en.json";
 
     const show_inactive: boolean = data.show_inactive;
@@ -15,15 +19,18 @@
         current_hour = undefined;
     }
 
-    let incorrect_time: boolean = false;
-    if (inactive_start && inactive_end) {
-        incorrect_time = !(inactive_start >= 0 && inactive_start <= 24 && inactive_end >= 0 && inactive_end <= 24);
-    }
-
-    let inactive_status: boolean = false;
-    if (inactive_start && inactive_end && !incorrect_time && current_hour) {
-        inactive_status = current_hour >= inactive_start && current_hour < inactive_end;
-    }
+    let incorrect_time = $state<boolean>(false);
+    let inactive_status = $state<boolean>(false);
+    
+    $effect(() => {
+        if (inactive_start && inactive_end) {
+            incorrect_time = !(inactive_start >= 0 && inactive_start <= 24 && inactive_end >= 0 && inactive_end <= 24);
+        }
+        
+        if (inactive_start && inactive_end && !incorrect_time && current_hour) {
+            inactive_status = current_hour >= inactive_start && current_hour < inactive_end;
+        }
+    });
 </script>
 
 {#if show_inactive && !incorrect_time && inactive_status}

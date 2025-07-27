@@ -6,10 +6,10 @@
     const name: string = data.name;
     const show_legal_name: boolean = data.show_leagal_name;
 
-    let first_name: string;
-    let last_name: string;
-    let first_legal_name: string;
-    let last_legal_name: string;
+    let first_name = $state<string>('');
+    let last_name = $state<string>('');
+    let first_legal_name = $state<string>('');
+    let last_legal_name = $state<string>('');
 
     if (name) {
         first_name = name.split(' ')[0];

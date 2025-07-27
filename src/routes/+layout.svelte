@@ -6,6 +6,13 @@
     import TimeLine from "../components/visuals/TimeLine.svelte";
     import LeftPanel from "../components/LeftPanel.svelte";
     import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+    import type { Snippet } from 'svelte';
+
+    interface Props {
+        children: Snippet;
+    }
+
+    let { children }: Props = $props();
 
     injectSpeedInsights();
 
@@ -30,6 +37,6 @@
         </div>
 
         <!-- Right Panel Goes here, modify `+page.svelte` to change contents -->
-        <slot/>
+        {@render children()}
     </div>
 </main>

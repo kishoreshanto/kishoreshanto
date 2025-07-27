@@ -20,9 +20,10 @@
 	import TopBar from '../components/TopBar.svelte';
 	import projectsData from '../lib/data_card.json';
 
-	let showModal = false;
-	let selectedComponent: any = null;
-	let searchTerm = '';
+	// Using Svelte 5 $state rune for reactive state
+	let showModal = $state(false);
+	let selectedComponent: any = $state(null);
+	let searchTerm = $state('');
 
 	// Component mapping
 	const componentMap: { [key: string]: any } = {
@@ -56,13 +57,15 @@
 		modal: project.modal ? modalMap[project.modal] : null
 	}));
 
-	// Filter projects based on search term
-	$: filteredProjects = projects.filter(project => {
-		if (!searchTerm.trim()) return true;
+	// Using Svelte 5 $derived rune for reactive computations
+	const filteredProjects = $derived(() => {
+		if (!searchTerm.trim()) return projects;
 		const search = searchTerm.toLowerCase();
-		return project.title.toLowerCase().includes(search) || 
-			   project.keywords.toLowerCase().includes(search) ||
-			   project.date.toLowerCase().includes(search);
+		return projects.filter(project => 
+			project.title.toLowerCase().includes(search) || 
+			project.keywords.toLowerCase().includes(search) ||
+			project.date.toLowerCase().includes(search)
+		);
 	});
 
 	function openModal(component: any) {
@@ -78,37 +81,34 @@
 	function clearSearch() {
 		searchTerm = '';
 	}
-
-	function handleSearchInput(event: CustomEvent<{value: string}>) {
-		searchTerm = event.detail.value;
-	}
 </script>
 
 <TopBar 
 	{searchTerm} 
-	on:clearSearch={clearSearch} 
-	on:searchInput={handleSearchInput} 
+	onclearSearch={clearSearch} 
+	onsearchInput={(event) => searchTerm = event.detail.value} 
 />
 
 <main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center">
-	{#if filteredProjects.length > 0}
-		{#each filteredProjects as project (project.id)}
-			<svelte:component 
-				this={project.component} 
+	{#if filteredProjects().length > 0}
+		{#each filteredProjects() as project (project.id)}
+			{@const Component = project.component}
+			<Component 
 				date={project.date} 
-				on:showmodal={project.modal ? () => openModal(project.modal) : undefined}
+				onshowmodal={project.modal ? () => openModal(project.modal) : undefined}
 			/>
 		{/each}
 	{:else}
 		<!-- No results found message -->
-		<NotFoundCard on:clearSearch={clearSearch} />
+		<NotFoundCard onclearSearch={clearSearch} />
 
 	{/if}
 </main>
 
 {#if showModal && selectedComponent}
-	<Modal on:close={closeModal}>
-		<svelte:component this={selectedComponent} />
+	{@const ModalComponent = selectedComponent}
+	<Modal onclose={closeModal}>
+		<ModalComponent />
 	</Modal>
 {/if}
 
