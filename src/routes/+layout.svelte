@@ -13,22 +13,11 @@
 </script>
 
 <svelte:head>
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
-    <!-- DNS prefetch for external resources -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    
     {#if page_title}
         <title> {page_title} </title>
     {:else}
         <title> Portfolio </title>
     {/if}
-    
-    <meta name="description" content="Kishore Shanto - Researcher & Developer specializing in Deep Learning, Computer Vision, and Biomedical Signal Processing">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 </svelte:head>
 
 <main>
