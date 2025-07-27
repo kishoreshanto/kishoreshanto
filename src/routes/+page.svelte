@@ -16,6 +16,8 @@
 	import LandSphereProject from "../components/Cards/LandSphereProject.svelte";
 	import PlantifyProject from "../components/Cards/PlantifyProject.svelte";
 	import AgriInnProject from "../components/Cards/AgriInnProject.svelte";
+  import Card from '../components/Card.svelte';
+  import NotFoundCard from '../components/NotFoundCard.svelte';
 
 	let showModal = false;
 	let selectedComponent: any = null;
@@ -149,8 +151,8 @@
 					<div class="relative flex-1 min-w-0">
 						<input 
 							bind:value={searchTerm}
-							placeholder="Search projects..."
-							class="w-full bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full pl-4 pr-12 py-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 focus:bg-white/20 dark:focus:bg-white/10 hover:-translate-y-0.5 focus:-translate-y-0.5 hover:shadow-xl focus:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 focus:shadow-gray-500/30 dark:focus:shadow-blue-500/40 transition-all duration-300 ease-out text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 dark:focus:ring-white/10"/>
+							placeholder="Search Anything..."
+							class="font-mono w-full bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full pl-4 pr-12 py-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 focus:bg-white/20 dark:focus:bg-white/10 hover:-translate-y-0.5 focus:-translate-y-0.5 hover:shadow-xl focus:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 focus:shadow-gray-500/30 dark:focus:shadow-blue-500/40 transition-all duration-300 ease-out text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"/>
 						
 						{#if searchTerm}
 							<button 
@@ -205,9 +207,7 @@
 		{/each}
 	{:else}
 		<!-- No results found message -->
-		<div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
-			<div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
-				<div class="select-none mx-auto max-w-lg rounded-xl border border-zinc-300 bg-white/50 p-4 drop-shadow-xl backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-800/30 lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto text-center">
+		 <NotFoundCard>
 					<div class="space-y-4 py-4">
 						<svg xmlns="http://www.w3.org/2000/svg" 
 							 width="48" 
@@ -224,15 +224,15 @@
 						</svg>
 						<h3 class="text-lg font-semibold text-gray-900 dark:text-white">No projects found</h3>
 						<p class="text-sm text-gray-600 dark:text-gray-400">
-							Try adjusting your search terms or 
+							Try a different search term or 
 							<button on:click={clearSearch} class="text-sky-600 dark:text-sky-400 hover:underline">
 								clear the search
 							</button>
 						</p>
 					</div>
-				</div>
-			</div>
-		</div>
+
+		</NotFoundCard>
+
 	{/if}
 	<!-- Add more cards here, each with its own content and modal component -->
 </main>
