@@ -15,7 +15,6 @@
     // Imports about Styles
     import RadialGlowBackground from "./visuals/RadialGlowBackground.svelte";
     import Language from "./sidebar/Language.svelte";
-    import WarningIcon from "./visuals/icons/WarningIcon.svelte";
 
 </script>
 
