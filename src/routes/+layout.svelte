@@ -28,6 +28,7 @@
         <div class="right-panel-container">
             <TimeLine/>
         </div>
+
         <!-- Right Panel Goes here, modify `+page.svelte` to change contents -->
         <slot/>
     </div>
