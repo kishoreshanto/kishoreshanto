@@ -16,96 +16,44 @@
 	import LandSphereProject from "../components/Cards/LandSphereProject.svelte";
 	import PlantifyProject from "../components/Cards/PlantifyProject.svelte";
 	import AgriInnProject from "../components/Cards/AgriInnProject.svelte";
-  import Card from '../components/Card.svelte';
-  import NotFoundCard from '../components/NotFoundCard.svelte';
+	import NotFoundCard from '../components/NotFoundCard.svelte';
+	import projectsData from '../lib/data_card.json';
 
 	let showModal = false;
 	let selectedComponent: any = null;
 	let searchTerm = '';
 
-	// Define all projects with their searchable data
-	const projects = [
-		{
-			id: 'eeg',
-			component: EegResearch,
-			modal: EegModal,
-			date: "February 20th, 2025",
-			title: "EEG Research",
-			keywords: "eeg electroencephalogram brain computer interface bci neural signals deep learning classification upper limb motor movement research"
-		},
-		{
-			id: 'university',
-			component: UniversityUIU,
-			modal: UniversityUiuModal,
-			date: "November 6th, 2024",
-			title: "University UIU",
-			keywords: "university uiu education academic study computer science software engineering"
-		},
-		{
-			id: 'password',
-			component: PasswordCrackResearch,
-			modal: PasswordCrackResearchModal,
-			date: "February 27th, 2023",
-			title: "Password Crack Research",
-			keywords: "password cracking security cybersecurity encryption hashing authentication research"
-		},
-		{
-			id: 'vad',
-			component: VADResearch,
-			modal: VadModal,
-			date: "November 17th, 2024",
-			title: "VAD Research",
-			keywords: "vad voice activity detection audio signal processing speech recognition machine learning"
-		},
-		{
-			id: 'gbdtsvm',
-			component: GBDTSVMResearch,
-			modal: GbdtsvmModal,
-			date: "December 15th, 2024",
-			title: "GBDT SVM Research",
-			keywords: "gbdt svm gradient boosting decision tree support vector machine machine learning classification research"
-		},
-		{
-			id: 'garment',
-			component: GarmentDefectResearch,
-			modal: GarmentDefectResearchModal,
-			date: "January 10th, 2025",
-			title: "Garment Defect Research",
-			keywords: "garment defect detection textile manufacturing quality control computer vision image processing research"
-		},
-		{
-			id: 'rfwoc',
-			component: RFWOCResearch,
-			modal: null,
-			date: "March 5th, 2025",
-			title: "RFWOC Research",
-			keywords: "rfwoc research wireless communication radio frequency optimization"
-		},
-		{
-			id: 'landsphere',
-			component: LandSphereProject,
-			modal: null,
-			date: "January 10th, 2025",
-			title: "LandSphere Project",
-			keywords: "landsphere land management geography gis mapping project real estate"
-		},
-		{
-			id: 'plantify',
-			component: PlantifyProject,
-			modal: null,
-			date: "January 10th, 2025",
-			title: "Plantify Project",
-			keywords: "plantify plant identification botany agriculture gardening mobile app project"
-		},
-		{
-			id: 'agriinn',
-			component: AgriInnProject,
-			modal: null,
-			date: "January 10th, 2025",
-			title: "AgriInn Project",
-			keywords: "agriinn agriculture innovation farming technology iot sensors smart farming project"
-		}
-	];
+	// Component mapping
+	const componentMap: { [key: string]: any } = {
+		EegResearch,
+		UniversityUIU,
+		VADResearch,
+		GBDTSVMResearch,
+		GarmentDefectResearch,
+		RFWOCResearch,
+		LandSphereProject,
+		PlantifyProject,
+		AgriInnProject,
+		PasswordCrackResearch
+	};
+
+	// Modal mapping
+	const modalMap: { [key: string]: any } = {
+		EegModal,
+		UniversityUiuModal,
+		VadModal,
+		GbdtsvmModal,
+		GarmentDefectResearchModal,
+		PasswordCrackResearchModal
+
+	};
+
+	// Transform JSON data to include actual component references
+	const projects = projectsData.projects.map(project => ({
+		...project,
+		component: componentMap[project.component],
+		modal: project.modal ? modalMap[project.modal] : null
+	}));
 
 	// Filter projects based on search term
 	$: filteredProjects = projects.filter(project => {
@@ -207,29 +155,29 @@
 		{/each}
 	{:else}
 		<!-- No results found message -->
-		 <NotFoundCard>
-					<div class="space-y-4 py-4">
-						<svg xmlns="http://www.w3.org/2000/svg" 
-							 width="48" 
-							 height="48" 
-							 viewBox="0 0 24 24" 
-							 fill="none" 
-							 stroke="currentColor" 
-							 stroke-width="2" 
-							 stroke-linecap="round" 
-							 stroke-linejoin="round"
-							 class="mx-auto text-gray-400 dark:text-gray-500">
-							<circle cx="11" cy="11" r="8"></circle>
-							<path d="m21 21-4.35-4.35"></path>
-						</svg>
-						<h3 class="text-lg font-semibold text-gray-900 dark:text-white">No projects found</h3>
-						<p class="text-sm text-gray-600 dark:text-gray-400">
-							Try a different search term or 
+		<NotFoundCard>
+			<div class="space-y-4 py-4">
+				<svg xmlns="http://www.w3.org/2000/svg" 
+					 width="48" 
+					 height="48" 
+					 viewBox="0 0 24 24" 
+					 fill="none" 
+					 stroke="currentColor" 
+					 stroke-width="2" 
+					 stroke-linecap="round" 
+					 stroke-linejoin="round"
+					 class="mx-auto text-gray-400 dark:text-gray-500">
+					<circle cx="11" cy="11" r="8"></circle>
+					<path d="m21 21-4.35-4.35"></path>
+				</svg>
+				<h3 class="text-lg font-semibold text-gray-900 dark:text-white">No projects found</h3>
+				<p class="text-sm text-gray-600 dark:text-gray-400">
+					Try a different search term or 
 							<button on:click={clearSearch} class="text-sky-600 dark:text-sky-400 hover:underline">
-								clear the search
-							</button>
-						</p>
-					</div>
+						clear the search
+					</button>
+				</p>
+			</div>
 
 		</NotFoundCard>
 

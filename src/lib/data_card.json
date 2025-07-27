@@ -1,0 +1,84 @@
+{
+	"projects": [
+		{
+			"id": "eeg",
+			"component": "EegResearch",
+			"modal": "EegModal",
+			"date": "February 20th, 2025",
+			"title": "EEG Research",
+			"keywords": "eeg electroencephalogram brain computer interface bci neural signals deep learning classification upper limb motor movement research"
+		},
+		{
+			"id": "university",
+			"component": "UniversityUIU",
+			"modal": "UniversityUiuModal",
+			"date": "November 6th, 2024",
+			"title": "University UIU",
+			"keywords": "university uiu education academic study computer science software engineering"
+		},
+		{
+			"id": "password",
+			"component": "PasswordCrackResearch",
+			"modal": "PasswordCrackResearchModal",
+			"date": "February 27th, 2023",
+			"title": "Password Crack Research",
+			"keywords": "password cracking security cybersecurity encryption hashing authentication research"
+		},
+		{
+			"id": "vad",
+			"component": "VADResearch",
+			"modal": "VadModal",
+			"date": "November 17th, 2024",
+			"title": "VAD Research",
+			"keywords": "vad voice activity detection audio signal processing speech recognition machine learning"
+		},
+		{
+			"id": "gbdtsvm",
+			"component": "GBDTSVMResearch",
+			"modal": "GbdtsvmModal",
+			"date": "December 15th, 2024",
+			"title": "GBDT SVM Research",
+			"keywords": "gbdt svm gradient boosting decision tree support vector machine machine learning classification research"
+		},
+		{
+			"id": "garment",
+			"component": "GarmentDefectResearch",
+			"modal": "GarmentDefectResearchModal",
+			"date": "January 10th, 2025",
+			"title": "Garment Defect Research",
+			"keywords": "garment defect detection textile manufacturing quality control computer vision image processing research"
+		},
+		{
+			"id": "rfwoc",
+			"component": "RFWOCResearch",
+			"modal": null,
+			"date": "March 5th, 2025",
+			"title": "RFWOC Research",
+			"keywords": "rfwoc research wireless communication radio frequency optimization"
+		},
+		{
+			"id": "landsphere",
+			"component": "LandSphereProject",
+			"modal": null,
+			"date": "January 10th, 2025",
+			"title": "LandSphere Project",
+			"keywords": "landsphere land management geography gis mapping project real estate"
+		},
+		{
+			"id": "plantify",
+			"component": "PlantifyProject",
+			"modal": null,
+			"date": "January 10th, 2025",
+			"title": "Plantify Project",
+			"keywords": "plantify plant identification botany agriculture gardening mobile app project"
+		},
+		{
+			"id": "agriinn",
+			"component": "AgriInnProject",
+			"modal": null,
+			"date": "January 10th, 2025",
+			"title": "AgriInn Project",
+			"keywords": "agriinn agriculture innovation farming technology iot sensors smart farming project"
+		}
+	]
+}
