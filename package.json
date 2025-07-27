@@ -4,16 +4,21 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "npm run optimize:images && vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"optimize:images": "node scripts/optimize-images.js"
 	},
 	"devDependencies": {
+		"@squoosh/lib": "^0.3.1",
 		"@sveltejs/adapter-auto": "^3.2.3",
 		"@sveltejs/kit": "^2.20.6",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@tailwindcss/postcss": "^4.0.0",
+		"imagemin": "^9.0.1",
+		"imagemin-mozjpeg": "^10.0.0",
+		"imagemin-webp": "^8.0.0",
 		"postcss": "^8.4.41",
 		"svelte": "^4.2.19",
 		"svelte-check": "^3.6.0",

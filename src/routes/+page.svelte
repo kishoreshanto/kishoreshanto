@@ -1,11 +1,5 @@
 <script lang="ts">
 	import Modal from '../components/Modal.svelte';
-	import UniversityUiuModal from '../components/modals/UniversityUIUModal.svelte';
-	import PasswordCrackResearchModal from '../components/modals/PasswordCrackResearchModal.svelte';
-	import GarmentDefectResearchModal from '../components/modals/GarmentDefectResearchModal.svelte';
-	import GbdtsvmModal from '../components/modals/GBDTSVMModal.svelte';
-	import VadModal from '../components/modals/VADModal.svelte';
-	import EegModal from '../components/modals/EEGModal.svelte';
     import EegResearch from '../components/Cards/EEGResearch.svelte';
 	import UniversityUIU from "../components/Cards/UniversityUIU.svelte";
 	import PasswordCrackResearch from "../components/Cards/PasswordCrackResearch.svelte";
@@ -23,12 +17,22 @@
 	let selectedComponent: any = null;
 	let searchTerm = '';
 
+	// Lazy load modal components
+	const lazyModals: Record<string, () => Promise<any>> = {
+		eeg: () => import('../components/modals/EEGModal.svelte'),
+		university: () => import('../components/modals/UniversityUIUModal.svelte'),
+		password: () => import('../components/modals/PasswordCrackResearchModal.svelte'),
+		garment: () => import('../components/modals/GarmentDefectResearchModal.svelte'),
+		gbdtsvm: () => import('../components/modals/GBDTSVMModal.svelte'),
+		vad: () => import('../components/modals/VADModal.svelte')
+	};
+
 	// Define all projects with their searchable data
 	const projects = [
 		{
 			id: 'eeg',
 			component: EegResearch,
-			modal: EegModal,
+			modal: 'eeg',
 			date: "February 20th, 2025",
 			title: "EEG Research",
 			keywords: "eeg electroencephalogram brain computer interface bci neural signals deep learning classification upper limb motor movement research"
@@ -36,7 +40,7 @@
 		{
 			id: 'university',
 			component: UniversityUIU,
-			modal: UniversityUiuModal,
+			modal: 'university',
 			date: "November 6th, 2024",
 			title: "University UIU",
 			keywords: "university uiu education academic study computer science software engineering"
@@ -44,7 +48,7 @@
 		{
 			id: 'password',
 			component: PasswordCrackResearch,
-			modal: PasswordCrackResearchModal,
+			modal: 'password',
 			date: "February 27th, 2023",
 			title: "Password Crack Research",
 			keywords: "password cracking security cybersecurity encryption hashing authentication research"
@@ -52,7 +56,7 @@
 		{
 			id: 'vad',
 			component: VADResearch,
-			modal: VadModal,
+			modal: 'vad',
 			date: "November 17th, 2024",
 			title: "VAD Research",
 			keywords: "vad voice activity detection audio signal processing speech recognition machine learning"
@@ -60,7 +64,7 @@
 		{
 			id: 'gbdtsvm',
 			component: GBDTSVMResearch,
-			modal: GbdtsvmModal,
+			modal: 'gbdtsvm',
 			date: "December 15th, 2024",
 			title: "GBDT SVM Research",
 			keywords: "gbdt svm gradient boosting decision tree support vector machine machine learning classification research"
@@ -68,7 +72,7 @@
 		{
 			id: 'garment',
 			component: GarmentDefectResearch,
-			modal: GarmentDefectResearchModal,
+			modal: 'garment',
 			date: "January 10th, 2025",
 			title: "Garment Defect Research",
 			keywords: "garment defect detection textile manufacturing quality control computer vision image processing research"
@@ -116,9 +120,13 @@
 			   project.date.toLowerCase().includes(search);
 	});
 
-	function openModal(component: any) {
-		selectedComponent = component;
-		showModal = true;
+	function openModal(modalKey: string) {
+		if (lazyModals[modalKey]) {
+			lazyModals[modalKey]().then((module: any) => {
+				selectedComponent = module.default;
+				showModal = true;
+			});
+		}
 	}
 
 	function closeModal() {
@@ -196,7 +204,7 @@
 	</div>
 </div>
 
-<main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center">
+<main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14">
 	{#if filteredProjects.length > 0}
 		{#each filteredProjects as project (project.id)}
 			<svelte:component 
