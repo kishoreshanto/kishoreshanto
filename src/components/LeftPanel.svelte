@@ -28,7 +28,7 @@
         <div>
 
             <!-- YOU CAN REORDER IT -->
-            <div class="flex items-center text-xs bg-amber-200 w-fit pl-0.5 pr-2 py-0.5 rounded-full font-bold text text-amber-600 dark:bg-amber-900/30 dark:text-amber-300 border border-amber-300">
+            <div class="flex items-center text-xs bg-amber-200 w-fit pl-0.5 pr-2 py-0.5 rounded-full font-medium text text-amber-600 dark:bg-amber-900/30 dark:text-amber-300 border border-amber-300">
                 <svg xmlns="http://www.w3.org/2000/svg"
                      height="16px"
                      viewBox="0 -960 960 960"
