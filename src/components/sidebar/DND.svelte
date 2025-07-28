@@ -3,7 +3,7 @@
     import DNDIcon from "../visuals/icons/DNDIcon.svelte";
 
     const show_dnd: boolean = data.request_do_not_disturb;
-    let dnd_message: string | undefined;
+    let dnd_message = $state<string | undefined>();
     if (show_dnd) {
         dnd_message = data.request_do_not_disturb_message;
     }

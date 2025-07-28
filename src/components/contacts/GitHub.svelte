@@ -3,8 +3,8 @@
     import GithubIcon from "../visuals/icons/GithubIcon.svelte";
 
     const show_github: boolean = data.show_github;
-    let github_url: string;
-    let github_username: string;
+    let github_url = $state<string>('');
+    let github_username = $state<string>('');
 
     if (show_github) {
         github_url = data.github_url;

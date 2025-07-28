@@ -3,8 +3,8 @@
     import InstagramIcon from "../visuals/icons/InstagramIcon.svelte";
 
     const show_instagram: boolean = data.show_instagram;
-    let instagram_url: string;
-    let instagram_username: string;
+    let instagram_url = $state<string>('');
+    let instagram_username = $state<string>('');
 
     if (show_instagram) {
         instagram_url = data.instagram_url;

@@ -1,10 +1,15 @@
 <script lang="ts">
 import Card from "../Card.svelte";
 
-export let date:string;
+interface Props {
+    date: string;
+    onshowmodal?: () => void;
+}
+
+let { date, onshowmodal }: Props = $props();
 </script>
 
-<Card date={date} on:showmodal>
+{#snippet cardContent()}
     <div class="space-y-4">
         <!-- Header with degree title -->
         <div class="border-b border-zinc-200 pb-3 dark:border-zinc-700">
@@ -49,4 +54,8 @@ export let date:string;
             </div>
         </div>
     </div>
+{/snippet}
+
+<Card {date} {onshowmodal}>
+    {@render cardContent()}
 </Card>

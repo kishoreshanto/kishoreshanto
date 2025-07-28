@@ -1,8 +1,13 @@
 <!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
 
 <script lang="ts">
-    export let date_string: string;
     import Date from "./Date.svelte";
+    
+    interface Props {
+        date_string: string;
+    }
+    
+    let { date_string }: Props = $props();
 </script>
 
 <section class="relative mb-10 xl:mb-0">

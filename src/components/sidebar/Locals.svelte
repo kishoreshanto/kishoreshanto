@@ -11,14 +11,15 @@
     const current_city: string | undefined = data.current_city;
     const current_gmt_offset: number = data.current_gmt_offset;
 
-    let LT_GMT: { local_time: string, GMT: string };
+    let LT_GMT = $state<{ local_time: string, GMT: string }>();
 
-    $: LT_GMT = getLocalTimeFromUTCOffset(current_gmt_offset);
-
-    // Update time every second (adjust interval as needed)
-    setInterval(() => {
+    const updateTime = () => {
         LT_GMT = getLocalTimeFromUTCOffset(current_gmt_offset);
-    }, 60000);
+    };
+
+    // Initialize and update time every minute
+    updateTime();
+    setInterval(updateTime, 60000);
 
 </script>
 

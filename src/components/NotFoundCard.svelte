@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+	interface Props {
+		onclearSearch?: () => void;
+	}
 
-	const dispatch = createEventDispatcher();
+	let { onclearSearch }: Props = $props();
 
 	function clearSearch() {
-		dispatch('clearSearch');
+		onclearSearch?.();
 	}
 </script>
 
@@ -31,7 +33,7 @@
 				<h3 class="text-lg font-semibold text-gray-900 dark:text-white">No projects found</h3>
 				<p class="text-sm text-gray-600 dark:text-gray-400">
 					Try a different search term or 
-							<button on:click={clearSearch} class="text-sky-600 dark:text-sky-400 hover:underline">
+							<button onclick={clearSearch} class="text-sky-600 dark:text-sky-400 hover:underline">
 						clear the search
 					</button>
 				</p>

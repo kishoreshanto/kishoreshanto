@@ -5,13 +5,15 @@
 
     const show_mail: boolean = data.show_mail;
 
-    let email: string;
-    let email_is_valid: boolean;
+    let email = $state<string>('');
+    let email_is_valid = $state<boolean>(false);
 
-    if (show_mail) {
-        email = data.mail;
-        if (email) email_is_valid = isEmailValid(email);
-    }
+    $effect(() => {
+        if (show_mail) {
+            email = data.mail;
+            if (email) email_is_valid = isEmailValid(email);
+        }
+    });
 </script>
 
 <a class="text-sm mt-3 text-sky-500 items-center flex gap-1 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500 font-medium transition-all duration-300"

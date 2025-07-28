@@ -1,8 +1,13 @@
 <!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
 
 <script lang="ts">
-    export let raw_date_string: string;
     import {parseDate} from "$lib/utils";
+
+    interface Props {
+        raw_date_string: string;
+    }
+    
+    let { raw_date_string }: Props = $props();
 
     const parsed_date: {
         prefix: string,

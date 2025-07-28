@@ -1,17 +1,22 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+	interface Props {
+		searchTerm?: string;
+		onclearSearch?: () => void;
+		onsearchInput?: (event: CustomEvent<{value: string}>) => void;
+	}
 
-	export let searchTerm = '';
-	
-	const dispatch = createEventDispatcher();
+	let { searchTerm = '', onclearSearch, onsearchInput }: Props = $props();
 
 	function clearSearch() {
-		dispatch('clearSearch');
+		onclearSearch?.();
 	}
 
 	function handleInput(event: Event) {
 		const target = event.target as HTMLInputElement;
-		dispatch('searchInput', { value: target.value });
+		const customEvent = new CustomEvent('searchInput', { 
+			detail: { value: target.value } 
+		}) as CustomEvent<{value: string}>;
+		onsearchInput?.(customEvent);
 	}
 </script>
 
@@ -22,7 +27,8 @@
 			<div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto">
 				<div class="flex flex-row-reverse gap-6 justify-center lg:justify-end items-center">
 					<button class="flex-shrink-0 bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full p-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 transition-all duration-300 ease-out group"
-							on:click={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+							onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+						aria-label="Scroll to top">
 						<svg xmlns="http://www.w3.org/2000/svg"
 							 height="30px"
 							 viewBox="0 -960 960 960"
@@ -35,13 +41,14 @@
 					<div class="relative flex-1 min-w-0">
 						<input 
 							value={searchTerm}
-							on:input={handleInput}
+							oninput={handleInput}
 							placeholder="Search Anything..."
 							class="font-mono w-full bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full pl-4 pr-12 py-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 focus:bg-white/20 dark:focus:bg-white/10 hover:-translate-y-0.5 focus:-translate-y-0.5 hover:shadow-xl focus:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 focus:shadow-gray-500/30 dark:focus:shadow-blue-500/40 transition-all duration-300 ease-out text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"/>
 						
 						{#if searchTerm}
 							<button 
-								on:click={clearSearch}
+								onclick={clearSearch}
+								aria-label="Clear search"
 								class="absolute right-3 top-1/2 transform -translate-y-1/2 p-1 rounded-full hover:bg-white/20 dark:hover:bg-white/10 transition-colors duration-200 flex items-center justify-center">
 								<svg xmlns="http://www.w3.org/2000/svg" 
 									 width="20" 
