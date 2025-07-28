@@ -22,7 +22,7 @@
     let incorrect_time = $state<boolean>(false);
     let inactive_status = $state<boolean>(false);
     
-    $effect(() => {
+    $effect.pre(() => {
         if (inactive_start && inactive_end) {
             incorrect_time = !(inactive_start >= 0 && inactive_start <= 24 && inactive_end >= 0 && inactive_end <= 24);
         }
