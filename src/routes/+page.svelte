@@ -57,8 +57,8 @@
 		modal: project.modal ? modalMap[project.modal] : null
 	}));
 
-	// Using Svelte 5 $derived rune for reactive computations
-	const filteredProjects = $derived(() => {
+	// Using Svelte 5 $derived.by rune for reactive computations
+	const filteredProjects = $derived.by(() => {
 		if (!searchTerm.trim()) return projects;
 		const search = searchTerm.toLowerCase();
 		return projects.filter(project => 
