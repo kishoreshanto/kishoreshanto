@@ -5,25 +5,37 @@ layer(base);
 
 @import 'tailwindcss';
 
-/*
-  Custom keyframes for animations
-  These are defined here since they're specific to your app
-*/
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-xs: 420px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 
-@keyframes global_search_fadeIn {
-  0% {
-    opacity: 0;
+  --animate-fade-in: fadeIn 0.7s ease-in;
+  --animate-global_search_fade-in: fadeIn 0.3s ease-in;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, Inter, Helvetica Neue,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --font-mono: SFMono-Regular, JetBrains Mono;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
-  100% {
-    opacity: 1;
+  @keyframes global_search_fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 }
 

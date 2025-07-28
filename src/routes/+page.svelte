@@ -58,7 +58,7 @@
 	}));
 
 	// Using Svelte 5 $derived.by rune for reactive computations
-	const filteredProjects = $derived.by(() => {
+	const filteredProjects = $derived(() => {
 		if (!searchTerm.trim()) return projects;
 		const search = searchTerm.toLowerCase();
 		return projects.filter(project => 

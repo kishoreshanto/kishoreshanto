@@ -11,7 +11,7 @@
     const current_city: string | undefined = data.current_city;
     const current_gmt_offset: number = data.current_gmt_offset;
 
-    let LT_GMT = $state<{ local_time: string, GMT: string }>();
+    let LT_GMT = $state<{ local_time: string, GMT: string } | undefined>();
 
     const updateTime = () => {
         LT_GMT = getLocalTimeFromUTCOffset(current_gmt_offset);
@@ -32,7 +32,7 @@
             </div>
         {/if}
 
-        {#if current_gmt_offset}
+        {#if current_gmt_offset && LT_GMT}
             <div class="flex items-center">
                 <TimeIcon/>
                 <h1 class="font-mono font-light text-gray-500 dark:text-gray-400"> {LT_GMT.local_time}
