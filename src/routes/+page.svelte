@@ -16,14 +16,18 @@
 	import LandSphereProject from "../components/Cards/LandSphereProject.svelte";
 	import PlantifyProject from "../components/Cards/PlantifyProject.svelte";
 	import AgriInnProject from "../components/Cards/AgriInnProject.svelte";
+	import AIResponseCard from '../components/Cards/AIResponseCard.svelte';
 	import NotFoundCard from '../components/NotFoundCard.svelte';
 	import TopBar from '../components/TopBar.svelte';
 	import projectsData from '../lib/data_card.json';
+	import { generateAIResponse } from '../lib/aiService';
 
 	// Using Svelte 5 $state rune for reactive state
 	let showModal = $state(false);
 	let selectedComponent: any = $state(null);
 	let searchTerm = $state('');
+	let isAskMode = $state(false);
+	let aiResponse = $state<{question: string, answer: string, isLoading: boolean} | null>(null);
 
 	// Component mapping
 	const componentMap: { [key: string]: any } = {
@@ -59,7 +63,7 @@
 
 	// Using Svelte 5 $derived.by rune for reactive computations
 	const filteredProjects = $derived(() => {
-		if (!searchTerm.trim()) return projects;
+		if (isAskMode || !searchTerm.trim()) return projects;
 		const search = searchTerm.toLowerCase();
 		return projects.filter(project => 
 			project.title.toLowerCase().includes(search) || 
@@ -80,17 +84,68 @@
 
 	function clearSearch() {
 		searchTerm = '';
+		aiResponse = null;
+	}
+
+	function toggleMode() {
+		isAskMode = !isAskMode;
+		searchTerm = '';
+		aiResponse = null;
+	}
+
+	async function handleAskQuestion(question: string) {
+		if (!question.trim()) return;
+		
+		// Set loading state
+		aiResponse = {
+			question: question,
+			answer: '',
+			isLoading: true
+		};
+
+		try {
+			const answer = await generateAIResponse(question);
+			aiResponse = {
+				question: question,
+				answer: answer,
+				isLoading: false
+			};
+		} catch (error) {
+			console.error('Error generating AI response:', error);
+			aiResponse = {
+				question: question,
+				answer: "I'm sorry, I encountered an error while processing your question. Please try again.",
+				isLoading: false
+			};
+		}
+	}
+
+	function askAnotherQuestion() {
+		searchTerm = '';
+		aiResponse = null;
 	}
 </script>
 
 <TopBar 
 	{searchTerm} 
+	{isAskMode}
 	onclearSearch={clearSearch} 
-	onsearchInput={(event) => searchTerm = event.detail.value} 
+	onsearchInput={(event) => searchTerm = event.detail.value}
+	onaskQuestion={handleAskQuestion}
+	ontoggleMode={toggleMode}
 />
 
 <main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center">
-	{#if filteredProjects().length > 0}
+	{#if isAskMode && aiResponse}
+		<!-- AI Response Display -->
+		<AIResponseCard 
+			question={aiResponse.question}
+			answer={aiResponse.answer}
+			isLoading={aiResponse.isLoading}
+			onaskAnother={askAnotherQuestion}
+		/>
+	{:else if !isAskMode && filteredProjects().length > 0}
+		<!-- Regular Project Cards -->
 		{#each filteredProjects() as project (project.id)}
 			{@const Component = project.component}
 			<Component 
@@ -98,10 +153,9 @@
 				onshowmodal={project.modal ? () => openModal(project.modal) : undefined}
 			/>
 		{/each}
-	{:else}
-		<!-- No results found message -->
+	{:else if !isAskMode}
+		<!-- No search results found -->
 		<NotFoundCard onclearSearch={clearSearch} />
-
 	{/if}
 </main>
 

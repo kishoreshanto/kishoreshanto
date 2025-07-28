@@ -1,0 +1,177 @@
+// AI Service for generating responses about Kishore Shanto
+
+// Personal information about Kishore Shanto
+const PERSONAL_INFO = {
+  name: "Kishore Shanto",
+  legal_name: "Shanta Biswas",
+  title: "Researcher & Developer",
+  location: "Dhaka, Bangladesh",
+  email: "tinykishore@gmail.com",
+  interests: [
+    "Deep Learning",
+    "Computer Vision", 
+    "Autoregressive and Large Language Models",
+    "Multi-agent CoT Models",
+    "Biomedical Signal Processing"
+  ],
+  languages: ["English (CEFR C1)", "French (Beginner)", "Bengali (Native)"],
+  research_areas: [
+    "EEG and Brain-Computer Interfaces",
+    "Voice Activity Detection",
+    "Garment Defect Detection using Computer Vision",
+    "Password Security Research",
+    "Machine Learning with GBDT and SVM"
+  ],
+  education: "University UIU - Computer Science & Software Engineering",
+  github: "https://www.github.com/tinykishore/",
+  linkedin: "https://www.linkedin.com/in/tinykishore",
+  orcid: "https://orcid.org/0009-0009-1147-0095"
+};
+
+// Knowledge base for different types of questions
+const KNOWLEDGE_BASE = {
+  personal: {
+    "who are you": `I'm Kishore Shanto (legal name: Shanta Biswas), a researcher and developer based in Dhaka, Bangladesh. I'm passionate about deep learning, computer vision, and biomedical signal processing.`,
+    "what do you do": `I'm a researcher and developer specializing in machine learning and AI. My work focuses on deep learning, computer vision, large language models, and biomedical signal processing.`,
+    "where are you from": `I'm from Bangladesh, currently based in Dhaka. I speak Bengali natively, English at CEFR C1 level, and I'm learning French.`,
+    "education": `I studied Computer Science and Software Engineering at University UIU (United International University).`
+  },
+  
+  research: {
+    "research": `My research spans several exciting areas: EEG and Brain-Computer Interfaces for upper limb motor movement, Voice Activity Detection using machine learning, Garment Defect Detection with computer vision, Password Security research, and Machine Learning implementations with GBDT and SVM algorithms.`,
+    "eeg": `I work on EEG (Electroencephalogram) research focusing on brain-computer interfaces, particularly for upper limb motor movement classification using deep learning techniques.`,
+    "computer vision": `My computer vision work includes garment defect detection for textile manufacturing quality control, using advanced image processing and deep learning methods.`,
+    "machine learning": `I work with various ML techniques including Gradient Boosting Decision Trees (GBDT), Support Vector Machines (SVM), and deep learning for different applications like voice activity detection and signal processing.`
+  },
+  
+  technical: {
+    "programming": `I'm proficient in multiple programming languages and frameworks, with expertise in machine learning, deep learning, and web development technologies.`,
+    "projects": `I've worked on diverse projects including EEG research, voice activity detection, garment defect detection, password security research, and various machine learning implementations.`,
+    "skills": `My technical skills include deep learning, computer vision, signal processing, machine learning algorithms, and full-stack development.`
+  },
+  
+  contact: {
+    "contact": `You can reach me through several channels: Email at tinykishore@gmail.com, GitHub at github.com/tinykishore, LinkedIn at linkedin.com/in/tinykishore, or check my ORCID profile at orcid.org/0009-0009-1147-0095.`,
+    "github": `My GitHub profile is github.com/tinykishore where you can find my open-source projects and contributions.`,
+    "linkedin": `Connect with me on LinkedIn at linkedin.com/in/tinykishore for professional networking.`,
+    "email": `You can email me directly at tinykishore@gmail.com for any inquiries or collaboration opportunities.`
+  }
+};
+
+/**
+ * Generate an AI response based on the user's question
+ * This is a simplified version - in production, you'd integrate with a real AI service
+ */
+export async function generateAIResponse(question: string): Promise<string> {
+  // Simulate API delay
+  await new Promise(resolve => setTimeout(resolve, 1500 + Math.random() * 1500));
+  
+  const lowerQuestion = question.toLowerCase();
+  
+  // Check for specific keywords and provide targeted responses
+  if (lowerQuestion.includes('who') && (lowerQuestion.includes('you') || lowerQuestion.includes('kishore'))) {
+    return KNOWLEDGE_BASE.personal["who are you"];
+  }
+  
+  if (lowerQuestion.includes('what') && lowerQuestion.includes('do')) {
+    return KNOWLEDGE_BASE.personal["what do you do"];
+  }
+  
+  if (lowerQuestion.includes('where') && (lowerQuestion.includes('from') || lowerQuestion.includes('located'))) {
+    return KNOWLEDGE_BASE.personal["where are you from"];
+  }
+  
+  if (lowerQuestion.includes('education') || lowerQuestion.includes('study') || lowerQuestion.includes('university')) {
+    return KNOWLEDGE_BASE.personal.education;
+  }
+  
+  if (lowerQuestion.includes('research')) {
+    return KNOWLEDGE_BASE.research.research;
+  }
+  
+  if (lowerQuestion.includes('eeg') || lowerQuestion.includes('brain')) {
+    return KNOWLEDGE_BASE.research.eeg;
+  }
+  
+  if (lowerQuestion.includes('computer vision') || lowerQuestion.includes('image') || lowerQuestion.includes('vision')) {
+    return KNOWLEDGE_BASE.research["computer vision"];
+  }
+  
+  if (lowerQuestion.includes('machine learning') || lowerQuestion.includes('ml') || lowerQuestion.includes('gbdt') || lowerQuestion.includes('svm')) {
+    return KNOWLEDGE_BASE.research["machine learning"];
+  }
+  
+  if (lowerQuestion.includes('contact') || lowerQuestion.includes('reach')) {
+    return KNOWLEDGE_BASE.contact.contact;
+  }
+  
+  if (lowerQuestion.includes('github')) {
+    return KNOWLEDGE_BASE.contact.github;
+  }
+  
+  if (lowerQuestion.includes('linkedin')) {
+    return KNOWLEDGE_BASE.contact.linkedin;
+  }
+  
+  if (lowerQuestion.includes('email')) {
+    return KNOWLEDGE_BASE.contact.email;
+  }
+  
+  if (lowerQuestion.includes('programming') || lowerQuestion.includes('code') || lowerQuestion.includes('develop')) {
+    return KNOWLEDGE_BASE.technical.programming;
+  }
+  
+  if (lowerQuestion.includes('project')) {
+    return KNOWLEDGE_BASE.technical.projects;
+  }
+  
+  if (lowerQuestion.includes('skill')) {
+    return KNOWLEDGE_BASE.technical.skills;
+  }
+  
+  if (lowerQuestion.includes('interest') || lowerQuestion.includes('passion')) {
+    return `I'm passionate about ${PERSONAL_INFO.interests.join(', ')}. These areas fascinate me because they represent the cutting edge of AI and have tremendous potential to solve real-world problems.`;
+  }
+  
+  if (lowerQuestion.includes('language')) {
+    return `I speak ${PERSONAL_INFO.languages.join(', ')}. This multilingual ability helps me collaborate with international research teams and access diverse academic resources.`;
+  }
+  
+  // Default response for unmatched questions
+  return `That's an interesting question! While I don't have a specific answer prepared for that, I can tell you that I'm Kishore Shanto, a researcher and developer working on deep learning, computer vision, and biomedical signal processing. I'm always happy to discuss my research areas including EEG/BCI, voice activity detection, computer vision applications, and machine learning. Feel free to ask about any of these topics or check out my work on GitHub!`;
+}
+
+/**
+ * Enhanced version that could integrate with external AI APIs
+ * Uncomment and modify this function to use real AI services like OpenAI, Anthropic, etc.
+ */
+/*
+export async function generateAIResponseWithAPI(question: string): Promise<string> {
+  const context = `
+You are an AI assistant representing Kishore Shanto. Here's information about him:
+
+Name: ${PERSONAL_INFO.name} (Legal: ${PERSONAL_INFO.legal_name})
+Title: ${PERSONAL_INFO.title}
+Location: ${PERSONAL_INFO.location}
+Email: ${PERSONAL_INFO.email}
+Interests: ${PERSONAL_INFO.interests.join(', ')}
+Languages: ${PERSONAL_INFO.languages.join(', ')}
+Research Areas: ${PERSONAL_INFO.research_areas.join(', ')}
+Education: ${PERSONAL_INFO.education}
+
+Answer the following question as if you are Kishore Shanto, keeping responses informative but concise (2-3 sentences):
+`;
+
+  // Example with OpenAI (you'd need to install openai package and add API key)
+  // const response = await openai.chat.completions.create({
+  //   model: "gpt-3.5-turbo",
+  //   messages: [
+  //     { role: "system", content: context },
+  //     { role: "user", content: question }
+  //   ],
+  //   max_tokens: 150
+  // });
+  
+  // return response.choices[0].message.content || "I'm sorry, I couldn't generate a response at the moment.";
+}
+*/
