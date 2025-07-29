@@ -21,7 +21,7 @@ interface HuggingFaceResponse {
       role: string;
       content: string;
     };
-    logprobs: any;
+    logprobs: unknown;
     finish_reason: string;
   }>;
   usage: {
