@@ -25,11 +25,4 @@
             </span>
         <span class="text-sm lg:text-base font-bold">{parsed_date.year}</span>
     </div>
-{:else}
-    <div class="xl:hidden">
-        <span class="text-sm text-red-500 dark:text-red-400 text-end">Invalid Date format</span>
-    </div>
-    <div class="hidden xl:block text-end">
-        <span class="text-sm text-red-500 dark:text-red-400 text-end">Invalid <br> Date <br> format</span>
-    </div>
 {/if}
