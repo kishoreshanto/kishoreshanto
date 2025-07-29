@@ -34,14 +34,7 @@
 		}
 	}
 
-	$effect(() => {
-		// Add event listener for Enter key
-		const input = document.querySelector('input[data-ask-input]') as HTMLInputElement;
-		if (input && isAskMode) {
-			input.addEventListener('keypress', handleKeyPress);
-			return () => input.removeEventListener('keypress', handleKeyPress);
-		}
-	});
+
 </script>
 
 <!-- Fixed navigation controls - bottom for <1024px, top for >=1024px -->
@@ -101,7 +94,7 @@
 						<input 
 							value={searchTerm}
 							oninput={handleInput}
-							data-ask-input
+							onkeypress={handleKeyPress}
 							placeholder={isAskMode ? "Ask anything about me..." : "Search Anything..."}
 							class="font-mono w-full bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full pl-4 pr-12 py-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 focus:bg-white/20 dark:focus:bg-white/10 hover:-translate-y-0.5 focus:-translate-y-0.5 hover:shadow-xl focus:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 focus:shadow-gray-500/30 dark:focus:shadow-blue-500/40 transition-all duration-300 ease-out text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"/>
 						
