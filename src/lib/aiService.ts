@@ -7,6 +7,8 @@
 // Environment Requirements:
 // - VITE_HUGGINGFACE_INFERENCE_API_KEY: Your Hugging Face API token
 
+import systemPromptMd from './system-prompt.md?raw';
+
 // Interface for Hugging Face API response
 interface HuggingFaceResponse {
   id: string;
@@ -113,7 +115,7 @@ async function queryHuggingFace(messages: Array<{ role: string; content: string 
       method: "POST",
       body: JSON.stringify({
         messages,
-        model: "meta-llama/Llama-3.3-70B-Instruct:groq",
+        model: "meta-llama/Llama-4-Scout-17B-16E-Instruct:groq",
         stream: false,
         max_tokens: 250,
         temperature: 0.7
@@ -144,22 +146,8 @@ async function queryHuggingFace(messages: Array<{ role: string; content: string 
  */
 export async function generateAIResponse(question: string): Promise<string> {
   try {
-    // Create context about Kishore Shanto
-    const systemPrompt = `You are an AI assistant representing Kishore Shanto. Here's information about him:
-
-Name: ${PERSONAL_INFO.name} (Legal: ${PERSONAL_INFO.legal_name})
-Title: ${PERSONAL_INFO.title}
-Location: ${PERSONAL_INFO.location}
-Email: ${PERSONAL_INFO.email}
-Interests: ${PERSONAL_INFO.interests.join(', ')}
-Languages: ${PERSONAL_INFO.languages.join(', ')}
-Research Areas: ${PERSONAL_INFO.research_areas.join(', ')}
-Education: ${PERSONAL_INFO.education}
-GitHub: ${PERSONAL_INFO.github}
-LinkedIn: ${PERSONAL_INFO.linkedin}
-ORCID: ${PERSONAL_INFO.orcid}
-
-Answer questions as if you are Kishore Shanto, keeping responses informative but concise (2-4 sentences). Be friendly and professional. If asked about technical topics, draw from his research areas and interests.`;
+    // Use the imported system prompt from markdown file
+    const systemPrompt = systemPromptMd;
 
     const messages = [
       { role: "system", content: systemPrompt },
