@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Card from "../Card.svelte";
+	import { marked } from 'marked';
 	
 	interface Props {
 		question: string;
@@ -9,12 +10,21 @@
 	}
 
 	let { question, answer, isLoading = false, onaskAnother }: Props = $props();
+
+	// Parse markdown to HTML using Svelte 5 runes
+	const parsedAnswer = $derived(marked(answer || '', {
+		breaks: true, // Convert line breaks to <br>
+		gfm: true,    // Enable GitHub Flavored Markdown
+	}));
 </script>
 
-{#snippet cardContent()}
-	<div class="space-y-4 ">
+<section class="scroll-mt-16 focus-visible:outline-none ">
+	<div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8 ">
+		<div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32 ">
+			<div class="bg-gradient-to-l from-blue-100/60 to-purple-100/90 mx-auto max-w-lg rounded-xl border-zinc-300  p-4 drop-shadow-xl backdrop-blur-md transition-transform duration-300 dark:border-zinc-700 dark:bg-zinc-800/30 lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto">
+				<div class="space-y-4 ">
 		<!-- AI Badge -->
-		<div class="flex items-center gap-3 mb-6 ">
+		<div class="flex items-center gap-3 mb-6 select-none">
 			<div class="animate-pulse bg-gradient-to-r from-blue-500 to-purple-600 rounded-full p-2">
 				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
 					<path d="M12 1L9 9l-8 3 8 3 3 8 3-8 8-3-8-3-3-8z" fill="currentColor" stroke="none"/>
@@ -50,15 +60,15 @@
 			{:else}
 				<div class="prose prose-gray dark:prose-invert max-w-none">
 					<div class="text-gray-800 dark:text-gray-200 leading-relaxed">
-						{@html answer.replace(/\n/g, '<br>')}
+						{@html parsedAnswer}
 					</div>
 				</div>
 			{/if}
 		</div>
 
 	</div>
-{/snippet}
-
-<Card date="AI Response" onshowmodal={undefined}>
-	{@render cardContent()}
-</Card>
+			</div>
+		</div>
+	</div>
+</section>
+	
