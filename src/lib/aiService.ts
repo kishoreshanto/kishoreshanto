@@ -1,4 +1,39 @@
 // AI Service for generating responses about Kishore Shanto
+// 
+// This service integrates with Hugging Face's router API to provide AI-powered responses
+// about Kishore Shanto's background, research, and expertise. It includes fallback
+// responses using a local knowledge base for reliability.
+//
+// Environment Requirements:
+// - VITE_HUGGINGFACE_INFERENCE_API_KEY: Your Hugging Face API token
+
+import systemPromptMd from './system-prompt.md?raw';
+
+// Interface for Hugging Face API response
+interface HuggingFaceResponse {
+  id: string;
+  object: string;
+  created: number;
+  model: string;
+  choices: Array<{
+    index: number;
+    message: {
+      role: string;
+      content: string;
+    };
+    logprobs: any;
+    finish_reason: string;
+  }>;
+  usage: {
+    queue_time: number;
+    prompt_tokens: number;
+    prompt_time: number;
+    completion_tokens: number;
+    completion_time: number;
+    total_tokens: number;
+    total_time: number;
+  };
+}
 
 // Personal information about Kishore Shanto
 const PERSONAL_INFO = {
@@ -59,13 +94,87 @@ const KNOWLEDGE_BASE = {
 };
 
 /**
- * Generate an AI response based on the user's question
- * This is a simplified version - in production, you'd integrate with a real AI service
+ * Query Hugging Face API using the chat completions endpoint
+ */
+async function queryHuggingFace(messages: Array<{ role: string; content: string }>): Promise<HuggingFaceResponse> {
+  const HF_TOKEN = import.meta.env.VITE_HUGGINGFACE_INFERENCE_API_KEY;
+  
+  if (!HF_TOKEN) {
+    throw new Error('Hugging Face API token not found in environment variables');
+  }
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+
+  try {
+    const response = await fetch("https://router.huggingface.co/v1/chat/completions", {
+      headers: {
+        Authorization: `Bearer ${HF_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        messages,
+        model: "meta-llama/Llama-3.3-70B-Instruct:groq",
+        stream: false,
+        max_tokens: 350,
+        temperature: 0.65
+      }),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new Error('Request timeout - please try again');
+    }
+    throw error;
+  }
+}
+
+/**
+ * Generate an AI response based on the user's question using Hugging Face API
  */
 export async function generateAIResponse(question: string): Promise<string> {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 1500 + Math.random() * 1500));
-  
+  try {
+    // Use the system prompt from the external markdown file
+    // This makes it easy to update the AI's personality and context without code changes
+    const systemPrompt = systemPromptMd;
+
+    const messages = [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: question }
+    ];
+
+    const response = await queryHuggingFace(messages);
+    
+    if (response.choices && response.choices[0] && response.choices[0].message) {
+      return response.choices[0].message.content;
+    } else {
+      throw new Error('Invalid response format from Hugging Face API');
+    }
+    
+  } catch (error) {
+    console.error('Error generating AI response:', error);
+    
+    // Fallback to local knowledge base if API fails
+    return generateFallbackResponse(question);
+  }
+}
+
+/**
+ * Fallback response generator using local knowledge base
+ */
+function generateFallbackResponse(question: string): string {
   const lowerQuestion = question.toLowerCase();
   
   // Check for specific keywords and provide targeted responses
@@ -142,36 +251,15 @@ export async function generateAIResponse(question: string): Promise<string> {
 }
 
 /**
- * Enhanced version that could integrate with external AI APIs
- * Uncomment and modify this function to use real AI services like OpenAI, Anthropic, etc.
+ * Test function for the Hugging Face API
+ * This can be used for debugging and testing the AI service
  */
-/*
-export async function generateAIResponseWithAPI(question: string): Promise<string> {
-  const context = `
-You are an AI assistant representing Kishore Shanto. Here's information about him:
-
-Name: ${PERSONAL_INFO.name} (Legal: ${PERSONAL_INFO.legal_name})
-Title: ${PERSONAL_INFO.title}
-Location: ${PERSONAL_INFO.location}
-Email: ${PERSONAL_INFO.email}
-Interests: ${PERSONAL_INFO.interests.join(', ')}
-Languages: ${PERSONAL_INFO.languages.join(', ')}
-Research Areas: ${PERSONAL_INFO.research_areas.join(', ')}
-Education: ${PERSONAL_INFO.education}
-
-Answer the following question as if you are Kishore Shanto, keeping responses informative but concise (2-3 sentences):
-`;
-
-  // Example with OpenAI (you'd need to install openai package and add API key)
-  // const response = await openai.chat.completions.create({
-  //   model: "gpt-3.5-turbo",
-  //   messages: [
-  //     { role: "system", content: context },
-  //     { role: "user", content: question }
-  //   ],
-  //   max_tokens: 150
-  // });
-  
-  // return response.choices[0].message.content || "I'm sorry, I couldn't generate a response at the moment.";
+export async function testAIService(): Promise<void> {
+  try {
+    console.log('Testing Hugging Face AI service...');
+    const response = await generateAIResponse("Who are you?");
+    console.log('AI Response:', response);
+  } catch (error) {
+    console.error('Test failed:', error);
+  }
 }
-*/
