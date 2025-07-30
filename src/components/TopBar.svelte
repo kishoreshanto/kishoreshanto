@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
+
 	interface Props {
 		searchTerm?: string;
 		isAskMode?: boolean;
@@ -9,6 +11,89 @@
 	}
 
 	let { searchTerm = '', isAskMode = false, onclearSearch, onsearchInput, onaskQuestion, ontoggleMode }: Props = $props();
+
+	// Dynamic placeholder cycling with typewriter effect
+	const placeholderMessages = [
+		"Hi there...",
+		"Search Anything...",
+		"Or toggle AI mode to ask anything!"
+	];
+	
+	let currentPlaceholderIndex = 0;
+	let dynamicPlaceholder = $state("");
+	let typewriterInterval: number;
+	let cycleTimeout: number;
+	let isTyping = $state(false);
+
+	function typewriterEffect(text: string, callback?: () => void) {
+		let currentText = "";
+		let charIndex = 0;
+		isTyping = true;
+		
+		// Clear any existing interval
+		if (typewriterInterval) {
+			clearInterval(typewriterInterval);
+		}
+		
+		typewriterInterval = setInterval(() => {
+			if (charIndex < text.length) {
+				currentText += text[charIndex];
+				dynamicPlaceholder = currentText;
+				charIndex++;
+			} else {
+				clearInterval(typewriterInterval);
+				isTyping = false;
+				// Wait 3 seconds before starting to erase
+				setTimeout(() => {
+					eraseText(callback);
+				}, 3000);
+			}
+		}, 100); // Typing speed
+	}
+
+	function eraseText(callback?: () => void) {
+		if (isTyping) return;
+		
+		const currentText = dynamicPlaceholder;
+		let charIndex = currentText.length;
+		
+		typewriterInterval = setInterval(() => {
+			if (charIndex > 0) {
+				dynamicPlaceholder = currentText.substring(0, charIndex - 1);
+				charIndex--;
+			} else {
+				clearInterval(typewriterInterval);
+				// Small pause before starting next message
+				setTimeout(() => {
+					callback?.();
+				}, 500);
+			}
+		}, 50); // Faster erase speed
+	}
+
+	function startTypewriterCycle() {
+		const currentMessage = placeholderMessages[currentPlaceholderIndex];
+		typewriterEffect(currentMessage, () => {
+			// Move to next message
+			currentPlaceholderIndex = (currentPlaceholderIndex + 1) % placeholderMessages.length;
+			// Schedule next cycle
+			cycleTimeout = setTimeout(startTypewriterCycle, 300);
+		});
+	}
+
+	onMount(() => {
+	// Start the typewriter animation
+	startTypewriterCycle();
+	});
+
+	onDestroy(() => {
+		if (typewriterInterval) {
+			clearInterval(typewriterInterval);
+		}
+		if (cycleTimeout) {
+			clearTimeout(cycleTimeout);
+		}
+	});
 
 	function clearSearch() {
 		onclearSearch?.();
@@ -34,14 +119,7 @@
 		}
 	}
 
-	$effect(() => {
-		// Add event listener for Enter key
-		const input = document.querySelector('input[data-ask-input]') as HTMLInputElement;
-		if (input && isAskMode) {
-			input.addEventListener('keypress', handleKeyPress);
-			return () => input.removeEventListener('keypress', handleKeyPress);
-		}
-	});
+
 </script>
 
 <!-- Fixed navigation controls - bottom for <1024px, top for >=1024px -->
@@ -50,50 +128,19 @@
 		<div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
 			<div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto">
 				<div class="flex flex-row-reverse gap-6 justify-center lg:justify-end items-center">
-					<button class="flex-shrink-0 bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full p-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 transition-all duration-300 ease-out group"
+					<button class="inset-shadow-sm inset-shadow-zinc-500/20 flex-shrink-0 bg-white/40 dark:bg-black/20 backdrop-blur-lg border-[0.5px] border-white/10 dark:border-white/10 rounded-full p-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 hover:-translate-y-[1px] hover:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 transition-all duration-300 ease-out group"
 							onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 						aria-label="Scroll to top">
 						<svg xmlns="http://www.w3.org/2000/svg"
 							 height="30px"
 							 viewBox="0 -960 960 960"
 							 width="30px"
-							 class="fill-gray-700 dark:fill-sky-400 group-hover:fill-gray-900 dark:group-hover:fill-sky-300 group-hover:-translate-y-0.5 transition-all duration-200">
+							class="fill-gray-700 dark:fill-sky-400 group-hover:fill-gray-900 dark:group-hover:fill-sky-300 group-hover:-translate-y-[-.5px] transition-all duration-200">
 							<path d="M440-80v-647L256-544l-56-56 280-280 280 280-56 57-184-184v647h-80Z"/>
 						</svg>
 					</button>
 					<!-- Mode Toggle Button -->
-					<button 
-						onclick={ontoggleMode}
-						class="flex-shrink-0 bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full p-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 transition-all duration-300 ease-out group"
-						aria-label={isAskMode ? "Switch to search mode" : "Switch to ask AI mode"}>
-						{#if isAskMode}
-							<!-- Search Icon when in Ask mode -->
-							<svg xmlns="http://www.w3.org/2000/svg"
-								 height="30px"
-								 viewBox="0 0 24 24"
-								 width="30px"
-								 class="fill-gray-700 dark:fill-sky-400 group-hover:fill-gray-900 dark:group-hover:fill-sky-300 group-hover:-translate-y-0.5 transition-all duration-200">
-								<circle cx="11" cy="11" r="8" fill="none" stroke="currentColor" stroke-width="2"/>
-								<path d="m21 21-4.35-4.35" fill="none" stroke="currentColor" stroke-width="2"/>
-							</svg>
-						{:else}
-							<!-- AI Icon when in Search mode -->
-							<svg xmlns="http://www.w3.org/2000/svg"
-								 height="30px"
-								 viewBox="0 0 24 24"
-								 width="30px"
-								 class="group-hover:-translate-y-0.5 transition-all duration-200">
-								<defs>
-									<linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-										<stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
-										<stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
-									</linearGradient>
-								</defs>
-								<path d="M12 1L9 9l-8 3 8 3 3 8 3-8 8-3-8-3-3-8z" fill="url(#aiGradient)"/>
-								<circle cx="12" cy="12" r="2" fill="url(#aiGradient)"/>
-							</svg>
-						{/if}
-					</button>
+					
 
 
 
@@ -101,9 +148,9 @@
 						<input 
 							value={searchTerm}
 							oninput={handleInput}
-							data-ask-input
-							placeholder={isAskMode ? "Ask anything about me..." : "Search Anything..."}
-							class="font-mono w-full bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full pl-4 pr-12 py-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 focus:bg-white/20 dark:focus:bg-white/10 hover:-translate-y-0.5 focus:-translate-y-0.5 hover:shadow-xl focus:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 focus:shadow-gray-500/30 dark:focus:shadow-blue-500/40 transition-all duration-300 ease-out text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"/>
+							onkeypress={handleKeyPress}
+							placeholder={isAskMode ? "Ask anything about me..." : "> "+ dynamicPlaceholder}
+							class="font-mono w-full inset-shadow-sm inset-shadow-zinc-500/20 bg-white/40 dark:bg-black/20 backdrop-blur-lg border-[0.5px] border-white/10 dark:border-white/10 rounded-full pl-4 pr-12 py-3 shadow-lg shadow-gray-600/40 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 focus:bg-white/20 dark:focus:bg-white/10 hover:-translate-y-0.5 focus:-translate-y-0.5 hover:shadow-xl focus:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 focus:shadow-gray-500/30 dark:focus:shadow-blue-500/40 transition-all duration-300 ease-out text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none typewriter-placeholder"/>
 						
 						{#if searchTerm}
 							{#if isAskMode}
@@ -183,8 +230,65 @@
 							</div>
 						{/if}
 					</div>
+
+					<button 
+						onclick={ontoggleMode}
+						class="inset-shadow-sm inset-shadow-zinc-500/20 flex-shrink-0 bg-white/40 dark:bg-black/20 backdrop-blur-lg border-[0.5px] border-white/10 dark:border-white/10 rounded-full p-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 transition-all duration-300 ease-out group"
+						aria-label={isAskMode ? "Switch to search mode" : "Switch to ask AI mode"}>
+						{#if isAskMode}
+							<!-- Search Icon when in Ask mode -->
+							<svg xmlns="http://www.w3.org/2000/svg"
+								 height="30px"
+								 viewBox="0 0 24 24"
+								 width="30px"
+							class="fill-gray-700 text-black dark:text-sky-400 group-hover:text-gray-900 dark:group-hover:text-sky-300 group-hover:-translate-y-[-.5px] transition-all duration-200">
+								<circle cx="11" cy="11" r="8" fill="none" stroke="currentColor" stroke-width="2"/>
+								<path d="m21 21-4.35-4.35" fill="none" stroke="currentColor" stroke-width="2"/>
+							</svg>
+						{:else}
+							<!-- AI Icon when in Search mode -->
+							<svg xmlns="http://www.w3.org/2000/svg"
+								 height="30px"
+								 viewBox="0 0 24 24"
+								 width="30px"
+								 class="fill-gray-700 dark:fill-sky-400 group-hover:fill-gray-900 dark:group-hover:fill-sky-300 group-hover:-translate-y-[-.5px] transition-all duration-200">
+								<defs>
+									<linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+										<stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+										<stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+									</linearGradient>
+								</defs>
+								<path d="M12 1L9 9l-8 3 8 3 3 8 3-8 8-3-8-3-3-8z" fill="url(#aiGradient)"/>
+								<circle cx="12" cy="12" r="2" fill="url(#aiGradient)"/>
+							</svg>
+						{/if}
+					</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<style>
+	/* Ensure proper placeholder styling for typewriter effect */
+	.typewriter-placeholder::-webkit-input-placeholder {
+		color: rgb(107 114 128);
+		font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+	}
+	
+	.typewriter-placeholder::-moz-placeholder {
+		color: rgb(107 114 128);
+		opacity: 1;
+		font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+	}
+	
+	/* Dark mode placeholder colors */
+	:global(.dark) .typewriter-placeholder::-webkit-input-placeholder {
+		color: rgb(156 163 175);
+	}
+	
+	:global(.dark) .typewriter-placeholder::-moz-placeholder {
+		color: rgb(156 163 175);
+		opacity: 1;
+	}
+</style>

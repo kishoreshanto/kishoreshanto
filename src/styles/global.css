@@ -5,6 +5,8 @@ layer(base);
 
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --breakpoint-*: initial;
   --breakpoint-xs: 420px;
@@ -104,7 +106,7 @@ hr {
 }
 
 .right-panel {
-    @apply relative flex-auto
+    @apply relative flex-auto min-h-screen bg-white dark:bg-gray-950
 }
 
 .right-panel-container {

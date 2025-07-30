@@ -27,7 +27,5 @@
         {:else}
             <span class="text-red-500 dark:text-red-400 font-mono">Invalid email</span>
         {/if}
-    {:else}
-        <span class="text-red-500 dark:text-red-400 font-mono">No email provided</span>
     {/if}
 </a>
