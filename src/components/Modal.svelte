@@ -75,8 +75,10 @@
 		</button>
 		
 		<!-- Scrollable content area -->
-		<div class="overflow-y-auto overflow-x-hidden p-8 pr-12">
+		<div class="overflow-y-auto overflow-x-hidden p-8 pr-12" style="-ms-overflow-style: none; scrollbar-width: none;">
 			{@render children()}
 		</div>
 	</div>
 </div>
+
+
