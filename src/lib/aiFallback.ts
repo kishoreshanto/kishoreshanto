@@ -81,6 +81,8 @@ KNOWLEDGE_BASE.push({
     text: `I speak ${PERSONAL_INFO.languages.join(', ')}. This multilingual ability helps me collaborate with international research teams and access diverse academic resources.`
 });
 
+const STOP_WORDS = new Set(['i', 'me', 'my', 'you', 'your', 'what', 'which', 'who', 'is', 'are', 'a', 'an', 'the', 'and', 'do', 'of', 'for', 'in', 'on', 'about', 'tell', 'that', 'this', 'it', 'to', 'with', 'at', 'by', 'from', 'as', 'be', 'have', 'has', 'had', 'can', 'will', 'would', 'could', 'should']);
+
 /**
  * A simple offline search engine using keyword scoring.
  */
