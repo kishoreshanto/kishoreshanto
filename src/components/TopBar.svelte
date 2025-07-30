@@ -79,9 +79,11 @@
 			// Schedule next cycle
 			cycleTimeout = setTimeout(startTypewriterCycle, 300);
 		});
-	}	onMount(() => {
-		// Start the typewriter animation
-		startTypewriterCycle();
+	}
+
+	onMount(() => {
+	// Start the typewriter animation
+	startTypewriterCycle();
 	});
 
 	onDestroy(() => {
