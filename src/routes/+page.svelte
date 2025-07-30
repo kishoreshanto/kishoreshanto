@@ -21,6 +21,7 @@
 	import TopBar from '../components/TopBar.svelte';
 	import projectsData from '../lib/data_card.json';
 	import { generateAIResponse } from '../lib/aiService';
+	import backgroundImage from '../lib/assets/background-image.jpg';
 
 	// Using Svelte 5 $state rune for reactive state
 	let showModal = $state(false);
@@ -135,7 +136,8 @@
 	ontoggleMode={toggleMode}
 />
 
-<main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center">
+<main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center"
+style="background-image: url({backgroundImage});">
 	{#if isAskMode && aiResponse}
 		<!-- AI Response Display -->
 		<AIResponseCard 
