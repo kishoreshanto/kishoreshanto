@@ -104,7 +104,7 @@ hr {
 }
 
 .right-panel {
-    @apply relative flex-auto
+    @apply relative flex-auto min-h-screen bg-white dark:bg-gray-950
 }
 
 .right-panel-container {
