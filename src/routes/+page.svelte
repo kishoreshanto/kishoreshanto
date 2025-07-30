@@ -6,7 +6,7 @@
 	import GbdtsvmModal from '../components/modals/GBDTSVMModal.svelte';
 	import VadModal from '../components/modals/VADModal.svelte';
 	import EegModal from '../components/modals/EEGModal.svelte';
-    import EegResearch from '../components/Cards/EEGResearch.svelte';
+    	import EegResearch from '../components/Cards/EEGResearch.svelte';
 	import UniversityUIU from "../components/Cards/UniversityUIU.svelte";
 	import PasswordCrackResearch from "../components/Cards/PasswordCrackResearch.svelte";
 	import VADResearch from "../components/Cards/VADResearch.svelte";
@@ -136,8 +136,7 @@
 	ontoggleMode={toggleMode}
 />
 
-<main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center"
-style="background-image: url({backgroundImage});">
+<main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center">
 	{#if isAskMode && aiResponse}
 		<!-- AI Response Display -->
 		<AIResponseCard 
