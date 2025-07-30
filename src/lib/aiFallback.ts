@@ -86,7 +86,7 @@ KNOWLEDGE_BASE.push({
  */
 class OfflineSearchEngine {
   private processedKnowledge: KnowledgeItem[] = [];
-  private stopWords = new Set(['i', 'me', 'my', 'you', 'your', 'what', 'which', 'who', 'is', 'are', 'a', 'an', 'the', 'and', 'do', 'of', 'for', 'in', 'on', 'about', 'tell', 'me', 'that', 'this', 'it', 'to', 'with', 'at', 'by', 'from', 'as', 'be', 'have', 'has', 'had', 'can', 'will', 'would', 'could', 'should']);
+  private stopWords = STOP_WORDS;
 
   constructor(knowledge: KnowledgeItem[]) {
     this.processedKnowledge = knowledge.map(item => ({
