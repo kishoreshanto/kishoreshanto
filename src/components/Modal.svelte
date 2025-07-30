@@ -75,10 +75,22 @@
 		</button>
 		
 		<!-- Scrollable content area -->
-		<div class="overflow-y-auto overflow-x-hidden p-8 pr-12" style="-ms-overflow-style: none; scrollbar-width: none;">
+		<div class="overflow-y-auto overflow-x-hidden p-8 pr-12 hide-scrollbar">
 			{@render children()}
 		</div>
 	</div>
 </div>
 
 
+<style>
+	/* Class to hide scrollbars */
+	.hide-scrollbar {
+		-ms-overflow-style: none; /* Internet Explorer 10+ */
+		scrollbar-width: none; /* Firefox */
+	}
+
+	/* Hide scrollbars for WebKit browsers */
+	.hide-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+</style>
