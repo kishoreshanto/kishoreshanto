@@ -126,7 +126,7 @@
 		<div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
 			<div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto">
 				<div class="flex flex-row-reverse gap-6 justify-center lg:justify-end items-center">
-					<button class="flex-shrink-0 bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full p-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 hover:-translate-y-[0.5px] hover:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 transition-all duration-300 ease-out group"
+					<button class="inset-shadow-sm inset-shadow-zinc-500/20 flex-shrink-0 bg-white/40 dark:bg-black/20 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full p-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 hover:-translate-y-[0.5px] hover:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 transition-all duration-300 ease-out group"
 							onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 						aria-label="Scroll to top">
 						<svg xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +148,7 @@
 							oninput={handleInput}
 							onkeypress={handleKeyPress}
 							placeholder={isAskMode ? "Ask anything about me..." : "> "+ dynamicPlaceholder}
-							class="font-mono w-full bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full pl-4 pr-12 py-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 focus:bg-white/20 dark:focus:bg-white/10 hover:-translate-y-0.5 focus:-translate-y-0.5 hover:shadow-xl focus:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 focus:shadow-gray-500/30 dark:focus:shadow-blue-500/40 transition-all duration-300 ease-out text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none typewriter-placeholder"/>
+							class="font-mono w-full inset-shadow-sm inset-shadow-zinc-500/20 bg-white/40 dark:bg-black/20 backdrop-blur-lg border-white/20 dark:border-white/10 rounded-full pl-4 pr-12 py-3 shadow-lg shadow-gray-600/40 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 focus:bg-white/20 dark:focus:bg-white/10 hover:-translate-y-0.5 focus:-translate-y-0.5 hover:shadow-xl focus:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 focus:shadow-gray-500/30 dark:focus:shadow-blue-500/40 transition-all duration-300 ease-out text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none typewriter-placeholder"/>
 						
 						{#if searchTerm}
 							{#if isAskMode}
@@ -231,7 +231,7 @@
 
 					<button 
 						onclick={ontoggleMode}
-						class="flex-shrink-0 bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-full p-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 transition-all duration-300 ease-out group"
+						class="inset-shadow-sm inset-shadow-zinc-500/20 flex-shrink-0 bg-white/40 dark:bg-black/20 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full p-3 shadow-lg shadow-gray-500/20 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 transition-all duration-300 ease-out group"
 						aria-label={isAskMode ? "Switch to search mode" : "Switch to ask AI mode"}>
 						{#if isAskMode}
 							<!-- Search Icon when in Ask mode -->

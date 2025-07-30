@@ -1,5 +1,5 @@
 {
-	"version": "BETA v0.4.4, Expect Bugs",
+	"version": "BETA v0.4.7, Expect Bugs",
 	"AI": false,
 	"AI_model": "meta-llama/Llama-4-Scout-17B-16E-Instruct:groq",
 	"name": "Kishore Shanto",
