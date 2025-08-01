@@ -6,7 +6,8 @@
 			"modal": "EegModal",
 			"date": "February 20th, 2025",
 			"title": "EEG Research",
-			"keywords": "eeg electroencephalogram brain computer interface bci neural signals deep learning classification upper limb motor movement research"
+			"keywords": "eeg electroencephalogram brain computer interface bci neural signals deep learning classification upper limb motor movement research",
+			"show": true
 		},
 		{
 			"id": "university",
@@ -14,7 +15,8 @@
 			"modal": "UniversityUiuModal",
 			"date": "November 6th, 2024",
 			"title": "University UIU",
-			"keywords": "university uiu education academic study computer science software engineering"
+			"keywords": "university uiu education academic study computer science software engineering",
+			"show": true
 		},
 		{
 			"id": "password",
@@ -22,7 +24,8 @@
 			"modal": "PasswordCrackResearchModal",
 			"date": "February 27th, 2023",
 			"title": "Password Crack Research",
-			"keywords": "password cracking security cybersecurity encryption hashing authentication research"
+			"keywords": "password cracking security cybersecurity encryption hashing authentication research",
+			"show": true
 		},
 		{
 			"id": "energyfootprint",
@@ -30,7 +33,8 @@
 			"modal": "EnergyFootprintModal",
 			"date": "July 18th, 2024",
 			"title": "Energy Footprint Research",
-			"keywords": "energy footprint carbon emissions sustainability machine learning research"
+			"keywords": "energy footprint carbon emissions sustainability machine learning research",
+			"show": true
 		},
 		{
 			"id": "vad",
@@ -38,7 +42,8 @@
 			"modal": "VadModal",
 			"date": "November 17th, 2024",
 			"title": "VAD Research",
-			"keywords": "vad voice activity detection audio signal processing speech recognition machine learning"
+			"keywords": "vad voice activity detection audio signal processing speech recognition machine learning",
+			"show": true
 		},
 		{
 			"id": "gbdtsvm",
@@ -46,7 +51,8 @@
 			"modal": "GbdtsvmModal",
 			"date": "December 15th, 2024",
 			"title": "GBDT SVM Research",
-			"keywords": "gbdt svm gradient boosting decision tree support vector machine machine learning classification research"
+			"keywords": "gbdt svm gradient boosting decision tree support vector machine machine learning classification research",
+			"show": true
 		},
 		{
 			"id": "garment",
@@ -54,7 +60,8 @@
 			"modal": "GarmentDefectResearchModal",
 			"date": "January 10th, 2025",
 			"title": "Garment Defect Research",
-			"keywords": "garment defect detection textile manufacturing quality control computer vision image processing research"
+			"keywords": "garment defect detection textile manufacturing quality control computer vision image processing research",
+			"show": true
 		},
 		{
 			"id": "rfwoc",
@@ -62,7 +69,8 @@
 			"modal": null,
 			"date": "March 5th, 2025",
 			"title": "RFWOC Research",
-			"keywords": "rfwoc research wireless communication radio frequency optimization"
+			"keywords": "rfwoc research wireless communication radio frequency optimization",
+			"show": true
 		},
 		{
 			"id": "landsphere",
@@ -70,7 +78,8 @@
 			"modal": null,
 			"date": "January 10th, 2025",
 			"title": "LandSphere Project",
-			"keywords": "landsphere land management geography gis mapping project real estate"
+			"keywords": "landsphere land management geography gis mapping project real estate",
+			"show": true
 		},
 		{
 			"id": "plantify",
@@ -78,7 +87,8 @@
 			"modal": null,
 			"date": "January 10th, 2025",
 			"title": "Plantify Project",
-			"keywords": "plantify plant identification botany agriculture gardening mobile app project"
+			"keywords": "plantify plant identification botany agriculture gardening mobile app project",
+			"show": true
 		},
 		{
 			"id": "agriinn",
@@ -86,7 +96,26 @@
 			"modal": null,
 			"date": "January 10th, 2025",
 			"title": "AgriInn Project",
-			"keywords": "agriinn agriculture innovation farming technology iot sensors smart farming project"
+			"keywords": "agriinn agriculture innovation farming technology iot sensors smart farming project",
+			"show": true
+		},
+		{
+			"id": "awswork",
+			"component": "AWSWork",
+			"modal": null,
+			"date": "June 16th, 2024",
+			"title": "AWS Cloud Solutions Architect",
+			"keywords": "aws cloud solutions architect freelance work infrastructure ec2 vpc load balancing auto scaling iam security groups deployment monitoring scalable",
+			"show": true
+		},
+		{
+			"id": "labassistant",
+			"component": "LabAssistantWork",
+			"modal": null,
+			"date": "April 2023 - January 2024",
+			"title": "University Laboratory Assistant",
+			"keywords": "university laboratory assistant academic support equipment troubleshooting student assessment instructor collaboration problem solving mentoring maintenance",
+			"show": true
 		}
 	]
 }

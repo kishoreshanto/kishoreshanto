@@ -19,6 +19,8 @@
 	import AIResponseCard from '../components/Cards/AIResponseCard.svelte';
 	import NotFoundCard from '../components/NotFoundCard.svelte';
 	import TopBar from '../components/TopBar.svelte';
+	import AWSWork from '../components/Cards/AWSWork.svelte';
+	import LabAssistantWork from '../components/Cards/LabAssistantWork.svelte';
 	import projectsData from '$lib/data_card.json';
 	import globalData from '$lib/data_en.json';
 	import { generateAIResponse } from '$lib/aiService';
@@ -45,7 +47,9 @@
 		PlantifyProject,
 		AgriInnProject,
 		PasswordCrackResearch,
-		EnergyFootprint
+		EnergyFootprint,
+		AWSWork,
+		LabAssistantWork
 	};
 
 	// Modal mapping
@@ -61,11 +65,13 @@
 	};
 
 	// Transform JSON data to include actual component references
-	const projects = projectsData.projects.map(project => ({
-		...project,
-		component: componentMap[project.component],
-		modal: project.modal ? modalMap[project.modal] : null
-	}));
+	const projects = projectsData.projects
+		.filter(project => project.show)
+		.map(project => ({
+			...project,
+			component: componentMap[project.component],
+			modal: project.modal ? modalMap[project.modal] : null
+		}));
 
 	// Using Svelte 5 $derived.by rune for reactive computations
 	const filteredProjects = $derived(() => {
