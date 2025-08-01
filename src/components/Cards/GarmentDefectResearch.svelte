@@ -38,7 +38,7 @@ let { date, onshowmodal }: Props = $props();
 			</div>
 
 			<!-- TLDR Section -->
-			<div class="bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 dark:from-slate-800/50 dark:via-gray-800/50 dark:to-slate-800/50 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
+			<div class="research-overview">
 				<div class="flex items-start space-x-3 border-l-4 border-sky-300 pl-4 rounded-sm">
 					
 					<div>
@@ -49,6 +49,21 @@ let { date, onshowmodal }: Props = $props();
 					</div>
 				</div>
 			</div>
+			        <div class="space-y-2">
+            <p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Research Focus Areas / Keywords</p>
+            <div class="flex flex-wrap gap-2">
+					<span class="research-tag">
+						Computer Vision
+					</span>
+                <span class="research-tag">
+						YOLOv8
+					</span>
+                <span class="research-tag">
+						Automation
+					</span>
+
+            </div>
+        </div>
 
 			<!-- Publication Details -->
 			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">

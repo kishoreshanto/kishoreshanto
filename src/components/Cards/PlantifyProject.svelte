@@ -67,7 +67,7 @@ let { date, onshowmodal }: Props = $props();
 
 		<!-- Technology Stack -->
 		<div class="space-y-2">
-			<p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Technology Stack</p>
+			<p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Technology Stack</p>
 			<div class="flex flex-wrap gap-2">
 					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
 						Svelte

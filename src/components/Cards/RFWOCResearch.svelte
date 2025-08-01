@@ -38,7 +38,7 @@ let { date, onshowmodal }: Props = $props();
 			</div>
 
 			<!-- TLDR Section -->
-			<div class="bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 dark:from-slate-800/50 dark:via-gray-800/50 dark:to-slate-800/50 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
+			<div class="research-overview">
 				<div class="flex items-start space-x-3 border-l-4 border-sky-300 pl-4 rounded-sm">
 					
 					<div>
@@ -52,21 +52,21 @@ let { date, onshowmodal }: Props = $props();
 
 
             <div class="space-y-2">
-            <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Research Focus Areas / Keywords</p>
+            <p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Research Focus Areas / Keywords</p>
             <div class="flex flex-wrap gap-2">
-					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+					<span class="research-tag">
 						Machine Learning
 					</span>
-                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
-						Ranfom Forest
+                <span class="research-tag">
+						Random Forest
 					</span>
-                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                <span class="research-tag">
 						Decision Tree
 					</span>
-                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
+                <span class="research-tag">
 						K-means Clustering
 					</span>
-                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300">
+                <span class="research-tag">
 						Big Data
                 </span>
 
