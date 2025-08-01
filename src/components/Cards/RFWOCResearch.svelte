@@ -18,7 +18,7 @@ let { date, onshowmodal }: Props = $props();
 					<svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
 						<path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
 					</svg>
-					Research Publication
+					Conference Publication
 				</div>
 				<div class="text-xs text-zinc-500 dark:text-zinc-400 font-mono">
 					IEEE ICCIT 2023
@@ -46,13 +46,36 @@ let { date, onshowmodal }: Props = $props();
 						</svg>
 					</div>
 					<div>
-						<p class="text-sm font-medium text-sky-800 dark:text-sky-200 mb-1">Summary</p>
+						<p class="text-sm font-medium text-sky-800 dark:text-sky-200 mb-1">Overview</p>
 						<p class="text-sm text-sky-700 dark:text-sky-300 leading-relaxed">
 							Researched combining Random Forest with K-Means clustering to improve classification performance for Big Data mining applications.
 						</p>
 					</div>
 				</div>
 			</div>
+
+
+            <div class="space-y-2">
+            <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Research Focus Areas / Keywords</p>
+            <div class="flex flex-wrap gap-2">
+					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+						Machine Learning
+					</span>
+                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+						Ranfom Forest
+					</span>
+                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+						Decision Tree
+					</span>
+                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
+						K-means Clustering
+					</span>
+                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300">
+						Big Data
+                </span>
+
+            </div>
+        </div>
 
 			<!-- Publication Details -->
 			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">

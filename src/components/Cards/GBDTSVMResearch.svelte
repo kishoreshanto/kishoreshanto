@@ -46,7 +46,7 @@ let { date, onshowmodal }: Props = $props();
 						</svg>
 					</div>
 					<div>
-						<p class="text-sm font-medium text-amber-800 dark:text-amber-200 mb-1">Research Summary</p>
+						<p class="text-sm font-medium text-amber-800 dark:text-amber-200 mb-1">Overview</p>
 						<p class="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
 							Researched a novel machine learning approach for predicting the correlation between various snoRNA and diseases in human body using combined SVM and GBDT framework.
 						</p>

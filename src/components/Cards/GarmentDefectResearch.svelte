@@ -18,7 +18,7 @@ let { date, onshowmodal }: Props = $props();
 					<svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
 						<path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
 					</svg>
-					Research Publication
+					Conference Publication
 				</div>
 				<div class="text-xs text-zinc-500 dark:text-zinc-400 font-mono">
 					ACM ICCA 2025 [Open Access]
@@ -46,7 +46,7 @@ let { date, onshowmodal }: Props = $props();
 						</svg>
 					</div>
 					<div>
-						<p class="text-sm font-medium text-sky-800 dark:text-sky-200 mb-1">Summary</p>
+						<p class="text-sm font-medium text-sky-800 dark:text-sky-200 mb-1">Overview</p>
 						<p class="text-sm text-sky-700 dark:text-sky-300 leading-relaxed">
 							Researched and implemented a deep learning solution for identifying and localizing defects in fabrics, using the YOLOv8.
 						</p>

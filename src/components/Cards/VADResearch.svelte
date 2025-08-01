@@ -47,7 +47,7 @@ let { date, onshowmodal }: Props = $props();
                     </svg>
                 </div>
                 <div>
-                    <p class="text-sm font-medium text-amber-800 dark:text-amber-200 mb-1">Research Summary</p>
+                    <p class="text-sm font-medium text-amber-800 dark:text-amber-200 mb-1">Overview</p>
                     <p class="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
                         Researched a real-time anomaly detection system using Vision Transformers and an attention-enhanced  network in long surveillance footage.
                     </p>

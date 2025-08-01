@@ -41,7 +41,7 @@ let { date, onshowmodal }: Props = $props();
                     </svg>
                 </div>
                 <div>
-                    <p class="text-sm font-medium text-indigo-800 dark:text-indigo-200 mb-1">Research Overview</p>
+                    <p class="text-sm font-medium text-indigo-800 dark:text-indigo-200 mb-1">Overview</p>
                     <p class="text-sm text-indigo-700 dark:text-indigo-300 leading-relaxed">
                        Researched a novel approach to effectively measure the energy consumption and energy footprint for statistical and machine learning tasks of major operating systems using Python and R language. 
                     </p>
