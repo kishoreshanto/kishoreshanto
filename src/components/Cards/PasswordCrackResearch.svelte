@@ -47,7 +47,7 @@ let { date, onshowmodal }: Props = $props();
 
         <!-- Research Tags -->
         <div class="space-y-2">
-            <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Research Focus Areas</p>
+            <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Research Focus Areas / Keywords</p>
             <div class="flex flex-wrap gap-2">
 					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
 						Generative Pretrained Transformer
@@ -72,7 +72,7 @@ let { date, onshowmodal }: Props = $props();
                         href="https://drive.google.com/file/d/1T_7jeJqenaocxogEwshs68CtaKtrvwrT/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-lg bg-indigo-100 text-indigo-800 hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50 transition-colors duration-200"
+                        class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-xl bg-indigo-100 text-indigo-800 hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50 transition-colors duration-200"
                         onclick={(e) => e.stopPropagation()}
                 >
                     <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">

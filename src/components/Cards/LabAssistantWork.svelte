@@ -28,7 +28,7 @@ let { date, onshowmodal }: Props = $props();
                             </svg>
                         </div>
                         <div>
-                            <h1 class="text-xl font-bold text-gray-900 dark:text-white leading-tight">
+                            <h1 class="text-xl font-bold text-sky-800 dark:text-white leading-tight">
                                 Laboratory Assistant
                             </h1>
                             <p class="text-sm text-blue-600 dark:text-blue-400 font-medium">

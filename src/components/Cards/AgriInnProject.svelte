@@ -120,7 +120,7 @@ let { date, onshowmodal }: Props = $props();
 						href="https://github.com/tinykishore/Agri-Inn"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-lg bg-zinc-200 text-zinc-800 hover:bg-zinc-300 dark:bg-zinc-900/30 dark:text-zinc-300 dark:hover:bg-zinc-900/50 transition-colors duration-200"
+						class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-xl bg-zinc-200 text-zinc-800 hover:bg-zinc-300 dark:bg-zinc-900/30 dark:text-zinc-300 dark:hover:bg-zinc-900/50 transition-colors duration-200"
 						onclick={(e) => e.stopPropagation()}
 				>
 					<svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">

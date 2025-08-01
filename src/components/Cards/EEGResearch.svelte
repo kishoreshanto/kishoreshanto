@@ -35,7 +35,6 @@ let { date, onshowmodal }: Props = $props();
         <!-- Research Summary Section -->
         <div class="bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 dark:from-slate-800/50 dark:via-gray-800/50 dark:to-slate-800/50 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
             <div class="flex items-start space-x-3 border-l-4 border-sky-300 pl-4 rounded-sm">
-                
                 <div>
                     <p class="font-semibold text-gray-900 dark:text-white mb-2">Overview</p>
                     <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed ">
@@ -47,7 +46,7 @@ let { date, onshowmodal }: Props = $props();
 
         <!-- Research Tags -->
         <div class="space-y-2">
-            <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Research Focus Areas</p>
+            <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Research Focus Areas / Keywords</p>
             <div class="flex flex-wrap gap-2">
 					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
 						Brain-Computer Interface
@@ -65,7 +64,7 @@ let { date, onshowmodal }: Props = $props();
         </div>
 
         <!-- Research Status Highlight -->
-        <div class="flex items-center justify-between bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 rounded-lg p-3 border border-cyan-200 dark:border-cyan-800">
+        <div class="flex items-center justify-between bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 rounded-xl p-3 border border-cyan-200 dark:border-cyan-800">
             <div class="flex items-center space-x-2">
                 <svg class="w-5 h-5 text-cyan-600 dark:text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"/>
@@ -94,7 +93,7 @@ let { date, onshowmodal }: Props = $props();
                         href="https://drive.google.com/file/d/1EoQmhpDo8FAeqePLlldQuuxAGK1tdUQR/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-lg bg-indigo-100 text-indigo-800 hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50 transition-colors duration-200"
+                        class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-xl bg-indigo-100 text-indigo-800 hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50 transition-colors duration-200"
                         onclick={(e) => e.stopPropagation()}
                 >
                     <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">

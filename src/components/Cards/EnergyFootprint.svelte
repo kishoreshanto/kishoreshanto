@@ -46,7 +46,7 @@ let { date, onshowmodal }: Props = $props();
         </div>
         <!-- Research Tags -->
         <div class="space-y-2">
-            <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Research Focus Areas</p>
+            <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Research Focus Areas / Keywords</p>
             <div class="flex flex-wrap gap-2">
 					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
 						ARM processor

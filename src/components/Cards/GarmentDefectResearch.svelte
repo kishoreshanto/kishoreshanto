@@ -69,7 +69,7 @@ let { date, onshowmodal }: Props = $props();
 						href="https://dl.acm.org/doi/10.1145/3723178.3723196"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-lg bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-300 dark:hover:bg-green-900/50 transition-colors duration-200"
+						class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-xl bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-300 dark:hover:bg-green-900/50 transition-colors duration-200"
 						onclick={(e) => e.stopPropagation()}
 					>
 						<svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
