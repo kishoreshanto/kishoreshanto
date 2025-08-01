@@ -26,7 +26,9 @@
 	import globalData from '$lib/data_en.json';
 	import { generateAIResponse } from '$lib/aiService';
   	import EnergyFootprint from '../components/Cards/EnergyFootprint.svelte';
-    import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';	// Using Svelte 5 $state rune for reactive state
+    import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';
+
+	// Using Svelte 5 $state rune for reactive state with debouncing
 	let showModal = $state(false);
 	let selectedComponent: any = $state(null);
 	let searchTerm = $state('');
@@ -62,7 +64,6 @@
 		GarmentDefectResearchModal,
 		PasswordCrackResearchModal,
 		EnergyFootprintModal
-
 	};
 
 	// Transform JSON data to include actual component references
