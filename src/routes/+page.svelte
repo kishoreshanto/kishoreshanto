@@ -21,6 +21,7 @@
 	import TopBar from '../components/TopBar.svelte';
 	import AWSWork from '../components/Cards/AWSWork.svelte';
 	import LabAssistantWork from '../components/Cards/LabAssistantWork.svelte';
+	import YouthCyberSafetySurvey from '../components/Cards/YouthCyberSafetySurvey.svelte';
 	import projectsData from '$lib/data_card.json';
 	import globalData from '$lib/data_en.json';
 	import { generateAIResponse } from '$lib/aiService';
@@ -49,7 +50,8 @@
 		PasswordCrackResearch,
 		EnergyFootprint,
 		AWSWork,
-		LabAssistantWork
+		LabAssistantWork,
+		YouthCyberSafetySurvey
 	};
 
 	// Modal mapping

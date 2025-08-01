@@ -10,6 +10,15 @@
 			"show": true
 		},
 		{
+			"id": "youthcybersafety",
+			"component": "YouthCyberSafetySurvey",
+			"modal": null,
+			"date": "August 15th, 2024",
+			"title": "Youth Cyber Safety Survey",
+			"keywords": "youth cyber safety social survey cyberbullying digital wellbeing mixed methods research statistical analysis chi-square paired t-test interviews qualitative data facebook instagram content moderation cybersecurity bangladesh university",
+			"show": true
+		},
+		{
 			"id": "university",
 			"component": "UniversityUIU",
 			"modal": "UniversityUiuModal",
@@ -112,7 +121,7 @@
 			"id": "labassistant",
 			"component": "LabAssistantWork",
 			"modal": null,
-			"date": "April 2023 - January 2024",
+			"date": "April 1st, 2024",
 			"title": "University Laboratory Assistant",
 			"keywords": "university laboratory assistant academic support equipment troubleshooting student assessment instructor collaboration problem solving mentoring maintenance",
 			"show": true

@@ -45,10 +45,10 @@ let { date, onshowmodal }: Props = $props();
             </div>
 
             <!-- Project Summary - Full Width Card -->
-            <div class="bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 dark:from-blue-900/20 dark:via-indigo-900/20 dark:to-blue-900/20 rounded-xl p-5 border border-blue-200 dark:border-blue-700 shadow-sm">
+            <div class="bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 dark:from-slate-800/50 dark:via-gray-800/50 dark:to-slate-800/50 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
                 <div class="flex items-start space-x-4">
                     <div class="flex-1">
-                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Role Overview</h3>
+                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Overview</h3>
                         <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed text-justify">
                             Provided comprehensive academic and technical support to instructors and students in university laboratory settings, troubleshooting equipment issues, facilitating student assessments, and ensuring smooth laboratory operations across multiple academic programs.
                         </p>
