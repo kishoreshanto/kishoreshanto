@@ -38,16 +38,12 @@ let { date, onshowmodal }: Props = $props();
 		</div>
 
 		<!-- Project Description -->
-		<div class="bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800">
-			<div class="flex items-start space-x-3">
-				<div class="flex-shrink-0 mt-1">
-					<svg class="w-4 h-4 text-amber-600 dark:text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-						<path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
-					</svg>
-				</div>
+		<div class="bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 dark:from-slate-800/50 dark:via-gray-800/50 dark:to-slate-800/50 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
+			<div class="flex items-start space-x-3 border-l-4 border-sky-300 pl-4 rounded-sm">
+				
 				<div>
-					<p class="text-sm font-medium text-amber-800 dark:text-amber-200 mb-1">Project Overview</p>
-					<p class="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
+					<p class="font-semibold text-gray-900 dark:text-white mb-2">Project Overview</p>
+					<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed ">
 						A comprehensive web application integrating farm management systems to connect customers directly with farm products, streamlining agricultural commerce and supply chain management.
 					</p>
 				</div>
@@ -55,7 +51,7 @@ let { date, onshowmodal }: Props = $props();
 		</div>
 
 		<!-- 2nd Runner Up Award Highlight -->
-		<div class="flex items-center justify-between bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-lg p-3 border border-orange-200 dark:border-orange-800">
+		<div class="flex items-center justify-between bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-xl p-3 border border-orange-200 dark:border-orange-800">
 			<div class="flex items-center space-x-2">
 				<div>
 					<p class="text-sm font-semibold text-orange-800 dark:text-orange-200">
