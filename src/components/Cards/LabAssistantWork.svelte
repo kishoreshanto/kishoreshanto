@@ -113,7 +113,7 @@ let { date, onshowmodal }: Props = $props();
                 </div>
             </div>
 
-            <!-- Additional Impact Section -->
+            <!-- Additional Impact Section
             <div class="bg-gradient-to-r from-gray-50 to-slate-50 dark:from-gray-800/50 dark:to-slate-800/50 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
                 <div class="flex items-start space-x-3">
                     <div class="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -128,7 +128,7 @@ let { date, onshowmodal }: Props = $props();
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 {/snippet}
