@@ -38,16 +38,16 @@ let { date, onshowmodal }: Props = $props();
 		</div>
 
 		<!-- Project Description -->
-		<div class=" rounded-lg p-4 border-2 border-zinc-200 dark:border-zinc-800">
+		<div class="bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800">
 			<div class="flex items-start space-x-3">
 				<div class="flex-shrink-0 mt-1">
-					<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-						<path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+					<svg class="w-4 h-4 text-amber-600 dark:text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+						<path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
 					</svg>
 				</div>
 				<div>
-					<p class="text-sm font-medium  mb-1">Project Overview</p>
-					<p class="text-sm  leading-relaxed">
+					<p class="text-sm font-medium text-amber-800 dark:text-amber-200 mb-1">Project Overview</p>
+					<p class="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
 						A comprehensive plant information and management system featuring detailed species information, care guidelines, disease identification, user experience sharing, and plant identification capabilities with integrated gardening supply access.
 					</p>
 				</div>

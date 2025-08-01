@@ -38,16 +38,16 @@ let { date, onshowmodal }: Props = $props();
 			</div>
 
 			<!-- Project Description -->
-			<div class="bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-900/20 dark:to-pink-900/20 rounded-lg p-4 border border-rose-200 dark:border-rose-800">
+			<div class="bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800">
 				<div class="flex items-start space-x-3">
 					<div class="flex-shrink-0 mt-1">
-						<svg class="w-4 h-4 text-rose-600 dark:text-rose-400" fill="currentColor" viewBox="0 0 20 20">
-							<path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
-						</svg>
-					</div>
-					<div>
-						<p class="text-sm font-medium text-rose-800 dark:text-rose-200 mb-1">Project Overview</p>
-						<p class="text-sm text-rose-700 dark:text-rose-300 leading-relaxed">
+				<svg class="w-4 h-4 text-amber-600 dark:text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+						<path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
+					</svg>
+				</div>
+				<div>
+					<p class="text-sm font-medium text-amber-800 dark:text-amber-200 mb-1">Project Overview</p>
+					<p class="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
 							A comprehensive web platform that streamlines land and property management, facilitating seamless interactions between property owners, buyers, and sellers with modern web technologies.
 						</p>
 					</div>
@@ -55,16 +55,16 @@ let { date, onshowmodal }: Props = $props();
 			</div>
 
 			<!-- Championship Award Highlight -->
-			<div class="flex items-center justify-between bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 rounded-lg p-3 border border-yellow-200 dark:border-yellow-800">
+		<div class="flex items-center justify-between bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-lg p-3 border border-orange-200 dark:border-orange-800">
 				<div class="flex items-center space-x-2">
 
 					<div>
-						<p class="text-sm font-semibold text-yellow-800 dark:text-yellow-200">
-							🏆 Champion - CSE Project Showcase 231
-						</p>
-						<p class="text-xs text-yellow-600 dark:text-yellow-400">
-							United International University
-						</p>
+					<p class="text-sm font-semibold text-orange-800 dark:text-orange-200">
+						🏆 Champion - CSE Project Showcase 231
+					</p>
+					<p class="text-xs text-orange-600 dark:text-orange-400">
+						United International University
+					</p>
 					</div>
 				</div>
 			</div>

@@ -33,7 +33,7 @@ let { date, onshowmodal }: Props = $props();
 			<div class="flex items-center space-x-2 text-md">
 				<span class="font-medium text-emerald-600 dark:text-emerald-400">Full-Stack Web Application</span>
 				<span class="text-zinc-400">•</span>
-				<span class="text-zinc-600 dark:text-zinc-400">Team Lead & Designer</span>
+				<span class="text-zinc-600 dark:text-zinc-400">Team Lead & Lead Developer</span>
 			</div>
 		</div>
 
