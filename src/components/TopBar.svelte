@@ -140,10 +140,7 @@
 						</svg>
 					</button>
 					<!-- Mode Toggle Button -->
-					
-
-
-
+					 
 					<div class="relative flex-1 min-w-0">
 						<input 
 							value={searchTerm}
