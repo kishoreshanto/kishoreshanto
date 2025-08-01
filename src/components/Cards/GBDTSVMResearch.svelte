@@ -71,6 +71,28 @@ let { date, onshowmodal }: Props = $props();
 				</div>
 			</div>
 
+			<div class="space-y-2">
+				<p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Research Focus Areas / Keywords</p>
+				<div class="flex flex-wrap gap-2">
+						<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+							Computational Biology
+						</span>
+					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+							Bioinformatics
+						</span>
+					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+							snoRNA-Disease Association Prediction
+						</span>
+					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
+							Gradient Boosting Decision Tree (GBDT)
+						</span>
+					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300">
+							Gaussian Kernel Similarity
+					</span>
+
+				</div>
+			</div>
+
 			<!-- Publication Details -->
 			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
 				<div class="space-y-2">
