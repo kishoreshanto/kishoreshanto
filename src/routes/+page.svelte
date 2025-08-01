@@ -6,7 +6,7 @@
 	import GbdtsvmModal from '../components/modals/GBDTSVMModal.svelte';
 	import VadModal from '../components/modals/VADModal.svelte';
 	import EegModal from '../components/modals/EEGModal.svelte';
-    	import EegResearch from '../components/Cards/EEGResearch.svelte';
+	import EegResearch from '../components/Cards/EEGResearch.svelte';
 	import UniversityUIU from "../components/Cards/UniversityUIU.svelte";
 	import PasswordCrackResearch from "../components/Cards/PasswordCrackResearch.svelte";
 	import VADResearch from "../components/Cards/VADResearch.svelte";
@@ -19,8 +19,8 @@
 	import AIResponseCard from '../components/Cards/AIResponseCard.svelte';
 	import NotFoundCard from '../components/NotFoundCard.svelte';
 	import TopBar from '../components/TopBar.svelte';
-	import projectsData from '../lib/data_card.json';
-	import { generateAIResponse } from '../lib/aiService';
+	import projectsData from '$lib/data_card.json';
+	import { generateAIResponse } from '$lib/aiService';
 	import backgroundImage from '../lib/assets/background-image.jpg';
 
 	// Using Svelte 5 $state rune for reactive state

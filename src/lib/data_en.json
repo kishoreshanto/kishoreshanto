@@ -1,6 +1,6 @@
 {
 	"version": "BETA v0.4.7, Expect Bugs",
-	"AI": false,
+	"AI": true,
 	"AI_model": "meta-llama/Llama-4-Scout-17B-16E-Instruct:groq",
 	"name": "Kishore Shanto",
 	"ipa_name": "/kɪˈʃɔːr ˈʃan.to/",
