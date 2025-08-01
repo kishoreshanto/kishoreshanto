@@ -25,6 +25,14 @@
 			"keywords": "password cracking security cybersecurity encryption hashing authentication research"
 		},
 		{
+			"id": "energyfootprint",
+			"component": "EnergyFootprint",
+			"modal": "EnergyFootprintModal",
+			"date": "July 18th, 2024",
+			"title": "Energy Footprint Research",
+			"keywords": "energy footprint carbon emissions sustainability machine learning research"
+		},
+		{
 			"id": "vad",
 			"component": "VADResearch",
 			"modal": "VadModal",

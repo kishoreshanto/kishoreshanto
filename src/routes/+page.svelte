@@ -22,6 +22,8 @@
 	import projectsData from '$lib/data_card.json';
 	import { generateAIResponse } from '$lib/aiService';
 	import backgroundImage from '../lib/assets/background-image.jpg';
+  	import EnergyFootprint from '../components/Cards/EnergyFootprint.svelte';
+  import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';
 
 	// Using Svelte 5 $state rune for reactive state
 	let showModal = $state(false);
@@ -41,7 +43,8 @@
 		LandSphereProject,
 		PlantifyProject,
 		AgriInnProject,
-		PasswordCrackResearch
+		PasswordCrackResearch,
+		EnergyFootprint
 	};
 
 	// Modal mapping
@@ -51,7 +54,8 @@
 		VadModal,
 		GbdtsvmModal,
 		GarmentDefectResearchModal,
-		PasswordCrackResearchModal
+		PasswordCrackResearchModal,
+		EnergyFootprintModal
 
 	};
 
