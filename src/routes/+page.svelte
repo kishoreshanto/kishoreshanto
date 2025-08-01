@@ -25,11 +25,8 @@
 	import projectsData from '$lib/data_card.json';
 	import globalData from '$lib/data_en.json';
 	import { generateAIResponse } from '$lib/aiService';
-	import backgroundImage from '../lib/assets/background-image.jpg';
   	import EnergyFootprint from '../components/Cards/EnergyFootprint.svelte';
-  import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';
-
-	// Using Svelte 5 $state rune for reactive state
+    import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';	// Using Svelte 5 $state rune for reactive state
 	let showModal = $state(false);
 	let selectedComponent: any = $state(null);
 	let searchTerm = $state('');
