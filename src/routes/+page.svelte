@@ -20,6 +20,7 @@
 	import NotFoundCard from '../components/NotFoundCard.svelte';
 	import TopBar from '../components/TopBar.svelte';
 	import projectsData from '$lib/data_card.json';
+	import globalData from '$lib/data_en.json';
 	import { generateAIResponse } from '$lib/aiService';
 	import backgroundImage from '../lib/assets/background-image.jpg';
   	import EnergyFootprint from '../components/Cards/EnergyFootprint.svelte';
@@ -78,6 +79,10 @@
 	});
 
 	function openModal(component: any) {
+		// Only open modal if global modal setting is enabled
+		if (!globalData.modal) {
+			return;
+		}
 		selectedComponent = component;
 		showModal = true;
 	}
@@ -155,7 +160,7 @@
 			{@const Component = project.component}
 			<Component 
 				date={project.date} 
-				onshowmodal={project.modal ? () => openModal(project.modal) : undefined}
+				onshowmodal={globalData.modal && project.modal ? () => openModal(project.modal) : undefined}
 			/>
 		{/each}
 	{:else if !isAskMode}
