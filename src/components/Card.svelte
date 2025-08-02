@@ -25,7 +25,10 @@
 	role="button"
 	tabindex="0"
 >
+	{#if date !== ''}
+	<!-- Render DateComponent only if date is provided -->
 	<DateComponent date_string={date} />
+	{/if}
 
 	<div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
 		<div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
