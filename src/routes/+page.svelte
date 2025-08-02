@@ -21,19 +21,21 @@
 	import TopBar from '../components/TopBar.svelte';
 	import AWSWork from '../components/Cards/AWSWork.svelte';
 	import LabAssistantWork from '../components/Cards/LabAssistantWork.svelte';
+	import YouthCyberSafetySurvey from '../components/Cards/YouthCyberSafetySurvey.svelte';
 	import projectsData from '$lib/data_card.json';
 	import globalData from '$lib/data_en.json';
 	import { generateAIResponse } from '$lib/aiService';
-	import backgroundImage from '../lib/assets/background-image.jpg';
   	import EnergyFootprint from '../components/Cards/EnergyFootprint.svelte';
-  import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';
+    import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';
 
-	// Using Svelte 5 $state rune for reactive state
+	// Using Svelte 5 $state rune for reactive state with debouncing
 	let showModal = $state(false);
 	let selectedComponent: any = $state(null);
 	let searchTerm = $state('');
+	let debouncedSearchTerm = $state('');
 	let isAskMode = $state(false);
 	let aiResponse = $state<{question: string, answer: string, isLoading: boolean} | null>(null);
+	let searchDebounceTimer: number;
 
 	// Component mapping
 	const componentMap: { [key: string]: any } = {
@@ -49,7 +51,8 @@
 		PasswordCrackResearch,
 		EnergyFootprint,
 		AWSWork,
-		LabAssistantWork
+		LabAssistantWork,
+		YouthCyberSafetySurvey
 	};
 
 	// Modal mapping
@@ -61,7 +64,6 @@
 		GarmentDefectResearchModal,
 		PasswordCrackResearchModal,
 		EnergyFootprintModal
-
 	};
 
 	// Transform JSON data to include actual component references
@@ -73,10 +75,10 @@
 			modal: project.modal ? modalMap[project.modal] : null
 		}));
 
-	// Using Svelte 5 $derived.by rune for reactive computations
+	// Using Svelte 5 $derived.by rune for reactive computations with debounced search
 	const filteredProjects = $derived(() => {
-		if (isAskMode || !searchTerm.trim()) return projects;
-		const search = searchTerm.toLowerCase();
+		if (isAskMode || !debouncedSearchTerm.trim()) return projects;
+		const search = debouncedSearchTerm.toLowerCase();
 		return projects.filter(project => 
 			project.title.toLowerCase().includes(search) || 
 			project.keywords.toLowerCase().includes(search) ||
@@ -100,13 +102,32 @@
 
 	function clearSearch() {
 		searchTerm = '';
+		debouncedSearchTerm = '';
 		aiResponse = null;
+		if (searchDebounceTimer) {
+			clearTimeout(searchDebounceTimer);
+		}
+	}
+
+	// Debounced search function for better performance (300ms delay)
+	function debounceSearch(term: string) {
+		if (searchDebounceTimer) {
+			clearTimeout(searchDebounceTimer);
+		}
+		
+		searchDebounceTimer = setTimeout(() => {
+			debouncedSearchTerm = term;
+		}, 300);
 	}
 
 	function toggleMode() {
 		isAskMode = !isAskMode;
 		searchTerm = '';
+		debouncedSearchTerm = '';
 		aiResponse = null;
+		if (searchDebounceTimer) {
+			clearTimeout(searchDebounceTimer);
+		}
 	}
 
 	async function handleAskQuestion(question: string) {
@@ -138,6 +159,7 @@
 
 	function askAnotherQuestion() {
 		searchTerm = '';
+		debouncedSearchTerm = '';
 		aiResponse = null;
 	}
 </script>
@@ -146,7 +168,12 @@
 	{searchTerm} 
 	{isAskMode}
 	onclearSearch={clearSearch} 
-	onsearchInput={(event) => searchTerm = event.detail.value}
+	onsearchInput={(event) => {
+		searchTerm = event.detail.value;
+		if (!isAskMode) {
+			debounceSearch(event.detail.value);
+		}
+	}}
 	onaskQuestion={handleAskQuestion}
 	ontoggleMode={toggleMode}
 />

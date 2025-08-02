@@ -38,16 +38,12 @@ let { date, onshowmodal }: Props = $props();
 		</div>
 
 		<!-- Project Description -->
-		<div class="bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800">
-			<div class="flex items-start space-x-3">
-				<div class="flex-shrink-0 mt-1">
-					<svg class="w-4 h-4 text-amber-600 dark:text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-						<path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
-					</svg>
-				</div>
+		<div class="bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 dark:from-slate-800/50 dark:via-gray-800/50 dark:to-slate-800/50 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
+			<div class="flex items-start space-x-3 border-l-4 border-sky-300 pl-4 rounded-sm">
+				
 				<div>
-					<p class="text-sm font-medium text-amber-800 dark:text-amber-200 mb-1">Project Overview</p>
-					<p class="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
+					<p class="font-semibold text-gray-900 dark:text-white mb-2">Project Overview</p>
+					<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed ">
 						A comprehensive plant information and management system featuring detailed species information, care guidelines, disease identification, user experience sharing, and plant identification capabilities with integrated gardening supply access.
 					</p>
 				</div>
@@ -71,7 +67,7 @@ let { date, onshowmodal }: Props = $props();
 
 		<!-- Technology Stack -->
 		<div class="space-y-2">
-			<p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Technology Stack</p>
+			<p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Technology Stack</p>
 			<div class="flex flex-wrap gap-2">
 					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
 						Svelte

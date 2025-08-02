@@ -33,16 +33,12 @@ let { date, onshowmodal }: Props = $props();
         </div>
 
         <!-- Research Summary Section -->
-        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-lg p-4 border border-indigo-200 dark:border-indigo-800">
-            <div class="flex items-start space-x-3">
-                <div class="flex-shrink-0 mt-1">
-                    <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
-                    </svg>
-                </div>
+        <div class="research-overview">
+            <div class="flex items-start space-x-3 border-l-4 border-sky-300 pl-4 rounded-sm">
+                
                 <div>
-                    <p class="text-sm font-medium text-indigo-800 dark:text-indigo-200 mb-1">Overview</p>
-                    <p class="text-sm text-indigo-700 dark:text-indigo-300 leading-relaxed">
+                    <p class="font-semibold text-gray-900 dark:text-white mb-2">Overview</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed ">
                         Researched a GPT-2 based deep learning model for password strength estimation via sequence analysis and perplexity scoring on real-world leaked datasets
                     </p>
                 </div>
@@ -51,12 +47,12 @@ let { date, onshowmodal }: Props = $props();
 
         <!-- Research Tags -->
         <div class="space-y-2">
-            <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Research Focus Areas</p>
+            <p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Research Focus Areas / Keywords</p>
             <div class="flex flex-wrap gap-2">
-					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+					<span class="research-tag">
 						Generative Pretrained Transformer
 					</span>
-                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                <span class="research-tag">
 						Computer Security
 					</span>
             </div>
@@ -76,7 +72,7 @@ let { date, onshowmodal }: Props = $props();
                         href="https://drive.google.com/file/d/1T_7jeJqenaocxogEwshs68CtaKtrvwrT/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-lg bg-indigo-100 text-indigo-800 hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50 transition-colors duration-200"
+                        class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-xl bg-indigo-100 text-indigo-800 hover:bg-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-900/50 transition-colors duration-200"
                         onclick={(e) => e.stopPropagation()}
                 >
                     <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">

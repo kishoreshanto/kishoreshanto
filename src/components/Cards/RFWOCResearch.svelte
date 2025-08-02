@@ -38,16 +38,12 @@ let { date, onshowmodal }: Props = $props();
 			</div>
 
 			<!-- TLDR Section -->
-			<div class="bg-gradient-to-r from-sky-50 to-indigo-50 dark:from-sky-900/20 dark:to-indigo-900/20 rounded-lg p-4 border border-sky-200 dark:border-sky-800">
-				<div class="flex items-start space-x-3">
-					<div class="flex-shrink-0 mt-1">
-						<svg class="w-4 h-4 text-sky-600 dark:text-sky-400" fill="currentColor" viewBox="0 0 20 20">
-							<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-						</svg>
-					</div>
+			<div class="research-overview">
+				<div class="flex items-start space-x-3 border-l-4 border-sky-300 pl-4 rounded-sm">
+					
 					<div>
-						<p class="text-sm font-medium text-sky-800 dark:text-sky-200 mb-1">Overview</p>
-						<p class="text-sm text-sky-700 dark:text-sky-300 leading-relaxed">
+						<p class="font-semibold text-gray-900 dark:text-white mb-2">Overview</p>
+						<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed ">
 							Researched combining Random Forest with K-Means clustering to improve classification performance for Big Data mining applications.
 						</p>
 					</div>
@@ -56,21 +52,21 @@ let { date, onshowmodal }: Props = $props();
 
 
             <div class="space-y-2">
-            <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Research Focus Areas / Keywords</p>
+            <p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Research Focus Areas / Keywords</p>
             <div class="flex flex-wrap gap-2">
-					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+					<span class="research-tag">
 						Machine Learning
 					</span>
-                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
-						Ranfom Forest
+                <span class="research-tag">
+						Random Forest
 					</span>
-                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                <span class="research-tag">
 						Decision Tree
 					</span>
-                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
+                <span class="research-tag">
 						K-means Clustering
 					</span>
-                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300">
+                <span class="research-tag">
 						Big Data
                 </span>
 
@@ -96,7 +92,7 @@ let { date, onshowmodal }: Props = $props();
 						href="https://ieeexplore.ieee.org/document/10441376"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-lg bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-300 dark:hover:bg-green-900/50 transition-colors duration-200"
+						class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-xl bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-300 dark:hover:bg-green-900/50 transition-colors duration-200"
 						onclick={(e) => e.stopPropagation()}
 					>
 						<svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
