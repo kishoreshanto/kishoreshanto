@@ -48,8 +48,8 @@ export default defineConfig({
 			output: {
 				// Separate chunks for better caching
 				manualChunks: {
-					// Vendor chunk for external dependencies
-					vendor: ['svelte']
+					// Vendor chunk for external dependencies: svelte, marked, @vercel/speed-insights/sveltekit
+					vendor: ['svelte', 'marked', '@vercel/speed-insights/sveltekit']
 				},
 				
 				// Optimize chunk file names for better caching
