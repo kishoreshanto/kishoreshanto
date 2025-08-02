@@ -26,10 +26,11 @@
 	import globalData from '$lib/data_en.json';
 	import { generateAIResponse } from '$lib/aiService';
   	import EnergyFootprint from '../components/Cards/EnergyFootprint.svelte';
-    import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';
+	import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';
+	import TimelineGrantChart from '../components/modals/TimelineGrantChart.svelte';
 
-	// Using Svelte 5 $state rune for reactive state with debouncing
 	let showModal = $state(false);
+	let showTimelineModal = $state(false);
 	let selectedComponent: any = $state(null);
 	let searchTerm = $state('');
 	let debouncedSearchTerm = $state('');
@@ -98,6 +99,18 @@
 	function closeModal() {
 		showModal = false;
 		selectedComponent = null;
+	}
+
+	function openTimelineModal() {
+		// Only open modal if global modal setting is enabled
+		if (!globalData.modal) {
+			return;
+		}
+		showTimelineModal = true;
+	}
+
+	function closeTimelineModal() {
+		showTimelineModal = false;
 	}
 
 	function clearSearch() {
@@ -188,14 +201,33 @@
 			onaskAnother={askAnotherQuestion}
 		/>
 	{:else if !isAskMode && filteredProjects().length > 0}
-		<!-- Regular Project Cards -->
-		{#each filteredProjects() as project (project.id)}
-			{@const Component = project.component}
-			<Component 
-				date={project.date} 
-				onshowmodal={globalData.modal && project.modal ? () => openModal(project.modal) : undefined}
-			/>
-		{/each}
+
+
+
+	<!-- <section class="scroll-mt-16 focus-visible:outline-none ">
+		<div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
+			<div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
+				<button 
+					class="select-none mx-auto max-w-lg rounded-3xl border border-zinc-300 bg-white/50 p-4 drop-shadow-xl backdrop-blur-md transition-transform duration-300 dark:border-zinc-700 dark:bg-zinc-800/30 lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto cursor-pointer hover:scale-[1.01] text-center"
+					onclick={openTimelineModal}
+					type="button"
+				>
+					Timeline Overview
+				</button>
+			</div>
+		</div>
+	</section> -->
+
+
+
+	<!-- Regular Project Cards -->
+	{#each filteredProjects() as project (project.id)}
+		{@const Component = project.component}
+		<Component 
+			date={project.date} 
+			onshowmodal={globalData.modal && project.modal ? () => openModal(project.modal) : undefined}
+		/>
+	{/each}
 	{:else if !isAskMode}
 		<!-- No search results found -->
 		<NotFoundCard onclearSearch={clearSearch} />
@@ -206,6 +238,12 @@
 	{@const ModalComponent = selectedComponent}
 	<Modal onclose={closeModal}>
 		<ModalComponent />
+	</Modal>
+{/if}
+
+{#if showTimelineModal}
+	<Modal onclose={closeTimelineModal}>
+		<TimelineGrantChart />
 	</Modal>
 {/if}
 
