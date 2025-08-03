@@ -25,6 +25,7 @@ export const isAskMode = writable(false);
 export const showModal = writable(false);
 export const selectedComponent = writable<ComponentType | null>(null);
 export const aiResponse = writable<AIResponseState | null>(null);
+export const isSimplifiedView = writable(false);
 
 // Projects store
 export const projects = writable<Project[]>([]);
