@@ -3,6 +3,15 @@
 
 	function toggleView() {
 		isSimplifiedView.update(value => !value);
+		// Scroll to top smoothly when switching views
+		scrollToTop();
+	}
+
+	function scrollToTop() {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		});
 	}
 </script>
 
