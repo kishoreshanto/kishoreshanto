@@ -78,8 +78,20 @@ export function resetPerformanceCounters(): void {
 }
 
 // Make cache utilities available globally in development
+
+declare global {
+  interface Window {
+    aiCacheUtils: {
+      logStats: typeof logCacheStats;
+      clearCache: typeof clearAICache;
+      logPerformance: typeof logCachePerformance;
+      resetCounters: typeof resetPerformanceCounters;
+    };
+  }
+}
+
 if (typeof window !== 'undefined' && import.meta.env.DEV) {
-  (window as any).aiCacheUtils = {
+  window.aiCacheUtils = {
     logStats: logCacheStats,
     clearCache: clearAICache,
     logPerformance: logCachePerformance,
