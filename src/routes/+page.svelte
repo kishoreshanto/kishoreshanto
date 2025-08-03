@@ -29,14 +29,13 @@
 	import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';
 	import TimelineGrantChart from '../components/modals/TimelineGrantChart.svelte';
   import SimplifledRightPanel from '../components/SimplifledRightPanel.svelte';
-	import { isSimplifiedView } from '$lib/appStore';
+	import { isSimplifiedView, isAskMode } from '$lib/appStore';
 
 	let showModal = $state(false);
 	let showTimelineModal = $state(false);
 	let selectedComponent: any = $state(null);
 	let searchTerm = $state('');
 	let debouncedSearchTerm = $state('');
-	let isAskMode = $state(false);
 	let aiResponse = $state<{question: string, answer: string, isLoading: boolean} | null>(null);
 	let searchDebounceTimer: number;
 
@@ -80,7 +79,7 @@
 
 	// Using Svelte 5 $derived.by rune for reactive computations with debounced search
 	const filteredProjects = $derived(() => {
-		if (isAskMode || !debouncedSearchTerm.trim()) return projects;
+		if ($isAskMode || !debouncedSearchTerm.trim()) return projects;
 		const search = debouncedSearchTerm.toLowerCase();
 		return projects.filter(project => 
 			project.title.toLowerCase().includes(search) || 
@@ -136,7 +135,7 @@
 	}
 
 	function toggleMode() {
-		isAskMode = !isAskMode;
+		isAskMode.update(mode => !mode);
 		searchTerm = '';
 		debouncedSearchTerm = '';
 		aiResponse = null;
@@ -183,11 +182,11 @@
 <div class="fade-in">
 	<TopBar 
 		{searchTerm} 
-		{isAskMode}
+		isAskMode={$isAskMode}
 		onclearSearch={clearSearch} 
 		onsearchInput={(event) => {
 			searchTerm = event.detail.value;
-			if (!isAskMode) {
+			if (!$isAskMode) {
 				debounceSearch(event.detail.value);
 			}
 		}}
@@ -198,7 +197,7 @@
 {/if}
 
 <main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center">
-	{#if isAskMode && aiResponse}
+	{#if $isAskMode && aiResponse}
 		<!-- AI Response Display -->
 		<AIResponseCard 
 			question={aiResponse.question}
@@ -206,7 +205,7 @@
 			isLoading={aiResponse.isLoading}
 			onaskAnother={askAnotherQuestion}
 		/>
-	{:else if !isAskMode && filteredProjects().length > 0}
+	{:else if !$isAskMode && filteredProjects().length > 0}
 
 	{#if $isSimplifiedView}
 		<!-- Simplified View with fade transition -->
@@ -229,7 +228,7 @@
 			</div>
 		{/key}
 	{/if}
-	{:else if !isAskMode}
+	{:else if !$isAskMode}
 		<!-- No search results found -->
 		<NotFoundCard onclearSearch={clearSearch} />
 	{/if}

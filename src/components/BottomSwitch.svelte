@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isSimplifiedView } from '$lib/appStore';
+	import { isSimplifiedView, isAskMode } from '$lib/appStore';
 
 	function toggleView() {
 		isSimplifiedView.update(value => !value);
@@ -7,6 +7,8 @@
 </script>
 
 <!-- Fixed navigation controls - bottom for <1024px, top for >=1024px -->
+<!-- Hide when AI mode is active -->
+{#if !$isAskMode}
 <div class="fixed lg:bottom-10 bottom-22 left-0 right-0 z-50">
 	<div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
 		<div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
@@ -22,3 +24,4 @@
 		</div>
 	</div>
 </div>
+{/if}
