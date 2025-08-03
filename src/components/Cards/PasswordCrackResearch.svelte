@@ -63,8 +63,8 @@ let { date, onshowmodal }: Props = $props();
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
             <div class="space-y-2 flex items-center ">
                 <div>
-                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Timeline:</span>
-                    <span class="text-zinc-600 dark:text-zinc-400">July 2024 - November 2024</span>
+                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Duration:</span>
+                    <span class="text-zinc-600 dark:text-zinc-400">3 months</span>
                 </div>
             </div>
             <div class="flex items-end justify-end">

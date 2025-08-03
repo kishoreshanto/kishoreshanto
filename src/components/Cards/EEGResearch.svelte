@@ -52,7 +52,7 @@ let { date, onshowmodal }: Props = $props();
 						Brain-Computer Interface
 					</span>
                 <span class="research-tag">
-						Neural Signal Processing
+						Biomedical Signal Processing
 					</span>
                 <span class="research-tag">
 						Deep Learning Networks

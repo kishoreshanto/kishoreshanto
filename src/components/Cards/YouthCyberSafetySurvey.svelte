@@ -47,13 +47,13 @@ let { date, onshowmodal }: Props = $props();
                 <div class="space-y-2">
             <p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Role</p>
             <div class="flex flex-wrap gap-2">
-                <span class="research-tag">
+                <span class="role-tag">
                     Interviewer
                 </span>
-                <span class="research-tag">
+                <span class="role-tag">
                     Data Manager
                 </span>
-                <span class="research-tag">
+                <span class="role-tag">
                     Data Analyst (Chi-Square, Paired T-Test)
                 </span>
             </div>
@@ -111,8 +111,8 @@ let { date, onshowmodal }: Props = $props();
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
             <div class="space-y-2 flex items-center">
                 <div>
-                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Timeline:</span>
-                    <span class="text-zinc-600 dark:text-zinc-400">2024</span>
+                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Duration:</span>
+                    <span class="text-zinc-600 dark:text-zinc-400">3 months</span>
                 </div>
             </div>
             <div class="flex items-end justify-end">

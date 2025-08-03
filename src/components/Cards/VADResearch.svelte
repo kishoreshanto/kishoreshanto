@@ -96,12 +96,12 @@ let { date, onshowmodal }: Props = $props();
                 <div>
                     <span class="font-medium text-zinc-700 dark:text-zinc-300">DOI:</span>
                     <p class="text-zinc-600 dark:text-zinc-400 font-mono text-xs">
-                        TDB
+                        TBD
                     </p>
                 </div>
                 <div>
-                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Accepted:</span>
-                    <span class="text-zinc-600 dark:text-zinc-400">July 2025</span>
+                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Duration:</span>
+                    <span class="text-zinc-600 dark:text-zinc-400">18 months</span>
                 </div>
             </div>
             <div class="flex items-end justify-end">
@@ -112,7 +112,7 @@ let { date, onshowmodal }: Props = $props();
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/>
                     </svg>
-                    To be Published
+                    To Be Published
                 </div>
             </div>
         </div>
