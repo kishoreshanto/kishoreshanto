@@ -17,14 +17,13 @@ import dataConfig from './data_en.json';
 import { generateFallbackResponse } from './aiFallback'; // Fallback response generator
 
 // Import cache performance tracking (only in development)
+import { incrementCacheHit as devIncrementCacheHit, incrementCacheMiss as devIncrementCacheMiss } from './aiCacheUtils';
 let incrementCacheHit: (() => void) | undefined;
 let incrementCacheMiss: (() => void) | undefined;
 
 if (import.meta.env.DEV) {
-  import('./aiCacheUtils').then(module => {
-    incrementCacheHit = module.incrementCacheHit;
-    incrementCacheMiss = module.incrementCacheMiss;
-  });
+  incrementCacheHit = devIncrementCacheHit;
+  incrementCacheMiss = devIncrementCacheMiss;
 }
 
 // Interface for Hugging Face API response
