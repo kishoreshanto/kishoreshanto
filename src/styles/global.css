@@ -133,5 +133,5 @@ main{
 }
 
 .main-card {
-    @apply select-none mx-auto max-w-lg rounded-3xl border border-zinc-300 bg-white/50 p-4 drop-shadow-xl backdrop-blur-md transition-transform duration-300 dark:border-zinc-700 dark:bg-zinc-800/30 lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto cursor-pointer hover:scale-[1.01]
+    @apply select-none mx-auto max-w-lg shadow-sm hover:shadow-xl rounded-3xl border border-zinc-300 bg-white/50 p-4 drop-shadow-xl backdrop-blur-md transition duration-300 dark:border-zinc-700 dark:bg-zinc-800/30 lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto cursor-pointer hover:scale-[1.01]
 }
