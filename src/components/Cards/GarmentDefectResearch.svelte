@@ -76,7 +76,7 @@ let { date, onshowmodal }: Props = $props();
 					</div>
 					<div>
 						<span class="font-medium text-zinc-700 dark:text-zinc-300">Published:</span>
-						<span class="text-zinc-600 dark:text-zinc-400">June 2025</span>
+						<span class="text-zinc-600 dark:text-zinc-400">June 06th, 2025</span>
 					</div>
 				</div>
 				<div class="flex items-end justify-end">

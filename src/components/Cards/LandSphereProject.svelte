@@ -95,6 +95,10 @@ let { date, onshowmodal }: Props = $props();
 						<span class="font-medium text-zinc-700 dark:text-zinc-300">Award:</span>
 						<span class="text-zinc-600 dark:text-zinc-400">Champion (1st Place)</span>
 					</div>
+					<div>
+						<span class="font-medium text-zinc-700 dark:text-zinc-300">Finished:</span>
+						<span class="text-zinc-600 dark:text-zinc-400">April 2023</span>
+					</div>
 				</div>
 				<div class="flex items-end justify-end">
 					<a
