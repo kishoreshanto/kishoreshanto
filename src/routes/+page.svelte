@@ -197,7 +197,7 @@
 </div>
 {/if}
 
-<main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center {$isSimplifiedView ? '' : 'fade-in'}">
+<main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center">
 	{#if isAskMode && aiResponse}
 		<!-- AI Response Display -->
 		<AIResponseCard 
@@ -218,13 +218,15 @@
 	{:else}
 		<!-- Regular Project Cards with fade transition -->
 		{#key 'detailed'}
-			{#each filteredProjects() as project (project.id)}
-				{@const Component = project.component}
-				<Component 
-					date={project.date} 
-					onshowmodal={globalData.modal && project.modal ? () => openModal(project.modal) : undefined}
-				/>
-			{/each}
+			<div class="fade-in space-y-10 sm:space-y-32 md:space-y-14">
+				{#each filteredProjects() as project (project.id)}
+					{@const Component = project.component}
+					<Component 
+						date={project.date} 
+						onshowmodal={globalData.modal && project.modal ? () => openModal(project.modal) : undefined}
+					/>
+				{/each}
+			</div>
 		{/key}
 	{/if}
 	{:else if !isAskMode}
