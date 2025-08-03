@@ -28,6 +28,8 @@
   	import EnergyFootprint from '../components/Cards/EnergyFootprint.svelte';
 	import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';
 	import TimelineGrantChart from '../components/modals/TimelineGrantChart.svelte';
+  import SimplifledRightPanel from '../components/SimplifledRightPanel.svelte';
+	import { isSimplifiedView } from '$lib/appStore';
 
 	let showModal = $state(false);
 	let showTimelineModal = $state(false);
@@ -177,21 +179,25 @@
 	}
 </script>
 
-<TopBar 
-	{searchTerm} 
-	{isAskMode}
-	onclearSearch={clearSearch} 
-	onsearchInput={(event) => {
-		searchTerm = event.detail.value;
-		if (!isAskMode) {
-			debounceSearch(event.detail.value);
-		}
-	}}
-	onaskQuestion={handleAskQuestion}
-	ontoggleMode={toggleMode}
-/>
+{#if !$isSimplifiedView}
+<div class="fade-in">
+	<TopBar 
+		{searchTerm} 
+		{isAskMode}
+		onclearSearch={clearSearch} 
+		onsearchInput={(event) => {
+			searchTerm = event.detail.value;
+			if (!isAskMode) {
+				debounceSearch(event.detail.value);
+			}
+		}}
+		onaskQuestion={handleAskQuestion}
+		ontoggleMode={toggleMode}
+	/>
+</div>
+{/if}
 
-<main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center">
+<main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center {$isSimplifiedView ? '' : 'fade-in'}">
 	{#if isAskMode && aiResponse}
 		<!-- AI Response Display -->
 		<AIResponseCard 
@@ -202,32 +208,25 @@
 		/>
 	{:else if !isAskMode && filteredProjects().length > 0}
 
-
-
-	<!-- <section class="scroll-mt-16 focus-visible:outline-none ">
-		<div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
-			<div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
-				<button 
-					class="select-none mx-auto max-w-lg rounded-3xl border border-zinc-300 bg-white/50 p-4 drop-shadow-xl backdrop-blur-md transition-transform duration-300 dark:border-zinc-700 dark:bg-zinc-800/30 lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto cursor-pointer hover:scale-[1.01] text-center"
-					onclick={openTimelineModal}
-					type="button"
-				>
-					Timeline Overview
-				</button>
+	{#if $isSimplifiedView}
+		<!-- Simplified View with fade transition -->
+		{#key 'simplified'}
+			<div class="fade-in">
+				<SimplifledRightPanel/>
 			</div>
-		</div>
-	</section> -->
-
-
-
-	<!-- Regular Project Cards -->
-	{#each filteredProjects() as project (project.id)}
-		{@const Component = project.component}
-		<Component 
-			date={project.date} 
-			onshowmodal={globalData.modal && project.modal ? () => openModal(project.modal) : undefined}
-		/>
-	{/each}
+		{/key}
+	{:else}
+		<!-- Regular Project Cards with fade transition -->
+		{#key 'detailed'}
+			{#each filteredProjects() as project (project.id)}
+				{@const Component = project.component}
+				<Component 
+					date={project.date} 
+					onshowmodal={globalData.modal && project.modal ? () => openModal(project.modal) : undefined}
+				/>
+			{/each}
+		{/key}
+	{/if}
 	{:else if !isAskMode}
 		<!-- No search results found -->
 		<NotFoundCard onclearSearch={clearSearch} />
