@@ -7,6 +7,7 @@
     import LeftPanel from "../components/LeftPanel.svelte";
     import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
     import type { Snippet } from 'svelte';
+  import BottomSwitch from "../components/BottomSwitch.svelte";
 
     interface Props {
         children: Snippet;
@@ -35,6 +36,8 @@
         <div class="right-panel-container">
             <TimeLine/>
         </div>
+
+        <BottomSwitch/>
 
         <!-- Right Panel Goes here, modify `+page.svelte` to change contents -->
         {@render children()}
