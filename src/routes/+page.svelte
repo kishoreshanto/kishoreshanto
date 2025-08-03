@@ -37,7 +37,7 @@
 	let searchTerm = $state('');
 	let debouncedSearchTerm = $state('');
 	let aiResponse = $state<{question: string, answer: string, isLoading: boolean} | null>(null);
-	let searchDebounceTimer: number;
+	let searchDebounceTimer: ReturnType<typeof setTimeout>;
 
 	// Component mapping
 	const componentMap: { [key: string]: any } = {
