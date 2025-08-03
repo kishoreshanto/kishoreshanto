@@ -38,16 +38,12 @@ let { date, onshowmodal }: Props = $props();
 		</div>
 
 		<!-- Project Description -->
-		<div class=" rounded-lg p-4 border-2 border-zinc-200 dark:border-zinc-800">
-			<div class="flex items-start space-x-3">
-				<div class="flex-shrink-0 mt-1">
-					<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-						<path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
-					</svg>
-				</div>
+		<div class="bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 dark:from-slate-800/50 dark:via-gray-800/50 dark:to-slate-800/50 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
+			<div class="flex items-start space-x-3 border-l-4 border-sky-300 pl-4 rounded-sm">
+				
 				<div>
-					<p class="text-sm font-medium  mb-1">Project Overview</p>
-					<p class="text-sm  leading-relaxed">
+					<p class="font-semibold text-gray-900 dark:text-white mb-2">Project Overview</p>
+					<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed ">
 						A comprehensive plant information and management system featuring detailed species information, care guidelines, disease identification, user experience sharing, and plant identification capabilities with integrated gardening supply access.
 					</p>
 				</div>
@@ -71,7 +67,7 @@ let { date, onshowmodal }: Props = $props();
 
 		<!-- Technology Stack -->
 		<div class="space-y-2">
-			<p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Technology Stack</p>
+			<p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Technology Stack</p>
 			<div class="flex flex-wrap gap-2">
 					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
 						Svelte
@@ -101,6 +97,10 @@ let { date, onshowmodal }: Props = $props();
 				<div>
 					<span class="font-medium text-zinc-700 dark:text-zinc-300">Award:</span>
 					<span class="text-zinc-600 dark:text-zinc-400">1st Runner Up (2nd Place)</span>
+				</div>
+				<div>
+					<span class="font-medium text-zinc-700 dark:text-zinc-300">Duration:</span>
+					<span class="text-zinc-600 dark:text-zinc-400">5 months</span>
 				</div>
 			</div>
 			<div class="flex items-end justify-end">

@@ -1,0 +1,86 @@
+[
+	{
+		"title": "Password Crack Research",
+		"start_date": "2023-01-01",
+		"end_date": "2023-05-31",
+		"color": "#FF5733"
+	},
+	{
+		"title": "AWS Cloud Solutions Architect",
+		"start_date": "2024-05-01",
+		"end_date": "2024-08-31",
+		"color": "#33FF57"
+	},
+	{
+		"title": "Energy Footprint Research",
+		"start_date": "2024-06-01",
+		"end_date": "2024-09-30",
+		"color": "#3357FF"
+	},
+	{
+		"title": "Youth Cyber Safety Survey",
+		"start_date": "2024-07-01",
+		"end_date": "2024-10-31",
+		"color": "#FF33F5"
+	},
+	{
+		"title": "University Laboratory Assistant",
+		"start_date": "2024-04-01",
+		"end_date": "2025-08-31",
+		"color": "#F5FF33"
+	},
+	{
+		"title": "University UIU",
+		"start_date": "2024-09-01",
+		"end_date": "2025-06-30",
+		"color": "#33FFF5"
+	},
+	{
+		"title": "VAD Research",
+		"start_date": "2024-10-01",
+		"end_date": "2025-01-31",
+		"color": "#FF8C33"
+	},
+	{
+		"title": "GBDT SVM Research",
+		"start_date": "2024-11-01",
+		"end_date": "2025-02-28",
+		"color": "#8C33FF"
+	},
+	{
+		"title": "Garment Defect Research",
+		"start_date": "2024-12-01",
+		"end_date": "2025-03-31",
+		"color": "#33FF8C"
+	},
+	{
+		"title": "LandSphere Project",
+		"start_date": "2024-12-15",
+		"end_date": "2025-03-15",
+		"color": "#FF3333"
+	},
+	{
+		"title": "Plantify Project",
+		"start_date": "2024-12-15",
+		"end_date": "2025-03-15",
+		"color": "#3333FF"
+	},
+	{
+		"title": "AgriInn Project",
+		"start_date": "2024-12-15",
+		"end_date": "2025-03-15",
+		"color": "#33FFFF"
+	},
+	{
+		"title": "EEG Research",
+		"start_date": "2025-01-01",
+		"end_date": "2025-05-31",
+		"color": "#FFFF33"
+	},
+	{
+		"title": "RFWOC Research",
+		"start_date": "2025-02-01",
+		"end_date": "2025-06-30",
+		"color": "#FF33CC"
+	}
+]

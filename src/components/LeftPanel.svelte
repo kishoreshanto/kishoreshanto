@@ -10,7 +10,6 @@
     import Contacts from "./sidebar/Contacts.svelte";
     import Locals from "./sidebar/Locals.svelte";
     import DND from "./sidebar/DND.svelte";
-    import Signature from "./sidebar/Signature.svelte";
     import UpdatedOn from "./sidebar/UpdatedOn.svelte";
 
     // Imports about Styles
@@ -43,7 +42,6 @@
 
             <!-- Last Updated -->
             <div class="left-panel-footer">
-                <Signature/>
                 <UpdatedOn/>
             </div>
 

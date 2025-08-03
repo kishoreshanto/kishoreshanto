@@ -1,7 +1,8 @@
 {
-	"version": "BETA v0.4.7, Expect Bugs",
-	"AI": false,
+	"version": "BETA v0.6.0, Expect Bugs",
+	"AI": true,
 	"AI_model": "meta-llama/Llama-4-Scout-17B-16E-Instruct:groq",
+	"modal": false,
 	"name": "Kishore Shanto",
 	"ipa_name": "/kɪˈʃɔːr ˈʃan.to/",
 	"legal_name": "Shanta Biswas",
@@ -11,7 +12,7 @@
 		"Researcher",
 		"Developer"
 	],
-	"description": "I can make things work (eventually). <br> Feel free to contact!",
+	"description": "Actively seeking a Master's/PhD opportunity to contribute to pioneering research.",
 	"interest_and_passion": [
 		"🧠 Deep Learning",
 		"👁️ Computer Vision",
@@ -35,7 +36,7 @@
 	"linkedin_url": "https://www.linkedin.com/in/tinykishore",
 	"linkedin_username": "tinykishore",
 	"orcid_url": "https://orcid.org/0009-0009-1147-0095",
-	"last_updated": "April 21th, 2025",
+	"last_updated": "July 31st, 2025",
 	"page_title": "Kishore Shanto | Portfolio",
 	"show_interests": true,
 	"show_mail": true,

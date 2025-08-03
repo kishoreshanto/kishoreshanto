@@ -4,81 +4,131 @@
 			"id": "eeg",
 			"component": "EegResearch",
 			"modal": "EegModal",
-			"date": "February 20th, 2025",
+			"date": "February 23rd, 2025",
 			"title": "EEG Research",
-			"keywords": "eeg electroencephalogram brain computer interface bci neural signals deep learning classification upper limb motor movement research"
-		},
-		{
-			"id": "university",
-			"component": "UniversityUIU",
-			"modal": "UniversityUiuModal",
-			"date": "November 6th, 2024",
-			"title": "University UIU",
-			"keywords": "university uiu education academic study computer science software engineering"
-		},
-		{
-			"id": "password",
-			"component": "PasswordCrackResearch",
-			"modal": "PasswordCrackResearchModal",
-			"date": "February 27th, 2023",
-			"title": "Password Crack Research",
-			"keywords": "password cracking security cybersecurity encryption hashing authentication research"
+			"keywords": "eeg electroencephalogram brain computer interface bci neural signals deep learning classification upper limb motor movement research",
+			"show": true
 		},
 		{
 			"id": "vad",
 			"component": "VADResearch",
 			"modal": "VadModal",
-			"date": "November 17th, 2024",
+			"date": "July 17th, 2025",
 			"title": "VAD Research",
-			"keywords": "vad voice activity detection audio signal processing speech recognition machine learning"
-		},
-		{
-			"id": "gbdtsvm",
-			"component": "GBDTSVMResearch",
-			"modal": "GbdtsvmModal",
-			"date": "December 15th, 2024",
-			"title": "GBDT SVM Research",
-			"keywords": "gbdt svm gradient boosting decision tree support vector machine machine learning classification research"
+			"keywords": "vad voice activity detection audio signal processing speech recognition machine learning",
+			"show": true
 		},
 		{
 			"id": "garment",
 			"component": "GarmentDefectResearch",
 			"modal": "GarmentDefectResearchModal",
-			"date": "January 10th, 2025",
+			"date": "June 10th, 2025",
 			"title": "Garment Defect Research",
-			"keywords": "garment defect detection textile manufacturing quality control computer vision image processing research"
+			"keywords": "garment defect detection textile manufacturing quality control computer vision image processing research",
+			"show": true
+		},
+
+		{
+			"id": "gbdtsvm",
+			"component": "GBDTSVMResearch",
+			"modal": "GbdtsvmModal",
+			"date": "April 02, 2025",
+			"title": "GBDT SVM Research",
+			"keywords": "gbdt svm gradient boosting decision tree support vector machine machine learning classification research",
+			"show": true
+		},
+
+
+		{
+			"id": "password",
+			"component": "PasswordCrackResearch",
+			"modal": "PasswordCrackResearchModal",
+			"date": "September 06th, 2024",
+			"title": "Password Crack Research",
+			"keywords": "password cracking security cybersecurity encryption hashing authentication research",
+			"show": true
+		},
+		{
+			"id": "university",
+			"component": "UniversityUIU",
+			"modal": "UniversityUiuModal",
+			"date": "November 06th, 2024",
+			"title": "University UIU",
+			"keywords": "university uiu education academic study computer science software engineering",
+			"show": true
+		},
+		{
+			"id": "energyfootprint",
+			"component": "EnergyFootprint",
+			"modal": "EnergyFootprintModal",
+			"date": "June 27th, 2024",
+			"title": "Energy Footprint Research",
+			"keywords": "energy footprint carbon emissions sustainability machine learning research",
+			"show": true
+		},
+
+		{
+			"id": "awswork",
+			"component": "AWSWork",
+			"modal": null,
+			"date": "May 16th, 2024",
+			"title": "AWS Cloud Solutions Architect",
+			"keywords": "aws cloud solutions architect freelance work infrastructure ec2 vpc load balancing auto scaling iam security groups deployment monitoring scalable",
+			"show": true
+		},
+		{
+			"id": "youthcybersafety",
+			"component": "YouthCyberSafetySurvey",
+			"modal": null,
+			"date": "May 12th, 2024",
+			"title": "Youth Cyber Safety Survey",
+			"keywords": "youth cyber safety social survey cyberbullying digital wellbeing mixed methods research statistical analysis chi-square paired t-test interviews qualitative data facebook instagram content moderation cybersecurity bangladesh university",
+			"show": true
 		},
 		{
 			"id": "rfwoc",
 			"component": "RFWOCResearch",
 			"modal": null,
-			"date": "March 5th, 2025",
+			"date": "February 27th, 2024",
 			"title": "RFWOC Research",
-			"keywords": "rfwoc research wireless communication radio frequency optimization"
-		},
-		{
-			"id": "landsphere",
-			"component": "LandSphereProject",
-			"modal": null,
-			"date": "January 10th, 2025",
-			"title": "LandSphere Project",
-			"keywords": "landsphere land management geography gis mapping project real estate"
-		},
-		{
-			"id": "plantify",
-			"component": "PlantifyProject",
-			"modal": null,
-			"date": "January 10th, 2025",
-			"title": "Plantify Project",
-			"keywords": "plantify plant identification botany agriculture gardening mobile app project"
+			"keywords": "rfwoc research wireless communication radio frequency optimization",
+			"show": true
 		},
 		{
 			"id": "agriinn",
 			"component": "AgriInnProject",
 			"modal": null,
-			"date": "January 10th, 2025",
+			"date": "February 04th, 2024",
 			"title": "AgriInn Project",
-			"keywords": "agriinn agriculture innovation farming technology iot sensors smart farming project"
+			"keywords": "agriinn agriculture innovation farming technology iot sensors smart farming project",
+			"show": true
+		},
+		{
+			"id": "plantify",
+			"component": "PlantifyProject",
+			"modal": null,
+			"date": "October 28th, 2023",
+			"title": "Plantify Project",
+			"keywords": "plantify plant identification botany agriculture gardening mobile app project",
+			"show": true
+		},
+		{
+			"id": "landsphere",
+			"component": "LandSphereProject",
+			"modal": null,
+			"date": "May 24th, 2023",
+			"title": "LandSphere Project",
+			"keywords": "landsphere land management geography gis mapping project real estate",
+			"show": true
+		},
+		{
+			"id": "labassistant",
+			"component": "LabAssistantWork",
+			"modal": null,
+			"date": "April 23rd, 2023",
+			"title": "University Laboratory Assistant",
+			"keywords": "university laboratory assistant academic support equipment troubleshooting student assessment instructor collaboration problem solving mentoring maintenance",
+			"show": true
 		}
 	]
 }

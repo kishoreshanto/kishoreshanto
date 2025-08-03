@@ -39,16 +39,12 @@ let { date, onshowmodal }: Props = $props();
         </div>
 
         <!-- Summary Section -->
-        <div class="bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800">
-            <div class="flex items-start space-x-3">
-                <div class="flex-shrink-0 mt-1">
-                    <svg class="w-4 h-4 text-amber-600 dark:text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
-                    </svg>
-                </div>
+        <div class="research-overview">
+            <div class="flex items-start space-x-3 border-l-4 border-sky-300 pl-4 rounded-sm">
+                
                 <div>
-                    <p class="text-sm font-medium text-amber-800 dark:text-amber-200 mb-1">Research Summary</p>
-                    <p class="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
+                    <p class="font-semibold text-gray-900 dark:text-white mb-2">Overview</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed ">
                         Researched a real-time anomaly detection system using Vision Transformers and an attention-enhanced  network in long surveillance footage.
                     </p>
                 </div>
@@ -56,7 +52,7 @@ let { date, onshowmodal }: Props = $props();
         </div>
 
         <!-- Q1 Journal Highlight -->
-        <div class="flex items-center justify-between bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
+        <div class="flex items-center justify-between bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-xl p-3 border border-emerald-200 dark:border-emerald-800">
             <div class="flex items-center space-x-2">
                 <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
@@ -72,29 +68,51 @@ let { date, onshowmodal }: Props = $props();
             </div>
         </div>
 
+        <div class="space-y-2">
+            <p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Research Focus Areas / Keywords</p>
+            <div class="flex flex-wrap gap-2">
+					<span class="research-tag">
+						Computer Vision
+					</span>
+                <span class="research-tag">
+						Video Anomaly Detection
+					</span>
+                <span class="research-tag">
+						Vision Transformer
+					</span>
+                <span class="research-tag">
+						Simple Recurrent Unit Plus Plus (SRU++)
+					</span>
+                <span class="research-tag">
+                        Spatio-Temporal Feature Analysis
+                </span>
+
+            </div>
+        </div>
+
         <!-- Publication Details -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
             <div class="space-y-2">
                 <div>
                     <span class="font-medium text-zinc-700 dark:text-zinc-300">DOI:</span>
                     <p class="text-zinc-600 dark:text-zinc-400 font-mono text-xs">
-                        TDB
+                        TBD
                     </p>
                 </div>
                 <div>
-                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Accepted:</span>
-                    <span class="text-zinc-600 dark:text-zinc-400">July 2025</span>
+                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Duration:</span>
+                    <span class="text-zinc-600 dark:text-zinc-400">18 months</span>
                 </div>
             </div>
             <div class="flex items-end justify-end">
                 <div
-                        class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-lg bg-zinc-100 text-zinc-800 hover:bg-zinc-200 dark:bg-zinc-900/30 dark:text-zinc-300 dark:hover:bg-zinc-900/50 transition-colors duration-200"
+                        class="inline-flex items-center px-3 py-2 text-xs font-medium rounded-xl bg-zinc-100 text-zinc-800 hover:bg-zinc-200 dark:bg-zinc-900/30 dark:text-zinc-300 dark:hover:bg-zinc-900/50 transition-colors duration-200"
                 >
                     <svg class="w-3 h-3 mr-1" fill="gray" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/>
                     </svg>
-                    To be Published
+                    To Be Published
                 </div>
             </div>
         </div>

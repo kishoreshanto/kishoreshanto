@@ -38,16 +38,12 @@ let { date, onshowmodal }: Props = $props();
 			</div>
 
 			<!-- Project Description -->
-			<div class="bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-900/20 dark:to-pink-900/20 rounded-lg p-4 border border-rose-200 dark:border-rose-800">
-				<div class="flex items-start space-x-3">
-					<div class="flex-shrink-0 mt-1">
-						<svg class="w-4 h-4 text-rose-600 dark:text-rose-400" fill="currentColor" viewBox="0 0 20 20">
-							<path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
-						</svg>
-					</div>
+			<div class="bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 dark:from-slate-800/50 dark:via-gray-800/50 dark:to-slate-800/50 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
+				<div class="flex items-start space-x-3 border-l-4 border-sky-300 pl-4 rounded-sm">
+					
 					<div>
-						<p class="text-sm font-medium text-rose-800 dark:text-rose-200 mb-1">Project Overview</p>
-						<p class="text-sm text-rose-700 dark:text-rose-300 leading-relaxed">
+						<p class="font-semibold text-gray-900 dark:text-white mb-2">Project Overview</p>
+						<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed ">
 							A comprehensive web platform that streamlines land and property management, facilitating seamless interactions between property owners, buyers, and sellers with modern web technologies.
 						</p>
 					</div>
@@ -55,23 +51,23 @@ let { date, onshowmodal }: Props = $props();
 			</div>
 
 			<!-- Championship Award Highlight -->
-			<div class="flex items-center justify-between bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 rounded-lg p-3 border border-yellow-200 dark:border-yellow-800">
+		<div class="flex items-center justify-between bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-lg p-3 border border-orange-200 dark:border-orange-800">
 				<div class="flex items-center space-x-2">
 
 					<div>
-						<p class="text-sm font-semibold text-yellow-800 dark:text-yellow-200">
-							🏆 Champion - CSE Project Showcase 231
-						</p>
-						<p class="text-xs text-yellow-600 dark:text-yellow-400">
-							United International University
-						</p>
+					<p class="text-sm font-semibold text-orange-800 dark:text-orange-200">
+						🏆 Champion - CSE Project Showcase 231
+					</p>
+					<p class="text-xs text-orange-600 dark:text-orange-400">
+						United International University
+					</p>
 					</div>
 				</div>
 			</div>
 
 			<!-- Technology Stack -->
 			<div class="space-y-2">
-				<p class="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">Technology Stack</p>
+				<p class="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Technology Stack</p>
 				<div class="flex flex-wrap gap-2">
 					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
 						PHP
@@ -98,6 +94,10 @@ let { date, onshowmodal }: Props = $props();
 					<div>
 						<span class="font-medium text-zinc-700 dark:text-zinc-300">Award:</span>
 						<span class="text-zinc-600 dark:text-zinc-400">Champion (1st Place)</span>
+					</div>
+					<div>
+						<span class="font-medium text-zinc-700 dark:text-zinc-300">Duration:</span>
+						<span class="text-zinc-600 dark:text-zinc-400">4.5 months</span>
 					</div>
 				</div>
 				<div class="flex items-end justify-end">

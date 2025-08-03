@@ -10,7 +10,23 @@ const config = {
     },
 
     kit: {
-        adapter: adapter()
+        adapter: adapter(),
+        
+        // Service worker for caching and offline support
+        serviceWorker: {
+            register: false // Disable for now, can be enabled later
+        },
+        
+        // Content Security Policy for better security
+        csp: {
+            mode: 'auto',
+            directives: {
+                'script-src': ['self'],
+                'style-src': ['self', 'unsafe-inline', 'fonts.googleapis.com'],
+                'font-src': ['self', 'fonts.gstatic.com'],
+                'connect-src': ['self', 'router.huggingface.co', 'vitals.vercel-insights.com']
+            }
+        }
     }
 };
 
