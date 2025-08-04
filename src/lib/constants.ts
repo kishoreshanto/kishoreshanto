@@ -19,4 +19,4 @@ declare global {
 }
 
 // Assign to global scope
-(globalThis as any).RESEARCH_TYPES = RESEARCH_TYPES;
+(globalThis as typeof globalThis & { RESEARCH_TYPES: {[key: string]: string} }).RESEARCH_TYPES = RESEARCH_TYPES;
