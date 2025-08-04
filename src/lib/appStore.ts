@@ -52,7 +52,7 @@ export const filteredProjects = derived(
 // Debounce utility with cleanup
 let searchDebounceTimer: number;
 
-export function debounceSearch(term: string, delay: number = 300) {
+export function debounceSearch(term: string, delay = 300) {
 	if (searchDebounceTimer) {
 		clearTimeout(searchDebounceTimer);
 	}

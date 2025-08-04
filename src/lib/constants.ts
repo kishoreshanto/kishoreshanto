@@ -15,8 +15,12 @@ export const RESEARCH_TYPES: {[key: string]: string} = {
 
 // Make it globally available
 declare global {
-	var RESEARCH_TYPES: {[key: string]: string};
+	interface Window {
+		RESEARCH_TYPES: {[key: string]: string};
+	}
 }
 
-// Assign to global scope
-(globalThis as any).RESEARCH_TYPES = RESEARCH_TYPES;
+// Assign to global scope (browser environment)
+if (typeof window !== 'undefined') {
+	window.RESEARCH_TYPES = RESEARCH_TYPES;
+}
