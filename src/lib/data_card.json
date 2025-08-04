@@ -32,7 +32,7 @@
 			"id": "gbdtsvm",
 			"component": "GBDTSVMResearch",
 			"modal": "GbdtsvmModal",
-			"date": "April 02, 2025",
+			"date": "April 02nd, 2025",
 			"title": "GBDT SVM Research",
 			"keywords": "gbdt svm gradient boosting decision tree support vector machine machine learning classification research",
 			"show": true
