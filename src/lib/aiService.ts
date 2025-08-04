@@ -135,7 +135,7 @@ function getCachedResponse(question: string): string | null {
   const cached = responseCache.get(key);
   
   if (cached && cached.expiresAt > Date.now()) {
-    console.log('🚀 AI Cache hit for question:', question.substring(0, 50) + '...');
+    console.log(`🚀 AI Cache hit for question: ${question.substring(0, 50)}...`);
     incrementCacheHit?.();
     return cached.response;
   }
@@ -176,7 +176,7 @@ function cacheResponse(question: string, response: string): void {
   // Persist to storage if enabled
   saveCacheToStorage();
   
-  console.log('💾 AI Response cached for question:', question.substring(0, 50) + '...');
+  console.log(`💾 AI Response cached for question: ${question.substring(0, 50)}...`);
 }
 
 /**
@@ -307,7 +307,7 @@ export async function generateAIResponse(question: string): Promise<string> {
       { role: "user", content: question }
     ];
 
-    console.log('🌐 Making AI API request for:', question.substring(0, 50) + '...');
+    console.log(`🌐 Making AI API request for: ${question.substring(0, 50)}...`);
     const response = await queryHuggingFace(messages);
     
     if (response.choices && response.choices[0] && response.choices[0].message) {
