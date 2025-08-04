@@ -18,7 +18,7 @@
 </script>
 
 <section
-	class="scroll-mt-16 focus-visible:outline-none "
+	class="scroll-mt-16 focus-visible:outline-none"
 	in:fade={{ duration: 300 }}
 	onclick={showModal}
 	onkeydown={(e) => e.key === 'Enter' && showModal()}
@@ -26,8 +26,8 @@
 	tabindex="0"
 >
 	{#if date !== ''}
-	<!-- Render DateComponent only if date is provided -->
-	<DateComponent date_string={date} />
+		<!-- Render DateComponent only if date is provided -->
+		<DateComponent date_string={date} />
 	{/if}
 
 	<div class="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
