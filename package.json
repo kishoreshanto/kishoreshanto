@@ -9,7 +9,9 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"analyze": "npm run build && open dist/stats.html"
+		"analyze": "npm run build && open dist/stats.html",
+		"format": "prettier --write .",
+		"format:check": "prettier --check ."
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.3.1",
@@ -18,6 +20,8 @@
 		"@tailwindcss/postcss": "^4.0.0",
 		"@types/marked": "^5.0.2",
 		"postcss": "^8.4.41",
+		"prettier": "^3.0.0",
+		"prettier-plugin-svelte": "^3.0.0",
 		"rollup-plugin-visualizer": "^6.0.3",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
