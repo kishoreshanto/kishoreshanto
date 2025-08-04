@@ -9,3 +9,12 @@ name = "javascript"
     "vitest",
     "browser"
   ]
+
+[[analyzers]]
+name = "typescript"
+
+[[analyzers]]
+name = "css"
+
+[[analyzers]]
+name = "secrets"
