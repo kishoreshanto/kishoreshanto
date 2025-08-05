@@ -9,7 +9,7 @@ declare global {
 		// interface Platform {}
 	}
 
-	var RESEARCH_TYPES: {[key: string]: string};
+	var RESEARCH_TYPES: { [key: string]: string };
 }
 
 export {};

@@ -35,16 +35,17 @@ export const filteredProjects = derived(
 	[projects, debouncedSearchTerm, isAskMode],
 	([$projects, $debouncedSearchTerm, $isAskMode]) => {
 		if ($isAskMode || !$debouncedSearchTerm.trim()) {
-			return $projects.filter(project => project.show);
+			return $projects.filter((project) => project.show);
 		}
-		
+
 		const search = $debouncedSearchTerm.toLowerCase();
 		return $projects
-			.filter(project => project.show)
-			.filter(project => 
-				project.title.toLowerCase().includes(search) || 
-				project.keywords.toLowerCase().includes(search) ||
-				project.date.toLowerCase().includes(search)
+			.filter((project) => project.show)
+			.filter(
+				(project) =>
+					project.title.toLowerCase().includes(search) ||
+					project.keywords.toLowerCase().includes(search) ||
+					project.date.toLowerCase().includes(search)
 			);
 	}
 );
@@ -56,7 +57,7 @@ export function debounceSearch(term: string, delay = 300) {
 	if (searchDebounceTimer) {
 		clearTimeout(searchDebounceTimer);
 	}
-	
+
 	searchDebounceTimer = setTimeout(() => {
 		debouncedSearchTerm.set(term);
 	}, delay);
@@ -72,7 +73,7 @@ export const actions = {
 			debounceSearch(term);
 		}
 	},
-	
+
 	clearSearch: () => {
 		searchTerm.set('');
 		debouncedSearchTerm.set('');
@@ -81,10 +82,10 @@ export const actions = {
 			clearTimeout(searchDebounceTimer);
 		}
 	},
-	
+
 	// Mode actions
 	toggleMode: () => {
-		isAskMode.update(mode => !mode);
+		isAskMode.update((mode) => !mode);
 		searchTerm.set('');
 		debouncedSearchTerm.set('');
 		aiResponse.set(null);
@@ -92,18 +93,18 @@ export const actions = {
 			clearTimeout(searchDebounceTimer);
 		}
 	},
-	
+
 	// Modal actions
 	openModal: (component: ComponentType) => {
 		selectedComponent.set(component);
 		showModal.set(true);
 	},
-	
+
 	closeModal: () => {
 		showModal.set(false);
 		selectedComponent.set(null);
 	},
-	
+
 	// AI actions
 	startAILoading: (question: string) => {
 		aiResponse.set({
@@ -112,7 +113,7 @@ export const actions = {
 			isLoading: true
 		});
 	},
-	
+
 	completeAIResponse: (question: string, answer: string) => {
 		aiResponse.set({
 			question,
@@ -120,7 +121,7 @@ export const actions = {
 			isLoading: false
 		});
 	},
-	
+
 	errorAIResponse: (question: string, errorMessage: string) => {
 		aiResponse.set({
 			question,
@@ -128,13 +129,13 @@ export const actions = {
 			isLoading: false
 		});
 	},
-	
+
 	askAnotherQuestion: () => {
 		searchTerm.set('');
 		debouncedSearchTerm.set('');
 		aiResponse.set(null);
 	},
-	
+
 	// Project actions
 	setProjects: (projectList: Project[]) => {
 		projects.set(projectList);

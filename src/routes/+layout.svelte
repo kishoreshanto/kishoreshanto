@@ -1,45 +1,45 @@
 <!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
 
 <script lang="ts">
-    import data from "$lib/data_en.json";
-    import '../styles/global.css'
-    import TimeLine from "../components/visuals/TimeLine.svelte";
-    import LeftPanel from "../components/LeftPanel.svelte";
-    import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
-    import type { Snippet } from 'svelte';
-  import BottomSwitch from "../components/BottomSwitch.svelte";
+	import data from '$lib/data_en.json';
+	import '../styles/global.css';
+	import TimeLine from '../components/visuals/TimeLine.svelte';
+	import LeftPanel from '../components/LeftPanel.svelte';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import type { Snippet } from 'svelte';
+	import BottomSwitch from '../components/BottomSwitch.svelte';
 
-    interface Props {
-        children: Snippet;
-    }
+	interface Props {
+		children: Snippet;
+	}
 
-    let { children }: Props = $props();
+	let { children }: Props = $props();
 
-    injectSpeedInsights();
+	injectSpeedInsights();
 
-    const page_title = data.page_title;
+	const page_title = data.page_title;
 </script>
 
 <svelte:head>
-    {#if page_title}
-        <title> {page_title} </title>
-    {:else}
-        <title> Portfolio </title>
-    {/if}
+	{#if page_title}
+		<title>{page_title}</title>
+	{:else}
+		<title>Portfolio</title>
+	{/if}
 </svelte:head>
 
 <main>
-    <!-- Left panel goes here, modify the files to change content -->
-    <LeftPanel/>
+	<!-- Left panel goes here, modify the files to change content -->
+	<LeftPanel />
 
-    <div class="right-panel">
-        <div class="right-panel-container">
-            <TimeLine/>
-        </div>
+	<div class="right-panel">
+		<div class="right-panel-container">
+			<TimeLine />
+		</div>
 
-        <BottomSwitch/>
+		<BottomSwitch />
 
-        <!-- Right Panel Goes here, modify `+page.svelte` to change contents -->
-        {@render children()}
-    </div>
+		<!-- Right Panel Goes here, modify `+page.svelte` to change contents -->
+		{@render children()}
+	</div>
 </main>

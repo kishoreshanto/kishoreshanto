@@ -1,10 +1,15 @@
-<svg class="absolute left-[max(0px,calc(50%-18.125rem))] top-0 h-full w-1.5 mt-14 lg:mt-0 lg:left-full lg:ml-1 xl:left-auto xl:right-1 xl:ml-0"
-     aria-hidden="true">
-    <defs>
-        <pattern id=":R1t6:" width="6" height="8" patternUnits="userSpaceOnUse">
-            <path d="M0 0H6M0 8H6" class="stroke-sky-900/70 dark:stroke-white/30 xl:stroke-sky-900/70"
-                  fill="none"></path>
-        </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#:R1t6:)"></rect>
+<svg
+	class="absolute left-[max(0px,calc(50%-18.125rem))] top-0 h-full w-1.5 mt-14 lg:mt-0 lg:left-full lg:ml-1 xl:left-auto xl:right-1 xl:ml-0"
+	aria-hidden="true"
+>
+	<defs>
+		<pattern id=":R1t6:" width="6" height="8" patternUnits="userSpaceOnUse">
+			<path
+				d="M0 0H6M0 8H6"
+				class="stroke-sky-900/70 dark:stroke-white/30 xl:stroke-sky-900/70"
+				fill="none"
+			></path>
+		</pattern>
+	</defs>
+	<rect width="100%" height="100%" fill="url(#:R1t6:)"></rect>
 </svg>

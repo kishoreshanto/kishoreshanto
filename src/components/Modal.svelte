@@ -1,4 +1,3 @@
-
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import type { Snippet } from 'svelte';
@@ -40,8 +39,8 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<div 
-	class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4" 
+<div
+	class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4"
 	transition:fade={{ duration: 200 }}
 	onclick={handleBackdropClick}
 	onkeydown={handleBackdropKeydown}
@@ -73,14 +72,13 @@
 				/>
 			</svg>
 		</button>
-		
+
 		<!-- Scrollable content area -->
 		<div class="overflow-y-auto overflow-x-hidden p-8 pr-12 hide-scrollbar">
 			{@render children()}
 		</div>
 	</div>
 </div>
-
 
 <style>
 	/* Class to hide scrollbars */

@@ -8,37 +8,38 @@ layer(base);
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --breakpoint-*: initial;
-  --breakpoint-xs: 420px;
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
+	--breakpoint-*: initial;
+	--breakpoint-xs: 420px;
+	--breakpoint-sm: 640px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 1024px;
+	--breakpoint-xl: 1280px;
+	--breakpoint-2xl: 1536px;
 
-  --animate-fade-in: fadeIn 0.7s ease-in;
-  --animate-global_search_fade-in: fadeIn 0.3s ease-in;
+	--animate-fade-in: fadeIn 0.7s ease-in;
+	--animate-global_search_fade-in: fadeIn 0.3s ease-in;
 
-  --font-sans: -apple-system, BlinkMacSystemFont, Inter, Helvetica Neue,
-    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  --font-mono: SFMono-Regular, JetBrains Mono;
+	--font-sans:
+		-apple-system, BlinkMacSystemFont, Inter, Helvetica Neue, sans-serif, Apple Color Emoji,
+		Segoe UI Emoji, Segoe UI Symbol;
+	--font-mono: SFMono-Regular, JetBrains Mono;
 
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  @keyframes global_search_fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@keyframes global_search_fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
 }
 
 /*
@@ -50,110 +51,110 @@ layer(base);
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentColor);
+	}
 
-  /* Hide main scrollbar */
-  html,
-  body {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-  }
+	/* Hide main scrollbar */
+	html,
+	body {
+		scrollbar-width: none; /* Firefox */
+		-ms-overflow-style: none; /* Internet Explorer 10+ */
+	}
 
-  html::-webkit-scrollbar,
-  body::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-  }
+	html::-webkit-scrollbar,
+	body::-webkit-scrollbar {
+		display: none; /* Safari and Chrome */
+	}
 }
 
 .no-scroll::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .no-scroll {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
 
 hr {
-    @apply border my-4 dark:border-zinc-700
+	@apply border my-4 dark:border-zinc-700;
 }
 
 .radial-glow-background-container {
-    @apply absolute inset-0 -z-10 overflow-hidden dark:bg-gray-950 bg-white lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem]
+	@apply absolute inset-0 -z-10 overflow-hidden dark:bg-gray-950 bg-white lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem];
 }
 
 .left-panel {
-    @apply relative flex-none overflow-hidden px-6 lg:pointer-events-none lg:fixed lg:inset-0 lg:z-40 lg:flex lg:px-0
+	@apply relative flex-none overflow-hidden px-6 lg:pointer-events-none lg:fixed lg:inset-0 lg:z-40 lg:flex lg:px-0;
 }
 
 .left-panel-container {
-    @apply relative flex w-full lg:pointer-events-auto lg:mr-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem]
-    lg:overflow-y-auto lg:overflow-x-hidden lg:pl-[max(4rem,calc(50%-38rem))]
+	@apply relative flex w-full lg:pointer-events-auto lg:mr-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem]
+    lg:overflow-y-auto lg:overflow-x-hidden lg:pl-[max(4rem,calc(50%-38rem))];
 }
 
 .left-panel-container > div {
-    @apply mx-auto mt-14 lg:mt-0 lg:mx-0 lg:flex lg:w-96 lg:max-w-none lg:flex-col lg:justify-center
+	@apply mx-auto mt-14 lg:mt-0 lg:mx-0 lg:flex lg:w-96 lg:max-w-none lg:flex-col lg:justify-center;
 }
 
 .left-panel-footer {
-    @apply select-none mt-4 text-sm font-medium cursor-default
+	@apply select-none mt-4 text-sm font-medium cursor-default;
 }
 
 .right-panel {
-    @apply relative flex-auto min-h-screen bg-white dark:bg-gray-950
+	@apply relative flex-auto min-h-screen bg-white dark:bg-gray-950;
 }
 
 .right-panel-container {
-    @apply pointer-events-none absolute inset-0 z-50 overflow-hidden
+	@apply pointer-events-none absolute inset-0 z-50 overflow-hidden
     lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:min-w-[32rem]
-    lg:overflow-visible
+    lg:overflow-visible;
 }
 
-main{
-    @apply flex min-h-full flex-col bg-white dark:bg-gray-950 antialiased
+main {
+	@apply flex min-h-full flex-col bg-white dark:bg-gray-950 antialiased;
 }
 
 /* Research Tag Styles */
 .research-tag {
-    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-50 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 border border-amber-300 
+	@apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-50 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 border border-amber-300;
 }
 
 .role-tag {
-    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-sky-50 text-sky-800 dark:bg-orange-900/30 dark:text-sky-300 border border-sky-300 
+	@apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-sky-50 text-sky-800 dark:bg-orange-900/30 dark:text-sky-300 border border-sky-300;
 }
 
 .research-overview {
-    @apply bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 dark:from-slate-800/50 dark:via-gray-800/50 dark:to-slate-800/50 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm
+	@apply bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 dark:from-slate-800/50 dark:via-gray-800/50 dark:to-slate-800/50 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm;
 }
 
 .main-card {
-    @apply select-none mx-auto max-w-lg shadow-sm hover:shadow-xl rounded-3xl border border-zinc-300 bg-white/50 p-4 drop-shadow-xl backdrop-blur-md transition duration-300 dark:border-zinc-700 dark:bg-zinc-800/30 lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto cursor-pointer hover:scale-[1.01]
+	@apply select-none mx-auto max-w-lg shadow-sm hover:shadow-xl rounded-3xl border border-zinc-300 bg-white/50 p-4 drop-shadow-xl backdrop-blur-md transition duration-300 dark:border-zinc-700 dark:bg-zinc-800/30 lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto cursor-pointer hover:scale-[1.01];
 }
 
 .simplified-card {
-    @apply mx-auto max-w-lg rounded-3xl border border-zinc-300 bg-white/50 p-4 drop-shadow-xl backdrop-blur-md transition-transform duration-300 dark:border-zinc-700 dark:bg-zinc-800/30 lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto
+	@apply mx-auto max-w-lg rounded-3xl border border-zinc-300 bg-white/50 p-4 drop-shadow-xl backdrop-blur-md transition-transform duration-300 dark:border-zinc-700 dark:bg-zinc-800/30 lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto;
 }
 
 /* Fade in/out animation for view switching */
 .fade-in {
-    animation: fadeIn 0.5s ease-in-out;
+	animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-        filter: blur(4px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0px);
-    }
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+		filter: blur(4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+		filter: blur(0px);
+	}
 }

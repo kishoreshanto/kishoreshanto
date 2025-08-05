@@ -8,10 +8,7 @@
 	"legal_name": "Shanta Biswas",
 	"legal_ipa": "/ˈʃan.to ˈbiʃ.ʃaʃ/",
 	"show_leagal_name": false,
-	"titles": [
-		"Researcher",
-		"Developer"
-	],
+	"titles": ["Researcher", "Developer"],
 	"description": "Actively seeking a Master's/PhD opportunity to contribute to pioneering research.",
 	"interest_and_passion": [
 		"🧠 Deep Learning",
@@ -20,11 +17,7 @@
 		"🤖 Multi-agent CoT Models",
 		"🩺 Biomedical Signal Processing"
 	],
-	"language": [
-		"🇺🇸 English (CEFR C1)",
-		"🇫🇷 French (Beginner)",
-		"🇧🇩 Bengali (Native)"
-	],
+	"language": ["🇺🇸 English (CEFR C1)", "🇫🇷 French (Beginner)", "🇧🇩 Bengali (Native)"],
 	"current_city": "BD DAC",
 	"current_gmt_offset": 6,
 	"mail": "tinykishore@gmail.com",
