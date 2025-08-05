@@ -317,7 +317,7 @@ export async function generateAIResponse(question: string): Promise<string> {
 		console.log(`🌐 Making AI API request for: ${question.substring(0, 50)}...`);
 		const response = await queryHuggingFace(messages);
 
-		if (response.choices && response.choices[0] && response.choices[0].message) {
+		if (response.choices?.[0]?.message) {
 			const aiResponse = response.choices[0].message.content;
 
 			// Cache the response

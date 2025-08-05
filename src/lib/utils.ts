@@ -15,27 +15,27 @@ function makeGMTString(GMT: number): string {
 	 * @param GMT - The GMT offset
 	 * @returns - The GMT string
 	 */
-	let GMTString: string = 'GMT';
-	if (GMT >= 0) GMTString = GMTString + '+';
-	else GMTString = GMTString + '-';
+	let GMTString = 'GMT';
+	if (GMT >= 0) GMTString = `${GMTString}+`;
+	else GMTString = `${GMTString}-`;
 
 	// Add the hours, add a 0 if it's a single digit
-	if (Math.abs(GMT) < 10) GMTString = GMTString + '0';
+	if (Math.abs(GMT) < 10) GMTString = `${GMTString}0`;
 
 	// Add the hours, if it has a decimal, round it
-	const d: number = Math.floor(Math.abs(GMT));
-	const f: number = Math.abs(GMT) - d;
-	GMTString = GMTString + d;
+	const hours: number = Math.floor(Math.abs(GMT));
+	const fractionalHours: number = Math.abs(GMT) - hours;
+	GMTString = `${GMTString}${hours}`;
 
 	// Add semicolon
-	GMTString = GMTString + ':';
+	GMTString = `${GMTString}:`;
 
 	// Add the minutes
-	const min: number = f * 60;
+	const min: number = fractionalHours * 60;
 
 	// Add a 0 if it's a single digit
-	if (min < 10) GMTString = GMTString + '0';
-	GMTString = GMTString + min;
+	if (min < 10) GMTString = `${GMTString}0`;
+	GMTString = `${GMTString}${min}`;
 
 	return GMTString;
 }

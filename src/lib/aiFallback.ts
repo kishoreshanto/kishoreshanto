@@ -66,7 +66,7 @@ const KNOWLEDGE_BASE: KnowledgeItem[] = Object.entries(KNOWLEDGE_BASE_RAW).flatM
 	([category, entries]) =>
 		Object.entries(entries).map(([key, text]) => ({
 			source: `${category}:${key}`,
-			text: text
+			text
 		}))
 );
 
@@ -136,6 +136,11 @@ class OfflineSearchEngine {
 		}));
 	}
 
+	/**
+	 * Process text into a set of keywords by normalizing, tokenizing, and filtering
+	 * @param text - The text to process into keywords
+	 * @returns A set of processed keywords excluding stop words and single characters
+	 */
 	private _processText(text: string): Set<string> {
 		return new Set(
 			text
@@ -146,6 +151,12 @@ class OfflineSearchEngine {
 		);
 	}
 
+	/**
+	 * Search the knowledge base for the best matching response to a query
+	 * @param query - The search query string
+	 * @param scoreThreshold - Minimum score threshold for returning a match (default: 1)
+	 * @returns The best matching text response or a default fallback message
+	 */
 	public search(query: string, scoreThreshold = 1): string {
 		const queryKeywords = this._processText(query);
 		let bestMatch = { score: 0, text: '', source: '' };
