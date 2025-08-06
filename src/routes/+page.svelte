@@ -17,6 +17,7 @@
 	import PlantifyProject from '../components/Cards/PlantifyProject.svelte';
 	import AgriInnProject from '../components/Cards/AgriInnProject.svelte';
 	import AIResponseCard from '../components/Cards/AIResponseCard.svelte';
+	import AIDemoCard from '../components/Cards/AIDemoCard.svelte';
 	import NotFoundCard from '../components/NotFoundCard.svelte';
 	import TopBar from '../components/TopBar.svelte';
 	import AWSWork from '../components/Cards/AWSWork.svelte';
@@ -224,6 +225,9 @@
 				/>
 			{/each}
 		</div>
+	{:else if $isAskMode && $aiResponse.length === 0}
+		<!-- Demo Card when in AI mode but no responses yet -->
+		<AIDemoCard onaskAnother={askAnotherQuestion} />
 	{:else if !$isAskMode && filteredProjects().length > 0}
 		{#if $isSimplifiedView}
 			<!-- Simplified View with fade transition -->
