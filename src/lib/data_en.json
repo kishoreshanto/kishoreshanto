@@ -1,7 +1,7 @@
 {
 	"version": "BETA v0.6.0, Expect Bugs",
 	"AI": true,
-	"AI_model": "meta-llama/Llama-4-Scout-17B-16E-Instruct:groq",
+	"AI_model": "openai/gpt-oss-20b:groq",
 	"modal": false,
 	"name": "Kishore Shanto",
 	"ipa_name": "/kɪˈʃɔːr ˈʃan.to/",
