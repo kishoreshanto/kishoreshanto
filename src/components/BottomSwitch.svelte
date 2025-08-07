@@ -40,15 +40,18 @@
 			<div class="lg:ml-96 lg:flex lg:w-full lg:justify-end lg:pl-32">
 				<div class="mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto">
 					<div class="flex flex-row-reverse gap-6 justify-center items-center">
-						<a href="https://openai.com/index/introducing-gpt-oss/" target="_blank" rel="noopener noreferrer"
+						<a
+							href="https://openai.com/index/introducing-gpt-oss/"
+							target="_blank"
+							rel="noopener noreferrer"
 							aria-label="OpenAI GPT-OSS 20B Model"
-							class="px-10 text-sky-800 text-sm inset-shadow-sm inset-shadow-zinc-500/40 flex-shrink-0 bg-white/50  dark:bg-black/20 backdrop-blur-sm  rounded-2xl p-3 shadow-lg shadow-gray-500/30 dark:shadow-blue-500/30 dark:hover:bg-white/10  hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 font-mono transition-all duration-300 ease-out hover:bg-white">
+							class="px-10 text-sky-800 text-sm inset-shadow-sm inset-shadow-zinc-500/40 flex-shrink-0 bg-white/50 dark:bg-black/20 backdrop-blur-sm rounded-2xl p-3 shadow-lg shadow-gray-500/30 dark:shadow-blue-500/30 dark:hover:bg-white/10 hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 font-mono transition-all duration-300 ease-out hover:bg-white"
+						>
 							Using Model: <span class="font-semibold">OpenAI GPT-OSS 20B</span>
-					</a>
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 {/if}

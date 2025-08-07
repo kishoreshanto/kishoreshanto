@@ -167,21 +167,22 @@
 		try {
 			const answer = await generateAIResponse(question);
 			// Update the first (loading) response with the actual answer
-			$aiResponse = $aiResponse.map((response, index) => 
-				index === 0 && response.question === question 
+			$aiResponse = $aiResponse.map((response, index) =>
+				index === 0 && response.question === question
 					? { question: question, answer: answer, isLoading: false }
 					: response
 			);
 		} catch (error) {
 			console.error('Error generating AI response:', error);
 			// Update the first (loading) response with error
-			$aiResponse = $aiResponse.map((response, index) => 
-				index === 0 && response.question === question 
-					? { 
-						question: question, 
-						answer: "I'm sorry, I encountered an error while processing your question. Please try again.",
-						isLoading: false
-					}
+			$aiResponse = $aiResponse.map((response, index) =>
+				index === 0 && response.question === question
+					? {
+							question: question,
+							answer:
+								"I'm sorry, I encountered an error while processing your question. Please try again.",
+							isLoading: false
+						}
 					: response
 			);
 		}
