@@ -35,17 +35,17 @@
 								<div class="grid grid-cols-1 gap-2">
 									<div class="bg-white dark:bg-gray-700/50 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
 										<p class="text-xs text-gray-600 dark:text-gray-400">
-											💡 "What machine learning projects have been worked on?"
+											💡 "What are your research interests?"
 										</p>
 									</div>
 									<div class="bg-white dark:bg-gray-700/50 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
 										<p class="text-xs text-gray-600 dark:text-gray-400">
-											🔬 "Tell me about the research in cybersecurity"
+											🔬 "Tell me about your research works in computer vision and LLMs"
 										</p>
 									</div>
 									<div class="bg-white dark:bg-gray-700/50 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
 										<p class="text-xs text-gray-600 dark:text-gray-400">
-											⚡ "What technologies and frameworks are used?"
+											⚡ "How do you define yourself?"
 										</p>
 									</div>
 								</div>

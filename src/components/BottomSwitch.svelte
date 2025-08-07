@@ -25,7 +25,7 @@
 					<div class="flex flex-row-reverse gap-6 justify-center items-center">
 						<button
 							onclick={toggleView}
-							class="px-10 text-sky-800 font-semibold inset-shadow-sm inset-shadow-zinc-500/20 flex-shrink-0 bg-gradient-to-bl from-sky-400/40 to-violet-200/60 dark:bg-black/20 backdrop-blur-lg border-2 border-sky-500/20 dark:border-white/10 rounded-full p-3 shadow-xl shadow-gray-500/50 dark:shadow-blue-500/30 dark:hover:bg-white/10 hover:-translate-y-0.5 hover:scale-[1.05] hover:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 transition-all duration-300 ease-out cursor-pointer group"
+							class="px-10 text-sky-800 font-semibold inset-shadow-sm inset-shadow-zinc-500/20 flex-shrink-0 bg-gradient-to-bl from-sky-200/20 to-violet-100/30 dark:bg-black/20 backdrop-blur-xl border-2 border-sky-500/20 dark:border-white/10 rounded-full p-3 shadow-xl shadow-gray-500/50 dark:shadow-blue-500/30 dark:hover:bg-white/10 hover:-translate-y-0.5 hover:scale-[1.05] hover:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 transition-all duration-300 ease-out cursor-pointer group"
 						>
 							{$isSimplifiedView ? 'Switch to Detailed View' : 'Switch to Simplified View'}
 						</button>
