@@ -14,7 +14,7 @@ const config = {
 
 		// Service worker for caching and offline support
 		serviceWorker: {
-			register: false // Disable for now, can be enabled later
+			register: true // Disable for now, can be enabled later
 		},
 
 		// Content Security Policy for better security
