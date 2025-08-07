@@ -17,6 +17,7 @@
 	import PlantifyProject from '../components/Cards/PlantifyProject.svelte';
 	import AgriInnProject from '../components/Cards/AgriInnProject.svelte';
 	import AIResponseCard from '../components/Cards/AIResponseCard.svelte';
+	import AIDemoCard from '../components/Cards/AIDemoCard.svelte';
 	import NotFoundCard from '../components/NotFoundCard.svelte';
 	import TopBar from '../components/TopBar.svelte';
 	import AWSWork from '../components/Cards/AWSWork.svelte';
@@ -29,14 +30,13 @@
 	import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';
 	import TimelineGrantChart from '../components/modals/TimelineGrantChart.svelte';
 	import SimplifledRightPanel from '../components/SimplifledRightPanel.svelte';
-	import { isSimplifiedView, isAskMode } from '$lib/appStore';
+	import { isSimplifiedView, isAskMode, aiResponse } from '$lib/appStore';
 
 	let showModal = $state(false);
 	let showTimelineModal = $state(false);
 	let selectedComponent: any = $state(null);
 	let searchTerm = $state('');
 	let debouncedSearchTerm = $state('');
-	let aiResponse = $state<{ question: string; answer: string; isLoading: boolean } | null>(null);
 	let searchDebounceTimer: ReturnType<typeof setTimeout>;
 
 	// Component mapping
@@ -118,7 +118,10 @@
 	function clearSearch() {
 		searchTerm = '';
 		debouncedSearchTerm = '';
-		aiResponse = null;
+		// Only clear AI responses when explicitly clearing search (not when switching modes)
+		if ($isAskMode) {
+			$aiResponse = [];
+		}
 		if (searchDebounceTimer) {
 			clearTimeout(searchDebounceTimer);
 		}
@@ -139,7 +142,7 @@
 		isAskMode.update((mode) => !mode);
 		searchTerm = '';
 		debouncedSearchTerm = '';
-		aiResponse = null;
+		// Don't clear aiResponse - keep existing responses when switching modes
 		if (searchDebounceTimer) {
 			clearTimeout(searchDebounceTimer);
 		}
@@ -148,35 +151,46 @@
 	async function handleAskQuestion(question: string) {
 		if (!question.trim()) return;
 
-		// Set loading state
-		aiResponse = {
-			question: question,
-			answer: '',
-			isLoading: true
-		};
+		// Clear the input field immediately after asking
+		searchTerm = '';
+
+		// Add loading state to the beginning of responses array
+		$aiResponse = [
+			{
+				question: question,
+				answer: '',
+				isLoading: true
+			},
+			...$aiResponse
+		];
 
 		try {
 			const answer = await generateAIResponse(question);
-			aiResponse = {
-				question: question,
-				answer: answer,
-				isLoading: false
-			};
+			// Update the first (loading) response with the actual answer
+			$aiResponse = $aiResponse.map((response, index) => 
+				index === 0 && response.question === question 
+					? { question: question, answer: answer, isLoading: false }
+					: response
+			);
 		} catch (error) {
 			console.error('Error generating AI response:', error);
-			aiResponse = {
-				question: question,
-				answer:
-					"I'm sorry, I encountered an error while processing your question. Please try again.",
-				isLoading: false
-			};
+			// Update the first (loading) response with error
+			$aiResponse = $aiResponse.map((response, index) => 
+				index === 0 && response.question === question 
+					? { 
+						question: question, 
+						answer: "I'm sorry, I encountered an error while processing your question. Please try again.",
+						isLoading: false
+					}
+					: response
+			);
 		}
 	}
 
 	function askAnotherQuestion() {
 		searchTerm = '';
 		debouncedSearchTerm = '';
-		aiResponse = null;
+		// Don't clear aiResponse - keep existing responses
 	}
 </script>
 
@@ -199,14 +213,21 @@
 {/if}
 
 <main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center">
-	{#if $isAskMode && aiResponse}
-		<!-- AI Response Display -->
-		<AIResponseCard
-			question={aiResponse.question}
-			answer={aiResponse.answer}
-			isLoading={aiResponse.isLoading}
-			onaskAnother={askAnotherQuestion}
-		/>
+	{#if $isAskMode && $aiResponse.length > 0}
+		<!-- AI Response Display - Multiple Cards -->
+		<div class="space-y-10 sm:space-y-32 md:space-y-14">
+			{#each $aiResponse as response, index (response.question + index)}
+				<AIResponseCard
+					question={response.question}
+					answer={response.answer}
+					isLoading={response.isLoading}
+					onaskAnother={askAnotherQuestion}
+				/>
+			{/each}
+		</div>
+	{:else if $isAskMode && $aiResponse.length === 0}
+		<!-- Demo Card when in AI mode but no responses yet -->
+		<AIDemoCard onaskAnother={askAnotherQuestion} />
 	{:else if !$isAskMode && filteredProjects().length > 0}
 		{#if $isSimplifiedView}
 			<!-- Simplified View with fade transition -->

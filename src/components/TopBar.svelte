@@ -165,9 +165,9 @@
 							oninput={handleInput}
 							onkeypress={handleKeyPress}
 							placeholder={isAskMode
-								? 'AI mode, ask anything about me...'
+								? '> Ask anything...'
 								: '> ' + dynamicPlaceholder}
-							class="font-mono w-full inset-shadow-sm inset-shadow-zinc-500/20 bg-white/50 dark:bg-black/20 backdrop-blur-lg border-[0.5px] border-white/40 dark:border-white/10 rounded-full pl-4 pr-12 py-3 shadow-lg shadow-gray-600/30 dark:shadow-blue-500/30 hover:bg-white/20 dark:hover:bg-white/10 focus:bg-white/20 dark:focus:bg-white/10 hover:shadow-xl focus:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 focus:shadow-gray-500/30 dark:focus:shadow-blue-500/40 transition-all duration-300 ease-out text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none typewriter-placeholder"
+							class="font-mono w-full inset-shadow-sm inset-shadow-zinc-500/20 bg-white/50 dark:bg-black/20 backdrop-blur-lg border-[0.5px] border-white/40 dark:border-white/10 rounded-full pl-4 pr-12 py-3 shadow-lg shadow-gray-600/30 dark:shadow-blue-500/30 hover:bg-white/70 dark:hover:bg-white/10 focus:bg-white dark:focus:bg-white/10 hover:shadow-xl focus:shadow-xl hover:shadow-gray-500/30 dark:hover:shadow-blue-500/40 focus:shadow-gray-500/30 dark:focus:shadow-blue-500/40 transition-all duration-300 ease-out text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none typewriter-placeholder"
 						/>
 
 						{#if isAskMode}

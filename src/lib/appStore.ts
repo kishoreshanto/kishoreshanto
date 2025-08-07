@@ -24,7 +24,7 @@ export const debouncedSearchTerm = writable('');
 export const isAskMode = writable(false);
 export const showModal = writable(false);
 export const selectedComponent = writable<ComponentType | null>(null);
-export const aiResponse = writable<AIResponseState | null>(null);
+export const aiResponse = writable<AIResponseState[]>([]);
 export const isSimplifiedView = writable(false);
 
 // Projects store
@@ -77,7 +77,7 @@ export const actions = {
 	clearSearch: () => {
 		searchTerm.set('');
 		debouncedSearchTerm.set('');
-		aiResponse.set(null);
+		aiResponse.set([]);
 		if (searchDebounceTimer) {
 			clearTimeout(searchDebounceTimer);
 		}
@@ -88,7 +88,7 @@ export const actions = {
 		isAskMode.update((mode) => !mode);
 		searchTerm.set('');
 		debouncedSearchTerm.set('');
-		aiResponse.set(null);
+		// Don't clear aiResponse - keep existing responses when switching modes
 		if (searchDebounceTimer) {
 			clearTimeout(searchDebounceTimer);
 		}
@@ -107,33 +107,40 @@ export const actions = {
 
 	// AI actions
 	startAILoading: (question: string) => {
-		aiResponse.set({
-			question,
-			answer: '',
-			isLoading: true
-		});
+		aiResponse.update(responses => [
+			{
+				question,
+				answer: '',
+				isLoading: true
+			},
+			...responses
+		]);
 	},
 
 	completeAIResponse: (question: string, answer: string) => {
-		aiResponse.set({
-			question,
-			answer,
-			isLoading: false
-		});
+		aiResponse.update(responses => 
+			responses.map((response, index) => 
+				index === 0 && response.question === question 
+					? { question, answer, isLoading: false }
+					: response
+			)
+		);
 	},
 
 	errorAIResponse: (question: string, errorMessage: string) => {
-		aiResponse.set({
-			question,
-			answer: errorMessage,
-			isLoading: false
-		});
+		aiResponse.update(responses => 
+			responses.map((response, index) => 
+				index === 0 && response.question === question 
+					? { question, answer: errorMessage, isLoading: false }
+					: response
+			)
+		);
 	},
 
 	askAnotherQuestion: () => {
 		searchTerm.set('');
 		debouncedSearchTerm.set('');
-		aiResponse.set(null);
+		// Keep existing responses, don't clear them
 	},
 
 	// Project actions
