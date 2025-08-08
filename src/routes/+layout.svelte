@@ -7,6 +7,7 @@
 	import LeftPanel from '../components/LeftPanel.svelte';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 	import type { Snippet } from 'svelte';
+	import { onMount } from 'svelte';
 	import BottomSwitch from '../components/BottomSwitch.svelte';
 
 	interface Props {
@@ -18,6 +19,23 @@
 	injectSpeedInsights();
 
 	const page_title = data.page_title;
+
+	onMount(() => {
+		// Signal that the app is hydrated and initial UI is ready
+		if (typeof window !== 'undefined') {
+			window.dispatchEvent(new Event('app:ready'));
+			// Defensive: hide loader directly if still present
+			const el = document.getElementById('app-loader');
+			if (el) {
+				el.classList.add('hidden');
+				setTimeout(() => {
+					try {
+						el.remove();
+					} catch {}
+				}, 320);
+			}
+		}
+	});
 </script>
 
 <svelte:head>

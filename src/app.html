@@ -18,8 +18,123 @@
 		<meta http-equiv="x-dns-prefetch-control" content="on" />
 
 		%sveltekit.head%
+
+		<style>
+			/* Minimal, inline splash styles: no external CSS needed */
+			:root {
+				--bg: #0b0b0f;
+				--fg: #e5e7eb;
+				--muted: #9ca3af;
+				--accent: #ef4444; /* youtube-like red */
+			}
+			@media (prefers-color-scheme: light) {
+				:root {
+					--bg: #ffffff;
+					--fg: #0b0b0f;
+					--muted: #6b7280;
+				}
+			}
+			#app-loader {
+				position: fixed;
+				inset: 0;
+				z-index: 9999;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: var(--bg);
+				color: var(--fg);
+				transition: opacity 250ms ease, visibility 250ms ease;
+			}
+			#app-loader.hidden {
+				opacity: 0;
+				visibility: hidden;
+			}
+			#app-loader .progress {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 2px;
+				width: 20%;
+				background: var(--accent);
+				box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+				animation: progress-slide 1.2s ease-in-out infinite;
+			}
+			@keyframes progress-slide {
+				0% {
+					left: -20%;
+					width: 20%;
+				}
+				50% {
+					left: 35%;
+					width: 30%;
+				}
+				100% {
+					left: 100%;
+					width: 20%;
+				}
+			}
+			.loader-content {
+				display: grid;
+				gap: 16px;
+				place-items: center;
+				text-align: center;
+			}
+			.spinner {
+				width: 40px;
+				height: 40px;
+				border-radius: 9999px;
+				border: 3px solid var(--muted);
+				border-top-color: var(--fg);
+				animation: spin 0.9s linear infinite;
+			}
+			@keyframes spin {
+				to { transform: rotate(360deg); }
+			}
+			.brand {
+				font: 600 14px/1 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,
+					Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+				letter-spacing: 0.02em;
+				opacity: 0.9;
+			}
+		</style>
 	</head>
 	<body data-sveltekit-preload-data="hover">
+		<!-- App splash loader: shows instantly, hides after app signals ready -->
+		<div id="app-loader" aria-live="polite" aria-busy="true" role="status">
+			<div class="progress" aria-hidden="true"></div>
+			<div class="loader-content">
+				<div class="spinner" aria-hidden="true"></div>
+				<div class="brand">Loading…</div>
+			</div>
+		</div>
+		<noscript>
+			<style>
+				/* If JS is disabled, don't block content with the loader */
+				#app-loader { display: none !important; }
+			</style>
+		</noscript>
+
+		<script>
+			(function () {
+				function hideLoader() {
+					var el = document.getElementById('app-loader');
+					if (!el || el.classList.contains('hidden')) return;
+					el.classList.add('hidden');
+					// Remove from DOM after transition to free memory and avoid focus traps
+					setTimeout(function () { try { el.remove(); } catch (e) {} }, 320);
+				}
+
+				// Hide when the Svelte app signals readiness
+				window.addEventListener('app:ready', hideLoader, { once: true });
+				// Also hide when SvelteKit client starts (framework lifecycle event)
+				window.addEventListener('sveltekit:start', hideLoader, { once: true });
+
+				// Safety: auto-hide after a timeout in case the signal never fires
+				window.addEventListener('DOMContentLoaded', function () {
+					setTimeout(hideLoader, 15000);
+				});
+			})();
+		</script>
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
