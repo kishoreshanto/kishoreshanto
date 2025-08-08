@@ -25,7 +25,7 @@
 				--bg: #0b0b0f;
 				--fg: #e5e7eb;
 				--muted: #9ca3af;
-				--accent:#54AAD1; /* youtube-like red */
+				--accent: #54aad1; /* youtube-like red */
 			}
 			@media (prefers-color-scheme: light) {
 				:root {
@@ -43,7 +43,9 @@
 				justify-content: center;
 				background: var(--bg);
 				color: var(--fg);
-				transition: opacity 250ms ease, visibility 250ms ease;
+				transition:
+					opacity 250ms ease,
+					visibility 250ms ease;
 			}
 			#app-loader.hidden {
 				opacity: 0;
@@ -88,11 +90,23 @@
 				animation: spin 0.9s linear infinite;
 			}
 			@keyframes spin {
-				to { transform: rotate(360deg); }
+				to {
+					transform: rotate(360deg);
+				}
 			}
 			.brand {
-				font: 600 14px/1 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,
-					Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+				font:
+					600 14px/1 system-ui,
+					-apple-system,
+					Segoe UI,
+					Roboto,
+					Ubuntu,
+					Cantarell,
+					Noto Sans,
+					Helvetica Neue,
+					Arial,
+					'Apple Color Emoji',
+					'Segoe UI Emoji';
 				letter-spacing: 0.02em;
 				opacity: 0.9;
 			}
@@ -110,7 +124,9 @@
 		<noscript>
 			<style>
 				/* If JS is disabled, don't block content with the loader */
-				#app-loader { display: none !important; }
+				#app-loader {
+					display: none !important;
+				}
 			</style>
 		</noscript>
 
@@ -121,7 +137,11 @@
 					if (!el || el.classList.contains('hidden')) return;
 					el.classList.add('hidden');
 					// Remove from DOM after transition to free memory and avoid focus traps
-					setTimeout(function () { try { el.remove(); } catch (e) {} }, 320);
+					setTimeout(function () {
+						try {
+							el.remove();
+						} catch (e) {}
+					}, 320);
 				}
 
 				// Hide when the Svelte app signals readiness
