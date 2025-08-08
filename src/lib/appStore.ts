@@ -107,7 +107,7 @@ export const actions = {
 
 	// AI actions
 	startAILoading: (question: string) => {
-		aiResponse.update(responses => [
+		aiResponse.update((responses) => [
 			{
 				question,
 				answer: '',
@@ -118,9 +118,9 @@ export const actions = {
 	},
 
 	completeAIResponse: (question: string, answer: string) => {
-		aiResponse.update(responses => 
-			responses.map((response, index) => 
-				index === 0 && response.question === question 
+		aiResponse.update((responses) =>
+			responses.map((response, index) =>
+				index === 0 && response.question === question
 					? { question, answer, isLoading: false }
 					: response
 			)
@@ -128,9 +128,9 @@ export const actions = {
 	},
 
 	errorAIResponse: (question: string, errorMessage: string) => {
-		aiResponse.update(responses => 
-			responses.map((response, index) => 
-				index === 0 && response.question === question 
+		aiResponse.update((responses) =>
+			responses.map((response, index) =>
+				index === 0 && response.question === question
 					? { question, answer: errorMessage, isLoading: false }
 					: response
 			)

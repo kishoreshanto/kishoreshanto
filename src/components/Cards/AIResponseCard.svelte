@@ -28,9 +28,7 @@
 				<div class="space-y-4">
 					<!-- AI Badge -->
 					<div class="flex items-center gap-3 mb-6 select-none">
-						<div
-							class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-full p-2"
-						>
+						<div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-full p-2">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="30"
@@ -67,15 +65,17 @@
 
 					<!-- Answer -->
 					<div>
-						<div class="bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 dark:from-slate-800/50 dark:via-gray-800/50 dark:to-slate-800/50 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
+						<div
+							class="bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 dark:from-slate-800/50 dark:via-gray-800/50 dark:to-slate-800/50 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm"
+						>
 							<div class="flex items-start space-x-3 border-l-4 border-sky-600 pl-4 rounded-sm">
 								<div>
-								<p class="text-sm italic text-gray-600 dark:text-gray-300 leading-relaxed">
-									{question}
-								</p>
+									<p class="text-sm italic text-gray-600 dark:text-gray-300 leading-relaxed">
+										{question}
+									</p>
+								</div>
 							</div>
 						</div>
-					</div>
 						{#if isLoading}
 							<!-- Loading Animation -->
 							<div class="flex items-center gap-3 p-4">
