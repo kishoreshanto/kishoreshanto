@@ -1,0 +1,94 @@
+{
+	"publications": [
+		{
+			"title": "Vision Transformer Embedded Video Anomaly Detection with Attention Driven Recurrence",
+			"description": "Real-time anomaly detection using Vision Transformers in surveillance footage",
+			"venue": "Published in Elsevier \"Array\" (Q1 Journal)",
+			"type": "journal"
+		},
+		{
+			"title": "Combined SVM and GBDT Framework for snoRNA Disease Association Prediction",
+			"description": "Novel ML approach for predicting snoRNA-disease correlations",
+			"venue": "Published in Elsevier \"Computers in Biology and Medicine\" (Q1 Journal)",
+			"type": "journal"
+		},
+		{
+			"title": "Automated Fabric Defect Detection using Deep Learning",
+			"description": "YOLOv8-based solution for garment production quality control",
+			"venue": "Published in ACM (Conference ICCA — 2024)",
+			"type": "conference"
+		},
+		{
+			"title": "Ameliorating Random Forest through Data Clustering",
+			"description": "Enhanced classification performance using K-Means clustering",
+			"venue": "Published in IEEE Xplore (Conference ICCIT — 2023)",
+			"type": "conference"
+		}
+	],
+	"research": [
+		{
+			"title": "Upper Limb Motor Movement Classification Using EEG",
+			"description": "Deep learning approach for motor movement classification"
+		},
+		{
+			"title": "Deep Learning Password Strength Assessment",
+			"description": "GPT-2 based model for password analysis and security evaluation"
+		},
+		{
+			"title": "Energy Footprint Evaluation of Python and R",
+			"description": "Comprehensive energy consumption analysis for ML tasks"
+		}
+	],
+	"projects": [
+		{
+			"title": "Agri-Inn",
+			"description": "Three-tier farm management system with integrated marketplace",
+			"technologies": ["NodeJS", "Svelte 4", "TypeScript", "MongoDB"]
+		},
+		{
+			"title": "Plantify",
+			"description": "E-commerce platform promoting environmental sustainability",
+			"technologies": ["Svelte 4", "Python", "Flask", "REST API", "MongoDB"]
+		},
+		{
+			"title": "LandSphere",
+			"description": "Property management system for owners, buyers, and sellers",
+			"technologies": ["PHP", "HTML", "TailwindCSS", "JavaScript"]
+		}
+	],
+	"experience": [
+		{
+			"title": "Cloud Solutions Architect (Freelance)",
+			"description": "Scalable AWS infrastructure for Australian tech startup",
+			"technologies": ["AWS", "EC2", "VPC", "Load Balancing", "Auto Scaling"]
+		},
+		{
+			"title": "University Laboratory Assistant",
+			"description": "Supporting lab operations and student assessments at UIU",
+			"technologies": []
+		},
+		{
+			"title": "Youth Cyber Safety Survey Researcher",
+			"description": "Qualitative research and statistical analysis on digital well-being",
+			"technologies": []
+		}
+	],
+	"skills": [
+		{
+			"category": "Programming Languages",
+			"items": "C++, Java, Python, JavaScript/TypeScript"
+		},
+		{
+			"category": "AI & Machine Learning",
+			"items": "PyTorch, Computer Vision, LLM Engineering, Multi-agent Systems"
+		},
+		{
+			"category": "Web Development",
+			"items": "Svelte, Next.js, REST APIs, TailwindCSS, UI/UX Design"
+		},
+		{
+			"category": "Cloud & Systems",
+			"items": "AWS, Docker, Linux, System Design, VPC Architecture"
+		}
+	]
+}

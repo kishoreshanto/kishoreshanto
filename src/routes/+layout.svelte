@@ -47,7 +47,6 @@
 </svelte:head>
 
 <main>
-	<!-- Left panel goes here, modify the files to change content -->
 	<LeftPanel />
 
 	<div class="right-panel">
@@ -57,7 +56,6 @@
 
 		<BottomSwitch />
 
-		<!-- Right Panel Goes here, modify `+page.svelte` to change contents -->
 		{@render children()}
 	</div>
 </main>
