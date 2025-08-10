@@ -1,6 +1,6 @@
 <script lang="ts">
 	import simplifiedData from '$lib/simplified_data.json';
-	
+
 	const { publications, research, projects, experience, skills } = simplifiedData;
 </script>
 
