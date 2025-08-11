@@ -14,9 +14,9 @@
 		"format:check": "prettier --check ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.3.1",
-		"@sveltejs/kit": "^2.8.0",
-		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+		"@sveltejs/adapter-auto": "^6.0.2",
+		"@sveltejs/kit": "^2.27.3",
+		"@sveltejs/vite-plugin-svelte": "^5.1.1",
 		"@tailwindcss/postcss": "^4.0.0",
 		"@types/marked": "^5.0.2",
 		"postcss": "^8.4.41",
@@ -27,7 +27,7 @@
 		"svelte-check": "^4.0.0",
 		"tailwindcss": "^4.1.11",
 		"typescript": "^5.6.0",
-		"vite": "^5.4.10",
+		"vite": "^6.3.5",
 		"vite-plugin-compression": "^0.5.1"
 	},
 	"type": "module",
@@ -35,8 +35,5 @@
 		"@tailwindcss/vite": "^4.1.11",
 		"@vercel/speed-insights": "^1.1.0",
 		"marked": "^16.1.1"
-	},
-	"overrides": {
-		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6"
 	}
 }
