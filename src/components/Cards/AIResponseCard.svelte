@@ -97,9 +97,7 @@
 							</div>
 						{:else}
 							<div class="prose prose-gray dark:prose-invert max-w-none mt-4">
-								<div
-									class="text-gray-800 dark:text-gray-200 leading-relaxed text-left font-medium"
-								>
+								<div class="text-gray-800 dark:text-gray-200 leading-relaxed text-left font-medium">
 									{@html parsedAnswer}
 								</div>
 							</div>

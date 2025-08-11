@@ -101,7 +101,9 @@
 			<div class="space-y-2">
 				<div>
 					<span class="font-medium text-zinc-700 dark:text-zinc-300">DOI:</span>
-					<p class="text-zinc-600 dark:text-zinc-400 font-mono text-xs">10.1016/j.array.2025.100471</p>
+					<p class="text-zinc-600 dark:text-zinc-400 font-mono text-xs">
+						10.1016/j.array.2025.100471
+					</p>
 				</div>
 				<div>
 					<span class="font-medium text-zinc-700 dark:text-zinc-300">Duration:</span>
