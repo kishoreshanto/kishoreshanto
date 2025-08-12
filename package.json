@@ -1,6 +1,6 @@
 {
 	"name": "tinykishore",
-	"version": "0.0.1",
+	"version": "v1.0.0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
