@@ -32,71 +32,79 @@ export function clearAICache(): void {
 }
 
 /**
+ * Cache performance monitoring class for better encapsulation
+ */
+class CachePerformanceMonitor {
+	private cacheHits = 0;
+	private cacheMisses = 0;
+
+	incrementCacheHit(): void {
+		this.cacheHits++;
+	}
+
+	incrementCacheMiss(): void {
+		this.cacheMisses++;
+	}
+
+	getCacheHitRatio(): { hits: number; misses: number; ratio: number } {
+		const total = this.cacheHits + this.cacheMisses;
+		const ratio = total > 0 ? (this.cacheHits / total) * 100 : 0;
+
+		return {
+			hits: this.cacheHits,
+			misses: this.cacheMisses,
+			ratio: Math.round(ratio * 100) / 100
+		};
+	}
+
+	logCachePerformance(): void {
+		const perf = this.getCacheHitRatio();
+		console.group('🚀 AI Cache Performance');
+		console.log('✅ Cache hits:', perf.hits);
+		console.log('❌ Cache misses:', perf.misses);
+		console.log('📈 Hit ratio:', `${perf.ratio}%`);
+		console.groupEnd();
+	}
+
+	resetPerformanceCounters(): void {
+		this.cacheHits = 0;
+		this.cacheMisses = 0;
+		console.log('🔄 Cache performance counters reset');
+	}
+}
+
+// Create a singleton instance for the performance monitor
+const performanceMonitor = new CachePerformanceMonitor();
+
+/**
  * Get cache hit ratio for performance monitoring
  */
-let cacheHits = 0;
-let cacheMisses = 0;
-
 export function incrementCacheHit(): void {
-	cacheHits++;
+	performanceMonitor.incrementCacheHit();
 }
 
 export function incrementCacheMiss(): void {
-	cacheMisses++;
+	performanceMonitor.incrementCacheMiss();
 }
 
 export function getCacheHitRatio(): { hits: number; misses: number; ratio: number } {
-	const total = cacheHits + cacheMisses;
-	const ratio = total > 0 ? (cacheHits / total) * 100 : 0;
-
-	return {
-		hits: cacheHits,
-		misses: cacheMisses,
-		ratio: Math.round(ratio * 100) / 100
-	};
+	return performanceMonitor.getCacheHitRatio();
 }
 
 /**
  * Display cache performance statistics
  */
 export function logCachePerformance(): void {
-	const perf = getCacheHitRatio();
-	console.group('🚀 AI Cache Performance');
-	console.log('✅ Cache hits:', perf.hits);
-	console.log('❌ Cache misses:', perf.misses);
-	console.log('📈 Hit ratio:', `${perf.ratio}%`);
-	console.groupEnd();
+	performanceMonitor.logCachePerformance();
 }
 
 /**
  * Reset performance counters
  */
 export function resetPerformanceCounters(): void {
-	cacheHits = 0;
-	cacheMisses = 0;
-	console.log('🔄 Cache performance counters reset');
+	performanceMonitor.resetPerformanceCounters();
 }
 
-// Make cache utilities available globally in development
-
-declare global {
-	interface Window {
-		aiCacheUtils: {
-			logStats: typeof logCacheStats;
-			clearCache: typeof clearAICache;
-			logPerformance: typeof logCachePerformance;
-			resetCounters: typeof resetPerformanceCounters;
-		};
-	}
-}
-
-if (typeof window !== 'undefined' && import.meta.env.DEV) {
-	window.aiCacheUtils = {
-		logStats: logCacheStats,
-		clearCache: clearAICache,
-		logPerformance: logCachePerformance,
-		resetCounters: resetPerformanceCounters
-	};
-
-	console.log('🛠️ AI Cache utilities available as window.aiCacheUtils');
-}
+// Cache utilities for development debugging
+// These functions are exported and can be imported where needed
+// instead of polluting the global namespace

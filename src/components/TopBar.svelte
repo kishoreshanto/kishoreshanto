@@ -31,8 +31,8 @@
 
 	let currentPlaceholderIndex = 0;
 	let dynamicPlaceholder = $state('');
-	let typewriterInterval: number;
-	let cycleTimeout: number;
+	let typewriterInterval: ReturnType<typeof setInterval>;
+	let cycleTimeout: ReturnType<typeof setTimeout>;
 	let isTyping = $state(false);
 
 	function typewriterEffect(text: string, callback?: () => void) {
