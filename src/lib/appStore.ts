@@ -51,7 +51,7 @@ export const filteredProjects = derived(
 );
 
 // Debounce utility with cleanup
-let searchDebounceTimer: number;
+let searchDebounceTimer: ReturnType<typeof setTimeout>;
 
 export function debounceSearch(term: string, delay = 300) {
 	if (searchDebounceTimer) {

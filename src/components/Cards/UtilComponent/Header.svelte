@@ -1,17 +1,17 @@
 <script lang="ts">
-	import '$lib/constants';
+	import { RESEARCH_TYPES, type ResearchType } from '$lib/constants';
 
 	interface Props {
 		header_title: string;
 		header_subtitle: string;
-		research_type?: keyof typeof RESEARCH_TYPES;
+		research_type?: ResearchType;
 	}
 
 	let { header_title, header_subtitle, research_type }: Props = $props();
 </script>
 
 <div class="flex items-center justify-between">
-	{#if research_type == RESEARCH_TYPES.independent}
+	{#if research_type === 'independent'}
 		<div
 			class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300"
 		>
@@ -24,7 +24,7 @@
 			</svg>
 			{header_title}
 		</div>
-	{:else if research_type == RESEARCH_TYPES.q1_publication}
+	{:else if research_type === 'q1_journal'}
 		<div
 			class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300"
 		>
@@ -37,7 +37,7 @@
 			</svg>
 			{header_title}
 		</div>
-	{:else if research_type == RESEARCH_TYPES.project}
+	{:else if research_type === 'project'}
 		<div
 			class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-zinc-300 text-zinc-800 dark:bg-emerald-900/30 dark:text-emerald-300"
 		>
@@ -50,7 +50,7 @@
 			</svg>
 			Team project
 		</div>
-	{:else if research_type == RESEARCH_TYPES.preprint}
+	{:else if research_type === 'preprint'}
 		<div
 			class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300"
 		>
@@ -63,7 +63,7 @@
 			</svg>
 			{header_title}
 		</div>
-	{:else if research_type == RESEARCH_TYPES.group_research}
+	{:else if research_type === 'group_research'}
 		<div
 			class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300"
 		>
@@ -74,7 +74,7 @@
 			</svg>
 			{header_title}
 		</div>
-	{:else if research_type == RESEARCH_TYPES.q2_journal}
+	{:else if research_type === 'q2_journal'}
 		<div
 			class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
 		>
@@ -87,7 +87,7 @@
 			</svg>
 			{header_title}
 		</div>
-	{:else if research_type == RESEARCH_TYPES.q3_journal}
+	{:else if research_type === 'q3_journal'}
 		<div
 			class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
 		>
@@ -100,7 +100,7 @@
 			</svg>
 			{header_title}
 		</div>
-	{:else if research_type == RESEARCH_TYPES.q4_journal}
+	{:else if research_type === 'q4_journal'}
 		<div
 			class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-900/30 dark:text-slate-300"
 		>
@@ -113,7 +113,7 @@
 			</svg>
 			{header_title}
 		</div>
-	{:else if research_type == RESEARCH_TYPES.awarded}
+	{:else if research_type === 'awarded'}
 		<div
 			class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300"
 		>
@@ -126,7 +126,7 @@
 			</svg>
 			{header_title}
 		</div>
-	{:else if research_type == RESEARCH_TYPES.conference_publication}
+	{:else if research_type === 'conference_publication'}
 		<div
 			class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-300"
 		>
@@ -139,7 +139,7 @@
 			</svg>
 			{header_title}
 		</div>
-	{:else if research_type == RESEARCH_TYPES.other}
+	{:else if research_type === 'other'}
 		<span class="mr-1">Other</span>
 	{/if}
 

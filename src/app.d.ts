@@ -8,8 +8,6 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
-
-	var RESEARCH_TYPES: { [key: string]: string };
 }
 
 export {};
