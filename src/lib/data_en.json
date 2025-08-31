@@ -11,11 +11,11 @@
 	"titles": ["Researcher", "Developer"],
 	"description": "Actively seeking a Master's/PhD opportunity to contribute to pioneering research.",
 	"interest_and_passion": [
-		"🧠 Deep Learning",
-		"👁️ Computer Vision",
-		"📈 Autoregressive and Large Language Models",
-		"🤖 Multi-agent CoT Models",
-		"🩺 Biomedical Signal Processing"
+		"Deep Learning",
+		"Computer Vision",
+		"LLMs and Multi-agent CoT Models",
+		"Biomedical Signal Processing",
+		"Computational Neuroscience"
 	],
 	"language": ["🇺🇸 English (CEFR C1)", "🇫🇷 French (Beginner)", "🇧🇩 Bengali (Native)"],
 	"current_city": "BD DAC",
