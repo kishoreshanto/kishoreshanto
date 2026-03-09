@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { marked } from 'marked';
 
 	interface Props {
@@ -10,13 +11,32 @@
 
 	let { question, answer, isLoading = false, onaskAnother }: Props = $props();
 
-	// Parse markdown to HTML using Svelte 5 runes
-	const parsedAnswer = $derived(
-		marked(answer || '', {
-			breaks: true, // Convert line breaks to <br>
-			gfm: true // Enable GitHub Flavored Markdown
-		})
+	const rawHtml = $derived<string>(
+		marked.parse(answer || '', {
+			breaks: true,
+			gfm: true,
+			async: false
+		}) as string
 	);
+
+	let parsedAnswer = $state('');
+	const domPurifyPromise = browser ? import('dompurify') : null;
+
+	$effect(() => {
+		if (!rawHtml) {
+			parsedAnswer = '';
+			return;
+		}
+
+		if (!browser) {
+			parsedAnswer = '';
+			return;
+		}
+
+		domPurifyPromise?.then(({ default: DOMPurify }) => {
+			parsedAnswer = DOMPurify.sanitize(rawHtml);
+		});
+	});
 </script>
 
 <section class="scroll-mt-16 focus-visible:outline-none">
