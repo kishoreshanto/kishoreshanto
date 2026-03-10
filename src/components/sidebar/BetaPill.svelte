@@ -4,8 +4,12 @@
 	import data from '$lib/data_en.json';
 
 	const version: string | undefined = data.version;
+
+	const showVersion: boolean | undefined = data.show_version;
 </script>
 
+
+{#if version && showVersion}
 <div
 	class="flex select-none items-center text-xs bg-amber-200 w-fit pl-0.5 pr-2 py-0.5 rounded-full font-medium text text-amber-600 dark:bg-amber-900/30 dark:text-amber-300 border border-amber-300"
 >
@@ -22,3 +26,4 @@
 	</svg>
 	{version}
 </div>
+{/if}
