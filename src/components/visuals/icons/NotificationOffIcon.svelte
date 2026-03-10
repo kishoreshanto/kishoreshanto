@@ -7,34 +7,42 @@
 	import data from '$lib/data_en.json';
 
 	const show_inactive: boolean = data.show_inactive;
-	let inactive_start: number | undefined;
-	let inactive_end: number | undefined;
-	let current_hour: number | undefined;
+	const inactive_start = show_inactive ? data.inactive_start_time : undefined;
+	const inactive_end = show_inactive ? data.inactive_end_time : undefined;
 
-	if (show_inactive && current_time) {
-		inactive_start = data.inactive_start_time;
-		inactive_end = data.inactive_end_time;
-		current_hour = parseInt(current_time.split(':')[0]);
-	} else {
-		current_hour = undefined;
-	}
-
-	let incorrect_time = $state<boolean>(false);
-	let inactive_status = $state<boolean>(false);
-
-	$effect.pre(() => {
-		if (inactive_start && inactive_end) {
-			incorrect_time = !(
-				inactive_start >= 0 &&
-				inactive_start <= 24 &&
-				inactive_end >= 0 &&
-				inactive_end <= 24
-			);
+	const current_hour = $derived.by(() => {
+		if (!show_inactive || !current_time) {
+			return undefined;
 		}
 
-		if (inactive_start && inactive_end && !incorrect_time && current_hour) {
-			inactive_status = current_hour >= inactive_start && current_hour < inactive_end;
+		const parsed_hour = Number.parseInt(current_time.split(':')[0], 10);
+		return Number.isNaN(parsed_hour) ? undefined : parsed_hour;
+	});
+
+	const incorrect_time = $derived.by(() => {
+		if (inactive_start === undefined || inactive_end === undefined) {
+			return false;
 		}
+
+		return !(
+			inactive_start >= 0 &&
+			inactive_start <= 24 &&
+			inactive_end >= 0 &&
+			inactive_end <= 24
+		);
+	});
+
+	const inactive_status = $derived.by(() => {
+		if (
+			inactive_start === undefined ||
+			inactive_end === undefined ||
+			incorrect_time ||
+			current_hour === undefined
+		) {
+			return false;
+		}
+
+		return current_hour >= inactive_start && current_hour < inactive_end;
 	});
 </script>
 
