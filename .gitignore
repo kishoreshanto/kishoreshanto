@@ -40,6 +40,7 @@ yarn-error.log*
 # Misc
 *.local
 *.log
+/.misc/
 
 # Lock files (if generated locally and not committed)
 package-lock.json
