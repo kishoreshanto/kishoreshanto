@@ -24,7 +24,7 @@ const config = {
 				'script-src': ['self'],
 				'style-src': ['self', 'unsafe-inline', 'fonts.googleapis.com'],
 				'font-src': ['self', 'fonts.gstatic.com'],
-				'connect-src': ['self', 'router.huggingface.co', 'vitals.vercel-insights.com']
+				'connect-src': ['self', 'vitals.vercel-insights.com']
 			}
 		}
 	}
