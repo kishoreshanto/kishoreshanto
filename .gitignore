@@ -1,13 +1,47 @@
-.DS_Store
-node_modules
-/build
-/.svelte-kit
-/package
+# Node modules
+node_modules/
+
+# Build outputs
+/build/
+/dist/
+/.svelte-kit/
+/package/
+
+# Environment files
 .env
 .env.*
 !.env.example
+
+# Vite temporary files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-.idea
-.vscode
-/dist
+
+# IDE/editor settings
+.idea/
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional npm cache directory
+.npm
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Svelte cache
+.svelte-cache
+
+# Misc
+*.local
+*.log
+
+# Lock files (if generated locally and not committed)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
