@@ -1,273 +1,87 @@
 <script lang="ts">
-	import Modal from '../components/Modal.svelte';
-	import UniversityUiuModal from '../components/modals/UniversityUIUModal.svelte';
-	import PasswordCrackResearchModal from '../components/modals/PasswordCrackResearchModal.svelte';
-	import GarmentDefectResearchModal from '../components/modals/GarmentDefectResearchModal.svelte';
-	import GbdtsvmModal from '../components/modals/GBDTSVMModal.svelte';
-	import VadModal from '../components/modals/VADModal.svelte';
-	import EegModal from '../components/modals/EEGModal.svelte';
-	import EegResearch from '../components/Cards/EEGResearch.svelte';
-	import UniversityUIU from '../components/Cards/UniversityUIU.svelte';
-	import PasswordCrackResearch from '../components/Cards/PasswordCrackResearch.svelte';
-	import VADResearch from '../components/Cards/VADResearch.svelte';
-	import GBDTSVMResearch from '../components/Cards/GBDTSVMResearch.svelte';
-	import GarmentDefectResearch from '../components/Cards/GarmentDefectResearch.svelte';
-	import RFWOCResearch from '../components/Cards/RFWOCResearch.svelte';
-	import LandSphereProject from '../components/Cards/LandSphereProject.svelte';
-	import PlantifyProject from '../components/Cards/PlantifyProject.svelte';
-	import AgriInnProject from '../components/Cards/AgriInnProject.svelte';
-	import AIResponseCard from '../components/Cards/AIResponseCard.svelte';
-	import AIDemoCard from '../components/Cards/AIDemoCard.svelte';
-	import NotFoundCard from '../components/NotFoundCard.svelte';
-	import TopBar from '../components/TopBar.svelte';
-	import AWSWork from '../components/Cards/AWSWork.svelte';
-	import LabAssistantWork from '../components/Cards/LabAssistantWork.svelte';
-	import YouthCyberSafetySurvey from '../components/Cards/YouthCyberSafetySurvey.svelte';
-	import projectsData from '$lib/data_card.json';
-	import globalData from '$lib/data_en.json';
-	import { generateAIResponse } from '$lib/aiService';
-	import EnergyFootprint from '../components/Cards/EnergyFootprint.svelte';
-	import EnergyFootprintModal from '../components/modals/EnergyFootprintModal.svelte';
-	import TimelineGrantChart from '../components/modals/TimelineGrantChart.svelte';
-	import SimplifledRightPanel from '../components/SimplifledRightPanel.svelte';
-	import { isSimplifiedView, isAskMode, aiResponse } from '$lib/appStore';
-
-	let showModal = $state(false);
-	let showTimelineModal = $state(false);
-	let selectedComponent: any = $state(null);
-	let searchTerm = $state('');
-	let debouncedSearchTerm = $state('');
-	let searchDebounceTimer: ReturnType<typeof setTimeout>;
-
-	// Component mapping
-	const componentMap: { [key: string]: any } = {
-		EegResearch,
-		UniversityUIU,
-		VADResearch,
-		GBDTSVMResearch,
-		GarmentDefectResearch,
-		RFWOCResearch,
-		LandSphereProject,
-		PlantifyProject,
-		AgriInnProject,
-		PasswordCrackResearch,
-		EnergyFootprint,
-		AWSWork,
-		LabAssistantWork,
-		YouthCyberSafetySurvey
-	};
-
-	// Modal mapping
-	const modalMap: { [key: string]: any } = {
-		EegModal,
-		UniversityUiuModal,
-		VadModal,
-		GbdtsvmModal,
-		GarmentDefectResearchModal,
-		PasswordCrackResearchModal,
-		EnergyFootprintModal
-	};
-
-	// Transform JSON data to include actual component references
-	const projects = projectsData.projects
-		.filter((project) => project.show)
-		.map((project) => ({
-			...project,
-			component: componentMap[project.component],
-			modal: project.modal ? modalMap[project.modal] : null
-		}));
-
-	// Using Svelte 5 $derived.by rune for reactive computations with debounced search
-	const filteredProjects = $derived(() => {
-		if ($isAskMode || !debouncedSearchTerm.trim()) return projects;
-		const search = debouncedSearchTerm.toLowerCase();
-		return projects.filter(
-			(project) =>
-				project.title.toLowerCase().includes(search) ||
-				project.keywords.toLowerCase().includes(search) ||
-				project.date.toLowerCase().includes(search)
-		);
-	});
-
-	function openModal(component: any) {
-		// Only open modal if global modal setting is enabled
-		if (!globalData.modal) {
-			return;
-		}
-		selectedComponent = component;
-		showModal = true;
-	}
-
-	function closeModal() {
-		showModal = false;
-		selectedComponent = null;
-	}
-
-	function openTimelineModal() {
-		// Only open modal if global modal setting is enabled
-		if (!globalData.modal) {
-			return;
-		}
-		showTimelineModal = true;
-	}
-
-	function closeTimelineModal() {
-		showTimelineModal = false;
-	}
-
-	function clearSearch() {
-		searchTerm = '';
-		debouncedSearchTerm = '';
-		// Only clear AI responses when explicitly clearing search (not when switching modes)
-		if ($isAskMode) {
-			$aiResponse = [];
-		}
-		if (searchDebounceTimer) {
-			clearTimeout(searchDebounceTimer);
-		}
-	}
-
-	// Debounced search function for better performance (300ms delay)
-	function debounceSearch(term: string) {
-		if (searchDebounceTimer) {
-			clearTimeout(searchDebounceTimer);
-		}
-
-		searchDebounceTimer = setTimeout(() => {
-			debouncedSearchTerm = term;
-		}, 300);
-	}
-
-	function toggleMode() {
-		isAskMode.update((mode) => !mode);
-		searchTerm = '';
-		debouncedSearchTerm = '';
-		// Don't clear aiResponse - keep existing responses when switching modes
-		if (searchDebounceTimer) {
-			clearTimeout(searchDebounceTimer);
-		}
-	}
-
-	async function handleAskQuestion(question: string) {
-		if (!question.trim()) return;
-
-		// Clear the input field immediately after asking
-		searchTerm = '';
-
-		// Add loading state to the beginning of responses array
-		$aiResponse = [
-			{
-				question: question,
-				answer: '',
-				isLoading: true
-			},
-			...$aiResponse
-		];
-
-		try {
-			const answer = await generateAIResponse(question);
-			// Update the first (loading) response with the actual answer
-			$aiResponse = $aiResponse.map((response, index) =>
-				index === 0 && response.question === question
-					? { question: question, answer: answer, isLoading: false }
-					: response
-			);
-		} catch (error) {
-			console.error('Error generating AI response:', error);
-			// Update the first (loading) response with error
-			$aiResponse = $aiResponse.map((response, index) =>
-				index === 0 && response.question === question
-					? {
-							question: question,
-							answer:
-								"I'm sorry, I encountered an error while processing your question. Please try again.",
-							isLoading: false
-						}
-					: response
-			);
-		}
-	}
-
-	function askAnotherQuestion() {
-		searchTerm = '';
-		debouncedSearchTerm = '';
-		// Don't clear aiResponse - keep existing responses
-	}
+	import IntroSection from '$component/hero-page/IntroSection.svelte';
 </script>
 
-{#if !$isSimplifiedView}
-	<div class="fade-in">
-		<TopBar
-			{searchTerm}
-			isAskMode={$isAskMode}
-			onclearSearch={clearSearch}
-			onsearchInput={(event) => {
-				searchTerm = event.detail.value;
-				if (!$isAskMode) {
-					debounceSearch(event.detail.value);
-				}
-			}}
-			onaskQuestion={handleAskQuestion}
-			ontoggleMode={toggleMode}
-		/>
-	</div>
-{/if}
+<main class="container mx-auto mt-12 mb-8 px-6 py-8 md:px-0">
+	<!-- Intro Section -->
+	<IntroSection />
+	<hr class="my-8 w-full border-amber-800/70 pb-2" />
 
-<main class="space-y-10 py-20 sm:space-y-32 sm:py-32 md:space-y-14 bg-fixed bg-cover bg-center">
-	{#if $isAskMode && $aiResponse.length > 0}
-		<!-- AI Response Display - Multiple Cards -->
-		<div class="space-y-10 sm:space-y-32 md:space-y-14">
-			{#each $aiResponse as response, index (response.question + index)}
-				<AIResponseCard
-					question={response.question}
-					answer={response.answer}
-					isLoading={response.isLoading}
-					onaskAnother={askAnotherQuestion}
-				/>
-			{/each}
+	<div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+		<div id="left-panel"></div>
+		<div id="right-panel-skillsets" class="flex flex-col rounded-3xl bg-[#f9d8b0] p-6 gap-4">
+			<h1 class="text-center font-lora text-xl font-bold text-amber-800 md:text-3xl">
+				Things that I can do
+			</h1>
+			<ul class="font-ivy-text text-ivory-400">
+				<li>
+					<span class="font-bold">Programming Languages:</span> Python, C, C++, Java, TypeScript,
+					JavaScript, SQL, PHP, R, C#/.NET Razor Pages, Swift, MIPS
+				</li>
+				<li>
+					<span class="font-bold">Core Software Engineering:</span> OOP (encapsulation/abstraction/inheritance/polymorphism), class design & abstraction tradeoffs, system design fundamentals, build toolchains (CMake + Make)
+				</li>
+				<li>
+					<span class="font-bold">Full-Stack Web Engineering:</span> SvelteKit, Node.js, npm (dependency/devDependency resolution), SSR/CSR/SPA/hybrid rendering, routing/adapters/hydration/pre-rendering, Tailwind CSS, HTML, CSS, state management, Prettier, Vitest, jQuery
+				</li>
+				<li>
+					<span class="font-bold">Backend & API Development:</span> REST API design/implementation, SvelteKit server endpoints, Flask APIs for ML inference, open vs restricted APIs, CORS
+				</li>
+				<li>
+					<span class="font-bold">Authentication & Security Foundations:</span> JWT auth, secure cookies (HttpOnly/Secure/SameSite), bcrypt password hashing/verification, RBAC/role-based authorization, OAuth/social login (Google sign-in), auth guards/middleware patterns
+				</li>
+				<li>
+					<span class="font-bold">Databases & Data Modeling:</span> MongoDB Atlas, Supabase Postgres, MySQL, schema design, Supabase RLS, SQL-first data access, Mongoose ODM, Drizzle (via SvelteKit template)
+				</li>
+				<li>
+					<span class="font-bold">Cloud, Deployment & Hosting:</span> Vercel deployments, AWS (EC2/VPS, VPC, load balancing, auto-scaling, S3, Lambda, IAM ), hosting/server fundamentals (XAMPP)
+				</li>
+				<li>
+					<span class="font-bold">Containers & Local Dev Environments:</span> Docker CLI, Docker Desktop, Dockerfiles, docker-compose/YAML multi-service stacks, containerized databases for dev workflows
+				</li>
+				<li>
+					<span class="font-bold">Version Control, CI/CD & Collaboration:</span> Git, GitHub (PRs, reviews, issues, releases, branch protection), GitHub Actions CI/CD
+				</li>
+				<li>
+					<span class="font-bold">AI/ML/DL Frameworks & Tooling:</span> PyTorch, torchvision, scikit-learn, NumPy, Pandas, SciPy, matplotlib, OpenCV, timm (pretrained ViT), TensorFlow/Keras, MNE (EEG)
+				</li>
+				<li>
+					<span class="font-bold">ML/DL Environments & Productivity:</span> pip, uv, virtual environments/reproducible workflows, Jupyter Notebook, Google Colab, Kaggle, JetBrains Datalore, GPU utilization awareness (CUDA/CPU↔GPU transfers)
+				</li>
+				<li>
+					<span class="font-bold">Computer Vision & Video Analytics:</span> video anomaly detection pipelines, image defect detection (fabric tear/torn), MP4 video handling, CV preprocessing/feature extraction, model serving via Flask APIs
+				</li>
+				<li>
+					<span class="font-bold">Deep Learning Architectures:</span> Vision Transformers (ViT; e.g., vit_small_patch16_224), attention/multi-head attention, SSTAF-style transformer concepts, CNNs, ResNet50, MLPs, recurrent models (SRU++/RNN-family)
+				</li>
+				<li>
+					<span class="font-bold">Classical ML & Statistical Models:</span> Random Forest, Decision Trees (ID3/C4.5/CART), GBDT, SVM (RBF), K-Means, KNN, Linear Regression
+				</li>
+				<li>
+					<span class="font-bold">Evaluation, Validation & Reproducibility:</span> Accuracy/Precision/Recall/F1, AUROC/AUC, AUPRC/PRC, MSE, K-fold/5-fold CV, LOSO CV, grid search tuning, Git/GitHub for reproducibility
+				</li>
+				<li>
+					<span class="font-bold">Efficiency & Profiling (Research):</span> runtime benchmarking, energy measurement (J/mJ/W), carbon footprint/CO2e reporting, memory/resource usage profiling, powermetrics (macOS), powerstat (Linux), HWiNFO (Windows)
+				</li>
+				<li>
+					<span class="font-bold">Data Formats:</span> JSON, CSV, MP4
+				</li>
+				<li>
+					<span class="font-bold">Publications & Scientific Writing:</span> LaTeX, custom .cls/.sty authoring, latexmk + lualatex, IEEE/ACM/Elsevier template workflows, Overleaf collaboration
+				</li>
+				<li>
+					<span class="font-bold">Research Areas & Publications:</span> automated surveillance video anomaly detection, snoRNA–disease similarity prediction, garment defect detection via camera, Random Forest + clustering hybrid (+~10% performance), EEG decoding/modeling
+				</li>
+				<li>
+					<span class="font-bold">Desktop & Networking:</span> JavaFX desktop apps (UI + CSS), Java peer-to-peer networking
+				</li>
+				<li>
+					<span class="font-bold">Operating Systems & Platforms:</span> Linux, macOS, Android Studio, Maven, Gradle/Kotlin, Xcode, AOSP build/compile + device customization
+				</li>
+				<li>
+					<span class="font-bold">UI/UX Implementation Practices:</span> Figma layouts/wiring, Material Design 3 usage, Apple HIG awareness, “Refactoring UI” principles
+				</li>
+			</ul>
 		</div>
-	{:else if $isAskMode && $aiResponse.length === 0}
-		<!-- Demo Card when in AI mode but no responses yet -->
-		<AIDemoCard onaskAnother={askAnotherQuestion} />
-	{:else if !$isAskMode && filteredProjects().length > 0}
-		{#if $isSimplifiedView}
-			<!-- Simplified View with fade transition -->
-			{#key 'simplified'}
-				<div class="fade-in">
-					<SimplifledRightPanel />
-				</div>
-			{/key}
-		{:else}
-			<!-- Regular Project Cards with fade transition -->
-			{#key 'detailed'}
-				<div class="fade-in space-y-10 sm:space-y-32 md:space-y-14">
-					{#each filteredProjects() as project (project.id)}
-						{@const Component = project.component}
-						<Component
-							date={project.date}
-							onshowmodal={globalData.modal && project.modal
-								? () => openModal(project.modal)
-								: undefined}
-						/>
-					{/each}
-				</div>
-			{/key}
-		{/if}
-	{:else if !$isAskMode}
-		<!-- No search results found -->
-		<NotFoundCard onclearSearch={clearSearch} />
-	{/if}
+	</div>
 </main>
-
-{#if showModal && selectedComponent}
-	{@const ModalComponent = selectedComponent}
-	<Modal onclose={closeModal}>
-		<ModalComponent />
-	</Modal>
-{/if}
-
-{#if showTimelineModal}
-	<Modal onclose={closeTimelineModal}>
-		<TimelineGrantChart />
-	</Modal>
-{/if}

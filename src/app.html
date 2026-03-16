@@ -19,7 +19,7 @@
 
 		%sveltekit.head%
 
-		<style>
+		<!-- <style>
 			/* Minimal, inline splash styles: no external CSS needed */
 			:root {
 				--bg: #ffffff;
@@ -110,11 +110,12 @@
 				letter-spacing: 0.02em;
 				opacity: 0.9;
 			}
-		</style>
+		</style> -->
 	</head>
+
 	<body data-sveltekit-preload-data="hover">
 		<!-- App splash loader: shows instantly, hides after app signals ready -->
-		<div id="app-loader" aria-live="polite" aria-busy="true" role="status">
+		<!-- <div id="app-loader" aria-live="polite" aria-busy="true" role="status">
 			<div class="progress" aria-hidden="true"></div>
 			<div class="loader-content">
 				<div class="spinner" aria-hidden="true"></div>
@@ -128,9 +129,9 @@
 					display: none !important;
 				}
 			</style>
-		</noscript>
+		</noscript> -->
 
-		<script>
+		<!-- <script>
 			(function () {
 				function hideLoader() {
 					var el = document.getElementById('app-loader');
@@ -151,10 +152,10 @@
 
 				// Safety: auto-hide after a timeout in case the signal never fires
 				window.addEventListener('DOMContentLoaded', function () {
-					setTimeout(hideLoader, 15000);
+					setTimeout(hideLoader, 1500);
 				});
 			})();
-		</script>
+		</script> -->
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
