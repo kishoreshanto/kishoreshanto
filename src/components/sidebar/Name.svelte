@@ -5,6 +5,7 @@
 
 	const name: string = data.name;
 	const show_legal_name: boolean = data.show_leagal_name;
+	const show_ipa: boolean | undefined = data.show_ipa;
 
 	let first_name = $state<string>('');
 	let last_name = $state<string>('');
@@ -41,7 +42,9 @@
 			{#if show_legal_name}
 				{data.legal_ipa}
 			{:else}
-				{data.ipa_name}
+				{#if show_ipa}
+					{data.ipa_name}
+				{/if}
 			{/if}
 		</h1>
 	</div>

@@ -9,12 +9,12 @@
 // - In-memory cache with configurable TTL
 // - Optional localStorage persistence for cross-session caching
 //
-// Environment Requirements:
-// - VITE_HUGGINGFACE_INFERENCE_API_KEY: Your Hugging Face API token
+// The AI API call is handled by a server-side endpoint (/api/ai)
+// to keep the API key private. See src/routes/api/ai/+server.ts
 
 import systemPromptMd from './system-prompt.md?raw';
-import dataConfig from './data_en.json';
 import { generateFallbackResponse } from './aiFallback'; // Fallback response generator
+import dataConfig from './data_en.json';
 
 // Import cache performance tracking (only in development)
 import {
@@ -29,30 +29,16 @@ if (import.meta.env.DEV) {
 	incrementCacheMiss = devIncrementCacheMiss;
 }
 
-// Interface for Hugging Face API response
-interface HuggingFaceResponse {
-	id: string;
-	object: string;
-	created: number;
-	model: string;
-	choices: Array<{
+// Response shape from the server-side AI proxy
+interface AIProxyResponse {
+	choices?: Array<{
 		index: number;
 		message: {
 			role: string;
 			content: string;
 		};
-		logprobs: unknown;
-		finish_reason: string;
 	}>;
-	usage: {
-		queue_time: number;
-		prompt_tokens: number;
-		prompt_time: number;
-		completion_tokens: number;
-		completion_time: number;
-		total_tokens: number;
-		total_time: number;
-	};
+	error?: string;
 }
 
 // Cache configuration
@@ -240,53 +226,24 @@ if (typeof window !== 'undefined') {
 }
 
 /**
- * Query Hugging Face API using the chat completions endpoint
+ * Call the server-side AI proxy endpoint.
+ * The API key is kept server-side and never exposed to the client.
  */
-async function queryHuggingFace(
+async function queryAIProxy(
 	messages: Array<{ role: string; content: string }>
-): Promise<HuggingFaceResponse> {
-	const HF_TOKEN = import.meta.env.VITE_HUGGINGFACE_INFERENCE_API_KEY;
+): Promise<AIProxyResponse> {
+	const response = await fetch('/api/ai', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ messages })
+	});
 
-	if (!HF_TOKEN) {
-		throw new Error('Hugging Face API token not found in environment variables');
+	if (!response.ok) {
+		const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+		throw new Error(errorData.error || `Server error (status ${response.status})`);
 	}
 
-	const controller = new AbortController();
-	const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
-
-	try {
-		const response = await fetch('https://router.huggingface.co/v1/chat/completions', {
-			headers: {
-				Authorization: `Bearer ${HF_TOKEN}`,
-				'Content-Type': 'application/json'
-			},
-			method: 'POST',
-			body: JSON.stringify({
-				messages,
-				model: dataConfig.AI_model,
-				stream: false,
-				max_tokens: 300,
-				temperature: 0.7
-			}),
-			signal: controller.signal
-		});
-
-		clearTimeout(timeoutId);
-
-		if (!response.ok) {
-			const errorText = await response.text();
-			throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
-		}
-
-		const result = await response.json();
-		return result;
-	} catch (error) {
-		clearTimeout(timeoutId);
-		if (error instanceof Error && error.name === 'AbortError') {
-			throw new Error('Request timeout - please try again');
-		}
-		throw error;
-	}
+	return response.json();
 }
 
 /**
@@ -315,7 +272,7 @@ export async function generateAIResponse(question: string): Promise<string> {
 		];
 
 		console.log(`🌐 Making AI API request for: ${question.substring(0, 50)}...`);
-		const response = await queryHuggingFace(messages);
+		const response = await queryAIProxy(messages);
 
 		if (response.choices?.[0]?.message) {
 			const aiResponse = response.choices[0].message.content;

@@ -4,8 +4,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
-		"build:analyze": "vite build && npx serve dist -s",
+		"build": "svelte-kit sync && vite build",
+		"build:analyze": "svelte-kit sync && vite build && npx serve dist -s",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -37,6 +37,7 @@
 	"dependencies": {
 		"@tailwindcss/vite": "^4.1.11",
 		"@vercel/speed-insights": "^1.2.0",
+		"dompurify": "^3.3.2",
 		"marked": "^16.1.1"
 	}
 }

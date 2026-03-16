@@ -19,10 +19,10 @@
 </svg>
 
 <style>
-	.radial-glow {
+	/* .radial-glow {
 		animation: gentle-pulse 6s ease-in-out infinite;
-	}
-
+	} */
+/* 
 	@keyframes gentle-pulse {
 		0%,
 		100% {
@@ -33,17 +33,17 @@
 			opacity: 1;
 			transform: scale(1.3);
 		}
-	}
-
+	} */
+/* 
 	.glow-stop-1 {
 		animation: color-shift-1 8s ease-in-out infinite;
 	}
 
 	.glow-stop-2 {
 		animation: color-shift-2 8s ease-in-out infinite;
-	}
+	} */
 
-	@keyframes color-shift-1 {
+	/* @keyframes color-shift-1 {
 		0%,
 		100% {
 			stop-color: rgba(56, 189, 248, 0.4);
@@ -54,9 +54,9 @@
 		66% {
 			stop-color: rgba(56, 189, 248, 0.35);
 		}
-	}
+	} */
 
-	@keyframes color-shift-2 {
+	/* @keyframes color-shift-2 {
 		0%,
 		100% {
 			stop-color: rgba(0, 71, 255, 0.09);
@@ -67,5 +67,5 @@
 		66% {
 			stop-color: rgba(0, 71, 255, 0.06);
 		}
-	}
+	} */
 </style>

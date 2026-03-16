@@ -50,27 +50,6 @@ export default defineConfig({
 				manualChunks: {
 					// Vendor chunk for external dependencies: svelte, marked, @vercel/speed-insights/sveltekit
 					vendor: ['svelte', '@vercel/speed-insights/sveltekit']
-				},
-
-				// Optimize chunk file names for better caching
-				chunkFileNames: (chunkInfo) => {
-					// Use content hash for better caching
-					return `chunks/[name]-[hash].js`;
-				},
-
-				// Optimize asset file names
-				assetFileNames: (assetInfo) => {
-					if (!assetInfo.name) return 'assets/[name]-[hash][extname]';
-
-					const info = assetInfo.name.split('.');
-					const ext = info[info.length - 1];
-					if (/\.(css)$/.test(assetInfo.name)) {
-						return `css/[name]-[hash].${ext}`;
-					}
-					if (/\.(png|jpg|jpeg|gif|svg|ico|webp)$/.test(assetInfo.name)) {
-						return `images/[name]-[hash].${ext}`;
-					}
-					return `assets/[name]-[hash].${ext}`;
 				}
 			}
 		},

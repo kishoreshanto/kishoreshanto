@@ -16,7 +16,7 @@
 				month: string;
 				year: string;
 		  }
-		| undefined = parseDate(raw_date_string);
+		| undefined = $derived(parseDate(raw_date_string));
 </script>
 
 {#if parsed_date}
