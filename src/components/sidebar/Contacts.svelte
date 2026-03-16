@@ -10,16 +10,16 @@
 </script>
 
 <div
-	class="mt-2 dark:text-white flex flex-col selection:bg-sky-200 selection:text-black dark:selection:text-white"
+	class="mt-2 flex flex-col selection:bg-sky-200 selection:text-black dark:text-white dark:selection:text-white"
 >
 	<div
-		class="mb-4 flex flex-col xs:flex-row xs:gap-12 gap-2 text-black dark:text-white text-sm xs:text-lg"
+		class="xs:flex-row xs:gap-12 xs:text-lg mb-4 flex flex-col gap-2 text-sm text-black dark:text-white"
 	>
 		<Email />
 		<Resume />
 	</div>
 
-	<div class="flex gap-2 xs: gap-y-2 flex-col xs:flex-row xs:gap-x-8 flex-wrap">
+	<div class="xs: xs:flex-row xs:gap-x-8 flex flex-col flex-wrap gap-2 gap-y-2">
 		<GitHub />
 		<LinkedIn />
 		<Instagram />

@@ -24,7 +24,7 @@
 
 {#if name}
 	<div class="flex flex-col gap-0.5">
-		<h1 class=" my-0.5 dark:text-white font-black xs:text-5xl text-4xl text-black">
+		<h1 class=" xs:text-5xl my-0.5 text-4xl font-black text-black dark:text-white">
 			{#if show_legal_name}
 				{first_legal_name}
 			{:else}
@@ -38,16 +38,14 @@
 				{/if}
 			</span>
 		</h1>
-		<h1 class="font-semibold text-zinc-400 text-sm">
+		<h1 class="text-sm font-semibold text-zinc-400">
 			{#if show_legal_name}
 				{data.legal_ipa}
-			{:else}
-				{#if show_ipa}
-					{data.ipa_name}
-				{/if}
+			{:else if show_ipa}
+				{data.ipa_name}
 			{/if}
 		</h1>
 	</div>
 {:else}
-	<h1 class=" dark:text-red-300 font-mono font-bold text-red-600">No name provided</h1>
+	<h1 class=" font-mono font-bold text-red-600 dark:text-red-300">No name provided</h1>
 {/if}

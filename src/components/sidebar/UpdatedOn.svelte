@@ -11,16 +11,16 @@
 </script>
 
 {#if show_last_updated}
-	<div class="flex gap-2 items-center">
+	<div class="flex items-center gap-2">
 		<UpdatedOnIcon />
 		{#if parsed_date}
-			<h1 class=" text-xs font-light font-mono dark:text-gray-200/50 text-gray-400">
+			<h1 class=" font-mono text-xs font-light text-gray-400 dark:text-gray-200/50">
 				Updated on
 				{parsed_date.month}
 				{parsed_date.date}<sup>{parsed_date.prefix}</sup>, {parsed_date.year}
 			</h1>
 		{:else}
-			<h1 class=" text-xs font-light font-mono dark:text-red-300 text-red-600">
+			<h1 class=" font-mono text-xs font-light text-red-600 dark:text-red-300">
 				Invalid date format (eg. July 12th, 2021)
 			</h1>
 		{/if}
