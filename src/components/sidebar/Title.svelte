@@ -8,7 +8,7 @@
 
 {#if items}
 	<h1
-		class="my-2 select-none xs:mt-0.5 flex flex-wrap font-display xs:text-2xl text-xl font-semibold dark:text-white text-black font-mono"
+		class="font-display my-2 flex flex-wrap font-mono text-xl font-semibold text-black select-none xs:mt-0.5 xs:text-2xl dark:text-white"
 	>
 		{#each items as item, index}
 			{#if index === items.length - 1}
@@ -21,7 +21,7 @@
 		{/each}
 	</h1>
 {:else}
-	<h1 class="select-none mt-4 font-display font-semibold dark:text-white text-black font-mono">
+	<h1 class="font-display mt-4 font-mono font-semibold text-black select-none dark:text-white">
 		<span class="text-red-600">No title(s) provided</span>
 	</h1>
 {/if}

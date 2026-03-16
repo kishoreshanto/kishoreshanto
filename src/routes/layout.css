@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+/* ── IvyOra Display ───────────────────────────────── */
+@font-face {
+	font-family: 'IvyOra Display';
+	src: url('/fonts/IvyOra-Display-Thin.otf') format('opentype');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Display';
+	src: url('/fonts/IvyOra-Display-Thin-Italic.otf') format('opentype');
+	font-weight: 100;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Display';
+	src: url('/fonts/IvyOra-Display-Light.otf') format('opentype');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Display';
+	src: url('/fonts/IvyOra-Display-Light-Italic.otf') format('opentype');
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Display';
+	src: url('/fonts/IvyOra-Display-Regular.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Display';
+	src: url('/fonts/IvyOra-Display-Italic.otf') format('opentype');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Display';
+	src: url('/fonts/IvyOra-Display-Medium.otf') format('opentype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Display';
+	src: url('/fonts/IvyOra-Display-Medium-Italic.otf') format('opentype');
+	font-weight: 500;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Display';
+	src: url('/fonts/IvyOra-Display-Bold.otf') format('opentype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Display';
+	src: url('/fonts/IvyOra-Display-Bold-Italic.otf') format('opentype');
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+
+/* ── IvyOra Text ──────────────────────────────────── */
+@font-face {
+	font-family: 'IvyOra Text';
+	src: url('/fonts/IvyOra-Text-Thin.otf') format('opentype');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Text';
+	src: url('/fonts/IvyOra-Text-Thin-Italic.otf') format('opentype');
+	font-weight: 100;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Text';
+	src: url('/fonts/IvyOra-Text-Light.otf') format('opentype');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Text';
+	src: url('/fonts/IvyOra-Text-Light-Italic.otf') format('opentype');
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Text';
+	src: url('/fonts/IvyOra-Text-Regular.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Text';
+	src: url('/fonts/IvyOra-Text-Italic.otf') format('opentype');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Text';
+	src: url('/fonts/IvyOra-Text-Medium.otf') format('opentype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Text';
+	src: url('/fonts/IvyOra-Text-Medium-Italic.otf') format('opentype');
+	font-weight: 500;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Text';
+	src: url('/fonts/IvyOra-Text-Bold.otf') format('opentype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Text';
+	src: url('/fonts/IvyOra-Text-Bold-Italic.otf') format('opentype');
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+
+@theme {
+	--breakpoint-*: initial;
+	--breakpoint-xs: 420px;
+	--breakpoint-sm: 640px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 1024px;
+	--breakpoint-xl: 1280px;
+	--breakpoint-2xl: 1536px;
+
+	--animate-fade-in: fadeIn 0.7s ease-in;
+	--font-lora: 'Lora', serif;
+	--font-crimson-text: 'Crimson Text', serif;
+	--font-eb-garamond: 'EB Garamond', serif;
+	--font-ivy-display: 'IvyOra Display', serif;
+	--font-ivy-text: 'IvyOra Text', serif;
+
+	--font-sans:
+		-apple-system, BlinkMacSystemFont, Inter, Helvetica Neue, sans-serif, Apple Color Emoji,
+		Segoe UI Emoji, Segoe UI Symbol;
+	--font-mono: SFMono-Regular, JetBrains Mono;
+	--font-serif:
+		var(--font-lora), var(--font-crimson-text), var(--font-eb-garamond), var(--font-ivy-display),
+		var(--font-ivy-text), serif;
+}
+
+html,
+body {
+	background-image: url('../lib/assets/bg.jpg');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	z-index: -100rem;
+}
+
+.universal-navbar {
+	@apply sticky top-0 left-0 flex h-full flex-row items-center justify-center;
+	z-index: 100;
+}
+
+.universal-navbar-container {
+	@apply mt-4 flex h-full w-fit flex-row items-center rounded-full border-2 border-[#926434d9] bg-[#f9d8b0] shadow-2xl backdrop-blur-sm;
+	position: relative;
+	overflow: hidden;
+	padding: 6px;
+	/* gap: 4px; */
+}
+
+.navbar-pill {
+	position: absolute;
+	top: 4px;
+	bottom: 4px;
+	left: 0;
+	border-radius: 9999px;
+	background: #845522d9;
+
+	pointer-events: none;
+	transition: none;
+}
+
+.navbar-pill--ready {
+	transition:
+		transform 420ms cubic-bezier(0.32, 0.72, 0, 1),
+		width 420ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.navbar-tab {
+	@apply relative z-10 block rounded-full px-6 py-3 font-lora font-bold tracking-wide uppercase;
+	font-size: 0.85rem;
+	color: rgb(80 55 25 / 0.7);
+	text-decoration: none;
+	user-select: none;
+	-webkit-user-select: none;
+	transition: color 280ms ease;
+	cursor: pointer;
+}
+
+.navbar-tab:hover:not(.navbar-tab--active) {
+	color: rgb(80 55 25 / 0.9);
+}
+
+.navbar-tab--active {
+	color: #fff;
+}
+
+.route-transition-shell {
+	position: relative;
+	width: 100%;
+}
+
+.route-transition-stage {
+	will-change: transform, opacity;
+	view-transition-name: route-content;
+}
+
+::view-transition-old(route-content) {
+	animation: route-content-old 180ms ease both;
+}
+
+::view-transition-new(route-content) {
+	animation: route-content-new 360ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes route-content-old {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes route-content-new {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-old(route-content),
+	::view-transition-new(route-content) {
+		animation-duration: 1ms;
+	}
+}
+
+/* Card Designs */
+
+.card-container {
+	@apply max-w-2xl px-6 py-6 xl:max-w-6xl;
+}
+
+.card-body {
+	@apply flex flex-col gap-3 rounded-2xl border border-amber-700/60 bg-[#f9d8b0]/40 p-5 shadow-md;
+}
+
+.card-highlight {
+	@apply flex flex-row items-center justify-between align-middle font-lora text-sm text-amber-600;
+}
+
+.card-title {
+	@apply font-lora text-2xl leading-tight font-bold text-amber-800;
+}
+
+.card-subtitle {
+	@apply flex items-center space-x-2 font-crimson-text text-xl;
+}
+
+/* Research Card Specific Styles */
+
+.research-card-overview {
+	@apply flex items-start space-x-3 rounded-xl border-2 border-l-6 border-amber-700 px-4 py-2 font-lora;
+}
+
+.research-card-overview-title {
+	@apply text-lg font-semibold text-amber-900;
+}
+
+.research-card-overview-description {
+	@apply leading-5 text-gray-600;
+}
+
+.research-card-rank {
+	@apply flex items-center justify-between rounded-xl border p-3 font-lora md:flex-row;
+}
+
+.research-card-rank-container {
+	@apply flex items-center space-x-2;
+}
+
+.research-card-rank-description {
+	@apply flex flex-col xl:flex-row xl:items-center xl:space-x-4;
+}
+
+.research-card-keywords-container {
+	@apply space-y-2 font-lora;
+}
+
+.research-card-keywords-title {
+	@apply font-bold tracking-wider text-gray-700 uppercase;
+}
+
+.research-card-keywords-list {
+	@apply flex flex-wrap gap-2;
+}
+
+.research-tag {
+	@apply rounded-full bg-[#f9d8b0] px-3 py-1 text-sm text-[#845522d9] lg:text-base;
+}
+
+/* Hero Page */
+
+.name-highlight {
+	color: #b45309;
+	display: inline-block;
+	position: relative;
+	background: linear-gradient(
+		120deg,
+		#b45309 0%,
+		#b45309 40%,
+		#d97706 50%,
+		#b45309 60%,
+		#b45309 100%
+	);
+	background-size: 200% 100%;
+	background-position: 100% 0;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.name-highlight--animate {
+	animation: name-shimmer 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+}
+
+@keyframes name-shimmer {
+	from {
+		background-position: 100% 0;
+	}
+	to {
+		background-position: -100% 0;
+	}
+}

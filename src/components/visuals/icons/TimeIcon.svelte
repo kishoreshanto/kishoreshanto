@@ -1,5 +1,5 @@
 <svg
-	class="fill-zinc-500 dark:fill-zinc-400 mr-2 h-5"
+	class="mr-2 h-5 fill-zinc-500 dark:fill-zinc-400"
 	xmlns="http://www.w3.org/2000/svg"
 	height="24px"
 	viewBox="0 -960 960 960"

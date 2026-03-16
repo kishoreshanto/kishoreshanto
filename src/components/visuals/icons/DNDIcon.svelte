@@ -1,5 +1,5 @@
 <svg
-	class="fill-amber-600 dark:fill-amber-500 mr-2 -ml-0.5"
+	class="mr-2 -ml-0.5 fill-amber-600 dark:fill-amber-500"
 	xmlns="http://www.w3.org/2000/svg"
 	height="18px"
 	viewBox="0 -960 960 960"

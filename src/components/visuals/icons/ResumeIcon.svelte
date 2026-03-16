@@ -1,5 +1,5 @@
 <svg
-	class="fill-sky-500 mr-1"
+	class="mr-1 fill-sky-500"
 	xmlns="http://www.w3.org/2000/svg"
 	height="20px"
 	viewBox="0 -960 960 960"

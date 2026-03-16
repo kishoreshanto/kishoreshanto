@@ -1,0 +1,157 @@
+[
+	{
+		"id": "research-upper-limb-motor-movements",
+		"component": "research",
+		"date": "23th February, 2024",
+		"props": {
+			"date": "23th February, 2024",
+			"category": "Research Report",
+			"highlight_right": "",
+			"title": "Classification of Upper Limb Motor Movements Using EEG Signals",
+			"subtitle_1": "Independent Study",
+			"subtitle_2": "Ongoing",
+			"overview": "Currently researching a deep learning approach to classify upper limb motor movement using electroencephalogram signal data for brain-computer interface applications.",
+			"keywords": [
+				"Brain-Computer Interface",
+				"Biomedical Signal Processing",
+				"Deep Learning Networks",
+				"Motor Imagery Classification"
+			]
+		}
+	},
+	{
+		"id": "journal-array-vision-transformer-anomaly-detection",
+		"component": "research",
+		"date": "17th January, 2025",
+		"props": {
+			"date": "17th January, 2025",
+			"category": "Journal Publication",
+			"highlight_right": "Elsevier • IF: 4.5 (Jul 2025)",
+			"title": "Vision Transformer Embedded Video Anomaly Detection with Attention Driven Recurrence",
+			"subtitle_1": "Array",
+			"subtitle_2": "Elsevier",
+			"doi_url": "https://doi.org/10.1016/j.array.2025.100471",
+			"overview": "Researched a real-time anomaly detection system using Vision Transformers and an attention-enhanced network in long surveillance footage.",
+			"rank": "Q1",
+			"keywords": [
+				"Computer Vision",
+				"Video Anomaly Detection",
+				"Vision Transformer",
+				"Simple Recurrent Unit Plus Plus (SRU++)",
+				"Spatio-Temporal Feature Analysis"
+			]
+		}
+	},
+	{
+		"id": "conference-icca-fabric-defect-detection",
+		"component": "research",
+		"date": "10th June, 2025",
+		"props": {
+			"date": "10th June, 2025",
+			"category": "Conference Publication",
+			"highlight_right": "ACM ICCA 2025 [Open Access]",
+			"title": "A Deep Learning based Approach for Automated Defect Detection of Fabrics in Garment Production Line",
+			"subtitle_1": "ACM",
+			"subtitle_2": "Conference ICCA — 2024",
+			"doi_url": "https://doi.org/10.1145/3723178.3723196",
+			"overview": "Researched and implemented a deep learning solution for identifying and localizing defects in fabrics, using the YOLOv8.",
+			"rank": "X",
+			"keywords": ["Computer Vision", "YOLOv8", "Automation"]
+		}
+	},
+	{
+		"id": "journal-compbiomed-snoRNA-association",
+		"component": "research",
+		"date": "2nd April, 2025",
+		"props": {
+			"date": "2nd April, 2025",
+			"category": "Journal Publication",
+			"highlight_right": "Elsevier • IF: 6.3 (Jul 2025)",
+			"title": "Combined Support Vector Machine and Gradient Boosting Decision Tree Framework for efficient snoRNA disease association prediction",
+			"subtitle_1": "Computers in Biology and Medicine",
+			"subtitle_2": "Elsevier",
+			"doi_url": "https://doi.org/10.1016/j.compbiomed.2025.110219",
+			"overview": "Researched a novel machine learning approach for predicting the correlation between various snoRNA and diseases in human body using combined SVM and GBDT framework.",
+			"rank": "Q1",
+			"keywords": [
+				"Computational Biology",
+				"Bioinformatics",
+				"snoRNA-Disease Association Prediction",
+				"Gradient Boosting Decision Tree (GBDT)",
+				"Gaussian Kernel Similarity"
+			]
+		}
+	},
+	{
+		"id": "research-password-strength-gpt2",
+		"component": "research",
+		"date": "6th September, 2024",
+		"props": {
+			"date": "6th September, 2024",
+			"category": "Research Report",
+			"highlight_right": "United International University",
+			"title": "A Deep Learning Approach to Assess Password Strength, Compromise Likelihood, and Time-to-Crack Estimation",
+			"subtitle_1": "Independent Study",
+			"subtitle_2": "Completed",
+			"doi_url": "https://drive.google.com/file/d/1UeoD202LF49Dfy1WmqUfDQruQprEyOAf/view?usp=sharing",
+			"overview": "Researched a GPT-2 based deep learning model for password strength estimation via sequence analysis and perplexity scoring on real-world leaked datasets",
+			"rank": "X",
+			"keywords": [
+				"Generative Pretrained Transformer",
+				"Computer Security",
+				"Password Strength Estimation",
+				"Natural Language Processing (NLP)",
+				"Perplexity Scoring"
+			]
+		}
+	},
+	{
+		"id": "research-energy-footprint-python-r",
+		"component": "research",
+		"date": "6th September, 2024",
+		"props": {
+			"date": "6th September, 2024",
+			"category": "Research Report",
+			"highlight_right": "United International University",
+			"title": "A Detailed Energy Footprint Evaluation of Python and R in Computationally Intensive Statistical and Machine Learning Tasks",
+			"subtitle_1": "University Research Project",
+			"subtitle_2": "Completed",
+			"doi_url": "https://drive.google.com/file/d/1DEKKK-9X83zhYn3D4dfu4OLSAPtH_Xm8/view?usp=sharing",
+			"overview": "Researched a novel approach to effectively measure the energy consumption and energy footprint for statistical and machine learning tasks of major operating systems using Python and R language.",
+			"rank": "X",
+			"keywords": [
+				"ARM processor",
+				"Energy Efficiency",
+				"Machine Learning",
+				"x64 Platform",
+				"Power Consumption",
+				"Python",
+				"R Language",
+				"Statistical Analysis"
+			]
+		}
+	},
+	{
+		"id": "conference-iccit-random-forest-clustering",
+		"component": "research",
+		"date": "27th February, 2025",
+		"props": {
+			"date": "27th February, 2025",
+			"category": "Conference Publication",
+			"highlight_right": "IEEE ICCIT 2023",
+			"title": "Ameliorating Random Forest Performance through Data Clustering for Big Data Classification",
+			"subtitle_1": "IEEE Xplore",
+			"subtitle_2": "Conference ICCIT — 2023",
+			"doi_url": "https://doi.org/10.1109/ICCIT60459.2023.10441376",
+			"overview": "Researched combining Random Forest with K-Means clustering to improve classification performance for Big Data mining applications.",
+			"rank": "X",
+			"keywords": [
+				"Machine Learning",
+				"Random Forest",
+				"Decision Tree",
+				"K-means Clustering",
+				"Big Data"
+			]
+		}
+	}
+]

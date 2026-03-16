@@ -9,15 +9,15 @@
 
 {#if language && showLanguage}
 	<h1
-		class="mt-4 select-none cursor-default my-1 font-bold text-sky-800 dark:text-sky-600 font-mono"
+		class="my-1 mt-4 cursor-default font-mono font-bold text-sky-800 select-none dark:text-sky-600"
 	>
 		Languages
 	</h1>
-	<div class="select-none my-1 flex gap-x-2 gap-y-2 flex-wrap dark:text-white text-sm">
+	<div class="my-1 flex flex-wrap gap-x-2 gap-y-2 text-sm select-none dark:text-white">
 		{#each language as subject}
 			<h1
-				class=" bg-sky-100 text-center font-semibold cursor-default text-zinc-600 hover:bg-sky-200 transition-all shadow
-        duration-300 dark:dark:hover:bg-sky-800 dark:text-zinc-200 dark:bg-sky-950 px-3 py-0.5 rounded-2xl"
+				class=" cursor-default rounded-2xl bg-sky-100 px-3 py-0.5 text-center font-semibold text-zinc-600
+        shadow transition-all duration-300 hover:bg-sky-200 dark:bg-sky-950 dark:text-zinc-200 dark:dark:hover:bg-sky-800"
 			>
 				{subject}
 			</h1>

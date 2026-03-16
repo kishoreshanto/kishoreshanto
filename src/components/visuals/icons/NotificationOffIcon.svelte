@@ -1,9 +1,5 @@
 <script lang="ts">
-	interface Props {
-		current_time: string;
-	}
-
-	let { current_time }: Props = $props();
+	let { current_time }: NotificationOffIconProps = $props();
 	import data from '$lib/data_en.json';
 
 	const show_inactive: boolean = data.show_inactive;
@@ -48,7 +44,7 @@
 
 {#if show_inactive && !incorrect_time && inactive_status}
 	<svg
-		class="dark:fill-amber-500 fill-amber-600 ml-2"
+		class="ml-2 fill-amber-600 dark:fill-amber-500"
 		xmlns="http://www.w3.org/2000/svg"
 		height="20px"
 		viewBox="0 -960 960 960"

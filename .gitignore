@@ -43,6 +43,14 @@ yarn-error.log*
 /.misc/
 
 # Lock files (if generated locally and not committed)
-package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# Font file (temporary, to be removed once the font is properly included in the project)
+*.woff2
+*.ttf
+*.otf
+
+# Temporary files
+src/components/v1/*
+src/lib/v1/*

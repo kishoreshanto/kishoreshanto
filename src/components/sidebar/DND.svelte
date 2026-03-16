@@ -14,7 +14,7 @@
 		<div class="w-fit">
 			<DNDIcon />
 		</div>
-		<h1 class="text-xs select-none font-semibold text-amber-500 dark:text-amber-500">
+		<h1 class="text-xs font-semibold text-amber-500 select-none dark:text-amber-500">
 			{dnd_message}
 		</h1>
 	</div>

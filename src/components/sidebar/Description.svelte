@@ -8,13 +8,13 @@
 
 {#if description}
 	<p
-		class="text-xs select-none cursor-default xs:text-sm text-gray-600 dark:text-gray-400 tracking-tight text-justify"
+		class="cursor-default text-justify text-xs tracking-tight text-gray-600 select-none xs:text-sm dark:text-gray-400"
 	>
 		{@html description}
 	</p>
 {:else}
 	<p
-		class="text-xs select-none font-mono cursor-default mt-4 xs:text-sm text-red-600 dark:text-red-300 tracking-tight text-justify"
+		class="mt-4 cursor-default text-justify font-mono text-xs tracking-tight text-red-600 select-none xs:text-sm dark:text-red-300"
 	>
 		No description provided
 	</p>

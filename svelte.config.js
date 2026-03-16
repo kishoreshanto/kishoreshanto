@@ -4,13 +4,12 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: vitePreprocess(),
-
-	compilerOptions: {
-		runes: true
-	},
-
 	kit: {
 		adapter: adapter(),
+		alias: {
+			// refer to the components directory using $component
+			$component: 'src/components'
+		},
 
 		// Service worker for caching and offline support
 		serviceWorker: {
