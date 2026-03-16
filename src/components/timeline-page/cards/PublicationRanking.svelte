@@ -46,5 +46,5 @@
 
 <div class="research-card-rank-description">
 	<p class="font-semibold {rankingDetails.textTitleColor}">{rankingDetails.title}</p>
-	<p class="{rankingDetails.textColor}">{rankingDetails.description}</p>
+	<p class={rankingDetails.textColor}>{rankingDetails.description}</p>
 </div>

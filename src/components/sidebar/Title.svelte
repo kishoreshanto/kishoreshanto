@@ -8,7 +8,7 @@
 
 {#if items}
 	<h1
-		class="xs:mt-0.5 font-display xs:text-2xl my-2 flex flex-wrap font-mono text-xl font-semibold text-black select-none dark:text-white"
+		class="font-display my-2 flex flex-wrap font-mono text-xl font-semibold text-black select-none xs:mt-0.5 xs:text-2xl dark:text-white"
 	>
 		{#each items as item, index}
 			{#if index === items.length - 1}

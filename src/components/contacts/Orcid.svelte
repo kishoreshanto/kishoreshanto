@@ -13,11 +13,11 @@
 <a
 	target="_blank"
 	href={data.orcid_url}
-	class="xs:mt-4 mt-4 flex w-fit items-center justify-center gap-1 rounded-full align-middle"
+	class="mt-4 flex w-fit items-center justify-center gap-1 rounded-full align-middle xs:mt-4"
 >
 	<img src={orcid_svg} alt="orcid_image" class="mr-1 h-5 select-none" />
 	<span
-		class="xs:text-sm font-mono text-xs font-light text-gray-500 transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-300"
+		class="font-mono text-xs font-light text-gray-500 transition-all duration-300 hover:text-gray-900 xs:text-sm dark:hover:text-gray-300"
 		>{username}</span
 	>
 </a>

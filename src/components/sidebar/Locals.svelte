@@ -23,7 +23,7 @@
 </script>
 
 {#if show_locals}
-	<div class="xs:text-sm xs:gap-8 my-4 flex cursor-default flex-wrap gap-4 text-xs select-none">
+	<div class="my-4 flex cursor-default flex-wrap gap-4 text-xs select-none xs:gap-8 xs:text-sm">
 		{#if current_city}
 			<div class="flex items-center">
 				<LocationIcon />

@@ -24,7 +24,7 @@
 
 {#if name}
 	<div class="flex flex-col gap-0.5">
-		<h1 class=" xs:text-5xl my-0.5 text-4xl font-black text-black dark:text-white">
+		<h1 class=" my-0.5 text-4xl font-black text-black xs:text-5xl dark:text-white">
 			{#if show_legal_name}
 				{first_legal_name}
 			{:else}

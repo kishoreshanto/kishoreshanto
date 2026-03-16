@@ -171,7 +171,8 @@
 		-apple-system, BlinkMacSystemFont, Inter, Helvetica Neue, sans-serif, Apple Color Emoji,
 		Segoe UI Emoji, Segoe UI Symbol;
 	--font-mono: SFMono-Regular, JetBrains Mono;
-	--font-serif: var(--font-lora), var(--font-crimson-text), var(--font-eb-garamond), var(--font-ivy-display),
+	--font-serif:
+		var(--font-lora), var(--font-crimson-text), var(--font-eb-garamond), var(--font-ivy-display),
 		var(--font-ivy-text), serif;
 }
 

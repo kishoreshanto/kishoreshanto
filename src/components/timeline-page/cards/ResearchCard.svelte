@@ -18,7 +18,6 @@
 
 	let normalizedRank = $derived(rank.trim().toUpperCase() as Rank | '');
 	let rankColorClass = $derived(rankColor(normalizedRank));
-
 </script>
 
 <div id="card-container" class="card-container">
@@ -47,11 +46,11 @@
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-				{#if doi_url.includes('doi.org/')}
-					DOI: {doi_url.split('doi.org/')[1] || doi_url}
-				{:else}
-					View Report
-				{/if}
+					{#if doi_url.includes('doi.org/')}
+						DOI: {doi_url.split('doi.org/')[1] || doi_url}
+					{:else}
+						View Report
+					{/if}
 				</a>
 			{/if}
 		</div>
