@@ -68,27 +68,27 @@ export function getLocalTimeFromUTCOffset(utcOffset: number): { local_time: stri
 	};
 }
 
-// export function parseDate(
-// 	dateString: string
-// ): { prefix: string; date: string; month: string; year: string } | undefined {
-// 	/**
-// 	 * Parse a date string in the format "Month day, year" and return a Date object
-// 	 * @param dateString - The date string to parse
-// 	 * @returns - An object containing the prefix, date, month, and year
-// 	 */
-// 	if (!isValidDate(dateString)) {
-// 		return undefined;
-// 	}
+export function parseDate(
+	dateString: string
+): { prefix: string; date: string; month: string; year: string } | undefined {
+	/**
+	 * Parse a date string in the format "Month day, year" and return a Date object
+	 * @param dateString - The date string to parse
+	 * @returns - An object containing the prefix, date, month, and year
+	 */
+	if (!isValidDate(dateString)) {
+		return undefined;
+	}
 
-// 	const string_array: string[] = dateString.split(',');
-// 	const a1: string = string_array[0];
-// 	const year: string = string_array[1];
-// 	const month: string = a1.split(' ')[0];
-// 	const date: string = a1.split(' ')[1].slice(0, -2);
-// 	const prefix: string = a1.split(' ')[1].slice(-2);
+	const string_array: string[] = dateString.split(',');
+	const a1: string = string_array[0];
+	const year: string = string_array[1];
+	const month: string = a1.split(' ')[0];
+	const date: string = a1.split(' ')[1].slice(0, -2);
+	const prefix: string = a1.split(' ')[1].slice(-2);
 
-// 	return { prefix, date, month, year };
-// }
+	return { prefix, date, month, year };
+}
 
 export function isEmailValid(email: string): boolean {
 	/**

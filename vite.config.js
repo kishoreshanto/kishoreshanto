@@ -80,8 +80,6 @@ export default defineConfig({
 
 	// Server configuration for development
 	server: {
-		// Enable HTTP/2 for development
-		https: false,
 		// Preload modules
 		warmup: {
 			clientFiles: ['./src/routes/+layout.svelte', './src/routes/+page.svelte']
