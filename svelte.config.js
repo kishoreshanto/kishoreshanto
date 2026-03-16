@@ -1,16 +1,10 @@
+import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: vitePreprocess()
-};
-
-export default config;
-import adapter from '@sveltejs/adapter-auto';
-
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
 	kit: {
+		preprocess: vitePreprocess(),
 		adapter: adapter(),
 		alias: {
 			// refer to the components directory using $component
