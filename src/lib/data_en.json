@@ -19,14 +19,14 @@
 	"language": ["🇺🇸 English (CEFR C1)", "🇫🇷 French (Beginner)", "🇧🇩 Bengali (Native)"],
 	"current_city": "BD DAC",
 	"current_gmt_offset": 6,
-	"mail": "tinykishore@gmail.com",
+	"mail": "k.shanto@outlook.com",
 	"resume_url": "https://drive.google.com/file/d/1z0Zjtodz47FYKl8MZPEPoO-jsqFo1tBa/view?usp=sharing",
 	"instagram_url": "https://www.instagram.com/tinykishore/",
 	"instagram_username": "tinykishore",
-	"github_url": "https://www.github.com/tinykishore/",
-	"github_username": "tinykishore",
-	"linkedin_url": "https://www.linkedin.com/in/tinykishore",
-	"linkedin_username": "tinykishore",
+	"github_url": "https://www.github.com/kishoreshanto/",
+	"github_username": "kishoreshanto",
+	"linkedin_url": "https://www.linkedin.com/in/kishoreshanto",
+	"linkedin_username": "kishoreshanto",
 	"orcid_url": "https://orcid.org/0009-0009-1147-0095",
 	"last_updated": "March 10th, 2026",
 	"page_title": "Kishore Shanto | Portfolio",
@@ -48,5 +48,8 @@
 	"request_do_not_disturb_message": "I am currently busy with my research work. Please do not reach me at social media unless it's urgent. Thank you for understanding.",
 	"show_inactive": false,
 	"inactive_start_time": 18,
-	"inactive_end_time": 8
+	"inactive_end_time": 8,
+
+	"display_image_url": "https://o83dp4hmlwk6umh0.public.blob.vercel-storage.com/KS-DP-v1.jpeg",
+	"display_image_alt": "Kishore Shanto"
 }
