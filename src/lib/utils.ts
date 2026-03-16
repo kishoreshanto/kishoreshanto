@@ -68,27 +68,27 @@ export function getLocalTimeFromUTCOffset(utcOffset: number): { local_time: stri
 	};
 }
 
-export function parseDate(
-	dateString: string
-): { prefix: string; date: string; month: string; year: string } | undefined {
-	/**
-	 * Parse a date string in the format "Month day, year" and return a Date object
-	 * @param dateString - The date string to parse
-	 * @returns - An object containing the prefix, date, month, and year
-	 */
-	if (!isValidDate(dateString)) {
-		return undefined;
-	}
+// export function parseDate(
+// 	dateString: string
+// ): { prefix: string; date: string; month: string; year: string } | undefined {
+// 	/**
+// 	 * Parse a date string in the format "Month day, year" and return a Date object
+// 	 * @param dateString - The date string to parse
+// 	 * @returns - An object containing the prefix, date, month, and year
+// 	 */
+// 	if (!isValidDate(dateString)) {
+// 		return undefined;
+// 	}
 
-	const string_array: string[] = dateString.split(',');
-	const a1: string = string_array[0];
-	const year: string = string_array[1];
-	const month: string = a1.split(' ')[0];
-	const date: string = a1.split(' ')[1].slice(0, -2);
-	const prefix: string = a1.split(' ')[1].slice(-2);
+// 	const string_array: string[] = dateString.split(',');
+// 	const a1: string = string_array[0];
+// 	const year: string = string_array[1];
+// 	const month: string = a1.split(' ')[0];
+// 	const date: string = a1.split(' ')[1].slice(0, -2);
+// 	const prefix: string = a1.split(' ')[1].slice(-2);
 
-	return { prefix, date, month, year };
-}
+// 	return { prefix, date, month, year };
+// }
 
 export function isEmailValid(email: string): boolean {
 	/**
@@ -98,4 +98,75 @@ export function isEmailValid(email: string): boolean {
 	 */
 	const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 	return regex.test(email);
+}
+
+export function getOrdinalSuffix(day: number) {
+	/**
+	 * Get the ordinal suffix for a day
+	 * @param day - The day to get the ordinal suffix for
+	 * @returns - The ordinal suffix for the day
+	 */
+	const remainder = day % 100;
+
+	if (remainder >= 11 && remainder <= 13) {
+		return 'th';
+	}
+
+	switch (day % 10) {
+		case 1:
+			return 'st';
+		case 2:
+			return 'nd';
+		case 3:
+			return 'rd';
+		default:
+			return 'th';
+	}
+}
+
+export function parseDateWithOrdinal(value: string): ParsedDate | null {
+	/**
+	 * Parse a date string in the format "Month day, year" and return a Date object
+	 * @param value - The date string to parse
+	 * @returns - An object containing the day, suffix, and rest of the date string
+	 */
+	const match = value.trim().match(/^(\d{1,2})(?:st|nd|rd|th)?(\s+.*)$/i);
+
+	if (!match) {
+		return null;
+	}
+
+	const day = Number(match[1]);
+
+	if (!Number.isInteger(day) || day < 1 || day > 31) {
+		return null;
+	}
+
+	return {
+		day: String(day),
+		suffix: getOrdinalSuffix(day),
+		rest: match[2]
+	};
+}
+
+export function rankColor(rank: string) {
+	/**
+	 * Get the color of the rank
+	 * @param rank - The rank to get the color of
+	 * @returns - The color of the rank
+	 */
+	const normalizedRank = rank.trim().toUpperCase() as Rank | '';
+
+	switch (normalizedRank) {
+		case 'Q1':
+			return 'border-emerald-200 bg-linear-to-r from-emerald-50 to-teal-50';
+		case 'Q2':
+			return 'border-blue-200 bg-linear-to-r from-blue-50 to-indigo-50';
+		case 'Q3':
+			return 'border-yellow-200 bg-linear-to-r from-yellow-50 to-orange-50';
+		case 'Q4':
+			return 'border-gray-200 bg-linear-to-r from-gray-50 to-gray-100';
+		default:
+			return 'border-gray-200 bg-linear-to-r from-gray-50 to-gray-100';
+	}
 }
