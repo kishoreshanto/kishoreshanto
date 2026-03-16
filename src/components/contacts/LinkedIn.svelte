@@ -13,10 +13,10 @@
 </script>
 
 {#if show_linkedin}
-	<a target="_blank" href={linkedin_url} class="flex align-middle items-center gap-1">
+	<a target="_blank" href={linkedin_url} class="flex items-center gap-1 align-middle">
 		<LinkedInIcon />
 		<h1
-			class="text-xs xs:text-sm font-light text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:text-gray-900"
+			class="font-mono font-light text-amber-700 transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-300"
 		>
 			/ {linkedin_username}
 		</h1>

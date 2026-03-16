@@ -17,7 +17,7 @@
 </script>
 
 <a
-	class="text-sm mt-3 text-sky-500 items-center flex gap-1 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500 font-medium transition-all duration-300"
+	class=" flex items-center gap-1 font-mono font-medium text-amber-700 transition-all duration-300 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500"
 	href="mailto:{email}"
 >
 	<EmailIcon />
@@ -26,7 +26,7 @@
 		{#if email_is_valid}
 			{email}
 		{:else}
-			<span class="text-red-500 dark:text-red-400 font-mono">Invalid email</span>
+			<span class="font-mono text-red-500 dark:text-red-400">Invalid email</span>
 		{/if}
 	{/if}
 </a>
