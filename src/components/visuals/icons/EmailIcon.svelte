@@ -1,5 +1,5 @@
 <svg
-	class="fill-sky-500 translate-y-[1px]"
+	class="translate-y-px fill-amber-700"
 	xmlns="http://www.w3.org/2000/svg"
 	height="20px"
 	viewBox="0 -960 960 960"
