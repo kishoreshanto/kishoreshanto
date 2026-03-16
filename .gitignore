@@ -43,6 +43,5 @@ yarn-error.log*
 /.misc/
 
 # Lock files (if generated locally and not committed)
-package-lock.json
 yarn.lock
 pnpm-lock.yaml
