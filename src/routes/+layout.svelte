@@ -3,17 +3,68 @@
 	import { onMount } from 'svelte';
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
+	import { mountWelcomeScene } from '$lib/client/welcome-loader';
 
-	// Hide the splash loader once the Svelte 5 app has fully mounted
+	const WELCOME_DURATION_MS = 1600;
+	const WELCOME_FADE_MS = 120;
+
 	onMount(() => {
 		const loader = document.getElementById('app-loader');
-		if (loader && !loader.classList.contains('hidden')) {
+		const canvasHost = document.getElementById('app-loader-canvas');
+
+		if (!loader || loader.classList.contains('hidden')) {
+			return;
+		}
+
+		let cleanupScene: (() => void) | undefined;
+		let cancelled = false;
+		let hideTimer = 0;
+		let removeTimer = 0;
+
+		const startedAt = Number(loader.dataset.startedAt ?? Date.now());
+		loader.dataset.startedAt = String(startedAt);
+
+		const hideLoader = () => {
+			if (cancelled || loader.classList.contains('hidden')) {
+				return;
+			}
+
 			loader.classList.add('hidden');
 			loader.setAttribute('aria-busy', 'false');
-			setTimeout(() => {
-				try { loader.remove(); } catch (_) {}
-			}, 320);
+			removeTimer = window.setTimeout(() => {
+				try {
+					loader.remove();
+				} catch {
+					// Ignore DOM removal races during hot reloads.
+				}
+			}, WELCOME_FADE_MS + 120);
+		};
+
+		const remaining = Math.max(0, WELCOME_DURATION_MS - (Date.now() - startedAt));
+		hideTimer = window.setTimeout(hideLoader, remaining);
+
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (canvasHost && !prefersReducedMotion) {
+			void mountWelcomeScene(canvasHost)
+				.then((teardown) => {
+					if (cancelled) {
+						teardown();
+						return;
+					}
+
+					cleanupScene = teardown;
+				})
+				.catch(() => {
+					// Keep the CSS fallback loader if WebGL or the import is unavailable.
+				});
 		}
+
+		return () => {
+			cancelled = true;
+			window.clearTimeout(hideTimer);
+			window.clearTimeout(removeTimer);
+			cleanupScene?.();
+		};
 	});
 
 	let { children } = $props();
