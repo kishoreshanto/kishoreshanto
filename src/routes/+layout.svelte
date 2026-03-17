@@ -1,7 +1,20 @@
 <script lang="ts">
 	import './layout.css';
+	import { onMount } from 'svelte';
 	import { onNavigate } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
+
+	// Hide the splash loader once the Svelte 5 app has fully mounted
+	onMount(() => {
+		const loader = document.getElementById('app-loader');
+		if (loader && !loader.classList.contains('hidden')) {
+			loader.classList.add('hidden');
+			loader.setAttribute('aria-busy', 'false');
+			setTimeout(() => {
+				try { loader.remove(); } catch (_) {}
+			}, 320);
+		}
+	});
 
 	let { children } = $props();
 
@@ -19,7 +32,7 @@
 	let ready = $state(false);
 
 	let activeIndex = $derived.by(() => {
-		const path = $page.url.pathname;
+		const path = page.url.pathname;
 		const idx = navItems.findIndex((item) =>
 			item.href === '/' ? path === '/' : path.startsWith(item.href)
 		);
@@ -29,12 +42,8 @@
 	$effect(() => {
 		const el = tabEls[activeIndex];
 		if (!el) return;
-
-		// offsetLeft/offsetWidth are relative to offsetParent (the container)
-		// — no getBoundingClientRect, no forced reflow.
 		pillX = el.offsetLeft;
 		pillW = el.offsetWidth;
-
 		if (!ready) requestAnimationFrame(() => (ready = true));
 	});
 
