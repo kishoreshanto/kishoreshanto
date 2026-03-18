@@ -2,10 +2,10 @@
 	import IntroSection from '$component/hero-page/IntroSection.svelte';
 </script>
 
-<main class="container mx-auto mt-12 mb-8 md:px-10 py-8">
+<main class="container mx-auto mt-12 mb-8 md:px-10 sm:px-10 py-8">
 	<!-- Intro Section -->
 	<IntroSection />
-	<hr class="my-8 w-full border-amber-800/70 pb-2" />
+	<hr class="my-8 w-full border-amber-gold pb-2" />
 
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 		<div id="left-panel"></div>
