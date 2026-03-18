@@ -9,6 +9,17 @@ type ParticleFieldOptions = {
 	palette: string[];
 };
 
+/**
+ * Perform a typed no-op cleanup when the scene cannot be mounted.
+ */
+function noopCleanup(): void {
+	return undefined;
+}
+
+/**
+ * Dispose one or more Three.js materials.
+ * @param material - A single material or material collection to dispose.
+ */
 function disposeMaterial(material: import('three').Material | import('three').Material[]) {
 	const materials = Array.isArray(material) ? material : [material];
 
@@ -17,6 +28,12 @@ function disposeMaterial(material: import('three').Material | import('three').Ma
 	}
 }
 
+/**
+ * Create a colored particle field used by the welcome scene.
+ * @param THREE - The lazily imported Three.js module.
+ * @param options - Rendering and distribution settings for the field.
+ * @returns A configured Three.js points object.
+ */
 function createParticleField(THREE: ThreeModule, options: ParticleFieldOptions) {
 	const positions = new Float32Array(options.count * 3);
 	const colors = new Float32Array(options.count * 3);
@@ -58,6 +75,12 @@ function createParticleField(THREE: ThreeModule, options: ParticleFieldOptions) 
 	return new THREE.Points(geometry, material);
 }
 
+/**
+ * Build and mount the animated welcome scene into the provided host element.
+ * @param host - The DOM node that should contain the renderer canvas.
+ * @param THREE - The lazily imported Three.js module.
+ * @returns A cleanup function that tears down the mounted scene.
+ */
 function buildScene(host: HTMLElement, THREE: ThreeModule) {
 	let renderer: import('three').WebGLRenderer;
 
@@ -68,7 +91,7 @@ function buildScene(host: HTMLElement, THREE: ThreeModule) {
 			powerPreference: 'high-performance'
 		});
 	} catch {
-		return () => {};
+		return noopCleanup;
 	}
 
 	renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25));
@@ -108,6 +131,9 @@ function buildScene(host: HTMLElement, THREE: ThreeModule) {
 
 	scene.add(ambientField, accentField);
 
+	/**
+	 * Resize the renderer and camera to match the host element.
+	 */
 	const resize = () => {
 		const width = Math.max(host.clientWidth, 1);
 		const height = Math.max(host.clientHeight, 1);
@@ -119,6 +145,9 @@ function buildScene(host: HTMLElement, THREE: ThreeModule) {
 	resize();
 
 	let resizeObserver: ResizeObserver | null = null;
+	/**
+	 * Forward window resize events to the shared resize handler.
+	 */
 	const onWindowResize = () => resize();
 
 	if (typeof ResizeObserver !== 'undefined') {
@@ -168,11 +197,16 @@ function buildScene(host: HTMLElement, THREE: ThreeModule) {
 	};
 }
 
+/**
+ * Mount the welcome scene when the host element is connected to the document.
+ * @param host - The DOM node that should contain the welcome scene.
+ * @returns A cleanup function for the mounted scene.
+ */
 export async function mountWelcomeScene(host: HTMLElement) {
 	const THREE = await import('three');
 
 	if (!host.isConnected) {
-		return () => {};
+		return noopCleanup;
 	}
 
 	return buildScene(host, THREE);

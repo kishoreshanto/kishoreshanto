@@ -12,6 +12,11 @@ export type Story = {
 
 export const stories = rawStories as Story[];
 
-export function getStoryById(id: string) {
+/**
+ * Find a story by its stable identifier.
+ * @param id - The story id taken from the route params.
+ * @returns The matching story, if one exists.
+ */
+export function getStoryById(id: string): Story | undefined {
 	return stories.find((story) => story.id === id);
 }
