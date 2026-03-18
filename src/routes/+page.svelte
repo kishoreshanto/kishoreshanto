@@ -19,9 +19,9 @@
 					SQL, PHP, R, C#/.NET Razor Pages, Swift, MIPS
 				</li>
 				<li>
-					<span class="font-bold">Core Software Engineering:</span> OOP (encapsulation/ abstraction/inheritance/ polymorphism),
-					class design & abstraction tradeoffs, system design fundamentals, build toolchains (CMake +
-					Make)
+					<span class="font-bold">Core Software Engineering:</span> OOP (encapsulation/ abstraction/inheritance/
+					polymorphism), class design & abstraction tradeoffs, system design fundamentals, build toolchains
+					(CMake + Make)
 				</li>
 				<li>
 					<span class="font-bold">Full-Stack Web Engineering:</span> SvelteKit, Node.js, npm (dependency/devDependency
