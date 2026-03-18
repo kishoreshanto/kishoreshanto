@@ -20,7 +20,7 @@
 	>
 		<InstagramIcon />
 		<h1
-			class="text-xs font-light text-gray-500 transition-all duration-300 hover:text-gray-900 xs:text-sm dark:hover:text-gray-300"
+			class="contact-link-text"
 		>
 			/ {instagram_username}
 		</h1>
