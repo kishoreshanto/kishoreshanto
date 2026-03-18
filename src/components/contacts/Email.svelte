@@ -16,15 +16,12 @@
 	});
 </script>
 
-<a
-	class=" flex items-center gap-1 font-mono font-medium text-amber-700 transition-all duration-300 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500"
-	href="mailto:{email}"
->
+<a class=" flex items-center gap-1" href="mailto:{email}">
 	<EmailIcon />
 
 	{#if email}
 		{#if email_is_valid}
-			{email}
+			<span class="contact-link-text">{email}</span>
 		{:else}
 			<span class="font-mono text-red-500 dark:text-red-400">Invalid email</span>
 		{/if}

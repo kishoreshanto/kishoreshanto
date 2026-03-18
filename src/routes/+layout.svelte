@@ -1,7 +1,72 @@
 <script lang="ts">
 	import './layout.css';
+	import { onMount } from 'svelte';
 	import { onNavigate } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
+	import { mountWelcomeScene } from '$lib/client/welcome-loader';
+	import Footer from '$component/Footer.svelte';
+
+	const WELCOME_DURATION_MS = 1600;
+	const WELCOME_FADE_MS = 120;
+
+	onMount(() => {
+		const loader = document.getElementById('app-loader');
+		const canvasHost = document.getElementById('app-loader-canvas');
+
+		if (!loader || loader.classList.contains('hidden')) {
+			return;
+		}
+
+		let cleanupScene: (() => void) | undefined;
+		let cancelled = false;
+		let hideTimer = 0;
+		let removeTimer = 0;
+
+		const startedAt = Number(loader.dataset.startedAt ?? Date.now());
+		loader.dataset.startedAt = String(startedAt);
+
+		const hideLoader = () => {
+			if (cancelled || loader.classList.contains('hidden')) {
+				return;
+			}
+
+			loader.classList.add('hidden');
+			loader.setAttribute('aria-busy', 'false');
+			removeTimer = window.setTimeout(() => {
+				try {
+					loader.remove();
+				} catch {
+					// Ignore DOM removal races during hot reloads.
+				}
+			}, WELCOME_FADE_MS + 120);
+		};
+
+		const remaining = Math.max(0, WELCOME_DURATION_MS - (Date.now() - startedAt));
+		hideTimer = window.setTimeout(hideLoader, remaining);
+
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (canvasHost && !prefersReducedMotion) {
+			void mountWelcomeScene(canvasHost)
+				.then((teardown) => {
+					if (cancelled) {
+						teardown();
+						return;
+					}
+
+					cleanupScene = teardown;
+				})
+				.catch(() => {
+					// Keep the CSS fallback loader if WebGL or the import is unavailable.
+				});
+		}
+
+		return () => {
+			cancelled = true;
+			window.clearTimeout(hideTimer);
+			window.clearTimeout(removeTimer);
+			cleanupScene?.();
+		};
+	});
 
 	let { children } = $props();
 
@@ -19,7 +84,7 @@
 	let ready = $state(false);
 
 	let activeIndex = $derived.by(() => {
-		const path = $page.url.pathname;
+		const path = page.url.pathname;
 		const idx = navItems.findIndex((item) =>
 			item.href === '/' ? path === '/' : path.startsWith(item.href)
 		);
@@ -29,12 +94,8 @@
 	$effect(() => {
 		const el = tabEls[activeIndex];
 		if (!el) return;
-
-		// offsetLeft/offsetWidth are relative to offsetParent (the container)
-		// — no getBoundingClientRect, no forced reflow.
 		pillX = el.offsetLeft;
 		pillW = el.offsetWidth;
-
 		if (!ready) requestAnimationFrame(() => (ready = true));
 	});
 
@@ -81,6 +142,4 @@
 	</div>
 </div>
 
-<div id="footer" class="bottom-0 w-full rounded-t-3xl bg-[#f9d8b0] py-18 text-center text-gray-600">
-	<p>Copyright © 2026 Kishore Shanto. All rights reserved.</p>
-</div>
+<Footer />

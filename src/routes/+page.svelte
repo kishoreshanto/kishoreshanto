@@ -2,12 +2,12 @@
 	import IntroSection from '$component/hero-page/IntroSection.svelte';
 </script>
 
-<main class="container mx-auto mt-12 mb-8 px-6 py-8 md:px-0">
+<main class="container mx-auto mt-12 mb-8 py-8 sm:px-10 md:px-10">
 	<!-- Intro Section -->
 	<IntroSection />
-	<hr class="my-8 w-full border-amber-800/70 pb-2" />
+	<hr class="my-8 w-full border-amber-gold pb-2" />
 
-	<div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 		<div id="left-panel"></div>
 		<div id="right-panel-skillsets" class="flex flex-col gap-4 rounded-3xl bg-[#f9d8b0] p-6">
 			<h1 class="text-center font-lora text-xl font-bold text-amber-800 md:text-3xl">
@@ -19,9 +19,9 @@
 					SQL, PHP, R, C#/.NET Razor Pages, Swift, MIPS
 				</li>
 				<li>
-					<span class="font-bold">Core Software Engineering:</span> OOP (encapsulation/abstraction/inheritance/polymorphism),
-					class design & abstraction tradeoffs, system design fundamentals, build toolchains (CMake +
-					Make)
+					<span class="font-bold">Core Software Engineering:</span> OOP (encapsulation/ abstraction/inheritance/
+					polymorphism), class design & abstraction tradeoffs, system design fundamentals, build toolchains
+					(CMake + Make)
 				</li>
 				<li>
 					<span class="font-bold">Full-Stack Web Engineering:</span> SvelteKit, Node.js, npm (dependency/devDependency

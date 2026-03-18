@@ -3,6 +3,10 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back_ios"
+		/>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<!-- DNS Prefetch for external resources -->
@@ -19,143 +23,186 @@
 
 		%sveltekit.head%
 
-		<!-- <style>
-			/* Minimal, inline splash styles: no external CSS needed */
-			:root {
-				--bg: #ffffff;
-				--fg: #0b0b0f;
-				--muted: #9ca3af;
-				--accent: #54aad1; /* youtube-like red */
+		<style>
+			html,
+			body {
+				margin: 0;
 			}
-			@media (prefers-color-scheme: light) {
-				:root {
-					--bg: #ffffff;
-					--fg: #0b0b0f;
-					--muted: #6b7280;
-				}
-			}
+
 			#app-loader {
 				position: fixed;
 				inset: 0;
 				z-index: 9999;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				background: var(--bg);
-				color: var(--fg);
+				display: grid;
+				place-items: center;
+				overflow: hidden;
+				background:
+					radial-gradient(circle at 50% 36%, rgba(255, 234, 206, 0.18), transparent 34%),
+					linear-gradient(180deg, #1d120b 0%, #4d2913 100%);
+				color: #fff7ea;
 				transition:
-					opacity 250ms ease,
-					visibility 250ms ease;
+					opacity 180ms ease,
+					visibility 180ms ease;
 			}
+
 			#app-loader.hidden {
 				opacity: 0;
 				visibility: hidden;
 			}
-			#app-loader .progress {
+
+			.app-loader__beam {
 				position: absolute;
-				top: 0;
-				left: 0;
-				height: 2px;
-				width: 20%;
-				background: var(--accent);
-				box-shadow: 0 0 12px rgba(84, 170, 209, 0.6);
-				animation: progress-slide 1.2s ease-in-out infinite;
+				inset: 50% auto auto 50%;
+				width: min(70vw, 28rem);
+				aspect-ratio: 1;
+				transform: translate(-50%, -50%);
+				border-radius: 50%;
+				background: radial-gradient(circle, rgba(255, 213, 160, 0.28) 0%, transparent 68%);
+				filter: blur(34px);
+				pointer-events: none;
 			}
-			@keyframes progress-slide {
-				0% {
-					left: -20%;
-					width: 20%;
-				}
-				50% {
-					left: 35%;
-					width: 30%;
-				}
-				100% {
-					left: 100%;
-					width: 20%;
-				}
+
+			.app-loader__canvas {
+				position: absolute;
+				inset: 0;
+				pointer-events: none;
 			}
-			.loader-content {
+
+			.app-loader__content {
+				position: relative;
+				z-index: 1;
 				display: grid;
-				gap: 16px;
-				place-items: center;
+				justify-items: center;
+				gap: 0.85rem;
+				width: min(86vw, 30rem);
+				padding: 2rem 1.25rem;
 				text-align: center;
 			}
-			.spinner {
-				width: 40px;
-				height: 40px;
-				border-radius: 9999px;
-				border: 3px solid var(--muted);
-				border-top-color: var(--fg);
-				animation: spin 0.9s linear infinite;
+
+			.app-loader__eyebrow {
+				margin: 0;
+				font:
+					600 1rem/1.2 'JetBrains Mono',
+					'SFMono-Regular',
+					Consolas,
+					monospace;
+				letter-spacing: 0.3em;
+				text-transform: uppercase;
+				color: rgba(255, 230, 195, 0.72);
 			}
-			@keyframes spin {
+
+			.app-loader__title {
+				margin: 0;
+				font-family: 'Lora', serif;
+				font-size: clamp(2.75rem, 9vw, 4.75rem);
+				font-weight: 600;
+				line-height: 0.95;
+				letter-spacing: 0.3rem;
+				text-wrap: balance;
+			}
+
+			.app-loader__subtitle {
+				margin: 0;
+				/* max-width: 24rem; */
+				font-size: 1.3rem;
+				font-family: 'Lora', serif;
+				color: rgba(255, 239, 216, 0.82);
+			}
+
+			.app-loader__meter {
+				position: relative;
+				width: min(68vw, 16rem);
+				height: 2px;
+				margin-top: 0.4rem;
+				overflow: hidden;
+				border-radius: 999px;
+				background: rgba(255, 235, 203, 0.18);
+			}
+
+			.app-loader__meter span {
+				position: absolute;
+				inset: 0;
+				transform-origin: left center;
+				transform: scaleX(0);
+				background: linear-gradient(90deg, #ffcf8a 0%, #fff1d5 100%);
+				animation: loader-meter 1200ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+			}
+
+			.app-loader__assistive {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				padding: 0;
+				margin: -1px;
+				overflow: hidden;
+				clip: rect(0, 0, 0, 0);
+				white-space: nowrap;
+				border: 0;
+			}
+
+			@keyframes loader-meter {
+				from {
+					transform: scaleX(0);
+				}
 				to {
-					transform: rotate(360deg);
+					transform: scaleX(1);
 				}
 			}
-			.brand {
-				font:
-					600 14px/1 system-ui,
-					-apple-system,
-					Segoe UI,
-					Roboto,
-					Ubuntu,
-					Cantarell,
-					Noto Sans,
-					Helvetica Neue,
-					Arial,
-					'Apple Color Emoji',
-					'Segoe UI Emoji';
-				letter-spacing: 0.02em;
-				opacity: 0.9;
+
+			@media (prefers-reduced-motion: reduce) {
+				.app-loader__meter span {
+					animation: none;
+					transform: scaleX(1);
+				}
 			}
-		</style> -->
+		</style>
 	</head>
 
 	<body data-sveltekit-preload-data="hover">
-		<!-- App splash loader: shows instantly, hides after app signals ready -->
-		<!-- <div id="app-loader" aria-live="polite" aria-busy="true" role="status">
-			<div class="progress" aria-hidden="true"></div>
-			<div class="loader-content">
-				<div class="spinner" aria-hidden="true"></div>
-				<div class="brand">Gathering Information about Kishore Shanto…</div>
+		<div id="app-loader" aria-live="polite" aria-busy="true" role="status">
+			<div class="app-loader__beam" aria-hidden="true"></div>
+			<div id="app-loader-canvas" class="app-loader__canvas" aria-hidden="true"></div>
+			<div class="app-loader__content">
+				<p class="app-loader__eyebrow">Kishore Shanto</p>
+				<h1 class="app-loader__title">Hello</h1>
+				<p class="app-loader__subtitle">Almost there, Thank you for your patience!</p>
+				<div class="app-loader__meter" aria-hidden="true">
+					<span></span>
+				</div>
 			</div>
+			<p class="app-loader__assistive">Preparing the site experience.</p>
 		</div>
+
 		<noscript>
 			<style>
-				/* If JS is disabled, don't block content with the loader */
 				#app-loader {
 					display: none !important;
 				}
 			</style>
-		</noscript> -->
+		</noscript>
 
-		<!-- <script>
+		<script>
 			(function () {
-				function hideLoader() {
-					var el = document.getElementById('app-loader');
-					if (!el || el.classList.contains('hidden')) return;
-					el.classList.add('hidden');
-					// Remove from DOM after transition to free memory and avoid focus traps
-					setTimeout(function () {
-						try {
-							el.remove();
-						} catch (e) {}
-					}, 320);
+				var loader = document.getElementById('app-loader');
+				if (loader && !loader.dataset.startedAt) {
+					loader.dataset.startedAt = String(Date.now());
 				}
 
-				// Hide when the Svelte app signals readiness
-				window.addEventListener('app:ready', hideLoader, { once: true });
-				// Also hide when SvelteKit client starts (framework lifecycle event)
-				window.addEventListener('sveltekit:start', hideLoader, { once: true });
-
-				// Safety: auto-hide after a timeout in case the signal never fires
-				window.addEventListener('DOMContentLoaded', function () {
-					setTimeout(hideLoader, 1500);
-				});
+				setTimeout(function () {
+					var el = document.getElementById('app-loader');
+					if (el && !el.classList.contains('hidden')) {
+						el.classList.add('hidden');
+						el.setAttribute('aria-busy', 'false');
+						setTimeout(function () {
+							try {
+								el.remove();
+							} catch (e) {}
+						}, 320);
+					}
+				}, 4000);
 			})();
-		</script> -->
+		</script>
+
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
