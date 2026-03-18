@@ -7,16 +7,23 @@
 /* Load only local IvyOra variants used in the app. */
 @font-face {
 	font-family: 'IvyOra Text';
-	src: url('/fonts/IvyOra-Text-Regular.otf') format('opentype');
+	src: url('/fonts/IvyJournal-Regular.otf') format('opentype');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
 @font-face {
 	font-family: 'IvyOra Text';
-	src: url('/fonts/IvyOra-Text-Bold.otf') format('opentype');
+	src: url('/fonts/IvyJournal-Bold.otf') format('opentype');
 	font-weight: 700;
 	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'IvyOra Text';
+	src: url('/fonts/IvyJournal-Italic.otf') format('opentype');
+	font-weight: 700;
+	font-style: italic;
 	font-display: swap;
 }
 
@@ -425,7 +432,7 @@ body {
 /* Common Page Layouts */
 
 .page-container {
-	@apply container mx-auto mt-12 mb-8 px-6 pt-8 md:px-0;
+	@apply container mx-auto mt-12 mb-8 pt-8;
 }
 
 .page-heading {
@@ -441,11 +448,11 @@ body {
 /* Story Page */
 
 .story-card {
-	@apply max-h-120 rounded-2xl border border-antique-gold bg-amber-100 hover:scale-102 transition-all duration-300 hover:shadow-lg;
+	@apply max-h-120 rounded-2xl border border-antique-gold bg-amber-100 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg;
 }
 
 .story-card img {
-	@apply w-full rounded-t-2xl;
+	@apply w-full rounded-t-2xl object-cover;
 }
 
 .story-card-body {
@@ -465,4 +472,9 @@ body {
 
 .story-card-timestamp {
 	@apply font-mono text-sm text-gray-500;
+}
+
+
+.story-paragraph::first-letter {
+	@apply float-left pr-[0.12em] font-bold text-amber-700 text-5xl leading-8 pt-[0.15em];
 }
