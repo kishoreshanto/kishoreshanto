@@ -18,7 +18,7 @@
 	</div>
 </div> -->
 
-<main class="page-container h-screen">
+<main class="page-container">
 		{@render children()}
 
 </main>
