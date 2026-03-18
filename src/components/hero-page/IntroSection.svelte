@@ -13,12 +13,14 @@
 	});
 </script>
 
-<div class="flex items-center justify-center lg:justify-start">
+<div class="flex items-center justify-center xl:justify-start">
 	<div
-		class="flex flex-col items-center gap-4 text-center lg:flex-row lg:gap-8 lg:text-start 2xl:gap-18"
+		class="flex flex-col items-center gap-4 text-center xl:flex-row lg:gap-8 lg:text-start 2xl:gap-18"
 	>
-		<DisplayImage />
-		<div class="flex flex-col gap-2">
+		<div class="flex flex-col items-center gap-4 text-center lg:flex-row lg:gap-8 lg:text-start 2xl:gap-18">
+			<DisplayImage />
+
+			<div class="flex flex-col gap-2">
 			<h1 class="font-crimson-text text-5xl lg:text-6xl 2xl:text-8xl">
 				Hey, <span class="name-highlight font-bold" class:name-highlight--animate={animated}
 					>Kishore</span
@@ -37,6 +39,8 @@
 				experiences and sharing my knowledge with others.
 			</p>
 		</div>
+		</div>
+
 		<ContactBox />
 	</div>
 </div>
