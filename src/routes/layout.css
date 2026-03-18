@@ -474,7 +474,6 @@ body {
 	@apply font-mono text-sm text-gray-500;
 }
 
-
 .story-paragraph::first-letter {
-	@apply float-left pr-[0.12em] font-bold text-amber-700 text-5xl leading-8 pt-[0.15em];
+	@apply float-left pt-[0.15em] pr-[0.12em] text-5xl leading-8 font-bold text-amber-700;
 }

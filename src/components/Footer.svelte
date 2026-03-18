@@ -65,15 +65,13 @@
 <footer class="footer-shell">
 	<div class="w-full">
 		<div class="footer-card">
-			<div
-				class="gap-10 flex flex-col md:flex-row justify-between items-start"
-			>
+			<div class="flex flex-col items-start justify-between gap-10 md:flex-row">
 				<div class="space-y-5">
 					<p class="footer-kicker">{data.name}</p>
 					<div class="space-y-4">
 						<p class="max-w-2xl font-ivy-text text-lg leading-relaxed text-gray-700">
-							This portfolio is designed as a warm, readable home for my work, stories,
-							and experiments.
+							This portfolio is designed as a warm, readable home for my work, stories, and
+							experiments.
 						</p>
 					</div>
 
@@ -172,21 +170,6 @@
 		letter-spacing: 0.22em;
 		text-transform: uppercase;
 		color: rgb(168 103 0 / 0.8);
-	}
-
-	.footer-link {
-		font-family: var(--font-crimson-text);
-		font-size: 1.35rem;
-		font-weight: 600;
-		color: rgb(132 85 34);
-		transition:
-			transform 180ms ease,
-			color 180ms ease;
-	}
-
-	.footer-link:hover {
-		transform: translateX(2px);
-		color: rgb(44 24 16);
 	}
 
 	.footer-contact-link {

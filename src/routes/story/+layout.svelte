@@ -19,6 +19,5 @@
 </div> -->
 
 <main class="page-container">
-		{@render children()}
-
+	{@render children()}
 </main>

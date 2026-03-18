@@ -32,8 +32,8 @@
 	);
 </script>
 
-<div class="mx-auto w-full pb-12 lg:px-22 sm:px-6 p-0">
-	<div class="flex flex-row justify-between items-center">
+<div class="mx-auto w-full p-0 pb-12 sm:px-6 lg:px-22">
+	<div class="flex flex-row items-center justify-between">
 		<a
 			href="/story"
 			class="inline-flex items-center gap-2 rounded-full border border-amber-400 bg-surface-card px-4 py-2 font-mono text-sm tracking-[0.2em] text-amber-700 uppercase transition-colors duration-200 hover:bg-amber-200 hover:text-amber-900"
@@ -65,9 +65,8 @@
 		</div>
 	</div>
 
-
 	<article class="mt-6 flex flex-col">
-		<div class="flex flex-col lg:flex-row lg:gap-12 lg:items-center lg:justify-between">
+		<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-12">
 			<img
 				bind:this={coverImageElement}
 				src={data.story.coverImageUrl}
@@ -76,10 +75,10 @@
 			/>
 
 			<div>
-			<div class="flex align-middle items-center py-6  gap-3 text-sm text-gray-600">
+				<div class="flex items-center gap-3 py-6 align-middle text-sm text-gray-600">
 					<span aria-hidden="true"><TimeIcon /></span>
 					<span class="font-mono tracking-[0.16em] uppercase">{formattedDate}</span>
-			</div>
+				</div>
 
 				<div class="space-y-3">
 					<h2 class="font-lora text-4xl font-semibold text-amber-700 md:text-5xl">
@@ -99,7 +98,7 @@
 				{#each storyParagraphs as paragraph, index (paragraph)}
 					<p
 						class={[
-							'font-ivy-text text-justify text-black transition-[font-size,line-height] duration-200',
+							'text-justify font-ivy-text text-black transition-[font-size,line-height] duration-200',
 							fontSizeClasses[fontSize],
 							index === 0 && 'story-paragraph'
 						]}
@@ -111,7 +110,9 @@
 
 			{#if galleryImages.length > 0}
 				<section class="space-y-4 pt-4">
-					<h3 class="font-mono text-sm tracking-[0.2em] text-amber-700 uppercase">Here are some memories:</h3>
+					<h3 class="font-mono text-sm tracking-[0.2em] text-amber-700 uppercase">
+						Here are some memories:
+					</h3>
 					<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 						{#each galleryImages as imageUrl (imageUrl)}
 							<img
@@ -128,5 +129,4 @@
 </div>
 
 <style>
-
 </style>
