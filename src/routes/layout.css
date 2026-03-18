@@ -416,11 +416,10 @@ body {
 	}
 }
 
-
 /* Contact Header */
 
 .contact-link-text {
-	@apply font-mono text-amber-700 transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-300
+	@apply font-mono text-amber-700 transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-300;
 }
 
 /* Common Page Layouts */
@@ -430,11 +429,40 @@ body {
 }
 
 .page-heading {
-	@apply text-center font-lora text-4xl font-medium text-amber-600 lg:text-5xl xl:text-6xl;
+	@apply text-center font-lora text-4xl font-medium lg:text-5xl xl:text-6xl;
 	color: var(--color-page-heading);
 }
 
 .page-subheading {
 	@apply mt-6 mb-12 text-center font-lora text-xl lg:text-2xl;
 	color: var(--color-page-subheading);
+}
+
+/* Story Page */
+
+.story-card {
+	@apply max-h-120 rounded-2xl border border-antique-gold bg-amber-100 hover:scale-102 transition-all duration-300 hover:shadow-lg;
+}
+
+.story-card img {
+	@apply w-full rounded-t-2xl;
+}
+
+.story-card-body {
+	@apply flex flex-col gap-3 p-4;
+}
+
+.story-card-title {
+	@apply font-lora text-2xl font-bold;
+	color: var(--ks-text-heading);
+}
+
+.story-card-description {
+	/* leading-relaxed and line spacing 1 */
+	@apply line-clamp-5 font-ivy-text text-base leading-relaxed md:text-lg;
+	line-height: 1.25;
+}
+
+.story-card-timestamp {
+	@apply font-mono text-sm text-gray-500;
 }
