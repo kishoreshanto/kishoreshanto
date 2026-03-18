@@ -1,2 +1,3 @@
-<h1 class="mb-105">Chat</h1>
-<p>Chat page — coming soon.</p>
+<div class="min-h-screen">
+    <h1 class="text-center mt-12 w-full font-lora text-zinc-400 font-bold text-5xl">Comming Soon...</h1>
+</div>
