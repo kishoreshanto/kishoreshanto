@@ -19,12 +19,8 @@
 </div> -->
 
 <main class="page-container">
-	<h1 class="page-heading">
-		What's been going on lately?
-	</h1>
-	<h3 class="page-subheading">
-		Know stories about me, my work, and my journey (and my cat)
-	</h3>
+	<h1 class="page-heading">What's been going on lately?</h1>
+	<h3 class="page-subheading">Know stories about me, my work, and my journey (and my cat)</h3>
 
 	<div>
 		{@render children()}
