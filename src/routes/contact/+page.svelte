@@ -1,22 +1,14 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import data from '$lib/data_en.json';
-	import EmailIcon from '../../components/visuals/icons/EmailIcon.svelte';
-	import GithubIcon from '../../components/visuals/icons/GithubIcon.svelte';
-	import LinkedInIcon from '../../components/visuals/icons/LinkedInIcon.svelte';
-	import InstagramIcon from '../../components/visuals/icons/InstagramIcon.svelte';
-	import LocationIcon from '../../components/visuals/icons/LocationIcon.svelte';
-	import TimeIcon from '../../components/visuals/icons/TimeIcon.svelte';
-	import ResumeIcon from '../../components/visuals/icons/ResumeIcon.svelte';
+	import EmailIcon from '$component/visuals/icons/EmailIcon.svelte';
+	import GithubIcon from '$component/visuals/icons/GithubIcon.svelte';
+	import LinkedInIcon from '$component/visuals/icons/LinkedInIcon.svelte';
+	import InstagramIcon from '$component/visuals/icons/InstagramIcon.svelte';
+	import LocationIcon from '$component/visuals/icons/LocationIcon.svelte';
+	import TimeIcon from '$component/visuals/icons/TimeIcon.svelte';
+	import ResumeIcon from '$component/visuals/icons/ResumeIcon.svelte';
 
-	let visible = $state(false);
-
-	onMount(() => {
-		const timer = setTimeout(() => {
-			visible = true;
-		}, 80);
-		return () => clearTimeout(timer);
-	});
+	let visible = $state(true);
 
 	const orcidId = data.orcid_url.split('/').pop() ?? '';
 
@@ -185,38 +177,7 @@
 		</div>
 	</div>
 
-	<!-- DND Notice -->
-	{#if data.request_do_not_disturb}
-		<div
-			class="contact-card dnd-notice mt-6"
-			class:contact-visible={visible}
-			style="transition-delay: {100 + visibleCards.length * 80 + 160}ms"
-		>
-			<div class="flex items-start gap-3">
-				<svg
-					class="mt-0.5 h-5 w-5 shrink-0 text-amber-700"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-					stroke-width="2"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-					/>
-				</svg>
-				<div>
-					<h3 class="font-crimson-text text-sm font-bold tracking-wider text-amber-800 uppercase">
-						Please Note
-					</h3>
-					<p class="mt-1 font-lora text-sm leading-relaxed text-amber-800/80">
-						{data.request_do_not_disturb_message}
-					</p>
-				</div>
-			</div>
-		</div>
-	{/if}
+
 </main>
 
 <style>
@@ -228,29 +189,6 @@
 		border: 1px solid rgb(146 100 52 / 0.35);
 		background: rgb(249 216 176 / 0.4);
 		box-shadow: 0 1px 3px rgb(146 100 52 / 0.08);
-		transition:
-			transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
-			box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
-			opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
-			filter 500ms cubic-bezier(0.22, 1, 0.36, 1);
-
-		/* start hidden for stagger animation */
-		opacity: 0;
-		filter: blur(4px);
-		transform: translateY(12px);
-	}
-
-	.contact-card.contact-visible {
-		opacity: 1;
-		filter: blur(0);
-		transform: translateY(0);
-	}
-
-	a.contact-card:hover {
-		transform: translateY(-3px) scale(1.015);
-		box-shadow:
-			0 8px 24px rgb(146 100 52 / 0.14),
-			0 2px 6px rgb(146 100 52 / 0.1);
 	}
 
 	/* Icon wrapper */
@@ -271,9 +209,4 @@
 		fill: rgb(180 83 9);
 	}
 
-	/* DND notice accent */
-	.dnd-notice {
-		border-left: 3px solid rgb(180 83 9 / 0.6);
-		background: rgb(249 216 176 / 0.25);
-	}
 </style>
