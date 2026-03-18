@@ -16,10 +16,7 @@
 	});
 </script>
 
-<a
-	class=" flex items-center gap-1"
-	href="mailto:{email}"
->
+<a class=" flex items-center gap-1" href="mailto:{email}">
 	<EmailIcon />
 
 	{#if email}

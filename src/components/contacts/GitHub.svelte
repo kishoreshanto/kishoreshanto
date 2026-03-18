@@ -15,7 +15,7 @@
 {#if show_github}
 	<a target="_blank" href={github_url} class="flex items-center gap-1 align-middle">
 		<GithubIcon />
-		<h1 class="contact-link-text"> 
+		<h1 class="contact-link-text">
 			/ {github_username}
 		</h1>
 	</a>
