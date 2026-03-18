@@ -100,7 +100,7 @@
 	</div>
 </div>
 
-<div class="container mx-auto mt-6 flex flex-row md:px-16">
+<div class="sm:container mx-auto mt-6 flex flex-row md:px-16 ">
 	<!-- Filter Container -->
 	<div
 		id="filter-container"
