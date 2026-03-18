@@ -19,7 +19,7 @@
 	>
 		<DisplayImage />
 		<div class="flex flex-col gap-2">
-			<h1 class="font-crimson-text text-6xl xl:text-8xl">
+			<h1 class="font-crimson-text text-5xl lg:text-6xl 2xl:text-8xl">
 				Hey, <span class="name-highlight font-bold" class:name-highlight--animate={animated}
 					>Kishore</span
 				> here!

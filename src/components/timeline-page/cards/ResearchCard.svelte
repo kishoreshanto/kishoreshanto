@@ -32,9 +32,9 @@
 
 		<!-- Card Header -->
 		<div class="">
-			<h1 id="title" class="card-title">{title}</h1>
+			<h1 id="title" class="card-title text-amber-800">{title}</h1>
 			<div id="subtitle" class="card-subtitle">
-				<span id="s1" class="font-medium text-amber-600">{subtitle_1}</span>
+				<span id="s1" class="font-medium text-amber-500">{subtitle_1}</span>
 				<span id="bullet" class="text-amber-700">•</span>
 				<span id="s2" class="text-amber-700">{subtitle_2}</span>
 			</div>
@@ -59,7 +59,7 @@
 
 		<div class="research-card-overview">
 			<div>
-				<p class="research-card-overview-title">Overview</p>
+				<p class="research-card-overview-title text-amber-700">Overview</p>
 				<p class="research-card-overview-description">
 					{overview}
 				</p>
