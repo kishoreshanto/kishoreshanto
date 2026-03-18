@@ -12,7 +12,8 @@
 	const dateFormatter = new Intl.DateTimeFormat('en-US', {
 		month: 'long',
 		day: 'numeric',
-		year: 'numeric'
+		year: 'numeric',
+		timeZone: 'UTC'
 	});
 	const fontSizeOptions: { value: FontSize; label: string; iconClass: string }[] = [
 		{ value: 'small', label: 'Small', iconClass: 'text-sm' },
