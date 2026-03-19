@@ -4,6 +4,9 @@
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import Footer from '$component/Footer.svelte';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+ 
+	injectSpeedInsights();
 
 	const LOADER_MIN_DURATION_MS = 700;
 	const LOADER_FADE_MS = 180;
