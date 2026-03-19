@@ -5,7 +5,7 @@
 	import { page } from '$app/state';
 	import Footer from '$component/Footer.svelte';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
- 
+
 	injectSpeedInsights();
 
 	const LOADER_MIN_DURATION_MS = 700;
@@ -37,7 +37,9 @@
 			'700 1em "IvyOra Text"'
 		];
 
-		return Promise.all(criticalFonts.map((descriptor) => fontSet.load(descriptor))).catch(() => undefined);
+		return Promise.all(criticalFonts.map((descriptor) => fontSet.load(descriptor))).catch(
+			() => undefined
+		);
 	}
 
 	function waitForFonts() {
