@@ -3,23 +3,65 @@
 	import { onMount } from 'svelte';
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
-	import { mountWelcomeScene } from '$lib/client/welcome-loader';
 	import Footer from '$component/Footer.svelte';
 
-	const WELCOME_DURATION_MS = 1600;
-	const WELCOME_FADE_MS = 120;
+	const LOADER_MIN_DURATION_MS = 700;
+	const LOADER_FADE_MS = 180;
+
+	function waitForWindowLoad() {
+		if (document.readyState === 'complete') {
+			return Promise.resolve();
+		}
+
+		return new Promise<void>((resolve) => {
+			window.addEventListener('load', () => resolve(), { once: true });
+		});
+	}
+
+	function waitForCriticalFonts() {
+		const fontSet = (document as Document & { fonts?: FontFaceSet }).fonts;
+		if (!fontSet) {
+			return Promise.resolve();
+		}
+
+		const criticalFonts = [
+			'600 1em "JetBrains Mono"',
+			'400 1em "Lora"',
+			'600 1em "Lora"',
+			'400 1em "Crimson Text"',
+			'700 1em "Crimson Text"',
+			'400 1em "IvyOra Text"',
+			'700 1em "IvyOra Text"'
+		];
+
+		return Promise.all(criticalFonts.map((descriptor) => fontSet.load(descriptor))).catch(() => undefined);
+	}
+
+	function waitForFonts() {
+		const fontSet = (document as Document & { fonts?: FontFaceSet }).fonts;
+		if (!fontSet) {
+			return Promise.resolve();
+		}
+
+		return waitForCriticalFonts().then(() => fontSet.ready.catch(() => undefined));
+	}
+
+	function waitForHydratedPaint() {
+		return new Promise<void>((resolve) => {
+			requestAnimationFrame(() => {
+				requestAnimationFrame(() => resolve());
+			});
+		});
+	}
 
 	onMount(() => {
 		const loader = document.getElementById('app-loader');
-		const canvasHost = document.getElementById('app-loader-canvas');
 
 		if (!loader || loader.classList.contains('hidden')) {
 			return;
 		}
 
-		let cleanupScene: (() => void) | undefined;
 		let cancelled = false;
-		let hideTimer = 0;
 		let removeTimer = 0;
 
 		const startedAt = Number(loader.dataset.startedAt ?? Date.now());
@@ -30,6 +72,7 @@
 				return;
 			}
 
+			document.body.removeAttribute('data-loader-active');
 			loader.classList.add('hidden');
 			loader.setAttribute('aria-busy', 'false');
 			removeTimer = window.setTimeout(() => {
@@ -38,33 +81,25 @@
 				} catch {
 					// Ignore DOM removal races during hot reloads.
 				}
-			}, WELCOME_FADE_MS + 120);
+			}, LOADER_FADE_MS + 140);
 		};
 
-		const remaining = Math.max(0, WELCOME_DURATION_MS - (Date.now() - startedAt));
-		hideTimer = window.setTimeout(hideLoader, remaining);
+		const remaining = Math.max(0, LOADER_MIN_DURATION_MS - (Date.now() - startedAt));
 
-		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-		if (canvasHost && !prefersReducedMotion) {
-			void mountWelcomeScene(canvasHost)
-				.then((teardown) => {
-					if (cancelled) {
-						teardown();
-						return;
-					}
-
-					cleanupScene = teardown;
-				})
-				.catch(() => {
-					// Keep the CSS fallback loader if WebGL or the import is unavailable.
-				});
-		}
+		void Promise.all([
+			waitForWindowLoad(),
+			waitForFonts(),
+			waitForHydratedPaint(),
+			new Promise<void>((resolve) => {
+				window.setTimeout(() => resolve(), remaining);
+			})
+		]).then(() => {
+			hideLoader();
+		});
 
 		return () => {
 			cancelled = true;
-			window.clearTimeout(hideTimer);
 			window.clearTimeout(removeTimer);
-			cleanupScene?.();
 		};
 	});
 
