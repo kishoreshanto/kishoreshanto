@@ -1,0 +1,70 @@
+[
+	{
+		"id": "aws-cloud-arch",
+		"component": "freelance",
+		"date": "16th May, 2024",
+		"props": {
+			"date": "16th May, 2024",
+			"category": "Work Experience",
+			"highlight_right": "",
+			"title": "Cloud Solutions Architect",
+			"subtitle_1": "Freelance",
+			"subtitle_2": "Australia (Remote)",
+			"overview": "Architected and deployed a comprehensive AWS cloud infrastructure for a growing Australian tech startup, delivering scalable, secure, and highly available solutions that enabled seamless business growth and operational efficiency.",
+            "role": [
+                "Cloud Engineer"
+            ],
+            "key_deliverables": [
+                "Designed and implemented a secure and scalable AWS cloud infrastructure, utilizing services such as EC2, VPC, S3, ELB, RDS, Auto Scaling, and IAM.",
+                "Migrated existing applications and databases to AWS, ensuring minimal downtime and data integrity throughout the process."
+            ]
+		}
+	},
+	{
+		"id": "lab-assistant",
+		"component": "part-time",
+		"date": "3rd April, 2024",
+		"props": {
+			"date": "3rd April, 2024",
+			"category": "Work Experience",
+			"highlight_right": "",
+			"title": "Laboratory Assistant",
+			"subtitle_1": "Part-time",
+			"subtitle_2": "United International University",
+			"overview": "Provided comprehensive academic and technical support to instructors and students in university laboratory settings, troubleshooting equipment issues, facilitating student assessments, and ensuring smooth laboratory operations across multiple academic programs.",
+            "role": [
+                "Laboratory Assistant"
+            ],
+            "key_deliverables": [
+                "Managed and maintained laboratory equipment, ensuring all devices were in optimal working condition for student use.",
+                "Provided technical support and troubleshooting assistance to students during laboratory sessions, fostering a conducive learning environment.",
+                "Assisted instructors in monitoring student progress and performance during lab activities, contributing to effective student assessments."
+            ]
+		}
+	},
+    {
+		"id": "social-survey",
+		"component": "part-time",
+		"date": "12th May, 2024",
+		"props": {
+			"date": "12th May, 2024",
+			"category": "Work Experience",
+			"highlight_right": "",
+			"title": "Social Survey Researcher on Youth Cyber Safety",
+			"subtitle_1": "Part-time",
+			"subtitle_2": "United International University",
+			"overview": "Conducted comprehensive interviews to gather qualitative data on personal experiences, performed data preprocessing and statistical analysis to identify key trends, and contributed to developing solutions aimed at enhancing the well-being of young people in digital environments.",
+            "role": [
+                "Interviewer",
+                "Data Manager",
+                "Data Analyst"
+            ],
+            "key_deliverables": [
+                "Investigated cybersecurity measures, content moderation, and educational resources effectiveness in protecting youth (ages 16-30) from online risks",
+                "Conducted mixed-methods study with anonymous online surveys and semi-structured interviews (60 participants each interviewer)",
+                "Performed statistical analysis including Chi-Square and paired t-tests, plus thematic analysis for qualitative insights",
+                "Identified key platforms (Facebook, Instagram) associated with cyberbullying and developed multi-faceted prevention strategies"
+            ]
+		}
+	}
+]
