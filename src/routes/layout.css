@@ -403,7 +403,7 @@
 }
 
 .research-card-overview-title {
-	@apply text-lg font-semibold;
+	@apply font-lora text-lg font-semibold text-amber-700;
 }
 
 .research-card-overview-description {

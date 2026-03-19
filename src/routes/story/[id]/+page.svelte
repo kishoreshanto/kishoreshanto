@@ -72,7 +72,7 @@
 				bind:this={coverImageElement}
 				src={data.story.coverImageUrl}
 				alt={data.story.storyTitle}
-				class="aspect-auto rounded-2xl object-cover lg:max-w-lg w-full max-h-105 lg:max-h-132 lg:min-h-96"
+				class="aspect-auto max-h-105 w-full rounded-2xl object-cover lg:max-h-132 lg:min-h-96 lg:max-w-lg"
 			/>
 
 			<div>

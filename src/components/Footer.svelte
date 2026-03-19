@@ -40,7 +40,7 @@
 
 <footer class="footer-shell">
 	<div class="w-full">
-		<div class="footer-card px-10 md:px-20 py-10">
+		<div class="footer-card px-10 py-10 md:px-20">
 			<div class="flex flex-col items-start justify-between gap-10 md:flex-row">
 				<div class="space-y-5">
 					<p class="footer-kicker">{data.name}</p>
@@ -59,7 +59,7 @@
 
 				<div class="space-y-4">
 					<p class="footer-column-title">Connect</p>
-					<div class="flex flex-row md:flex-col flex-wrap gap-4 md:gap-1">
+					<div class="flex flex-row flex-wrap gap-4 md:flex-col md:gap-1">
 						{#each connectLinks as link (link.label)}
 							<a
 								class="footer-contact-link"
@@ -72,9 +72,7 @@
 										<link.icon />
 									{/if}
 								</span>
-								<span class="font-lora text-amber-800"
-									>{link.label}</span
-								>
+								<span class="font-lora text-amber-800">{link.label}</span>
 							</a>
 						{/each}
 					</div>
