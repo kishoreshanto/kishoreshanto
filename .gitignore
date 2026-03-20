@@ -51,6 +51,8 @@ pnpm-lock.yaml
 *.ttf
 *.otf
 
-# Temporary files
+# Temporary files and internal docs
 src/components/v1/*
 src/lib/v1/*
+docs/
+.github/*.md
