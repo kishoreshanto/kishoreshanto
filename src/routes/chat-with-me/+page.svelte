@@ -126,46 +126,23 @@
 	}
 </script>
 
-<main class="container mx-auto mb-20 px-6 md:px-10">
-	<section
-		aria-labelledby="chat-title"
-		class="chat-shell surface-card-soft rounded-4xl px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8"
-	>
-		<div class="chat-frame">
-			<header class="chat-head">
-				<div>
-					<p class="chat-kicker">Quick conversation</p>
-					<h2 id="chat-title" class="chat-title">
-						A focused chat space for fast questions and answers.
-					</h2>
-					<p class="chat-description">
-						This is the UI preview for the external model integration. Messages stay in place while
-						you browse the site, and a hard refresh clears the thread.
-					</p>
-				</div>
-
-				<div aria-live="polite" class="chat-note">
-					<span class="chat-note-pill">
-						{chatSession.isResponding ? 'Assistant is typing' : 'Ready'}
-					</span>
-					<p>Enter to send. Shift+Enter creates a new line.</p>
-				</div>
+<main class="container mx-auto mb-20 md:px-10">
+		<div class="">
+			<header class="flex lg:justify-between items-center lg:items-start flex-col gap-2 lg:flex-row mb-6">
+				<p class="chat-kicker">Quick conversation</p>
+				<p class="font-lora">Enter to send. <span class="font-mono text-sm bg-amber-200 rounded-full px-2 py-0.5">Shift+Enter</span> creates a new line.</p>
 			</header>
 
 			<div
 				aria-busy={chatSession.isResponding}
 				aria-live="polite"
 				bind:this={viewport}
-				class="chat-thread surface-card"
+				class="chat-thread bg-amber-100 border-x border-t border-amber-500 rounded-t-4xl"
 			>
 				{#if chatSession.messages.length === 0}
 					<div class="chat-empty">
 						<p class="chat-empty-kicker">No conversation yet</p>
-						<h3>Ask anything and the placeholder assistant will echo back a sample reply.</h3>
-						<p>
-							Your messages appear on the right, replies appear opposite them, and the thread stays
-							here while you move around the site.
-						</p>
+						<h3>Start a conversation by typing a message below.</h3>
 					</div>
 				{:else}
 					{#each chatSession.messages as message (message.id)}
@@ -203,7 +180,7 @@
 				{/if}
 			</div>
 
-			<form class="chat-composer surface-card" onsubmit={handleSubmit}>
+			<form class="chat-composer bg-amber-100 border-x border-b border-amber-500 rounded-b-4xl" onsubmit={handleSubmit}>
 				<div class="chat-input-wrap">
 					<label class="sr-only" for="chat-message">Write a message</label>
 					<textarea
@@ -220,77 +197,20 @@
 				</div>
 
 				<div class="chat-actions">
-					<p class="chat-helper">Hard refresh clears the thread.</p>
 					<button class="brand-button chat-send" disabled={sendDisabled} type="submit">
 						{chatSession.isResponding ? 'Thinking...' : 'Send'}
 					</button>
 				</div>
 			</form>
 		</div>
-	</section>
 </main>
 
 <style>
-	.chat-shell {
-		position: relative;
-		overflow: hidden;
-		background:
-			radial-gradient(circle at top right, rgb(255 210 117 / 0.22), transparent 30%),
-			radial-gradient(circle at bottom left, rgb(196 154 60 / 0.16), transparent 26%),
-			linear-gradient(145deg, rgb(255 250 240 / 0.92), rgb(245 237 217 / 0.86));
-	}
-
-	.chat-shell::before,
-	.chat-shell::after {
-		content: '';
-		position: absolute;
-		border-radius: 9999px;
-		pointer-events: none;
-	}
-
-	.chat-shell::before {
-		top: 1.5rem;
-		left: -4rem;
-		width: 11rem;
-		height: 11rem;
-		background: radial-gradient(circle, rgb(255 210 117 / 0.18), transparent 68%);
-	}
-
-	.chat-shell::after {
-		right: -4.75rem;
-		bottom: -4.75rem;
-		width: 13rem;
-		height: 13rem;
-		background: radial-gradient(circle, rgb(132 85 34 / 0.12), transparent 72%);
-	}
-
-	.chat-frame {
-		position: relative;
-		z-index: 1;
-		display: grid;
-		gap: 1.2rem;
-	}
-
-	.chat-head {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-
-	@media (min-width: 1024px) {
-		.chat-head {
-			flex-direction: row;
-			align-items: flex-end;
-			justify-content: space-between;
-		}
-	}
 
 	.chat-kicker,
 	.chat-empty-kicker,
-	.chat-note-pill,
 	.message-label,
-	.message-time,
-	.chat-helper {
+	.message-time{
 		font-family: var(--font-mono), monospace;
 		letter-spacing: 0.18em;
 		text-transform: uppercase;
@@ -303,60 +223,12 @@
 		color: var(--ks-action-primary);
 	}
 
-	.chat-title {
-		margin-top: 0.6rem;
-		max-width: 42rem;
-		font-family: var(--font-lora), serif;
-		font-size: clamp(2rem, 3.8vw, 3.35rem);
-		line-height: 1.08;
-		font-weight: 600;
-		color: var(--ks-text-heading-strong);
-	}
-
-	.chat-description {
-		margin-top: 0.95rem;
-		max-width: 44rem;
-		font-family: var(--font-ivy-text), serif;
-		font-size: clamp(1.02rem, 1.85vw, 1.2rem);
-		line-height: 1.68;
-		color: var(--ks-text-body);
-	}
-
-	.chat-note {
-		display: grid;
-		gap: 0.55rem;
-		max-width: 18rem;
-		border: 1px solid var(--ks-border-soft);
-		border-radius: 1.3rem;
-		background: rgb(255 250 240 / 0.8);
-		padding: 1rem 1.1rem;
-		box-shadow: 0 18px 30px -24px var(--ks-shadow-strong);
-	}
-
-	.chat-note-pill {
-		width: fit-content;
-		border-radius: 9999px;
-		background: rgb(132 85 34 / 0.11);
-		padding: 0.36rem 0.78rem;
-		font-size: 0.72rem;
-		font-weight: 700;
-		color: var(--ks-action-hover);
-	}
-
-	.chat-note p {
-		font-family: var(--font-ivy-text), serif;
-		font-size: 0.98rem;
-		line-height: 1.55;
-		color: var(--ks-text-muted);
-	}
-
 	.chat-thread {
 		display: flex;
 		flex-direction: column;
 		min-height: clamp(24rem, 58vh, 38rem);
 		max-height: 38rem;
 		overflow-y: auto;
-		background: linear-gradient(180deg, rgb(255 253 248 / 0.95), rgb(249 244 233 / 0.93));
 		padding: 1rem;
 		scroll-behavior: smooth;
 	}
@@ -513,7 +385,6 @@
 	.chat-composer {
 		display: grid;
 		gap: 1rem;
-		background: rgb(255 250 240 / 0.92);
 		padding: 1rem;
 	}
 
@@ -571,13 +442,6 @@
 			justify-content: space-between;
 		}
 	}
-
-	.chat-helper {
-		font-size: 0.72rem;
-		font-weight: 600;
-		color: var(--ks-text-muted);
-	}
-
 	.chat-send {
 		min-width: 9rem;
 		border-radius: 9999px;
