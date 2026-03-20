@@ -129,7 +129,7 @@
 <main class="container mx-auto mb-20 px-6 md:px-10">
 	<section
 		aria-labelledby="chat-title"
-		class="chat-shell surface-card-soft rounded-[2rem] px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8"
+		class="chat-shell surface-card-soft rounded-4xl px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8"
 	>
 		<div class="chat-frame">
 			<header class="chat-head">

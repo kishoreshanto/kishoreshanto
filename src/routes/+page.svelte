@@ -112,7 +112,7 @@
 		aria-labelledby="home-at-a-glance"
 		class="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]"
 	>
-		<article class="home-hero-card surface-card-soft rounded-[2rem] px-6 py-8 sm:px-8 lg:px-10">
+		<article class="home-hero-card surface-card-soft rounded-4xl px-6 py-8 sm:px-8 lg:px-10">
 			<p class="home-kicker">At a glance</p>
 			<h2
 				id="home-at-a-glance"
@@ -143,7 +143,7 @@
 			</div>
 		</article>
 
-		<aside class="surface-card rounded-[2rem] px-6 py-7 sm:px-8">
+		<aside class="surface-card rounded-4xl px-6 py-7 sm:px-8">
 			<p class="home-kicker">Quick notes</p>
 			<div class="mt-5 space-y-4">
 				{#each quickNotes as note (note.label)}
@@ -160,7 +160,7 @@
 		aria-labelledby="home-how-i-work"
 		class="mt-6 grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]"
 	>
-		<article class="surface-card rounded-[2rem] px-6 py-7 sm:px-8">
+		<article class="surface-card rounded-4xl px-6 py-7 sm:px-8">
 			<p class="home-kicker">How I work</p>
 			<h2
 				id="home-how-i-work"
@@ -183,7 +183,7 @@
 			</div>
 		</article>
 
-		<section id="right-panel-skillsets" class="surface-card rounded-[2rem] px-6 py-7 sm:px-8">
+		<section id="right-panel-skillsets" class="surface-card rounded-4xl px-6 py-7 sm:px-8">
 			<p class="home-kicker">Capabilities</p>
 			<h2 class="mt-3 font-lora text-3xl font-semibold text-amber-800 md:text-4xl">
 				Things that I can do
@@ -209,7 +209,7 @@
 	</section>
 
 	<section aria-labelledby="home-recurring-themes" class="mt-6">
-		<div class="home-themes-panel surface-card-soft rounded-[2rem] px-6 py-8 sm:px-8 lg:px-10">
+		<div class="home-themes-panel surface-card-soft rounded-4xl px-6 py-8 sm:px-8 lg:px-10">
 			<p class="home-kicker">Recurring themes</p>
 			<div class="mt-3 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
 				<h2
