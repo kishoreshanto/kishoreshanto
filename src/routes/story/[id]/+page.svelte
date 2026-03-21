@@ -107,7 +107,7 @@
 				{#each storyParagraphs as paragraph, index (paragraph)}
 					<p
 						class={[
-							'text-justify font-ivy-text text-black transition-[font-size,line-height] duration-200',
+							'text-justify font-lora text-black transition-[font-size,line-height] duration-200',
 							fontSizeClasses[fontSize],
 							index === 0 && 'story-paragraph'
 						]}
