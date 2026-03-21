@@ -6,8 +6,6 @@
 
 	let { data }: PageProps = $props();
 	let fontSize = $state<FontSize>('small');
-	let coverImageWidthClass = $state('lg:w-1/2');
-	let coverImageElement = $state<HTMLImageElement | null>(null);
 
 	const dateFormatter = new Intl.DateTimeFormat('en-US', {
 		month: 'long',
@@ -33,13 +31,22 @@
 	);
 </script>
 
-<div class="mx-auto w-full p-0 pb-12 sm:px-6 lg:px-22">
+<div class="mx-12 mt-18 p-0 pb-12 sm:px-6 md:container md:mx-auto lg:px-22">
 	<div class="flex flex-row items-center justify-between">
 		<a
 			href="/story"
 			class="inline-flex items-center gap-2 rounded-full border border-amber-400 bg-surface-card px-4 py-2 font-mono text-sm tracking-[0.2em] text-amber-700 uppercase transition-colors duration-200 hover:bg-amber-200 hover:text-amber-900"
 		>
-			<span class="material-symbols-outlined">arrow_back_ios</span>
+			<svg
+				aria-hidden="true"
+				class="h-4 w-4"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor"
+				stroke-width="2"
+			>
+				<path stroke-linecap="round" stroke-linejoin="round" d="M15 19 8 12l7-7" />
+			</svg>
 			Back to stories
 		</a>
 
@@ -69,10 +76,11 @@
 	<article class="mt-6 flex flex-col">
 		<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-12">
 			<img
-				bind:this={coverImageElement}
 				src={data.story.coverImageUrl}
 				alt={data.story.storyTitle}
-				class="aspect-auto w-full rounded-2xl object-cover lg:w-1/4"
+				decoding="async"
+				fetchpriority="high"
+				class="aspect-auto max-h-105 w-full rounded-2xl object-cover lg:max-h-132 lg:min-h-96 lg:max-w-lg"
 			/>
 
 			<div>
@@ -99,7 +107,7 @@
 				{#each storyParagraphs as paragraph, index (paragraph)}
 					<p
 						class={[
-							'text-justify font-ivy-text text-black transition-[font-size,line-height] duration-200',
+							'text-justify font-lora text-black transition-[font-size,line-height] duration-200',
 							fontSizeClasses[fontSize],
 							index === 0 && 'story-paragraph'
 						]}
@@ -119,6 +127,8 @@
 							<img
 								src={imageUrl}
 								alt={`${data.story.storyTitle} gallery image`}
+								loading="lazy"
+								decoding="async"
 								class="h-64 w-full rounded-3xl object-cover"
 							/>
 						{/each}
@@ -128,6 +138,3 @@
 		</div>
 	</article>
 </div>
-
-<style>
-</style>

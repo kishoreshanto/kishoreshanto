@@ -26,6 +26,18 @@ declare global {
 		rank?: string;
 	}
 
+	interface WorkExperienceCardProps {
+		date: string;
+		category: string;
+		highlight_right?: string;
+		title: string;
+		subtitle_1: string;
+		subtitle_2: string;
+		overview: string;
+		role?: string[];
+		key_deliverables?: string[];
+	}
+
 	interface NotificationOffIconProps {
 		current_time: string;
 	}

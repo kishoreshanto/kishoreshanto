@@ -1,72 +1,20 @@
 <script lang="ts">
 	import './layout.css';
-	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
-	import { mountWelcomeScene } from '$lib/client/welcome-loader';
 	import Footer from '$component/Footer.svelte';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 
-	const WELCOME_DURATION_MS = 1600;
-	const WELCOME_FADE_MS = 120;
+	if (browser) {
+		const isLocalPreview = /^(localhost|127(?:\.\d+){3}|0\.0\.0\.0)$/.test(
+			window.location.hostname
+		);
 
-	onMount(() => {
-		const loader = document.getElementById('app-loader');
-		const canvasHost = document.getElementById('app-loader-canvas');
-
-		if (!loader || loader.classList.contains('hidden')) {
-			return;
+		if (!isLocalPreview) {
+			injectSpeedInsights();
 		}
-
-		let cleanupScene: (() => void) | undefined;
-		let cancelled = false;
-		let hideTimer = 0;
-		let removeTimer = 0;
-
-		const startedAt = Number(loader.dataset.startedAt ?? Date.now());
-		loader.dataset.startedAt = String(startedAt);
-
-		const hideLoader = () => {
-			if (cancelled || loader.classList.contains('hidden')) {
-				return;
-			}
-
-			loader.classList.add('hidden');
-			loader.setAttribute('aria-busy', 'false');
-			removeTimer = window.setTimeout(() => {
-				try {
-					loader.remove();
-				} catch {
-					// Ignore DOM removal races during hot reloads.
-				}
-			}, WELCOME_FADE_MS + 120);
-		};
-
-		const remaining = Math.max(0, WELCOME_DURATION_MS - (Date.now() - startedAt));
-		hideTimer = window.setTimeout(hideLoader, remaining);
-
-		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-		if (canvasHost && !prefersReducedMotion) {
-			void mountWelcomeScene(canvasHost)
-				.then((teardown) => {
-					if (cancelled) {
-						teardown();
-						return;
-					}
-
-					cleanupScene = teardown;
-				})
-				.catch(() => {
-					// Keep the CSS fallback loader if WebGL or the import is unavailable.
-				});
-		}
-
-		return () => {
-			cancelled = true;
-			window.clearTimeout(hideTimer);
-			window.clearTimeout(removeTimer);
-			cleanupScene?.();
-		};
-	});
+	}
 
 	let { children } = $props();
 

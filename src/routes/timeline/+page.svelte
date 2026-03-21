@@ -1,8 +1,10 @@
 <script lang="ts">
 	import ResearchCard from '$component/timeline-page/cards/ResearchCard.svelte';
+	import WorkExperienceCard from '$component/timeline-page/cards/WorkExperienceCard.svelte';
 	import TimeLine from '$component/timeline-page/TimeLine.svelte';
 	import filterData from '$lib/filters.json';
 	import researchData from '$lib/research.json';
+	import workExperienceData from '$lib/work_experience.json';
 	import {
 		clearTimelineFilters,
 		toggleStringSet,
@@ -13,18 +15,23 @@
 
 	type TimelineComponent = 'research' | 'work_experience' | 'education';
 
-	type TimelineEntry = {
+	type BaseTimelineEntry<TComponent extends TimelineComponent, TProps> = {
 		id: string;
-		component: TimelineComponent;
+		component: TComponent;
 		date: string;
-		props: ResearchCardProps | Record<string, unknown>;
+		props: TProps;
 	};
 
-	type ResearchTimelineEntry = {
+	type ResearchTimelineEntry = BaseTimelineEntry<'research', ResearchCardProps>;
+	type WorkExperienceTimelineEntry = BaseTimelineEntry<'work_experience', WorkExperienceCardProps>;
+	type EducationTimelineEntry = BaseTimelineEntry<'education', Record<string, unknown>>;
+	type TimelineEntry = ResearchTimelineEntry | WorkExperienceTimelineEntry | EducationTimelineEntry;
+
+	type RawWorkExperienceEntry = {
 		id: string;
-		component: 'research';
+		component: string;
 		date: string;
-		props: ResearchCardProps;
+		props: WorkExperienceCardProps;
 	};
 
 	const monthIndexByName: Record<string, number> = {
@@ -49,7 +56,8 @@
 			return Number.NEGATIVE_INFINITY;
 		}
 
-		const [monthName, yearWithComma] = parsedDate.rest.trim().split(/\s+/);
+		const [rawMonthName, yearWithComma] = parsedDate.rest.trim().split(/\s+/);
+		const monthName = rawMonthName?.replace(',', '');
 		const month = monthIndexByName[monthName];
 		const year = Number(yearWithComma?.replace(',', ''));
 		const day = Number(parsedDate.day);
@@ -65,7 +73,18 @@
 		return entry.component === 'research';
 	}
 
-	const timelineEntries = researchData as TimelineEntry[];
+	function isWorkExperienceEntry(entry: TimelineEntry): entry is WorkExperienceTimelineEntry {
+		return entry.component === 'work_experience';
+	}
+
+	const researchTimelineEntries = researchData as ResearchTimelineEntry[];
+	const workTimelineEntries = (workExperienceData as RawWorkExperienceEntry[]).map((entry) => ({
+		id: entry.id,
+		component: 'work_experience' as const,
+		date: entry.date,
+		props: entry.props
+	}));
+	const timelineEntries: TimelineEntry[] = [...researchTimelineEntries, ...workTimelineEntries];
 
 	const filters = filterData[0];
 	const currentYear = new Date().getFullYear();
@@ -230,8 +249,8 @@
 		{#each sortedTimelineEntries as entry (entry.id)}
 			{#if isResearchEntry(entry)}
 				<ResearchCard {...entry.props} />
-			{:else if entry.component === 'work_experience'}
-				<!-- Add WorkExperienceCard rendering here when the component is available. -->
+			{:else if isWorkExperienceEntry(entry)}
+				<WorkExperienceCard {...entry.props} />
 			{:else if entry.component === 'education'}
 				<!-- Add EducationCard rendering here when the component is available. -->
 			{/if}
