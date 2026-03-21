@@ -12,6 +12,9 @@ node_modules/
 .env.*
 !.env.example
 
+# Vercel adapter output
+.vercel/
+
 # Vite temporary files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
@@ -47,6 +50,7 @@ yarn.lock
 pnpm-lock.yaml
 
 # Font file (temporary, to be removed once the font is properly included in the project)
+static/fonts/*
 *.woff2
 *.ttf
 *.otf
