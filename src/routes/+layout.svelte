@@ -7,7 +7,9 @@
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 
 	if (browser) {
-		const isLocalPreview = /^(localhost|127(?:\.\d+){3}|0\.0\.0\.0)$/.test(window.location.hostname);
+		const isLocalPreview = /^(localhost|127(?:\.\d+){3}|0\.0\.0\.0)$/.test(
+			window.location.hostname
+		);
 
 		if (!isLocalPreview) {
 			injectSpeedInsights();
