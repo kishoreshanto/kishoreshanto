@@ -16,11 +16,13 @@
 	}
 </script>
 
-<h1 class="page-heading">What's been going on lately?</h1>
-<h3 class="page-subheading">Know stories about me, my work, and my journey (and my cat)</h3>
+<main class="page-container">
+	<h1 class="page-heading">What's been going on lately?</h1>
+	<h3 class="page-subheading">Know stories about me, my work, and my journey (and my cat)</h3>
+</main>
 
 <div
-	class="mx-auto mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 md:px-16 lg:grid-cols-3 2xl:grid-cols-4"
+	class="mx-5 mb-8 md:mx-auto md:container mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 md:px-16 lg:grid-cols-3 2xl:grid-cols-4"
 >
 	{#each data.stories as story, index (story.id)}
 		<a href={`/story/${story.id}`} class="story-card block h-full overflow-hidden">

@@ -126,9 +126,9 @@
 	}
 </script>
 
-<main class="container mx-auto mb-20 md:px-10">
+<main class="md:container md:mx-auto mx-5 mt-20 mb-20 md:px-10">
 	<div class="">
-		<header
+		<!-- <header
 			class="mb-6 flex flex-col items-center gap-2 lg:flex-row lg:items-start lg:justify-between"
 		>
 			<p class="chat-kicker">Quick conversation</p>
@@ -137,7 +137,7 @@
 					>Shift+Enter</span
 				> creates a new line.
 			</p>
-		</header>
+		</header> -->
 
 		<div
 			aria-busy={chatSession.isResponding}
@@ -146,9 +146,12 @@
 			class="chat-thread rounded-t-4xl border-x border-t border-amber-500 bg-amber-100"
 		>
 			{#if chatSession.messages.length === 0}
-				<div class="chat-empty">
-					<p class="chat-empty-kicker">No conversation yet</p>
-					<h3>Start a conversation by typing a message below.</h3>
+				<div class="page-container">
+					<h1 class="page-heading">Talk with an AI version of me</h1>
+					<h4 class="page-subheading">
+						Ask anything about me, it will try its best to answer.<br /> (AI can be wrong, so take it
+						with a grain of salt)
+					</h4>
 				</div>
 			{:else}
 				{#each chatSession.messages as message (message.id)}
@@ -164,7 +167,7 @@
 								message.role === 'user' ? 'message-bubble--user' : 'message-bubble--assistant'
 							]}
 						>
-							<p class="message-label">{message.role === 'user' ? 'You' : 'Assistant'}</p>
+							<p class="message-label">{message.role === 'user' ? 'You' : 'ChatBot'}</p>
 							<p class="message-text">{message.text}</p>
 							<p class="message-time">{message.sentAt}</p>
 						</div>
@@ -190,26 +193,33 @@
 			class="chat-composer rounded-b-4xl border-x border-b border-amber-500 bg-amber-100"
 			onsubmit={handleSubmit}
 		>
-			<div class="chat-input-wrap">
-				<label class="sr-only" for="chat-message">Write a message</label>
-				<textarea
-					id="chat-message"
-					autocomplete="off"
-					bind:this={composer}
-					bind:value={chatSession.draft}
-					class="chat-input"
-					onkeydown={handleComposerKeydown}
-					placeholder="Type a question here..."
-					rows="1"
-					spellcheck="true"
-				></textarea>
+			<div class="flex items-center gap-4 w-full md:max-w-4xl">
+
+					<!-- <label class="sr-only" for="chat-message">Write a message</label> -->
+					<textarea
+						id="chat-message "
+						autocomplete="off"
+						bind:this={composer}
+						bind:value={chatSession.draft}
+						class="min-h-14 rounded-3xl w-full border border-amber-700/35 bg-white font-ivy-text text-base text-warm-umber text-left px-4"
+						onkeydown={handleComposerKeydown}
+						placeholder="Type a question here..."
+						rows="1"
+						spellcheck="true"
+					></textarea>
+
+					<button class="brand-button chat-send" disabled={sendDisabled} type="submit">
+						{chatSession.isResponding ? 'Thinking...' : 'Send'}
+					</button>
 			</div>
 
-			<div class="chat-actions">
-				<button class="brand-button chat-send" disabled={sendDisabled} type="submit">
-					{chatSession.isResponding ? 'Thinking...' : 'Send'}
-				</button>
-			</div>
+
+			<p class="font-lora text-sm md:text-base">
+				Enter to send. <span class="rounded-full bg-amber-200 px-2 py-0.5 font-mono text-sm"
+					>Shift+Enter</span
+				> creates a new line.
+			</p>
+
 		</form>
 	</div>
 </main>

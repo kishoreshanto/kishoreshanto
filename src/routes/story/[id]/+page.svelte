@@ -31,7 +31,7 @@
 	);
 </script>
 
-<div class="mx-auto w-full p-0 pb-12 sm:px-6 lg:px-22">
+<div class="md:mx-auto md:container mt-18 mx-12 p-0 pb-12 sm:px-6 lg:px-22">
 	<div class="flex flex-row items-center justify-between">
 		<a
 			href="/story"
