@@ -22,9 +22,15 @@
 <div
 	class="mx-auto mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 md:px-16 lg:grid-cols-3 2xl:grid-cols-4"
 >
-	{#each data.stories as story (story.id)}
+	{#each data.stories as story, index (story.id)}
 		<a href={`/story/${story.id}`} class="story-card block h-full overflow-hidden">
-			<img src={story.coverImageUrl} alt={story.storyTitle} class="max-h-46" />
+			<img
+				src={story.coverImageUrl}
+				alt={story.storyTitle}
+				loading={index === 0 ? 'eager' : 'lazy'}
+				decoding="async"
+				class="max-h-46"
+			/>
 			<div class="story-card-body">
 				<h2 class="story-card-title">{story.storyTitle}</h2>
 				<p class="story-card-description">{story.storyDescription}</p>
