@@ -103,7 +103,7 @@
 	];
 </script>
 
-<main class="md:container md:mx-auto mx-5 mt-12 mb-8 py-8 sm:px-10 md:px-10">
+<main class="mx-5 mt-12 mb-8 py-8 sm:px-10 md:container md:mx-auto md:px-10">
 	<!-- Intro Section -->
 	<IntroSection />
 	<hr class="my-8 w-full border-amber-gold pb-2" />

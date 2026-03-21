@@ -22,7 +22,7 @@
 </main>
 
 <div
-	class="mx-5 mb-8 md:mx-auto md:container mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 md:px-16 lg:grid-cols-3 2xl:grid-cols-4"
+	class="mx-5 mt-6 mb-8 grid grid-cols-1 gap-6 md:container md:mx-auto md:grid-cols-2 md:px-16 lg:grid-cols-3 2xl:grid-cols-4"
 >
 	{#each data.stories as story, index (story.id)}
 		<a href={`/story/${story.id}`} class="story-card block h-full overflow-hidden">

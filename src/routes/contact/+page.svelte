@@ -112,7 +112,7 @@
 		: 'I usually reply best when the message has a little context and a clear reason for reaching out.';
 </script>
 
-<main class="md:container md:mx-auto mx-5 mb-20 md:px-10">
+<main class="mx-5 mb-20 md:container md:mx-auto md:px-10">
 	<section class="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.95fr)]">
 		<div class="hero-card surface-card-soft rounded-[2rem] px-6 py-8 sm:px-8 lg:px-10">
 			<p class="contact-kicker">Reach out</p>

@@ -126,7 +126,7 @@
 	}
 </script>
 
-<main class="md:container md:mx-auto mx-5 mt-20 mb-20 md:px-10">
+<main class="mx-5 mt-20 mb-20 md:container md:mx-auto md:px-10">
 	<div class="">
 		<!-- <header
 			class="mb-6 flex flex-col items-center gap-2 lg:flex-row lg:items-start lg:justify-between"
@@ -193,33 +193,30 @@
 			class="chat-composer rounded-b-4xl border-x border-b border-amber-500 bg-amber-100"
 			onsubmit={handleSubmit}
 		>
-			<div class="flex items-center gap-4 w-full md:max-w-4xl">
+			<div class="flex w-full items-center gap-4 md:max-w-4xl">
+				<!-- <label class="sr-only" for="chat-message">Write a message</label> -->
+				<textarea
+					id="chat-message "
+					autocomplete="off"
+					bind:this={composer}
+					bind:value={chatSession.draft}
+					class="min-h-14 w-full rounded-3xl border border-amber-700/35 bg-white px-4 text-left font-ivy-text text-base text-warm-umber"
+					onkeydown={handleComposerKeydown}
+					placeholder="Type a question here..."
+					rows="1"
+					spellcheck="true"
+				></textarea>
 
-					<!-- <label class="sr-only" for="chat-message">Write a message</label> -->
-					<textarea
-						id="chat-message "
-						autocomplete="off"
-						bind:this={composer}
-						bind:value={chatSession.draft}
-						class="min-h-14 rounded-3xl w-full border border-amber-700/35 bg-white font-ivy-text text-base text-warm-umber text-left px-4"
-						onkeydown={handleComposerKeydown}
-						placeholder="Type a question here..."
-						rows="1"
-						spellcheck="true"
-					></textarea>
-
-					<button class="brand-button chat-send" disabled={sendDisabled} type="submit">
-						{chatSession.isResponding ? 'Thinking...' : 'Send'}
-					</button>
+				<button class="brand-button chat-send" disabled={sendDisabled} type="submit">
+					{chatSession.isResponding ? 'Thinking...' : 'Send'}
+				</button>
 			</div>
-
 
 			<p class="font-lora text-sm md:text-base">
 				Enter to send. <span class="rounded-full bg-amber-200 px-2 py-0.5 font-mono text-sm"
 					>Shift+Enter</span
 				> creates a new line.
 			</p>
-
 		</form>
 	</div>
 </main>
