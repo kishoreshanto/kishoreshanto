@@ -75,7 +75,8 @@
 
 @theme {
 	--breakpoint-*: initial;
-	--breakpoint-xs: 420px;
+	--breakpoint-xxs: 320px;
+	--breakpoint-xs: 425px;
 	--breakpoint-sm: 640px;
 	--breakpoint-md: 768px;
 	--breakpoint-lg: 1024px;
@@ -257,29 +258,18 @@
 /* Navigation */
 
 .universal-navbar {
-	@apply sticky top-0 left-0 flex h-full flex-row items-center justify-center;
-	z-index: 100;
+	@apply sticky top-0 left-0 flex h-full flex-row items-center justify-center z-100;
 }
 
 .universal-navbar-container {
-	@apply mt-4 flex h-full w-fit flex-row items-center rounded-full border-2 shadow-2xl backdrop-blur-sm;
-	position: relative;
-	overflow: hidden;
-	padding: 6px;
+	@apply relative overflow-hidden mt-8 flex h-full w-fit flex-row items-center rounded-full border-2 shadow-2xl backdrop-blur-sm p-1.5;
 	border-color: var(--ks-border-soft);
 	background: var(--ks-surface-card-soft);
-	/* box-shadow: 0 24px 56px -30px var(--ks-shadow-strong); */
 }
 
 .navbar-pill {
-	position: absolute;
-	top: 4px;
-	bottom: 4px;
-	left: 0;
-	border-radius: 9999px;
+	@apply absolute top-1 bottom-1 left-0 rounded-full transition-none pointer-events-none;
 	background: var(--ks-navbar-pill-bg);
-	pointer-events: none;
-	transition: none;
 }
 
 .navbar-pill--ready {
@@ -289,18 +279,14 @@
 }
 
 .navbar-tab {
-	@apply relative z-10 block rounded-full px-6 py-3 font-lora font-bold tracking-wide uppercase;
-	font-size: 0.85rem;
+	@apply relative z-10 block rounded-full xxs:px-3.5 xxs:py-2.5 xs:px-3 md:px-6 sm:px-4 md:py-3 font-lora font-bold tracking-wide uppercase xxs:text-[0.7rem] xs:text-[0.75rem] md:text-[1rem] select-none cursor-pointer;
 	color: rgb(44 24 16 / 0.72);
 	text-decoration: none;
-	user-select: none;
-	-webkit-user-select: none;
-	cursor: pointer;
 	transition: color var(--ks-duration-medium) var(--ks-ease-standard);
 }
 
 .navbar-tab:hover:not(.navbar-tab--active) {
-	color: rgb(132 85 34 / 1);
+	color: rgb(190, 115, 34);
 }
 
 .navbar-tab--active {
