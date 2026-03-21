@@ -8,5 +8,9 @@
 <img
 	src={image_url}
 	alt={alt_text}
+	width="864"
+	height="864"
+	decoding="async"
+	fetchpriority="high"
 	class="h-36 w-36 rounded-full border-4 border-amber-700 shadow-lg lg:h-48 lg:w-48"
 />
