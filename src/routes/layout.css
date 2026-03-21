@@ -279,7 +279,7 @@
 }
 
 .navbar-tab {
-	@apply relative z-10 block rounded-full xxs:px-3.5 xxs:py-2.5 xs:px-3 md:px-6 sm:px-4 md:py-3 font-lora font-bold tracking-wide uppercase xxs:text-[0.7rem] xs:text-[0.75rem] md:text-[1rem] select-none cursor-pointer;
+	@apply relative z-10 block rounded-full xxs:px-3.5 xxs:py-3.5 md:px-6 xs:px-4 xs:py-3 md:py-3 font-lora font-bold tracking-wide uppercase xxs:text-[0.7rem] xs:text-[0.85rem] md:text-[1rem] select-none cursor-pointer;
 	color: rgb(44 24 16 / 0.72);
 	text-decoration: none;
 	transition: color var(--ks-duration-medium) var(--ks-ease-standard);
