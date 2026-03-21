@@ -532,7 +532,7 @@
 .chat-thread {
 	@apply flex flex-col overflow-y-auto scroll-smooth px-4 py-4 sm:px-[1.45rem] sm:py-[1.45rem];
 	min-height: clamp(24rem, 58vh, 38rem);
-	max-height: 38rem;
+	max-height: 34rem;
 }
 
 .chat-thread::-webkit-scrollbar {
@@ -636,20 +636,16 @@
 }
 
 .chat-composer {
-	@apply grid gap-4 p-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:p-[1.15rem];
+	@apply flex flex-col items-center align-middle justify-center w-full gap-4 p-4 md:grid-cols-[minmax(0,1fr)_auto] md:p-[1.15rem];
 }
 
 .chat-input-wrap {
-	@apply flex min-h-16 rounded-[1.35rem] border border-amber-700/35 bg-white/80 px-3 py-1 shadow-[inset_0_1px_0_rgb(255_255_255/0.64)];
+	@apply flex min-h-16 rounded-[1.35rem]  py-1 shadow-[inset_0_1px_0_rgb(255_255_255/0.64)];
 	padding-left: 0.85rem;
 }
 
-.chat-input {
-	@apply max-h-40 min-h-[3.2rem] w-full resize-none border-0 bg-transparent py-[0.78rem] pr-[0.45rem] pl-0 font-ivy-text text-[1.05rem] leading-[1.58] text-warm-umber;
-}
-
 .chat-input:focus {
-	@apply shadow-none outline-none;
+	@apply shadow-none ring-0 outline-none;
 }
 
 .chat-input::placeholder {
