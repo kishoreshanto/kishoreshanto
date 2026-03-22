@@ -38,48 +38,48 @@
 	].filter((link) => link.show);
 </script>
 
-<footer class="footer-shell">
+<footer class="relative">
 	<div class="w-full">
-		<div class="footer-card px-10 py-10 md:px-20">
-			<div class="flex flex-col items-start justify-between gap-10 md:flex-row">
-				<div class="space-y-5">
-					<p class="footer-kicker">{data.name}</p>
-					<div class="space-y-4">
-						<p class="max-w-2xl font-ivy-text leading-relaxed text-gray-700">
-							This portfolio is designed as a warm, readable home for my work, stories, and
-							experiments.
-						</p>
-					</div>
+		<div class="footer-card px-10 py-10 md:px-20 overflow-hidden rounded-t-4xl border border-amber-800/16 shadow-[0_-14px_36px_-30px_rgba(44,24,16,0.2)] ">
+			<div class="flex flex-col items-start justify-between gap-5 md:flex-row md:container mx-auto md:px-12">
+				<div class="space-y-2">
+					<p class="font-mono text-[0.78rem] font-semibold tracking-widest uppercase text-amber-700/80">{data.name}</p>
 
-					<div class="flex flex-wrap gap-3 text-sm text-gray-600">
-						<span class="footer-pill">Based in {data.current_city}</span>
-						<span class="footer-pill">Updated {data.last_updated}</span>
+					<p class="max-w-2xl font-lora leading-relaxed text-gray-700 text-base md:text-lg">
+						This portfolio is designed as a warm, readable home for my work, stories, and
+						experiments.
+					</p>
+
+
+					<div class="flex flex-wrap gap-2 text-xs sm:text-sm font-mono tracking-wider uppercase text-amber-800/84">
+						<span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2">Based in {data.current_city}</span>
+						<span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2">Updated {data.last_updated}</span>
 					</div>
 				</div>
 
-				<div class="space-y-4">
-					<p class="footer-column-title">Connect</p>
+				<div class="space-y-2">
+					<p class="font-mono text-[0.76rem] font-semibold tracking-wider uppercase text-amber-700/80">Connect</p>
 					<div class="flex flex-row flex-wrap gap-4 md:flex-col md:gap-1">
 						{#each connectLinks as link (link.label)}
 							<a
-								class="footer-contact-link"
+								class="flex items-center gap-1 rounded-full border border-amber-800/12 bg-amber-50/70 px-1.5 hover:bg-amber-200/90 transition-colors duration-200"
 								href={link.href}
 								target={link.external ? '_blank' : undefined}
 								rel={link.external ? 'noopener noreferrer' : undefined}
 							>
-								<span class="footer-contact-icon">
+								<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100/20">
 									{#if link.icon}
 										<link.icon />
 									{/if}
 								</span>
-								<span class="font-lora text-amber-800">{link.label}</span>
+								<span class="font-lora text-amber-800 pr-3.5 text-sm md:text-base">{link.label}</span>
 							</a>
 						{/each}
 					</div>
 				</div>
 			</div>
 
-			<div class="footer-bottom">
+			<div class="font-lora text-sm text-gray-600 mt-10 border-t border-amber-300 pt-4 text-center">
 				<p>Copyright © {currentYear} {data.name}. All rights reserved.</p>
 			</div>
 		</div>
@@ -87,21 +87,13 @@
 </footer>
 
 <style>
-	.footer-shell {
-		position: relative;
-		border-top: 1px solid rgb(196 154 60 / 0.2);
-	}
+
 
 	.footer-card {
 		position: relative;
-		overflow: hidden;
-		border-radius: 2rem 2rem 0 0;
-		border: 1px solid rgb(132 85 34 / 0.16);
 		background:
 			radial-gradient(circle at top right, rgb(255 210 117 / 0.2), transparent 28%),
 			linear-gradient(180deg, rgb(255 250 240 / 0.9), rgb(245 237 217 / 0.82));
-		/* padding: 2.5rem 6rem; */
-		box-shadow: 0 -14px 36px -30px rgb(44 24 16 / 0.2);
 	}
 
 	.footer-card::before {
@@ -113,70 +105,4 @@
 		background: linear-gradient(90deg, transparent, rgb(196 154 60 / 0.55), transparent);
 	}
 
-	.footer-kicker {
-		font-family: var(--font-mono);
-		font-size: 0.78rem;
-		font-weight: 600;
-		letter-spacing: 0.24em;
-		text-transform: uppercase;
-		color: rgb(168 103 0 / 0.82);
-	}
-
-	.footer-pill {
-		border-radius: 9999px;
-		border: 1px solid rgb(132 85 34 / 0.14);
-		background: rgb(255 250 240 / 0.72);
-		padding: 0.55rem 0.9rem;
-		font-family: var(--font-mono);
-		font-size: 0.73rem;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		color: rgb(132 85 34 / 0.84);
-	}
-
-	.footer-column-title {
-		font-family: var(--font-mono);
-		font-size: 0.76rem;
-		font-weight: 600;
-		letter-spacing: 0.22em;
-		text-transform: uppercase;
-		color: rgb(168 103 0 / 0.8);
-	}
-
-	.footer-contact-link {
-		display: flex;
-		align-items: center;
-		gap: 0.4rem;
-		border-radius: 0.35rem 0.35rem 0.35rem 0.35rem;
-		border: 1px solid rgb(132 85 34 / 0.12);
-		background: rgb(255 250 240 / 0.68);
-		padding: 0 0.5rem 0 0;
-	}
-
-	.footer-contact-link:hover {
-		background: rgba(255, 233, 189, 0.9);
-	}
-
-	.footer-contact-icon {
-		display: flex;
-		height: 2.5rem;
-		width: 2.5rem;
-		flex-shrink: 0;
-		align-items: center;
-		justify-content: center;
-		border-radius: 0.35rem 0 0 0.35rem;
-		background: rgb(196 154 60 / 0.14);
-	}
-
-	.footer-contact-icon :global(svg) {
-		margin: 0;
-		height: 1.2rem;
-		width: 1.2rem;
-		fill: rgb(132 85 34);
-	}
-	/* @media (min-width: 768px) {
-		.footer-card {
-			padding: 2.5rem 2rem 1.4rem;
-		}
-	} */
 </style>
