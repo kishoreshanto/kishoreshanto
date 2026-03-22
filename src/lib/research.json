@@ -2,9 +2,9 @@
 	{
 		"id": "research-upper-limb-motor-movements",
 		"component": "research",
-		"date": "23th February, 2024",
+		"date": "23th February, 2025",
 		"props": {
-			"date": "23th February, 2024",
+			"date": "23th February, 2025",
 			"category": "Research Report",
 			"highlight_right": "",
 			"title": "Classification of Upper Limb Motor Movements Using EEG Signals",
@@ -22,9 +22,9 @@
 	{
 		"id": "journal-array-vision-transformer-anomaly-detection",
 		"component": "research",
-		"date": "17th January, 2025",
+		"date": "17th July, 2025",
 		"props": {
-			"date": "17th January, 2025",
+			"date": "17th July, 2025",
 			"category": "Journal Publication",
 			"highlight_right": "Elsevier • IF: 4.5 (Jul 2025)",
 			"title": "Vision Transformer Embedded Video Anomaly Detection with Attention Driven Recurrence",
@@ -108,9 +108,9 @@
 	{
 		"id": "research-energy-footprint-python-r",
 		"component": "research",
-		"date": "6th September, 2024",
+		"date": "27th June, 2024",
 		"props": {
-			"date": "6th September, 2024",
+			"date": "27th June, 2024",
 			"category": "Research Report",
 			"highlight_right": "United International University",
 			"title": "A Detailed Energy Footprint Evaluation of Python and R in Computationally Intensive Statistical and Machine Learning Tasks",
