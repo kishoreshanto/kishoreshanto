@@ -13,6 +13,10 @@
 	};
 
 	const currentYear = new Date().getFullYear();
+	const currentDate = new Date().toLocaleDateString('en-US', {
+		month: 'long',
+		day: 'numeric'
+	});
 
 	const connectLinks: FooterLink[] = [
 		{
@@ -61,11 +65,11 @@
 					<div
 						class="flex flex-wrap gap-2 font-mono text-xs tracking-wider text-amber-800/84 uppercase sm:text-sm"
 					>
-						<span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2"
+						<!-- <span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2"
 							>Based in {data.current_city}</span
-						>
+						> -->
 						<span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2"
-							>Updated {data.last_updated}</span
+							>Updated on {currentDate}, {currentYear}</span
 						>
 					</div>
 				</div>
