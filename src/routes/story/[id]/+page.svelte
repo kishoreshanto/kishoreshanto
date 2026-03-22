@@ -31,11 +31,11 @@
 	);
 </script>
 
-<div class="mx-12 mt-18 p-0 pb-12 sm:px-6 md:container md:mx-auto lg:px-22">
+<div class="mx-6 mt-18 p-0 pb-12 sm:mx-12 sm:px-6 md:container md:mx-auto lg:px-22">
 	<div class="flex flex-row items-center justify-between">
 		<a
 			href="/story"
-			class="inline-flex items-center gap-2 rounded-full border border-amber-400 bg-surface-card px-4 py-2 font-mono text-sm tracking-[0.2em] text-amber-700 uppercase transition-colors duration-200 hover:bg-amber-200 hover:text-amber-900"
+			class="inline-flex items-center gap-2 rounded-full border border-amber-400 bg-surface-card px-4 py-2 font-mono text-xs tracking-[0.2em] text-amber-700 uppercase transition-colors duration-200 hover:bg-amber-200 hover:text-amber-900 sm:text-sm"
 		>
 			<svg
 				aria-hidden="true"
@@ -84,16 +84,18 @@
 			/>
 
 			<div>
-				<div class="flex items-center gap-3 py-6 align-middle text-sm text-gray-600">
+				<div class="flex items-center gap-1 pt-6 pb-2 align-middle text-sm text-gray-600">
 					<span aria-hidden="true"><TimeIcon /></span>
-					<span class="font-mono tracking-[0.16em] uppercase">{formattedDate}</span>
+					<span class="font-mono text-sm tracking-[0.16em] uppercase sm:text-base"
+						>{formattedDate}</span
+					>
 				</div>
 
 				<div class="space-y-3">
 					<h2 class="font-lora text-4xl font-semibold text-amber-700 md:text-5xl">
 						{data.story.storyTitle}
 					</h2>
-					<p class="font-crimson-text text-2xl text-amber-500">
+					<p class="font-crimson-text text-xl text-amber-500 sm:text-2xl">
 						{data.story.storyDescription}
 					</p>
 				</div>

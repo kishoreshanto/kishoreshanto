@@ -109,7 +109,7 @@
 		<input
 			type="text"
 			placeholder="Search experiences..."
-			class="xs:min-w-sm rounded-full border border-gray-300 px-6 py-4 font-lora focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none lg:min-w-xl"
+			class="rounded-full border border-gray-300 px-6 py-4 font-lora focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none xs:min-w-sm lg:min-w-xl"
 		/>
 		<button
 			class="rounded-full bg-amber-800 px-4 py-4 font-lora font-medium text-white transition-colors duration-200 hover:bg-amber-700 focus:outline-none"

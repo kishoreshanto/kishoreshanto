@@ -15,7 +15,9 @@
 {#if show_github}
 	<a target="_blank" href={github_url} class="flex items-center gap-1 align-middle">
 		<GithubIcon />
-		<h1 class="font-mono text-sm md:text-base text-amber-700 transition-all duration-300 hover:text-gray-900">
+		<h1
+			class="font-mono text-sm text-amber-700 transition-all duration-300 hover:text-gray-900 md:text-base"
+		>
 			/ {github_username}
 		</h1>
 	</a>

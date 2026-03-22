@@ -40,46 +40,67 @@
 
 <footer class="relative">
 	<div class="w-full">
-		<div class="footer-card px-10 py-10 md:px-20 overflow-hidden rounded-t-4xl border border-amber-800/16 shadow-[0_-14px_36px_-30px_rgba(44,24,16,0.2)] ">
-			<div class="flex flex-col items-start justify-between gap-5 md:flex-row md:container mx-auto md:px-12">
+		<div
+			class="footer-card overflow-hidden rounded-t-4xl border border-amber-800/16 px-10 py-10 shadow-[0_-14px_36px_-30px_rgba(44,24,16,0.2)] md:px-20"
+		>
+			<div
+				class="mx-auto flex flex-col items-start justify-between gap-5 md:container md:flex-row md:px-12"
+			>
 				<div class="space-y-2">
-					<p class="font-mono text-[0.78rem] font-semibold tracking-widest uppercase text-amber-700/80">{data.name}</p>
+					<p
+						class="font-mono text-[0.78rem] font-semibold tracking-widest text-amber-700/80 uppercase"
+					>
+						{data.name}
+					</p>
 
-					<p class="max-w-2xl font-lora leading-relaxed text-gray-700 text-base md:text-lg">
+					<p class="max-w-2xl font-lora text-base leading-relaxed text-gray-700 md:text-lg">
 						This portfolio is designed as a warm, readable home for my work, stories, and
 						experiments.
 					</p>
 
-
-					<div class="flex flex-wrap gap-2 text-xs sm:text-sm font-mono tracking-wider uppercase text-amber-800/84">
-						<span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2">Based in {data.current_city}</span>
-						<span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2">Updated {data.last_updated}</span>
+					<div
+						class="flex flex-wrap gap-2 font-mono text-xs tracking-wider text-amber-800/84 uppercase sm:text-sm"
+					>
+						<span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2"
+							>Based in {data.current_city}</span
+						>
+						<span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2"
+							>Updated {data.last_updated}</span
+						>
 					</div>
 				</div>
 
 				<div class="space-y-2">
-					<p class="font-mono text-[0.76rem] font-semibold tracking-wider uppercase text-amber-700/80">Connect</p>
+					<p
+						class="font-mono text-[0.76rem] font-semibold tracking-wider text-amber-700/80 uppercase"
+					>
+						Connect
+					</p>
 					<div class="flex flex-row flex-wrap gap-4 md:flex-col md:gap-1">
 						{#each connectLinks as link (link.label)}
 							<a
-								class="flex items-center gap-1 rounded-full border border-amber-800/12 bg-amber-50/70 px-1.5 hover:bg-amber-200/90 transition-colors duration-200"
+								class="flex items-center gap-1 rounded-full border border-amber-800/12 bg-amber-50/70 px-1.5 transition-colors duration-200 hover:bg-amber-200/90"
 								href={link.href}
 								target={link.external ? '_blank' : undefined}
 								rel={link.external ? 'noopener noreferrer' : undefined}
 							>
-								<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100/20">
+								<span
+									class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100/20"
+								>
 									{#if link.icon}
 										<link.icon />
 									{/if}
 								</span>
-								<span class="font-lora text-amber-800 pr-3.5 text-sm md:text-base">{link.label}</span>
+								<span class="pr-3.5 font-lora text-sm text-amber-800 md:text-base"
+									>{link.label}</span
+								>
 							</a>
 						{/each}
 					</div>
 				</div>
 			</div>
 
-			<div class="font-lora text-sm text-gray-600 mt-10 border-t border-amber-300 pt-4 text-center">
+			<div class="mt-10 border-t border-amber-300 pt-4 text-center font-lora text-sm text-gray-600">
 				<p>Copyright © {currentYear} {data.name}. All rights reserved.</p>
 			</div>
 		</div>
@@ -87,8 +108,6 @@
 </footer>
 
 <style>
-
-
 	.footer-card {
 		position: relative;
 		background:
@@ -104,5 +123,4 @@
 		width: 100%;
 		background: linear-gradient(90deg, transparent, rgb(196 154 60 / 0.55), transparent);
 	}
-
 </style>

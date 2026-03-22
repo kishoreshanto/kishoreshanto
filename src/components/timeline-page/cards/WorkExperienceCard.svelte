@@ -55,7 +55,9 @@
 					<p id="work-card-deliverables" class="research-card-overview-title">Key deliverables</p>
 					<ol class="work-card-deliverables">
 						{#each normalizedDeliverables as deliverable, index (`${deliverable}-${index}`)}
-							<li class="work-card-deliverable rounded-2xl border-2 border-amber-700/40 text-sm md:text-base">
+							<li
+								class="work-card-deliverable rounded-2xl border-2 border-amber-700/40 text-sm md:text-base"
+							>
 								<p>{deliverable}</p>
 							</li>
 						{/each}

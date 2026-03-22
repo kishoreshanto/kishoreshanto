@@ -34,9 +34,13 @@
 				</h3>
 
 				<p
-					class="lg mt-2 text-center font-lora text-lg text-gray-700 lg:max-w-xl lg:text-justify xl:max-w-4xl flex flex-col gap-3"
+					class="lg mt-2 flex flex-col gap-3 text-center font-lora text-lg text-gray-700 lg:max-w-xl lg:text-justify xl:max-w-4xl"
 				>
-					<span>Software and AI engineer here. I love building beautiful and functional softwares and training AI systems that solve real problems. I also enjoy writing about my experiences and sharing my knowledge with others.</span>
+					<span
+						>Software and AI engineer here. I love building beautiful and functional softwares and
+						training AI systems that solve real problems. I also enjoy writing about my experiences
+						and sharing my knowledge with others.</span
+					>
 					<em>I believe in open source, open knowledge, and the power of community.</em>
 				</p>
 			</div>

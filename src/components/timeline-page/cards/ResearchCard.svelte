@@ -26,7 +26,7 @@
 	<div class="card-body">
 		<!-- Highlight -->
 		<div class="card-highlight">
-			<div class="rounded-full border bg-[#f9d8b0] px-2 py-1 w-fit">{category}</div>
+			<div class="w-fit rounded-full border bg-[#f9d8b0] px-2 py-1">{category}</div>
 			<h1 class="text-end">{highlight_right}</h1>
 		</div>
 
