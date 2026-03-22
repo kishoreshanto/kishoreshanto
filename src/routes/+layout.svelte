@@ -22,8 +22,8 @@
 		{ label: 'Hey', href: '/' },
 		{ label: 'Timeline', href: '/timeline' },
 		{ label: 'Stories', href: '/story' },
-		{ label: 'Contact', href: '/contact' },
-		{ label: 'Chat', href: '/chat-with-me' }
+		{ label: 'Contact', href: '/contact' }
+		// { label: 'Chat', href: '/chat-with-me' }
 	];
 
 	let tabEls: HTMLAnchorElement[] = $state([]);
