@@ -32,10 +32,10 @@
 </script>
 
 <div class="mx-6 mt-18 p-0 pb-12 sm:mx-12 sm:px-6 md:container md:mx-auto lg:px-22">
-	<div class="flex flex-row items-center justify-between">
+	<div class="flex flex-row items-center justify-between gap-4">
 		<a
 			href="/story"
-			class="inline-flex items-center gap-2 rounded-full border border-amber-400 bg-surface-card px-4 py-2 font-mono text-xs tracking-[0.2em] text-amber-700 uppercase transition-colors duration-200 hover:bg-amber-200 hover:text-amber-900 sm:text-sm"
+			class="inline-flex items-center gap-2 rounded-full border border-amber-400 bg-surface-card px-4 py-3.5 md:p-3 font-mono text-xs tracking-[0.2em] text-amber-700 uppercase transition-colors duration-200 hover:bg-amber-200 hover:text-amber-900 md:text-sm"
 		>
 			<svg
 				aria-hidden="true"
