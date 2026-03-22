@@ -15,7 +15,7 @@
 {#if show_linkedin}
 	<a target="_blank" href={linkedin_url} class="flex items-center gap-1 align-middle">
 		<LinkedInIcon />
-		<h1 class="contact-link-text">
+		<h1 class="font-mono text-sm md:text-base text-amber-700 transition-all duration-300 hover:text-gray-900">
 			/ {linkedin_username}
 		</h1>
 	</a>

@@ -21,7 +21,7 @@
 
 	{#if email}
 		{#if email_is_valid}
-			<span class="contact-link-text">{email}</span>
+			<span class="font-mono text-sm md:text-base text-amber-700 transition-all duration-300 hover:text-gray-900">{email}</span>
 		{:else}
 			<span class="font-mono text-red-500 dark:text-red-400">Invalid email</span>
 		{/if}

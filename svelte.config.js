@@ -11,11 +11,6 @@ const config = {
 			$component: 'src/components'
 		},
 
-		// Service worker for caching and offline support
-		serviceWorker: {
-			register: false
-		},
-
 		// Content Security Policy for better security
 		csp: {
 			mode: 'auto',

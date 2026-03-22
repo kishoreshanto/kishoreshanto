@@ -63,6 +63,7 @@
 	});
 </script>
 
+<!-- Universal Navigation Bar -->
 <nav class="universal-navbar">
 	<div class="universal-navbar-container">
 		<div

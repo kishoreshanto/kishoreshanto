@@ -11,12 +11,6 @@
 	const q1PublicationCount = researchData.filter((entry) => entry.props.rank === 'Q1').length;
 	const experienceCount = workExperienceData.length;
 
-	const summaryStats = [
-		{ value: String(publicationCount), label: 'published papers' },
-		{ value: String(q1PublicationCount), label: 'Q1 journal papers' },
-		{ value: String(profile.interest_and_passion.length), label: 'recurring focus areas' },
-		{ value: String(experienceCount), label: 'hands-on roles' }
-	];
 
 	const quickNotes = [
 		{
@@ -116,42 +110,37 @@
 			<p class="home-kicker">At a glance</p>
 			<h2
 				id="home-at-a-glance"
-				class="mt-3 max-w-3xl font-lora text-4xl leading-tight font-semibold text-amber-800 md:text-5xl"
+				class="mt-3 max-w-3xl font-lora text-2xl leading-tight font-semibold text-amber-800 md:text-3xl"
 			>
 				I care about building thoughtful systems that feel rigorous, useful, and grounded in the
 				real world.
 			</h2>
-			<p class="mt-5 max-w-3xl font-ivy-text text-xl leading-relaxed text-gray-700">
+			<p class="mt-3 max-w-3xl font-ivy-text md:text-xl leading-relaxed text-gray-700">
 				{profile.description} My work usually lives somewhere between research and implementation, moving
 				through computer vision, biomedical signal processing, cloud-backed systems, and carefully crafted
 				interfaces.
 			</p>
 
-			<div class="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-				{#each summaryStats as stat (stat.label)}
-					<div class="home-stat-card">
-						<p class="home-stat-value">{stat.value}</p>
-						<p class="home-stat-label">{stat.label}</p>
-					</div>
-				{/each}
-			</div>
-
-			<div class="mt-8 flex flex-wrap gap-3">
+			<div class="mt-3 flex flex-wrap gap-3">
 				{#each profile.interest_and_passion as interest (interest)}
-					<span class="home-chip">{interest}</span>
+					<span class="rounded-full border border-amber-600 bg-amber-100/75 px-4 py-2 font-mono text-xs md:text-sm uppercase">{interest}</span>
 				{/each}
 			</div>
 		</article>
 
 		<aside class="surface-card rounded-4xl px-6 py-7 sm:px-8">
-			<p class="home-kicker">Quick notes</p>
+			<p class="home-kicker">Highest Academic Education</p>
 			<div class="mt-5 space-y-4">
-				{#each quickNotes as note (note.label)}
-					<div class="home-fact-row">
-						<p class="home-fact-label">{note.label}</p>
-						<p class="home-fact-value">{note.value}</p>
-					</div>
-				{/each}
+				<h2
+				id="home-at-a-glance"
+				class="mt-3 max-w-3xl font-lora text-2xl leading-tight font-semibold text-amber-800 md:text-3xl"
+			>
+				Bachelor of Science in Computer Science and Engineering, with a major in Data Science
+			</h2>
+			<h3 class="mt-3 max-w-3xl font-ivy-text md:text-xl leading-relaxed text-gray-700">
+				United International University * 
+				
+			</h3>
 			</div>
 		</aside>
 	</section>
@@ -269,8 +258,7 @@
 	}
 
 	.home-chip {
-		border-radius: 9999px;
-		border: 1px solid rgb(132 85 34 / 0.16);
+		@apply rounded-full border border-amber-600;
 		background: rgb(255 250 240 / 0.75);
 		padding: 0.55rem 0.95rem;
 		font-family: var(--font-mono);

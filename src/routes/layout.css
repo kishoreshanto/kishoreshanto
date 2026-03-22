@@ -2,51 +2,108 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-/* Design Tokens */
+/* Low-level and high-level design tokens */
 
 :root {
 	color-scheme: light;
 
-	/* Core palette from COLOR_Documentation.md */
-	--ks-color-saddle: #845522;
-	--ks-color-amber: #a86700;
-	--ks-color-antique: #c49a3c;
-	--ks-color-honey: #ffd275;
-	--ks-color-cream: #f5edd9;
-	--ks-color-alabaster: #eef1ef;
-	--ks-color-alabaster-warm: #f0ede6;
-	--ks-color-umber: #8b7355;
+	/* Low-level tokens: palette */
+	--tone-amber-700: #a86700;
+	--tone-bronze-700: #845522;
+	--tone-brown-700: #5f4932;
+	--tone-copper-800: #872600;
+	--tone-cream-100: #f5edd9;
+	--tone-gold-500: #c49a3c;
+	--tone-honey-300: #ffd275;
+	--tone-ink-900: #2c1810;
+	--tone-ivory-0: #fffaf0;
+	--tone-mist-50: #eef1ef;
+	--tone-mist-100: #f0ede6;
+	--tone-taupe-500: #8b7355;
 
-	/* Semantic aliases for reuse in custom CSS. */
-	--ks-surface-page: var(--ks-color-alabaster);
-	--ks-surface-page-soft: #faf6ee;
-	--ks-surface-card: var(--ks-color-cream);
-	--ks-surface-card-soft: rgb(245 237 217 / 0.76);
-	--ks-text-heading: var(--ks-color-saddle);
-	--ks-text-heading-strong: #872600;
-	--ks-text-body: #5f4932;
-	--ks-text-muted: var(--ks-color-umber);
-	--ks-text-on-brand: #fffaf0;
-	--ks-border-strong: var(--ks-color-antique);
-	--ks-border-soft: rgb(196 154 60 / 0.42);
-	--ks-border-faint: rgb(139 115 85 / 0.2);
-	--ks-action-primary: var(--ks-color-amber);
-	--ks-action-hover: var(--ks-color-saddle);
-	--ks-action-highlight: var(--ks-color-honey);
-	--ks-shadow-soft: rgb(44 24 16 / 0.12);
-	--ks-shadow-strong: rgb(44 24 16 / 0.18);
+	/* Low-level tokens: surfaces */
+	--surface-canvas: var(--tone-mist-50);
+	--surface-canvas-tint: #faf6ee;
+	--surface-panel: var(--tone-cream-100);
+	--surface-panel-glass: rgb(245 237 217 / 0.76);
 
-	/* Motion and interaction */
-	--ks-duration-fast: 180ms;
-	--ks-duration-medium: 280ms;
-	--ks-duration-slow: 420ms;
-	--ks-ease-standard: ease;
-	--ks-ease-route: cubic-bezier(0.22, 0.61, 0.36, 1);
-	--ks-ease-pill: cubic-bezier(0.32, 0.72, 0, 1);
-	--ks-navbar-pill-bg: rgb(132 85 34 / 0.94);
+	/* Low-level tokens: text */
+	--ink-body: var(--tone-brown-700);
+	--ink-inverse: var(--tone-ivory-0);
+	--ink-muted: var(--tone-taupe-500);
+	--ink-title: var(--tone-bronze-700);
+	--ink-title-strong: var(--tone-copper-800);
+
+	/* Low-level tokens: borders and elevation */
+	--elevation-soft: rgb(44 24 16 / 0.12);
+	--elevation-strong: rgb(44 24 16 / 0.18);
+	--stroke-faint: rgb(139 115 85 / 0.2);
+	--stroke-soft: rgb(196 154 60 / 0.42);
+	--stroke-strong: var(--tone-gold-500);
+
+	/* Low-level tokens: interaction */
+	--accent-highlight: var(--tone-honey-300);
+	--accent-hover: var(--tone-bronze-700);
+	--accent-primary: var(--tone-amber-700);
+	--focus-ring: rgb(168 103 0 / 0.55);
+	--focus-ring-contrast: rgb(255 210 117 / 0.75);
+	--selection-fill: var(--accent-highlight);
+
+	/* Low-level tokens: motion */
+	--easing-emphasized: cubic-bezier(0.22, 0.61, 0.36, 1);
+	--easing-pill: cubic-bezier(0.32, 0.72, 0, 1);
+	--easing-standard: ease;
+	--motion-base: 280ms;
+	--motion-fast: 180ms;
+	--motion-slow: 420ms;
+
+	/* High-level tokens: app shell */
+	--shell-glow-accent: rgb(196 154 60 / 0.14);
+	--shell-glow-highlight: rgb(255 210 117 / 0.18);
+	--shell-gradient: linear-gradient(
+		180deg,
+		var(--surface-canvas-tint) 0%,
+		var(--surface-canvas) 40%,
+		#fff 100%
+	);
+
+	/* High-level tokens: navigation */
+	--nav-pill-fill: rgb(132 85 34 / 0.94);
+	--nav-tab-hover: rgb(190 115 34);
+	--nav-tab-ink: rgb(44 24 16 / 0.72);
+
+	/* High-level tokens: shared card patterns */
+	--button-outline: rgb(132 85 34 / 0.24);
+	--card-outline-accent: rgb(196 154 60 / 0.5);
+
+	/* High-level tokens: research page */
+	--research-overview-outline: rgb(132 85 34 / 0.85);
+	--research-overview-surface: rgb(245 237 217 / 0.48);
+	--research-tag-outline: rgb(196 154 60 / 0.28);
+
+	/* High-level tokens: hero page */
+	--hero-name-shimmer: linear-gradient(
+		120deg,
+		#b45309 0%,
+		#b45309 40%,
+		#d97706 50%,
+		#b45309 60%,
+		#b45309 100%
+	);
+
+	/* High-level tokens: chat page */
+	--chat-empty-surface: linear-gradient(135deg, rgb(255 250 240 / 0.84), rgb(245 237 217 / 0.78));
+	--chat-placeholder-ink: rgb(139 115 85 / 0.8);
+	--chat-scroll-thumb: rgb(168 103 0 / 0.28);
+	--chat-send-disabled: rgb(132 85 34 / 0.48);
+	--chat-typing-dot: rgb(132 85 34 / 0.62);
+	--chat-user-bubble: linear-gradient(145deg, rgb(168 103 0 / 0.96), rgb(132 85 34 / 0.96));
 }
 
+/* Tailwind theme bridge */
+
 @theme {
+	/* Breakpoints */
 	--breakpoint-*: initial;
 	--breakpoint-xxs: 320px;
 	--breakpoint-xs: 425px;
@@ -56,97 +113,95 @@
 	--breakpoint-xl: 1280px;
 	--breakpoint-2xl: 1536px;
 
+	/* Fonts and animation */
 	--animate-fade-in: fadeIn 0.7s ease-in;
-	--font-lora: 'Lora', serif;
 	--font-crimson-text: 'Crimson Text', serif;
 	--font-eb-garamond: 'EB Garamond', serif;
 	--font-ivy-text: 'IvyOra Text', serif;
-
-	--font-sans:
-		-apple-system, BlinkMacSystemFont, Inter, Helvetica Neue, sans-serif, Apple Color Emoji,
-		Segoe UI Emoji, Segoe UI Symbol;
+	--font-lora: 'Lora', serif;
 	--font-mono:
 		ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Monaco, Consolas, 'Liberation Mono',
 		'Courier New', monospace;
+	--font-sans:
+		-apple-system, BlinkMacSystemFont, Inter, Helvetica Neue, sans-serif, Apple Color Emoji,
+		Segoe UI Emoji, Segoe UI Symbol;
 	--font-serif:
 		var(--font-lora), var(--font-crimson-text), var(--font-eb-garamond), var(--font-ivy-text), serif;
 
-	/* Named colors for direct Tailwind utility use. */
-	--color-page-heading: var(--ks-color-saddle);
-	--color-page-subheading: var(--ks-color-umber);
-	--color-saddle: var(--ks-color-saddle);
-	--color-amber-gold: var(--ks-color-amber);
-	--color-antique-gold: var(--ks-color-antique);
-	--color-honey-gold: var(--ks-color-honey);
-	--color-warm-cream: var(--ks-color-cream);
-	--color-alabaster: var(--ks-color-alabaster);
-	--color-warm-umber: var(--ks-color-umber);
-	--color-brand-primary: var(--ks-action-primary);
-	--color-brand-secondary: var(--ks-action-hover);
-	--color-brand-accent: var(--ks-color-antique);
-	--color-brand-highlight: var(--ks-action-highlight);
-	--color-surface-page: var(--ks-surface-page);
-	--color-surface-card: var(--ks-surface-card);
-	--color-text-muted: var(--ks-text-muted);
+	/* Named colors for Tailwind utility classes */
+	--color-alabaster: var(--tone-mist-50);
+	--color-amber-gold: var(--tone-amber-700);
+	--color-antique-gold: var(--tone-gold-500);
+	--color-brand-accent: var(--tone-gold-500);
+	--color-brand-highlight: var(--accent-highlight);
+	--color-brand-primary: var(--accent-primary);
+	--color-brand-secondary: var(--accent-hover);
+	--color-page-heading: var(--ink-title);
+	--color-page-subheading: var(--ink-muted);
+	--color-saddle: var(--tone-bronze-700);
+	--color-surface-card: var(--surface-panel);
+	--color-surface-page: var(--surface-canvas);
+	--color-text-muted: var(--ink-muted);
+	--color-warm-cream: var(--tone-cream-100);
+	--color-warm-umber: var(--tone-taupe-500);
 
-	/* Override Tailwind amber/gray with the documented warm palette. */
-	--color-amber-50: #fffaf0;
-	--color-amber-100: #f5edd9;
+	/* Warm-tailwind palette overrides */
+	--color-amber-50: var(--tone-ivory-0);
+	--color-amber-100: var(--tone-cream-100);
 	--color-amber-200: #ead7aa;
-	--color-amber-300: #ffd275;
-	--color-amber-400: #c49a3c;
-	--color-amber-500: #a86700;
+	--color-amber-300: var(--tone-honey-300);
+	--color-amber-400: var(--tone-gold-500);
+	--color-amber-500: var(--tone-amber-700);
 	--color-amber-600: #955b00;
-	--color-amber-700: #845522;
-	--color-amber-800: #2c1810;
+	--color-amber-700: var(--tone-bronze-700);
+	--color-amber-800: var(--tone-ink-900);
 	--color-amber-900: #1d110b;
-
 	--color-gray-50: #fbfaf7;
 	--color-gray-100: #f0ede6;
 	--color-gray-200: #e3dbcf;
 	--color-gray-300: #ccbca6;
 	--color-gray-400: #aa9376;
-	--color-gray-500: #8b7355;
+	--color-gray-500: var(--tone-taupe-500);
 	--color-gray-600: #6f5b44;
 	--color-gray-700: #594735;
 	--color-gray-800: #433323;
-	--color-gray-900: #2c1810;
+	--color-gray-900: var(--tone-ink-900);
 }
 
-/* Base */
+/* Base document layer */
 
 @layer base {
 	html {
-		background-color: var(--ks-surface-page);
-		color: var(--ks-text-body);
+		background-color: var(--surface-canvas);
+		color: var(--ink-body);
 		scroll-behavior: smooth;
 	}
 
 	body {
 		min-height: 100vh;
-		color: var(--ks-text-body);
-		background-color: var(--ks-surface-page);
+		background-color: var(--surface-canvas);
 		background-image:
-			radial-gradient(circle at top right, rgb(255 210 117 / 0.18), transparent 28%),
-			radial-gradient(circle at top left, rgb(196 154 60 / 0.14), transparent 24%),
-			linear-gradient(180deg, var(--ks-surface-page-soft) 0%, var(--ks-surface-page) 40%, #fff 100%);
+			radial-gradient(circle at top right, var(--shell-glow-highlight), transparent 28%),
+			radial-gradient(circle at top left, var(--shell-glow-accent), transparent 24%),
+			var(--shell-gradient);
+		color: var(--ink-body);
 	}
 
 	html,
 	body {
-		background-size: cover;
-		background-position: center;
 		background-attachment: fixed;
+		background-position: center;
 		background-repeat: no-repeat;
+		background-size: cover;
 	}
 
 	::selection {
-		background: var(--ks-action-highlight);
-		color: var(--ks-text-heading);
+		background: var(--selection-fill);
+		color: var(--ink-title);
 	}
 
 	:focus-visible {
-		outline: 2px solid rgb(168 103 0 / 0.55);
+		outline: 2px solid var(--focus-ring);
 		outline-offset: 3px;
 	}
 }
@@ -162,111 +217,73 @@
 	}
 }
 
-/* Shared Utilities */
+/* Low-level primitives: surfaces, text, and actions */
 
 .surface-card,
 .surface-card-soft {
-	border: 1px solid var(--ks-border-soft);
+	border: 1px solid var(--stroke-soft);
 }
 
 .surface-card {
-	background: var(--ks-surface-card);
-	box-shadow: 0 20px 40px -28px var(--ks-shadow-strong);
+	background: var(--surface-panel);
+	box-shadow: 0 20px 40px -28px var(--elevation-strong);
 }
 
 .surface-card-soft {
-	background: var(--ks-surface-card-soft);
-	box-shadow: 0 18px 32px -28px var(--ks-shadow-soft);
+	background: var(--surface-panel-glass);
+	box-shadow: 0 18px 32px -28px var(--elevation-soft);
 }
 
 .text-heading,
 .research-card-overview-title,
 .story-card-title {
-	color: var(--ks-text-heading);
+	color: var(--ink-title);
 }
 
 .text-muted-warm,
 .card-subtitle,
 .research-card-overview-description,
 .research-card-keywords-title {
-	color: var(--ks-text-muted);
+	color: var(--ink-muted);
 }
 
 .section-rule {
-	border-color: rgb(196 154 60 / 0.5);
+	border-color: var(--card-outline-accent);
 }
 
 .brand-link {
-	color: var(--ks-action-primary);
+	color: var(--accent-primary);
 	transition:
-		color var(--ks-duration-fast) var(--ks-ease-standard),
-		text-decoration-color var(--ks-duration-fast) var(--ks-ease-standard);
+		color var(--motion-fast) var(--easing-standard),
+		text-decoration-color var(--motion-fast) var(--easing-standard);
 }
 
 .brand-link:hover {
-	color: var(--ks-action-hover);
+	color: var(--accent-hover);
 }
 
 .brand-button {
-	background: var(--ks-action-primary);
-	color: var(--ks-text-on-brand);
-	border: 1px solid rgb(132 85 34 / 0.24);
-	box-shadow: 0 16px 28px -20px var(--ks-shadow-strong);
+	background: var(--accent-primary);
+	border: 1px solid var(--button-outline);
+	box-shadow: 0 16px 28px -20px var(--elevation-strong);
+	color: var(--ink-inverse);
 	transition:
-		background-color var(--ks-duration-fast) var(--ks-ease-standard),
-		transform var(--ks-duration-fast) var(--ks-ease-standard),
-		box-shadow var(--ks-duration-fast) var(--ks-ease-standard);
+		background-color var(--motion-fast) var(--easing-standard),
+		box-shadow var(--motion-fast) var(--easing-standard),
+		transform var(--motion-fast) var(--easing-standard);
 }
 
 .brand-button:hover {
-	background: var(--ks-action-hover);
+	background: var(--accent-hover);
 	transform: translateY(-1px);
 }
 
 .brand-button:focus-visible {
-	outline: 2px solid rgb(255 210 117 / 0.75);
+	outline: 2px solid var(--focus-ring-contrast);
 	outline-offset: 2px;
 }
 
-/* Navigation */
-
-.universal-navbar {
-	@apply sticky top-0 left-0 z-100 flex h-full flex-row items-center justify-center;
-}
-
-.universal-navbar-container {
-	@apply relative mt-8 flex h-full w-fit flex-row items-center overflow-hidden rounded-full border-2 p-1.5 shadow-2xl backdrop-blur-sm;
-	border-color: var(--ks-border-soft);
-	background: var(--ks-surface-card-soft);
-}
-
-.navbar-pill {
-	@apply pointer-events-none absolute top-1 bottom-1 left-0 rounded-full transition-none;
-	background: var(--ks-navbar-pill-bg);
-}
-
-.navbar-pill--ready {
-	transition:
-		transform var(--ks-duration-slow) var(--ks-ease-pill),
-		width var(--ks-duration-slow) var(--ks-ease-pill);
-}
-
-.navbar-tab {
-	@apply relative z-10 block cursor-pointer rounded-full font-lora font-bold tracking-wide uppercase select-none xxs:px-3.5 xxs:py-3.5 xxs:text-[0.7rem] xs:px-4 xs:py-3 xs:text-[0.85rem] md:px-6 md:py-3 md:text-[1rem];
-	color: rgb(44 24 16 / 0.72);
-	text-decoration: none;
-	transition: color var(--ks-duration-medium) var(--ks-ease-standard);
-}
-
-.navbar-tab:hover:not(.navbar-tab--active) {
-	color: rgb(190, 115, 34);
-}
-
-.navbar-tab--active {
-	color: var(--ks-text-on-brand);
-}
-
-/* Route Transitions */
+/* Low-level primitives: route motion */
 
 .route-transition-shell {
 	position: relative;
@@ -274,16 +291,16 @@
 }
 
 .route-transition-stage {
-	will-change: transform, opacity;
 	view-transition-name: route-content;
+	will-change: transform, opacity;
 }
 
 ::view-transition-old(route-content) {
-	animation: route-content-old var(--ks-duration-fast) var(--ks-ease-standard) both;
+	animation: route-content-old var(--motion-fast) var(--easing-standard) both;
 }
 
 ::view-transition-new(route-content) {
-	animation: route-content-new 360ms var(--ks-ease-route) both;
+	animation: route-content-new 360ms var(--easing-emphasized) both;
 }
 
 @keyframes route-content-old {
@@ -306,7 +323,7 @@
 	}
 }
 
-/* Shared Layout */
+/* High-level layout: shared page shell */
 
 .page-container {
 	@apply container mx-auto mt-12 mb-8 pt-8;
@@ -314,19 +331,57 @@
 
 .page-heading {
 	@apply text-center font-lora text-4xl font-medium lg:text-5xl xl:text-6xl;
-	color: var(--color-page-heading);
+	color: var(--ink-title);
 }
 
 .page-subheading {
 	@apply mt-6 mb-12 text-center font-lora text-xl lg:text-2xl;
-	color: var(--color-page-subheading);
+	color: var(--ink-muted);
 }
 
 .contact-link-text {
 	@apply font-mono text-amber-700 transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-300;
 }
 
-/* Card Designs */
+/* High-level layout: navigation */
+
+.universal-navbar {
+	@apply sticky top-0 left-0 z-100 flex h-full flex-row items-center justify-center;
+}
+
+.universal-navbar-container {
+	@apply relative mt-8 flex h-full w-fit flex-row items-center overflow-hidden rounded-full border-2 p-1.5 shadow-2xl backdrop-blur-sm;
+	background: var(--surface-panel-glass);
+	border-color: var(--stroke-soft);
+}
+
+.navbar-pill {
+	@apply pointer-events-none absolute top-1 bottom-1 left-0 rounded-full transition-none;
+	background: var(--nav-pill-fill);
+}
+
+.navbar-pill--ready {
+	transition:
+		transform var(--motion-slow) var(--easing-pill),
+		width var(--motion-slow) var(--easing-pill);
+}
+
+.navbar-tab {
+	@apply relative z-10 block cursor-pointer rounded-full font-lora font-bold tracking-wide uppercase select-none xxs:px-3.5 xxs:py-3.5 xxs:text-[0.7rem] xs:px-4 xs:py-3 xs:text-[0.85rem] md:px-6 md:py-3 md:text-[1rem];
+	color: var(--nav-tab-ink);
+	text-decoration: none;
+	transition: color var(--motion-base) var(--easing-standard);
+}
+
+.navbar-tab:hover:not(.navbar-tab--active) {
+	color: var(--nav-tab-hover);
+}
+
+.navbar-tab--active {
+	color: var(--ink-inverse);
+}
+
+/* High-level layout: shared cards */
 
 .card-container {
 	@apply max-w-2xl px-6 py-6 xl:max-w-6xl;
@@ -334,31 +389,31 @@
 
 .card-body {
 	@apply flex flex-col gap-3 rounded-2xl border p-5 shadow-md;
-	border-color: var(--ks-border-soft);
-	background: var(--ks-surface-card-soft);
-	box-shadow: 0 20px 40px -30px var(--ks-shadow-strong);
+	background: var(--surface-panel-glass);
+	border-color: var(--stroke-soft);
+	box-shadow: 0 20px 40px -30px var(--elevation-strong);
 }
 
 .card-highlight {
 	@apply flex flex-row items-center justify-between align-middle font-lora text-sm;
-	color: var(--ks-action-primary);
+	color: var(--accent-primary);
 }
 
 .card-title {
 	@apply font-lora text-2xl leading-tight font-bold;
-	color: var(--ks-text-heading-strong);
+	color: var(--ink-title-strong);
 }
 
 .card-subtitle {
 	@apply flex items-center space-x-2 font-crimson-text text-xl;
 }
 
-/* Research Card Specific Styles */
+/* High-level page styles: research */
 
 .research-card-overview {
 	@apply flex items-start space-x-3 rounded-xl border-2 border-l-6 px-4 py-2 font-lora;
-	border-color: rgb(132 85 34 / 0.85);
-	background: rgb(245 237 217 / 0.48);
+	background: var(--research-overview-surface);
+	border-color: var(--research-overview-outline);
 }
 
 .research-card-overview-title {
@@ -395,27 +450,20 @@
 
 .research-tag {
 	@apply rounded-full px-3 py-1 text-sm lg:text-base;
-	background: var(--ks-surface-card);
-	color: var(--ks-action-hover);
-	border: 1px solid rgb(196 154 60 / 0.28);
+	background: var(--surface-panel);
+	border: 1px solid var(--research-tag-outline);
+	color: var(--accent-hover);
 }
 
-/* Hero Page */
+/* High-level page styles: hero */
 
 .name-highlight {
 	position: relative;
 	display: inline-block;
-	color: var(--ks-action-primary);
-	background: linear-gradient(
-		120deg,
-		#b45309 0%,
-		#b45309 40%,
-		#d97706 50%,
-		#b45309 60%,
-		#b45309 100%
-	);
+	background: var(--hero-name-shimmer);
 	background-position: 100% 0;
 	background-size: 200% 100%;
+	color: var(--accent-primary);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -435,7 +483,7 @@
 	}
 }
 
-/* Story Page */
+/* High-level page styles: story */
 
 .story-card {
 	@apply max-h-120 rounded-2xl border border-antique-gold bg-amber-100 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg;
@@ -467,13 +515,13 @@
 	@apply float-left pt-[0.15em] pr-[0.12em] text-5xl leading-8 font-bold text-amber-700;
 }
 
-/* Footer */
+/* High-level page styles: footer */
 
 .footer-bottom {
 	@apply mt-8 flex flex-col gap-2 border-t border-amber-700/12 pt-5 text-center font-ivy-text text-base text-gray-600/90;
 }
 
-/* chat classes */
+/* High-level page styles: chat */
 
 .chat-kicker,
 .chat-empty-kicker,
@@ -501,14 +549,14 @@
 .chat-thread::-webkit-scrollbar-thumb {
 	border: 2px solid transparent;
 	border-radius: 9999px;
-	background: rgb(168 103 0 / 0.28);
+	background: var(--chat-scroll-thumb);
 	background-clip: padding-box;
 }
 
 .chat-empty {
 	@apply grid min-h-full justify-items-center gap-3 rounded-[1.6rem] border border-dashed border-amber-700/40 px-[1.35rem] py-8 text-center;
 	align-content: center;
-	background: linear-gradient(135deg, rgb(255 250 240 / 0.84), rgb(245 237 217 / 0.78));
+	background: var(--chat-empty-surface);
 }
 
 .chat-empty h3 {
@@ -532,7 +580,7 @@
 }
 
 .message-bubble {
-	@apply rounded-[1.45rem] px-[1.05rem] pt-4 pb-[0.85rem] shadow-[0_22px_34px_-30px_var(--ks-shadow-strong)] sm:px-[1.15rem] sm:pt-[1.05rem] sm:pb-[0.9rem];
+	@apply rounded-[1.45rem] px-[1.05rem] pt-4 pb-[0.85rem] shadow-[0_22px_34px_-30px_var(--elevation-strong)] sm:px-[1.15rem] sm:pt-[1.05rem] sm:pb-[0.9rem];
 	max-width: min(42rem, 92%);
 }
 
@@ -542,7 +590,7 @@
 
 .message-bubble--user {
 	@apply rounded-br-[0.42rem] border border-saddle/25 text-amber-50;
-	background: linear-gradient(145deg, rgb(168 103 0 / 0.96), rgb(132 85 34 / 0.96));
+	background: var(--chat-user-bubble);
 }
 
 .message-label {
@@ -568,7 +616,7 @@
 
 .typing-dots span {
 	@apply h-[0.48rem] w-[0.48rem] rounded-full;
-	background: rgb(132 85 34 / 0.62);
+	background: var(--chat-typing-dot);
 	animation: chat-typing 1s infinite ease-in-out;
 }
 
@@ -608,7 +656,7 @@
 }
 
 .chat-input::placeholder {
-	color: rgb(139 115 85 / 0.8);
+	color: var(--chat-placeholder-ink);
 }
 
 .chat-actions {
@@ -621,8 +669,8 @@
 
 .chat-send:disabled {
 	@apply cursor-not-allowed shadow-none;
+	background: var(--chat-send-disabled);
 	transform: none;
-	background: rgb(132 85 34 / 0.48);
 }
 
 @media (max-width: 639px) {
