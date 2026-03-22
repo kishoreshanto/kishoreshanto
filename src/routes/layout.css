@@ -285,17 +285,7 @@
 
 /* Low-level primitives: route motion */
 
-.route-transition-shell {
-	position: relative;
-	width: 100%;
-}
-
-.route-transition-stage {
-	view-transition-name: route-content;
-	will-change: transform, opacity;
-}
-
-::view-transition-old(route-content) {
+/* ::view-transition-old(route-content) {
 	animation: route-content-old var(--motion-fast) var(--easing-standard) both;
 }
 
@@ -321,7 +311,7 @@
 	to {
 		opacity: 1;
 	}
-}
+} */
 
 /* High-level layout: shared page shell */
 

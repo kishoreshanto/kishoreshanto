@@ -85,10 +85,6 @@
 	</div>
 </nav>
 
-<div class="route-transition-shell">
-	<div class="route-transition-stage">
-		{@render children()}
-	</div>
-</div>
+{@render children()}
 
 <Footer />
