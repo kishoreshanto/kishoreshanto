@@ -395,17 +395,17 @@
 }
 
 .card-highlight {
-	@apply flex flex-row items-center justify-between align-middle font-lora text-sm;
+	@apply flex flex-row items-center justify-between gap-2 align-middle font-lora text-xs sm:text-sm;
 	color: var(--accent-primary);
 }
 
 .card-title {
-	@apply font-lora text-2xl leading-tight font-bold;
+	@apply font-lora text-xl leading-tight font-bold sm:text-2xl;
 	color: var(--ink-title-strong);
 }
 
 .card-subtitle {
-	@apply flex items-center space-x-2 font-crimson-text text-xl;
+	@apply flex items-center space-x-2 font-crimson-text md:text-xl;
 }
 
 /* High-level page styles: research */
@@ -421,7 +421,7 @@
 }
 
 .research-card-overview-description {
-	@apply leading-5;
+	@apply text-sm leading-5 sm:text-base;
 }
 
 .research-card-rank {
@@ -441,7 +441,7 @@
 }
 
 .research-card-keywords-title {
-	@apply font-bold tracking-wider uppercase;
+	@apply text-sm font-bold tracking-wider uppercase sm:text-base;
 }
 
 .research-card-keywords-list {
