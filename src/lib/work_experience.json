@@ -3,6 +3,8 @@
 		"id": "aws-cloud-arch",
 		"component": "freelance",
 		"date": "16th May, 2024",
+		"affiliations": ["Australian Tech Startup"],
+		"search_terms": ["AWS", "EC2", "VPC", "RDS", "IAM", "cloud architecture"],
 		"props": {
 			"date": "16th May, 2024",
 			"category": "Work Experience",
@@ -22,6 +24,8 @@
 		"id": "lab-assistant",
 		"component": "part-time",
 		"date": "3rd April, 2024",
+		"affiliations": ["United International University"],
+		"search_terms": ["UIU", "lab support"],
 		"props": {
 			"date": "3rd April, 2024",
 			"category": "Work Experience",
@@ -42,6 +46,8 @@
 		"id": "social-survey",
 		"component": "part-time",
 		"date": "12th May, 2024",
+		"affiliations": ["United International University"],
+		"search_terms": ["UIU", "cyber safety", "cyberbullying", "mixed methods"],
 		"props": {
 			"date": "12th May, 2024",
 			"category": "Work Experience",

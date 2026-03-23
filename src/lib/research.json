@@ -3,6 +3,8 @@
 		"id": "research-upper-limb-motor-movements",
 		"component": "research",
 		"date": "23th February, 2025",
+		"affiliations": ["Independent"],
+		"search_terms": ["EEG", "BCI", "motor imagery"],
 		"props": {
 			"date": "23th February, 2025",
 			"category": "Research Report",
@@ -23,6 +25,8 @@
 		"id": "journal-array-vision-transformer-anomaly-detection",
 		"component": "research",
 		"date": "17th July, 2025",
+		"affiliations": ["Elsevier", "Array"],
+		"search_terms": ["ViT", "SRU++", "video anomaly detection"],
 		"props": {
 			"date": "17th July, 2025",
 			"category": "Journal Publication",
@@ -46,6 +50,8 @@
 		"id": "conference-icca-fabric-defect-detection",
 		"component": "research",
 		"date": "10th June, 2025",
+		"affiliations": ["ACM", "ICCA"],
+		"search_terms": ["ACM ICCA", "garment defect detection"],
 		"props": {
 			"date": "10th June, 2025",
 			"category": "Conference Publication",
@@ -63,6 +69,8 @@
 		"id": "journal-compbiomed-snoRNA-association",
 		"component": "research",
 		"date": "2nd April, 2025",
+		"affiliations": ["Elsevier", "Computers in Biology and Medicine"],
+		"search_terms": ["snoRNA", "GBDT", "SVM", "CompBioMed"],
 		"props": {
 			"date": "2nd April, 2025",
 			"category": "Journal Publication",
@@ -86,6 +94,8 @@
 		"id": "research-password-strength-gpt2",
 		"component": "research",
 		"date": "6th September, 2024",
+		"affiliations": ["United International University"],
+		"search_terms": ["GPT-2", "GPT2", "password cracking"],
 		"props": {
 			"date": "6th September, 2024",
 			"category": "Research Report",
@@ -109,6 +119,8 @@
 		"id": "research-energy-footprint-python-r",
 		"component": "research",
 		"date": "27th June, 2024",
+		"affiliations": ["United International University"],
+		"search_terms": ["energy footprint", "power measurement"],
 		"props": {
 			"date": "27th June, 2024",
 			"category": "Research Report",
@@ -135,6 +147,8 @@
 		"id": "conference-iccit-random-forest-clustering",
 		"component": "research",
 		"date": "27th February, 2025",
+		"affiliations": ["IEEE", "IEEE Xplore", "ICCIT"],
+		"search_terms": ["random forest clustering", "K-means", "ICCIT"],
 		"props": {
 			"date": "27th February, 2025",
 			"category": "Conference Publication",
