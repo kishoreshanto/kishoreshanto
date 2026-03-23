@@ -27,8 +27,6 @@
 		NormalizedWorkExperienceTimelineEntry,
 		TimelineFilterState
 	} from '$lib/timeline/types';
-	import NotFound from '$component/timeline-page/cards/NotFound.svelte';
-	import NotFoundCard from '$component/v1/NotFoundCard.svelte';
 
 	type TimelineFilterPatch = Partial<TimelineFilterState>;
 
