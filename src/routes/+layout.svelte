@@ -22,8 +22,8 @@
 		{ label: 'Hey', href: '/' },
 		{ label: 'Timeline', href: '/timeline' },
 		{ label: 'Stories', href: '/story' },
-		{ label: 'Contact', href: '/contact' },
-		{ label: 'Chat', href: '/chat-with-me' }
+		{ label: 'Contact', href: '/contact' }
+		// { label: 'Chat', href: '/chat-with-me' }
 	];
 
 	let tabEls: HTMLAnchorElement[] = $state([]);
@@ -63,6 +63,7 @@
 	});
 </script>
 
+<!-- Universal Navigation Bar -->
 <nav class="universal-navbar">
 	<div class="universal-navbar-container">
 		<div
@@ -84,10 +85,6 @@
 	</div>
 </nav>
 
-<div class="route-transition-shell">
-	<div class="route-transition-stage">
-		{@render children()}
-	</div>
-</div>
+{@render children()}
 
 <Footer />

@@ -10,7 +10,7 @@
 	<p
 		class="cursor-default text-justify text-xs tracking-tight text-gray-600 select-none xs:text-sm dark:text-gray-400"
 	>
-		{@html description}
+		{description}
 	</p>
 {:else}
 	<p

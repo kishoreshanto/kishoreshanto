@@ -1,5 +1,5 @@
 {
-	"version": "BETA v1.2.0, Expect Bugs, Incomplete/Missing Sections",
+	"version": "BETA v2.0.0, Expect Bugs",
 	"AI": true,
 	"AI_model": "openai/gpt-oss-20b:groq",
 	"modal": false,
@@ -49,7 +49,6 @@
 	"show_inactive": false,
 	"inactive_start_time": 18,
 	"inactive_end_time": 8,
-
 	"display_image_url": "https://o83dp4hmlwk6umh0.public.blob.vercel-storage.com/KS-DP-v1.jpeg",
 	"display_image_alt": "Kishore Shanto"
 }

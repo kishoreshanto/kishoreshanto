@@ -30,15 +30,18 @@
 				</h1>
 
 				<h3 class="font-crimson-text text-2xl font-semibold md:text-3xl xl:text-4xl">
-					Software Engineer, Designer, Writer
+					Software and AI Engineer, Researcher
 				</h3>
 
 				<p
-					class="lg mt-2 text-center font-lora text-lg text-gray-700 lg:max-w-xl lg:text-justify xl:max-w-4xl"
+					class="lg mt-2 flex flex-col gap-3 text-center font-lora text-lg text-gray-700 lg:max-w-xl lg:text-justify xl:max-w-4xl"
 				>
-					I'm a software engineer and designer based in New York. I have a passion for building
-					beautiful and functional products that solve real problems. I also enjoy writing about my
-					experiences and sharing my knowledge with others.
+					<span
+						>Software and AI engineer here. I love building beautiful and functional softwares and
+						training AI systems that solve real problems. I also enjoy writing about my experiences
+						and sharing my knowledge with others.</span
+					>
+					<em>I believe in open source, open knowledge, and the power of community.</em>
 				</p>
 			</div>
 		</div>

@@ -35,7 +35,7 @@
 			</div>
 			<div class=" flex flex-wrap gap-2">
 				{#each normalizedRoles as item, index (`${item}-${index}`)}
-					<span class="rounded-full border px-3 py-1 font-lora">{item}</span>
+					<span class="rounded-full border px-3 py-1 font-lora text-sm md:text-base">{item}</span>
 				{/each}
 			</div>
 		</div>
@@ -55,7 +55,9 @@
 					<p id="work-card-deliverables" class="research-card-overview-title">Key deliverables</p>
 					<ol class="work-card-deliverables">
 						{#each normalizedDeliverables as deliverable, index (`${deliverable}-${index}`)}
-							<li class="work-card-deliverable rounded-2xl border-2 border-amber-700/40">
+							<li
+								class="work-card-deliverable rounded-2xl border-2 border-amber-700/40 text-sm md:text-base"
+							>
 								<p>{deliverable}</p>
 							</li>
 						{/each}

@@ -1,126 +1,272 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
 	import ResearchCard from '$component/timeline-page/cards/ResearchCard.svelte';
 	import WorkExperienceCard from '$component/timeline-page/cards/WorkExperienceCard.svelte';
 	import TimeLine from '$component/timeline-page/TimeLine.svelte';
-	import filterData from '$lib/filters.json';
-	import researchData from '$lib/research.json';
-	import workExperienceData from '$lib/work_experience.json';
+	import {
+		buildTimelineSearchParams,
+		filterTimelineEntries,
+		parseTimelineFilterState,
+		timelineEntries,
+		timelineFacetOptions,
+		timelineSearchIndex
+	} from '$lib/timeline';
 	import {
 		clearTimelineFilters,
 		toggleStringSet,
 		updateEndYearState,
 		updateStartYearState
 	} from '$lib/timeline-utils';
-	import { parseDateWithOrdinal } from '$lib/utils';
+	import { onDestroy, onMount, untrack } from 'svelte';
 
-	type TimelineComponent = 'research' | 'work_experience' | 'education';
+	import type {
+		NormalizedResearchTimelineEntry,
+		NormalizedTimelineEntry,
+		NormalizedWorkExperienceTimelineEntry,
+		TimelineFilterState
+	} from '$lib/timeline/types';
 
-	type BaseTimelineEntry<TComponent extends TimelineComponent, TProps> = {
-		id: string;
-		component: TComponent;
-		date: string;
-		props: TProps;
-	};
+	type TimelineFilterPatch = Partial<TimelineFilterState>;
 
-	type ResearchTimelineEntry = BaseTimelineEntry<'research', ResearchCardProps>;
-	type WorkExperienceTimelineEntry = BaseTimelineEntry<'work_experience', WorkExperienceCardProps>;
-	type EducationTimelineEntry = BaseTimelineEntry<'education', Record<string, unknown>>;
-	type TimelineEntry = ResearchTimelineEntry | WorkExperienceTimelineEntry | EducationTimelineEntry;
-
-	type RawWorkExperienceEntry = {
-		id: string;
-		component: string;
-		date: string;
-		props: WorkExperienceCardProps;
-	};
-
-	const monthIndexByName: Record<string, number> = {
-		January: 0,
-		February: 1,
-		March: 2,
-		April: 3,
-		May: 4,
-		June: 5,
-		July: 6,
-		August: 7,
-		September: 8,
-		October: 9,
-		November: 10,
-		December: 11
-	};
-
-	function getTimelineTimestamp(value: string): number {
-		const parsedDate = parseDateWithOrdinal(value);
-
-		if (!parsedDate) {
-			return Number.NEGATIVE_INFINITY;
-		}
-
-		const [rawMonthName, yearWithComma] = parsedDate.rest.trim().split(/\s+/);
-		const monthName = rawMonthName?.replace(',', '');
-		const month = monthIndexByName[monthName];
-		const year = Number(yearWithComma?.replace(',', ''));
-		const day = Number(parsedDate.day);
-
-		if (month === undefined || !Number.isInteger(year) || !Number.isInteger(day)) {
-			return Number.NEGATIVE_INFINITY;
-		}
-
-		return Date.UTC(year, month, day);
-	}
-
-	function isResearchEntry(entry: TimelineEntry): entry is ResearchTimelineEntry {
-		return entry.component === 'research';
-	}
-
-	function isWorkExperienceEntry(entry: TimelineEntry): entry is WorkExperienceTimelineEntry {
-		return entry.component === 'work_experience';
-	}
-
-	const researchTimelineEntries = researchData as ResearchTimelineEntry[];
-	const workTimelineEntries = (workExperienceData as RawWorkExperienceEntry[]).map((entry) => ({
-		id: entry.id,
-		component: 'work_experience' as const,
-		date: entry.date,
-		props: entry.props
-	}));
-	const timelineEntries: TimelineEntry[] = [...researchTimelineEntries, ...workTimelineEntries];
-
-	const filters = filterData[0];
+	const minimumYear = timelineFacetOptions.minYear;
+	const maximumYear = timelineFacetOptions.maxYear;
 	const currentYear = new Date().getFullYear();
-	const minimumYear = filters.year.start_year;
-	const maximumYear = Math.min(filters.year.end_year, currentYear);
+	const defaultSearchParams = new URLSearchParams();
 
-	let startYear = $state(minimumYear);
-	let endYear = $state(maximumYear);
-	let selectedCategories = $state<Set<string>>(new Set());
-	let selectedAffiliations = $state<Set<string>>(new Set());
+	let isHydrated = $state(false);
+	let searchDraft = $state('');
+	let startYearInput = $state(String(minimumYear));
+	let endYearInput = $state(String(maximumYear));
 	let yearValidationMessage = $state('');
-	let sortedTimelineEntries = $derived(
-		[...timelineEntries].sort(
-			(firstEntry, secondEntry) =>
-				getTimelineTimestamp(secondEntry.date) - getTimelineTimestamp(firstEntry.date)
-		)
+
+	let searchCommitTimer: ReturnType<typeof setTimeout> | null = null;
+
+	let activeSearchParams = $derived(isHydrated ? page.url.searchParams : defaultSearchParams);
+	let filterState = $derived(parseTimelineFilterState(activeSearchParams, timelineFacetOptions));
+	let filteredTimelineEntries = $derived(
+		filterTimelineEntries(timelineEntries, filterState, timelineSearchIndex)
 	);
+	let hasActiveFilters = $derived(
+		filterState.query.length > 0 ||
+			filterState.startYear !== minimumYear ||
+			filterState.endYear !== maximumYear ||
+			filterState.categories.size > 0 ||
+			filterState.affiliations.size > 0
+	);
+
+	function isResearchEntry(
+		entry: NormalizedTimelineEntry
+	): entry is NormalizedResearchTimelineEntry {
+		return entry.entryType === 'research';
+	}
+
+	function isWorkExperienceEntry(
+		entry: NormalizedTimelineEntry
+	): entry is NormalizedWorkExperienceTimelineEntry {
+		return entry.entryType === 'work_experience';
+	}
+
+	function cancelSearchCommit() {
+		if (searchCommitTimer) {
+			clearTimeout(searchCommitTimer);
+			searchCommitTimer = null;
+		}
+	}
+
+	async function syncTimelineUrl(nextSearchParams: URLSearchParams) {
+		if (!browser) {
+			return;
+		}
+
+		const nextUrl = new URL(page.url);
+		nextUrl.search = nextSearchParams.toString();
+
+		if (nextUrl.search === page.url.search) {
+			return;
+		}
+
+		await goto(nextUrl, {
+			replaceState: true,
+			noScroll: true,
+			keepFocus: true
+		});
+	}
+
+	function getWorkingQuery(): string {
+		return searchDraft !== filterState.query ? searchDraft.trim() : filterState.query;
+	}
+
+	function buildPatchedFilterState(patch: TimelineFilterPatch): TimelineFilterState {
+		return {
+			query: patch.query ?? getWorkingQuery(),
+			startYear: patch.startYear ?? filterState.startYear,
+			endYear: patch.endYear ?? filterState.endYear,
+			categories: patch.categories ?? filterState.categories,
+			affiliations: patch.affiliations ?? filterState.affiliations
+		};
+	}
+
+	function commitFilterPatch(patch: TimelineFilterPatch) {
+		cancelSearchCommit();
+		const nextFilterState = buildPatchedFilterState(patch);
+		const nextSearchParams = buildTimelineSearchParams(nextFilterState, timelineFacetOptions);
+		return syncTimelineUrl(nextSearchParams);
+	}
+
+	function scheduleSearchCommit() {
+		if (!browser) {
+			return;
+		}
+
+		cancelSearchCommit();
+		searchCommitTimer = setTimeout(() => {
+			searchCommitTimer = null;
+			const nextFilterState = buildPatchedFilterState({ query: searchDraft.trim() });
+			void syncTimelineUrl(buildTimelineSearchParams(nextFilterState, timelineFacetOptions));
+		}, 250);
+	}
+
+	function handleSearchInput(event: Event) {
+		searchDraft = (event.currentTarget as HTMLInputElement).value;
+		scheduleSearchCommit();
+	}
+
+	function flushSearchCommit() {
+		cancelSearchCommit();
+		const nextFilterState = buildPatchedFilterState({ query: searchDraft.trim() });
+		void syncTimelineUrl(buildTimelineSearchParams(nextFilterState, timelineFacetOptions));
+	}
+
+	function handleSearchSubmit(event: SubmitEvent) {
+		event.preventDefault();
+		flushSearchCommit();
+	}
+
+	function handleCategoryToggle(category: string) {
+		yearValidationMessage = '';
+		void commitFilterPatch({
+			categories: toggleStringSet(filterState.categories, category)
+		});
+	}
+
+	function handleAffiliationToggle(affiliation: string) {
+		yearValidationMessage = '';
+		void commitFilterPatch({
+			affiliations: toggleStringSet(filterState.affiliations, affiliation)
+		});
+	}
+
+	function applyStartYear(rawValue: string) {
+		const nextState = updateStartYearState({
+			value: Number(rawValue),
+			endYear: filterState.endYear,
+			minimumYear,
+			maximumYear
+		});
+
+		startYearInput = String(nextState.startYear);
+		yearValidationMessage = nextState.yearValidationMessage;
+		void commitFilterPatch({ startYear: nextState.startYear });
+	}
+
+	function applyEndYear(rawValue: string) {
+		const nextState = updateEndYearState({
+			value: Number(rawValue),
+			startYear: filterState.startYear,
+			minimumYear,
+			maximumYear,
+			currentYear,
+			configuredEndYear: maximumYear
+		});
+
+		endYearInput = String(nextState.endYear);
+		yearValidationMessage = nextState.yearValidationMessage;
+		void commitFilterPatch({ endYear: nextState.endYear });
+	}
+
+	function handleClearFilters() {
+		cancelSearchCommit();
+		const cleared = clearTimelineFilters(minimumYear, maximumYear);
+		searchDraft = cleared.query;
+		startYearInput = String(cleared.startYear);
+		endYearInput = String(cleared.endYear);
+		yearValidationMessage = cleared.yearValidationMessage;
+		void syncTimelineUrl(new URLSearchParams());
+	}
+
+	onMount(() => {
+		isHydrated = true;
+	});
+
+	onDestroy(() => {
+		cancelSearchCommit();
+	});
+
+	$effect(() => {
+		const nextQuery = filterState.query;
+
+		if (untrack(() => searchDraft) !== nextQuery) {
+			searchDraft = nextQuery;
+		}
+	});
+
+	$effect(() => {
+		const nextStartYear = String(filterState.startYear);
+
+		if (untrack(() => startYearInput) !== nextStartYear) {
+			startYearInput = nextStartYear;
+		}
+	});
+
+	$effect(() => {
+		const nextEndYear = String(filterState.endYear);
+
+		if (untrack(() => endYearInput) !== nextEndYear) {
+			endYearInput = nextEndYear;
+		}
+	});
+
+	$effect(() => {
+		if (!isHydrated) {
+			return;
+		}
+
+		const sanitizedSearch = buildTimelineSearchParams(filterState, timelineFacetOptions).toString();
+		const currentSearch = page.url.searchParams.toString();
+
+		if (sanitizedSearch !== currentSearch) {
+			void syncTimelineUrl(new URLSearchParams(sanitizedSearch));
+		}
+	});
 </script>
 
 <div class="container mx-auto md:px-16">
-	<div class="align-items mb-12 flex w-full flex-row items-center justify-center gap-4">
+	<form
+		class="align-items mb-12 flex w-full flex-row items-center justify-center gap-4"
+		onsubmit={handleSearchSubmit}
+	>
+		<label class="sr-only" for="timeline-search">Search timeline entries</label>
 		<input
+			id="timeline-search"
 			type="text"
-			placeholder="Search experiences..."
-			class="min-w-sm rounded-full border border-gray-300 px-6 py-4 font-lora focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none lg:min-w-xl"
+			value={searchDraft}
+			oninput={handleSearchInput}
+			placeholder="Search experiences, publications, roles, tools..."
+			autocomplete="off"
+			class="rounded-full border border-gray-300 px-6 py-4 font-lora focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none xs:min-w-sm lg:min-w-xl"
 		/>
 		<button
+			type="submit"
 			class="rounded-full bg-amber-800 px-4 py-4 font-lora font-medium text-white transition-colors duration-200 hover:bg-amber-700 focus:outline-none"
 		>
 			Search
 		</button>
-	</div>
+	</form>
 </div>
 
-<div class="mx-auto mt-6 flex flex-row sm:container md:px-16">
-	<!-- Filter Container -->
+<div class="mx-auto mt-6 flex flex-row justify-center sm:container md:px-16">
 	<div
 		id="filter-container"
 		class="mr-12 hidden h-fit min-w-xs space-y-6 rounded-3xl border border-amber-700/70 p-6 lg:block"
@@ -129,7 +275,6 @@
 			<h1 class="w-full text-center font-crimson-text text-xl font-bold text-amber-800">FILTERS</h1>
 		</div>
 
-		<!-- Year Range -->
 		<div class="space-y-3">
 			<h2 class="font-crimson-text text-sm font-bold tracking-wider text-amber-800 uppercase">
 				Year Range
@@ -138,60 +283,53 @@
 				<input
 					type="number"
 					min={minimumYear}
-					max={endYear}
-					bind:value={startYear}
+					max={filterState.endYear}
+					value={startYearInput}
 					oninput={(event) => {
-						const nextState = updateStartYearState({
-							value: event.currentTarget.valueAsNumber,
-							endYear,
-							minimumYear,
-							maximumYear
-						});
-
-						startYear = nextState.startYear;
-						yearValidationMessage = nextState.yearValidationMessage;
+						startYearInput = event.currentTarget.value;
+						yearValidationMessage = '';
+					}}
+					onchange={(event) => {
+						applyStartYear(event.currentTarget.value);
 					}}
 					class="w-full rounded-lg border border-amber-700/40 bg-[#f9d8b0]/30 px-3 py-1.5 font-lora text-sm text-amber-900 focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none"
 				/>
 				<span class="text-sm font-medium text-amber-700">&ndash;</span>
 				<input
 					type="number"
-					min={startYear}
+					min={filterState.startYear}
 					max={maximumYear}
-					bind:value={endYear}
+					value={endYearInput}
 					oninput={(event) => {
-						const nextState = updateEndYearState({
-							value: event.currentTarget.valueAsNumber,
-							startYear,
-							minimumYear,
-							maximumYear,
-							currentYear,
-							configuredEndYear: filters.year.end_year
-						});
-
-						endYear = nextState.endYear;
-						yearValidationMessage = nextState.yearValidationMessage;
+						endYearInput = event.currentTarget.value;
+						yearValidationMessage = '';
+					}}
+					onchange={(event) => {
+						applyEndYear(event.currentTarget.value);
 					}}
 					class="w-full rounded-lg border border-amber-700/40 bg-[#f9d8b0]/30 px-3 py-1.5 font-lora text-sm text-amber-900 focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none"
 				/>
 			</div>
+
+			{#if yearValidationMessage}
+				<p class="font-lora text-xs text-amber-900/80">{yearValidationMessage}</p>
+			{/if}
 		</div>
 
-		<!-- Categories -->
 		<div class="space-y-2">
 			<h2 class="font-crimson-text text-sm font-bold tracking-wider text-amber-800 uppercase">
 				Categories
 			</h2>
 			<div class="space-y-1.5">
-				{#each filters.categories as category (category)}
+				{#each timelineFacetOptions.categories as category (category)}
 					<label
 						class="flex cursor-pointer items-center gap-2.5 rounded-lg px-2 py-1 transition-colors duration-150 hover:bg-amber-100/50"
 					>
 						<input
 							type="checkbox"
-							checked={selectedCategories.has(category)}
+							checked={filterState.categories.has(category)}
 							onchange={() => {
-								selectedCategories = toggleStringSet(selectedCategories, category);
+								handleCategoryToggle(category);
 							}}
 							class="h-4 w-4 rounded border-amber-700/50 text-amber-800 focus:ring-amber-700"
 						/>
@@ -201,21 +339,20 @@
 			</div>
 		</div>
 
-		<!-- Affiliations -->
 		<div class="space-y-2">
 			<h2 class="font-crimson-text text-sm font-bold tracking-wider text-amber-800 uppercase">
 				Affiliations
 			</h2>
 			<div class="space-y-1.5">
-				{#each filters.affiliations as affiliation (affiliation)}
+				{#each timelineFacetOptions.affiliations as affiliation (affiliation)}
 					<label
 						class="flex cursor-pointer items-center gap-2.5 rounded-lg px-2 py-1 transition-colors duration-150 hover:bg-amber-100/50"
 					>
 						<input
 							type="checkbox"
-							checked={selectedAffiliations.has(affiliation)}
+							checked={filterState.affiliations.has(affiliation)}
 							onchange={() => {
-								selectedAffiliations = toggleStringSet(selectedAffiliations, affiliation);
+								handleAffiliationToggle(affiliation);
 							}}
 							class="h-4 w-4 rounded border-amber-700/50 text-amber-800 focus:ring-amber-700"
 						/>
@@ -225,35 +362,39 @@
 			</div>
 		</div>
 
-		<!-- Clear Filters -->
 		<button
-			onclick={() => {
-				const cleared = clearTimelineFilters(minimumYear, maximumYear);
-				startYear = cleared.startYear;
-				endYear = cleared.endYear;
-				selectedCategories = cleared.selectedCategories;
-				selectedAffiliations = cleared.selectedAffiliations;
-				yearValidationMessage = cleared.yearValidationMessage;
-			}}
+			type="button"
+			onclick={handleClearFilters}
+			disabled={!hasActiveFilters && !yearValidationMessage}
 			class="w-full rounded-full border border-amber-700/50 px-4 py-2 font-lora text-sm font-medium text-amber-800 transition-colors duration-200 hover:bg-amber-800 hover:text-white"
 		>
 			Clear Filters
 		</button>
 	</div>
 
-	<!-- Timeline Bar -->
+	<!-- {#if filteredTimelineEntries.length > 0} -->
 	<TimeLine />
+	<!-- {/if} -->
 
-	<!-- Cards (Sorted by Date) -->
 	<div class="flex flex-col">
-		{#each sortedTimelineEntries as entry (entry.id)}
-			{#if isResearchEntry(entry)}
-				<ResearchCard {...entry.props} />
-			{:else if isWorkExperienceEntry(entry)}
-				<WorkExperienceCard {...entry.props} />
-			{:else if entry.component === 'education'}
-				<!-- Add EducationCard rendering here when the component is available. -->
-			{/if}
-		{/each}
+		{#if filteredTimelineEntries.length > 0}
+			{#each filteredTimelineEntries as entry (entry.id)}
+				{#if isResearchEntry(entry)}
+					<ResearchCard {...entry.props} />
+				{:else if isWorkExperienceEntry(entry)}
+					<WorkExperienceCard {...entry.props} />
+				{/if}
+			{/each}
+		{:else}
+			<!-- <NotFound /> -->
+			<div class="card-container">
+				<h2 class=" mb-8 text-center font-lora text-2xl font-semibold text-amber-600">
+					Sorry, No matching timeline entries
+				</h2>
+				<p class=" mb-8 text-center font-lora text-sm text-gray-400">
+					Try a broader search term or clear one of the active filters.
+				</p>
+			</div>
+		{/if}
 	</div>
 </div>

@@ -11,19 +11,20 @@ const config = {
 			$component: 'src/components'
 		},
 
-		// Service worker for caching and offline support
-		serviceWorker: {
-			register: true // Disable for now, can be enabled later
-		},
-
 		// Content Security Policy for better security
 		csp: {
 			mode: 'auto',
 			directives: {
+				'default-src': ['none'],
 				'script-src': ['self'],
 				'style-src': ['self', 'unsafe-inline', 'fonts.googleapis.com'],
 				'font-src': ['self', 'fonts.gstatic.com'],
-				'connect-src': ['self', 'vitals.vercel-insights.com']
+				'img-src': ['self', 'o83dp4hmlwk6umh0.public.blob.vercel-storage.com'],
+				'connect-src': ['self', 'vitals.vercel-insights.com'],
+				'object-src': ['none'],
+				'base-uri': ['self'],
+				'frame-ancestors': ['none'],
+				'form-action': ['self']
 			}
 		}
 	}

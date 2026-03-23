@@ -1,41 +1,6 @@
 <script lang="ts">
 	import IntroSection from '$component/hero-page/IntroSection.svelte';
 	import profile from '$lib/data_en.json';
-	import researchData from '$lib/research.json';
-	import workExperienceData from '$lib/work_experience.json';
-
-	const timezoneLabel = `UTC${profile.current_gmt_offset >= 0 ? '+' : '-'}${Math.abs(profile.current_gmt_offset)}`;
-	const publicationCount = researchData.filter((entry) =>
-		entry.props.category.includes('Publication')
-	).length;
-	const q1PublicationCount = researchData.filter((entry) => entry.props.rank === 'Q1').length;
-	const experienceCount = workExperienceData.length;
-
-	const summaryStats = [
-		{ value: String(publicationCount), label: 'published papers' },
-		{ value: String(q1PublicationCount), label: 'Q1 journal papers' },
-		{ value: String(profile.interest_and_passion.length), label: 'recurring focus areas' },
-		{ value: String(experienceCount), label: 'hands-on roles' }
-	];
-
-	const quickNotes = [
-		{
-			label: 'Currently pursuing',
-			value: "Master's/PhD opportunities centered on meaningful AI research."
-		},
-		{
-			label: 'Working from',
-			value: `${profile.current_city} (${timezoneLabel})`
-		},
-		{
-			label: 'Usually best reached through',
-			value: 'Email first, then GitHub or LinkedIn.'
-		},
-		{
-			label: 'Portfolio refreshed',
-			value: profile.last_updated
-		}
-	];
 
 	const workingPrinciples = [
 		{
@@ -116,42 +81,39 @@
 			<p class="home-kicker">At a glance</p>
 			<h2
 				id="home-at-a-glance"
-				class="mt-3 max-w-3xl font-lora text-4xl leading-tight font-semibold text-amber-800 md:text-5xl"
+				class="mt-3 max-w-3xl font-lora text-2xl leading-tight font-semibold text-amber-800 md:text-3xl"
 			>
 				I care about building thoughtful systems that feel rigorous, useful, and grounded in the
 				real world.
 			</h2>
-			<p class="mt-5 max-w-3xl font-ivy-text text-xl leading-relaxed text-gray-700">
+			<p class="mt-3 max-w-3xl font-ivy-text leading-relaxed text-gray-700 md:text-xl">
 				{profile.description} My work usually lives somewhere between research and implementation, moving
 				through computer vision, biomedical signal processing, cloud-backed systems, and carefully crafted
 				interfaces.
 			</p>
 
-			<div class="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-				{#each summaryStats as stat (stat.label)}
-					<div class="home-stat-card">
-						<p class="home-stat-value">{stat.value}</p>
-						<p class="home-stat-label">{stat.label}</p>
-					</div>
-				{/each}
-			</div>
-
-			<div class="mt-8 flex flex-wrap gap-3">
+			<div class="mt-3 flex flex-wrap gap-3">
 				{#each profile.interest_and_passion as interest (interest)}
-					<span class="home-chip">{interest}</span>
+					<span
+						class="rounded-full border border-amber-600 bg-amber-100/75 px-4 py-2 font-mono text-xs uppercase md:text-sm"
+						>{interest}</span
+					>
 				{/each}
 			</div>
 		</article>
 
 		<aside class="surface-card rounded-4xl px-6 py-7 sm:px-8">
-			<p class="home-kicker">Quick notes</p>
+			<p class="home-kicker">Highest Academic Education</p>
 			<div class="mt-5 space-y-4">
-				{#each quickNotes as note (note.label)}
-					<div class="home-fact-row">
-						<p class="home-fact-label">{note.label}</p>
-						<p class="home-fact-value">{note.value}</p>
-					</div>
-				{/each}
+				<h2
+					id="home-at-a-glance"
+					class="mt-3 max-w-3xl font-lora text-2xl leading-tight font-semibold text-amber-800 md:text-3xl"
+				>
+					Bachelor of Science in Computer Science and Engineering, with a major in Data Science
+				</h2>
+				<h3 class="mt-3 max-w-3xl font-ivy-text leading-relaxed text-gray-700 md:text-xl">
+					United International University *
+				</h3>
 			</div>
 		</aside>
 	</section>
@@ -268,20 +230,6 @@
 		color: rgb(168 103 0 / 0.85);
 	}
 
-	.home-chip {
-		border-radius: 9999px;
-		border: 1px solid rgb(132 85 34 / 0.16);
-		background: rgb(255 250 240 / 0.75);
-		padding: 0.55rem 0.95rem;
-		font-family: var(--font-mono);
-		font-size: 0.75rem;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: rgb(132 85 34 / 0.86);
-	}
-
-	.home-stat-card,
-	.home-fact-row,
 	.home-detail-card,
 	.home-capability-card,
 	.home-theme-card {
@@ -291,55 +239,9 @@
 		box-shadow: 0 22px 44px -34px rgb(44 24 16 / 0.22);
 	}
 
-	.home-stat-card {
-		padding: 1rem 1.1rem;
-	}
-
-	.home-stat-value {
-		font-family: var(--font-crimson-text);
-		font-size: clamp(2rem, 4vw, 2.6rem);
-		line-height: 1;
-		color: var(--ks-text-heading);
-	}
-
-	.home-stat-label {
-		margin-top: 0.5rem;
-		font-family: var(--font-mono);
-		font-size: 0.74rem;
-		letter-spacing: 0.16em;
-		text-transform: uppercase;
-		color: rgb(132 85 34 / 0.8);
-	}
-
-	.home-fact-row {
-		padding: 1rem 1.1rem;
-	}
-
-	.home-fact-label {
-		font-family: var(--font-mono);
-		font-size: 0.74rem;
-		letter-spacing: 0.16em;
-		text-transform: uppercase;
-		color: rgb(168 103 0 / 0.8);
-	}
-
-	.home-fact-value {
-		margin-top: 0.4rem;
-		font-family: var(--font-ivy-text);
-		font-size: 1.08rem;
-		line-height: 1.55;
-		color: var(--ks-text-body);
-	}
-
 	.home-detail-card,
 	.home-capability-card,
 	.home-theme-card {
 		padding: 1.2rem 1.25rem;
-	}
-
-	@media (max-width: 767px) {
-		.home-chip {
-			letter-spacing: 0.12em;
-		}
 	}
 </style>
