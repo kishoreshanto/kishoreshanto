@@ -9,7 +9,9 @@
 
 <RouteErrorView
 	status={page.status}
-	title={page.status === 404 ? 'That story could not be found.' : 'This story is unavailable right now.'}
+	title={page.status === 404
+		? 'That story could not be found.'
+		: 'This story is unavailable right now.'}
 	message={page.error?.message ?? 'Story unavailable'}
 	description="The story archive is still intact, but this route could not resolve the page you asked for."
 	eyebrow="Story boundary"

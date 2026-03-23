@@ -190,7 +190,6 @@
 					<span class="font-mono text-sm tracking-[0.18em] text-amber-700 uppercase"
 						>{card.value}</span
 					>
-					
 				</div>
 			</a>
 		{/each}
@@ -216,7 +215,7 @@
 
 	.contact-card:hover {
 		border-color: rgb(132 85 34 / 0.28);
-		background: linear-gradient(180deg, rgba(255, 234, 192, 0.84),rgba(254, 228, 161, 0.72));
+		background: linear-gradient(180deg, rgba(255, 234, 192, 0.84), rgba(254, 228, 161, 0.72));
 		box-shadow: 0 26px 52px -32px rgb(44 24 16 / 0.32);
 	}
 

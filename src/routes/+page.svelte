@@ -86,7 +86,7 @@
 				I care about building thoughtful systems that feel rigorous, useful, and grounded in the
 				real world.
 			</h2>
-			<p class="mt-3 max-w-3xl font-ivy-text md:text-xl leading-relaxed text-gray-700">
+			<p class="mt-3 max-w-3xl font-ivy-text leading-relaxed text-gray-700 md:text-xl">
 				{profile.description} My work usually lives somewhere between research and implementation, moving
 				through computer vision, biomedical signal processing, cloud-backed systems, and carefully crafted
 				interfaces.
@@ -94,7 +94,10 @@
 
 			<div class="mt-3 flex flex-wrap gap-3">
 				{#each profile.interest_and_passion as interest (interest)}
-					<span class="rounded-full border border-amber-600 bg-amber-100/75 px-4 py-2 font-mono text-xs md:text-sm uppercase">{interest}</span>
+					<span
+						class="rounded-full border border-amber-600 bg-amber-100/75 px-4 py-2 font-mono text-xs uppercase md:text-sm"
+						>{interest}</span
+					>
 				{/each}
 			</div>
 		</article>
@@ -103,15 +106,14 @@
 			<p class="home-kicker">Highest Academic Education</p>
 			<div class="mt-5 space-y-4">
 				<h2
-				id="home-at-a-glance"
-				class="mt-3 max-w-3xl font-lora text-2xl leading-tight font-semibold text-amber-800 md:text-3xl"
-			>
-				Bachelor of Science in Computer Science and Engineering, with a major in Data Science
-			</h2>
-			<h3 class="mt-3 max-w-3xl font-ivy-text md:text-xl leading-relaxed text-gray-700">
-				United International University * 
-				
-			</h3>
+					id="home-at-a-glance"
+					class="mt-3 max-w-3xl font-lora text-2xl leading-tight font-semibold text-amber-800 md:text-3xl"
+				>
+					Bachelor of Science in Computer Science and Engineering, with a major in Data Science
+				</h2>
+				<h3 class="mt-3 max-w-3xl font-ivy-text leading-relaxed text-gray-700 md:text-xl">
+					United International University *
+				</h3>
 			</div>
 		</aside>
 	</section>

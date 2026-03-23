@@ -22,7 +22,6 @@
 				<span id="bullet" class="text-amber-700">•</span>
 				<span id="s2" class="text-amber-700">Hmm</span>
 			</div>
-
 		</div>
 
 		<!-- Card Overview -->
@@ -30,9 +29,7 @@
 		<div class="research-card-overview">
 			<div>
 				<p class="research-card-overview-title text-amber-700">Overview</p>
-				<p class="research-card-overview-description">
-					Hmm
-				</p>
+				<p class="research-card-overview-description">Hmm</p>
 			</div>
 		</div>
 	</div>

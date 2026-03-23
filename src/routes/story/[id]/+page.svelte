@@ -35,7 +35,7 @@
 	<div class="flex flex-row items-center justify-between gap-4">
 		<a
 			href="/story"
-			class="inline-flex items-center gap-2 rounded-full border border-amber-400 bg-surface-card px-4 py-3.5 md:p-3 font-mono text-xs tracking-[0.2em] text-amber-700 uppercase transition-colors duration-200 hover:bg-amber-200 hover:text-amber-900 md:text-sm"
+			class="inline-flex items-center gap-2 rounded-full border border-amber-400 bg-surface-card px-4 py-3.5 font-mono text-xs tracking-[0.2em] text-amber-700 uppercase transition-colors duration-200 hover:bg-amber-200 hover:text-amber-900 md:p-3 md:text-sm"
 		>
 			<svg
 				aria-hidden="true"

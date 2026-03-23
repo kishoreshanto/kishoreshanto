@@ -68,10 +68,10 @@
 						<!-- <span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2"
 							>Based in {data.current_city}</span
 						> -->
-						<span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2 w-fit"
+						<span class="w-fit rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2"
 							>Updated on {currentDate}, {currentYear}</span
 						>
-						<span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2 w-fit"
+						<span class="w-fit rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2"
 							>{data.version}</span
 						>
 					</div>

@@ -18,9 +18,9 @@
 
 <RouteErrorView
 	status={page.status}
-	title={title}
+	{title}
 	message={page.error?.message ?? 'Internal Error'}
-	description={description}
+	{description}
 	eyebrow="Global boundary"
 	section="Portfolio"
 	actions={[

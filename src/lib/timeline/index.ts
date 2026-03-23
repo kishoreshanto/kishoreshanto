@@ -316,13 +316,8 @@ function getQueryMatchIds(
  * @param allowedValues Whitelist of valid values.
  * @returns Sanitized set containing only allowed values.
  */
-function sanitizeSelectedValues(
-	values: string[],
-	allowedValues: Set<string>
-): Set<string> {
-	return new Set(
-		values.map((value) => value.trim()).filter((value) => allowedValues.has(value))
-	);
+function sanitizeSelectedValues(values: string[], allowedValues: Set<string>): Set<string> {
+	return new Set(values.map((value) => value.trim()).filter((value) => allowedValues.has(value)));
 }
 
 /**

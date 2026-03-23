@@ -268,7 +268,7 @@
 	</form>
 </div>
 
-<div class="mx-auto mt-6 flex flex-row sm:container md:px-16 justify-center">
+<div class="mx-auto mt-6 flex flex-row justify-center sm:container md:px-16">
 	<div
 		id="filter-container"
 		class="mr-12 hidden h-fit min-w-xs space-y-6 rounded-3xl border border-amber-700/70 p-6 lg:block"
@@ -375,7 +375,7 @@
 	</div>
 
 	<!-- {#if filteredTimelineEntries.length > 0} -->
-		<TimeLine />
+	<TimeLine />
 	<!-- {/if} -->
 
 	<div class="flex flex-col">
@@ -390,10 +390,10 @@
 		{:else}
 			<!-- <NotFound /> -->
 			<div class="card-container">
-				<h2 class=" text-2xl font-semibold text-amber-600 font-lora text-center mb-8">
+				<h2 class=" mb-8 text-center font-lora text-2xl font-semibold text-amber-600">
 					Sorry, No matching timeline entries
 				</h2>
-				<p class=" text-sm text-gray-400 font-lora text-center mb-8">
+				<p class=" mb-8 text-center font-lora text-sm text-gray-400">
 					Try a broader search term or clear one of the active filters.
 				</p>
 			</div>

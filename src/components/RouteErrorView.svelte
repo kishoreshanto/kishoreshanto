@@ -27,40 +27,40 @@
 </script>
 
 <main class="mx-5 mt-12 mb-8 py-12 sm:px-10 md:container md:mx-auto md:px-10">
-		<article class="px-6 py-8 sm:px-8 lg:px-10">
-			<h1
-				class="mt-5 text-center font-lora text-3xl leading-tight font-semibold md:text-5xl text-amber-600"
-			>
-				{title}
-			</h1>
+	<article class="px-6 py-8 sm:px-8 lg:px-10">
+		<h1
+			class="mt-5 text-center font-lora text-3xl leading-tight font-semibold text-amber-600 md:text-5xl"
+		>
+			{title}
+		</h1>
 
-			<div class="mt-4 flex flex-wrap justify-center items-center gap-3">
-				<span class="error-section-chip">{section}/{eyebrow}</span>
-				<span class="error-status-chip">Code {status}: {message}</span>
+		<div class="mt-4 flex flex-wrap items-center justify-center gap-3">
+			<span class="error-section-chip">{section}/{eyebrow}</span>
+			<span class="error-status-chip">Code {status}: {message}</span>
+		</div>
+
+		<p class="mt-8 text-center font-lora text-lg leading-relaxed text-gray-700 md:text-xl">
+			{description}
+		</p>
+
+		{#if actions.length > 0}
+			<div class="mt-12 flex flex-wrap justify-center gap-3">
+				{#each actions as action (action.href)}
+					<a
+						class={[
+							'error-action rounded-full px-5 py-3.5 font-mono text-xs tracking-[0.2em] uppercase',
+							action.variant === 'secondary'
+								? 'error-action-secondary'
+								: 'brand-button text-amber-50'
+						]}
+						href={action.href}
+					>
+						{action.label}
+					</a>
+				{/each}
 			</div>
-
-			<p class="mt-8 font-lora text-center text-lg leading-relaxed text-gray-700 md:text-xl">
-				{description}
-			</p>
-
-			{#if actions.length > 0}
-				<div class="mt-12 flex flex-wrap justify-center gap-3">
-					{#each actions as action (action.href)}
-						<a
-							class={[
-								'error-action rounded-full px-5 py-3.5 font-mono text-xs tracking-[0.2em] uppercase',
-								action.variant === 'secondary'
-									? 'error-action-secondary'
-									: 'brand-button text-amber-50'
-							]}
-							href={action.href}
-						>
-							{action.label}
-						</a>
-					{/each}
-				</div>
-			{/if}
-		</article>
+		{/if}
+	</article>
 </main>
 
 <style>
