@@ -130,6 +130,7 @@ export function clearTimelineFilters(minimumYear: number, maximumYear: number) {
 	 * @returns - An object containing the cleared timeline filters
 	 */
 	return {
+		query: '',
 		startYear: minimumYear,
 		endYear: maximumYear,
 		selectedCategories: new Set<string>(),
