@@ -53,18 +53,18 @@
 			description:
 				'Browse recent builds, technical work, and the things I am currently tinkering with.'
 		},
-		{
-			id: 'linkedin',
-			label: 'LinkedIn',
-			value: `/ ${data.linkedin_username}`,
-			href: data.linkedin_url,
-			show: data.show_linkedin,
-			external: true,
-			icon: LinkedInIcon,
-			eyebrow: 'Professional updates',
-			description:
-				'The easiest place to connect around roles, introductions, and professional context.'
-		},
+		// {
+		// 	id: 'linkedin',
+		// 	label: 'LinkedIn',
+		// 	value: `/ ${data.linkedin_username}`,
+		// 	href: data.linkedin_url,
+		// 	show: data.show_linkedin,
+		// 	external: true,
+		// 	icon: LinkedInIcon,
+		// 	eyebrow: 'Professional updates',
+		// 	description:
+		// 		'The easiest place to connect around roles, introductions, and professional context.'
+		// },
 		{
 			id: 'orcid',
 			label: 'ORCID',
@@ -103,13 +103,6 @@
 	];
 
 	const visibleCards = cards.filter((card) => card.show);
-	const conversationTags = ['Research', 'Product ideas', 'Open roles', 'Friendly hello'];
-	const primaryMessage = data.request_do_not_disturb
-		? 'I am usually deep in research blocks, so email is the fastest way to reach me.'
-		: 'I am always happy to hear from kind people building interesting things.';
-	const responseNote = data.request_do_not_disturb
-		? `Quiet hours are usually around ${quietHoursLabel}. Social messages may take longer than email.`
-		: 'I usually reply best when the message has a little context and a clear reason for reaching out.';
 </script>
 
 <main class="mx-5 mb-20 md:container md:mx-auto md:px-10">
@@ -170,18 +163,18 @@
 
 							<div>
 								<p class="contact-card-kicker">{card.eyebrow}</p>
-								<h3 class="font-crimson-text text-2xl font-semibold text-amber-800">
+								<h3 class="font-lora text-2xl font-semibold text-amber-600">
 									{card.label}
 								</h3>
 							</div>
 						</div>
 
-						<p class="font-ivy-text text-lg leading-relaxed text-gray-700">{card.description}</p>
+						<p class="font-lora leading-relaxed text-gray-700">{card.description}</p>
 					</div>
 
 					{#if card.external}
 						<svg
-							class="h-4 w-4 shrink-0 text-amber-600/55 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-amber-700"
+							class="h-4 w-4 shrink-0 text-amber-600 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-amber-700"
 							fill="none"
 							viewBox="0 0 24 24"
 							stroke="currentColor"
@@ -193,7 +186,7 @@
 					{/if}
 				</div>
 
-				<div class="mt-8 flex items-center justify-between gap-4 border-t border-amber-700/15 pt-4">
+				<div class="mt-4 flex items-center justify-between gap-4 border-t border-amber-700/15 pt-4">
 					<span class="font-mono text-sm tracking-[0.18em] text-amber-700 uppercase"
 						>{card.value}</span
 					>
@@ -222,8 +215,8 @@
 	}
 
 	.contact-card:hover {
-		transform: translateY(-2px);
 		border-color: rgb(132 85 34 / 0.28);
+		background: linear-gradient(180deg, rgba(255, 234, 192, 0.84),rgba(254, 228, 161, 0.72));
 		box-shadow: 0 26px 52px -32px rgb(44 24 16 / 0.32);
 	}
 
