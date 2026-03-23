@@ -440,12 +440,12 @@ export function filterTimelineEntries(
 			return false;
 		}
 
-		if (filterState.categories.size > 0 && !filterState.categories.has(entry.category)) {
+		if (filterState.categories.size && !filterState.categories.has(entry.category)) {
 			return false;
 		}
 
 		if (
-			filterState.affiliations.size > 0 &&
+			filterState.affiliations.size &&
 			!entry.affiliations.some((affiliation) => filterState.affiliations.has(affiliation))
 		) {
 			return false;
