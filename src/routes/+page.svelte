@@ -1,35 +1,6 @@
 <script lang="ts">
 	import IntroSection from '$component/hero-page/IntroSection.svelte';
 	import profile from '$lib/data_en.json';
-	import researchData from '$lib/research.json';
-	import workExperienceData from '$lib/work_experience.json';
-
-	const timezoneLabel = `UTC${profile.current_gmt_offset >= 0 ? '+' : '-'}${Math.abs(profile.current_gmt_offset)}`;
-	const publicationCount = researchData.filter((entry) =>
-		entry.props.category.includes('Publication')
-	).length;
-	const q1PublicationCount = researchData.filter((entry) => entry.props.rank === 'Q1').length;
-	const experienceCount = workExperienceData.length;
-
-
-	const quickNotes = [
-		{
-			label: 'Currently pursuing',
-			value: "Master's/PhD opportunities centered on meaningful AI research."
-		},
-		{
-			label: 'Working from',
-			value: `${profile.current_city} (${timezoneLabel})`
-		},
-		{
-			label: 'Usually best reached through',
-			value: 'Email first, then GitHub or LinkedIn.'
-		},
-		{
-			label: 'Portfolio refreshed',
-			value: profile.last_updated
-		}
-	];
 
 	const workingPrinciples = [
 		{
@@ -257,19 +228,6 @@
 		color: rgb(168 103 0 / 0.85);
 	}
 
-	.home-chip {
-		@apply rounded-full border border-amber-600;
-		background: rgb(255 250 240 / 0.75);
-		padding: 0.55rem 0.95rem;
-		font-family: var(--font-mono);
-		font-size: 0.75rem;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: rgb(132 85 34 / 0.86);
-	}
-
-	.home-stat-card,
-	.home-fact-row,
 	.home-detail-card,
 	.home-capability-card,
 	.home-theme-card {
@@ -279,55 +237,9 @@
 		box-shadow: 0 22px 44px -34px rgb(44 24 16 / 0.22);
 	}
 
-	.home-stat-card {
-		padding: 1rem 1.1rem;
-	}
-
-	.home-stat-value {
-		font-family: var(--font-crimson-text);
-		font-size: clamp(2rem, 4vw, 2.6rem);
-		line-height: 1;
-		color: var(--ks-text-heading);
-	}
-
-	.home-stat-label {
-		margin-top: 0.5rem;
-		font-family: var(--font-mono);
-		font-size: 0.74rem;
-		letter-spacing: 0.16em;
-		text-transform: uppercase;
-		color: rgb(132 85 34 / 0.8);
-	}
-
-	.home-fact-row {
-		padding: 1rem 1.1rem;
-	}
-
-	.home-fact-label {
-		font-family: var(--font-mono);
-		font-size: 0.74rem;
-		letter-spacing: 0.16em;
-		text-transform: uppercase;
-		color: rgb(168 103 0 / 0.8);
-	}
-
-	.home-fact-value {
-		margin-top: 0.4rem;
-		font-family: var(--font-ivy-text);
-		font-size: 1.08rem;
-		line-height: 1.55;
-		color: var(--ks-text-body);
-	}
-
 	.home-detail-card,
 	.home-capability-card,
 	.home-theme-card {
 		padding: 1.2rem 1.25rem;
-	}
-
-	@media (max-width: 767px) {
-		.home-chip {
-			letter-spacing: 0.12em;
-		}
 	}
 </style>
