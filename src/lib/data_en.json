@@ -1,5 +1,5 @@
 {
-	"version": "BETA v1.2.0, Expect Bugs, Incomplete/Missing Sections",
+	"version": "BETA v2.0.0, Expect Bugs",
 	"AI": true,
 	"AI_model": "openai/gpt-oss-20b:groq",
 	"modal": false,
