@@ -181,15 +181,15 @@
 		min-height: 100vh;
 		background-color: var(--surface-canvas);
 		background-image:
-			radial-gradient(circle at top right, var(--shell-glow-highlight), transparent 28%),
-			radial-gradient(circle at top left, var(--shell-glow-accent), transparent 24%),
+			radial-gradient(circle at top right, var(--shell-glow-highlight), transparent 8%),
+			radial-gradient(circle at top left, var(--shell-glow-accent), transparent 4%),
 			var(--shell-gradient);
 		color: var(--ink-body);
 	}
 
 	html,
 	body {
-		background-attachment: fixed;
+		background-attachment: scroll;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
