@@ -23,7 +23,7 @@
 		{ label: 'Timeline', href: '/timeline' },
 		{ label: 'Stories', href: '/story' },
 		{ label: 'Contact', href: '/contact' }
-		// { label: 'Chat', href: '/chat-with-me' }
+		// { label: 'Chat', href: '/chat-with-me' } // For now, disabled
 	];
 
 	let tabEls: HTMLAnchorElement[] = $state([]);
@@ -36,15 +36,26 @@
 		const idx = navItems.findIndex((item) =>
 			item.href === '/' ? path === '/' : path.startsWith(item.href)
 		);
-		return idx === -1 ? 0 : idx;
+		return idx;
 	});
 
+	let activeEl = $derived(tabEls[activeIndex]);
+
+	// Previous Version
+	//
+	// $effect(() => {
+	// 	const el = tabEls[activeIndex];
+	// 	if (!el) return;
+	// 	pillX = el.offsetLeft;
+	// 	pillW = el.offsetWidth;
+	// 	if (!ready) requestAnimationFrame(() => (ready = true));
+	// });
+
 	$effect(() => {
-		const el = tabEls[activeIndex];
-		if (!el) return;
-		pillX = el.offsetLeft;
-		pillW = el.offsetWidth;
-		if (!ready) requestAnimationFrame(() => (ready = true));
+		if (!activeEl) return;
+		pillX = activeEl.offsetLeft;
+		pillW = activeEl.offsetWidth;
+		ready = true;
 	});
 
 	onNavigate((navigation) => {

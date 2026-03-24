@@ -352,7 +352,7 @@
 /* High-level layout: shared page shell */
 
 .page-container {
-	@apply container mx-auto mt-12 mb-8 pt-8;
+	@apply container mx-auto mt-12 mb-8 pt-8 sm:px-12;
 }
 
 .page-heading {
