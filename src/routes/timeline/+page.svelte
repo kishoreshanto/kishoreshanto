@@ -255,14 +255,14 @@
 			oninput={handleSearchInput}
 			placeholder="Search experiences, publications, roles, tools..."
 			autocomplete="off"
-			class="rounded-full border border-gray-300 px-6 py-4 font-lora focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none xs:min-w-sm lg:min-w-xl"
+			class="rounded-full text-center border border-gray-300 px-6 py-4 font-lora focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none xs:min-w-sm lg:min-w-xl"
 		/>
-		<button
+		<!-- <button
 			type="submit"
 			class="rounded-full bg-amber-800 px-4 py-4 font-lora font-medium text-white transition-colors duration-200 hover:bg-amber-700 focus:outline-none"
 		>
 			Search
-		</button>
+		</button> -->
 	</form>
 </div>
 
