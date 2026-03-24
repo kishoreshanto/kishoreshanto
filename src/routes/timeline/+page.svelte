@@ -267,9 +267,10 @@
 </div>
 
 <div class="mx-auto mt-6 flex flex-row justify-center sm:container md:px-16">
+	<!-- Filters -->
 	<div
 		id="filter-container"
-		class="mr-12 hidden h-fit min-w-xs space-y-6 rounded-3xl border border-amber-700/70 p-6 lg:block"
+		class="mr-12 mb-12 hidden h-fit min-w-xs space-y-6 rounded-3xl border border-amber-700/70 p-6 lg:block"
 	>
 		<div class="flex flex-row gap-2">
 			<h1 class="w-full text-center font-crimson-text text-xl font-bold text-amber-800">FILTERS</h1>
@@ -372,11 +373,11 @@
 		</button>
 	</div>
 
-	<!-- {#if filteredTimelineEntries.length > 0} -->
+	{#if filteredTimelineEntries.length > 0}
 	<TimeLine />
-	<!-- {/if} -->
+	{/if}
 
-	<div class="flex flex-col">
+	<div class="flex flex-col w-full">
 		{#if filteredTimelineEntries.length > 0}
 			{#each filteredTimelineEntries as entry (entry.id)}
 				{#if isResearchEntry(entry)}
@@ -387,14 +388,18 @@
 			{/each}
 		{:else}
 			<!-- <NotFound /> -->
-			<div class="card-container">
-				<h2 class=" mb-8 text-center font-lora text-2xl font-semibold text-amber-600">
+			<div class="container mx-auto w-full bg-amber-100 py-12 px-8 md:px-10 rounded-3xl mb-12 md:mb-20 gap-4 flex flex-col items-center">
+				<h2 class="text-center font-lora text-2xl font-semibold text-amber-600">
 					Sorry, No matching timeline entries
 				</h2>
-				<p class=" mb-8 text-center font-lora text-sm text-gray-400">
+				<p class="text-center font-lora text-gray-400">
 					Try a broader search term or clear one of the active filters.
 				</p>
 			</div>
 		{/if}
 	</div>
 </div>
+
+<style>
+
+</style>
