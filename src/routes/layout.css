@@ -668,3 +668,25 @@
 		max-width: 100%;
 	}
 }
+
+#filter-container {
+	background: linear-gradient(180deg, rgba(245, 242, 233, 0.82), rgb(255 250 240 / 0.64));
+	border-color: var(--stroke-soft);
+	color: var(--ink-body);
+}
+
+#filter-container input[type='number'] {
+	background-color: rgb(255 250 240 / 0.88);
+	border-color: var(--button-outline);
+	color: var(--ink-body);
+}
+
+#filter-container input[type='number']:focus {
+	--tw-ring-color: var(--focus-ring);
+}
+
+#filter-container input[type='checkbox'] {
+	accent-color: var(--accent-primary);
+	background-color: rgb(255 250 240 / 0.88);
+	border-color: var(--button-outline);
+}

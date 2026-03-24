@@ -266,20 +266,121 @@
 	</form>
 </div>
 
+<!-- Filters -->
+<div
+	id="filter-container"
+	class="mx-6 mb-6 hidden h-fit space-y-2 rounded-3xl border border-amber-700/70 p-6 lg:hidden"
+>
+	<div class="flex flex-row gap-2">
+		<h1 class="w-full text-center font-lora text-xl font-bold text-amber-800">FILTERS</h1>
+	</div>
+
+	<div class="flex items-center gap-3 align-middle">
+		<h2 class="font-lora font-bold tracking-wider text-amber-800 uppercase">Year Range</h2>
+		<div class="flex items-center gap-2">
+			<input
+				type="number"
+				min={minimumYear}
+				max={filterState.endYear}
+				value={startYearInput}
+				oninput={(event) => {
+					startYearInput = event.currentTarget.value;
+					yearValidationMessage = '';
+				}}
+				onchange={(event) => {
+					applyStartYear(event.currentTarget.value);
+				}}
+				class="w-full rounded-full border border-amber-700/40 bg-[#f9d8b0]/30 px-3 py-1.5 font-mono text-sm text-amber-900 focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none"
+			/>
+			<span class="text-sm font-medium text-amber-700">&ndash;</span>
+			<input
+				type="number"
+				min={filterState.startYear}
+				max={maximumYear}
+				value={endYearInput}
+				oninput={(event) => {
+					endYearInput = event.currentTarget.value;
+					yearValidationMessage = '';
+				}}
+				onchange={(event) => {
+					applyEndYear(event.currentTarget.value);
+				}}
+				class="w-full rounded-lg border border-amber-700/40 bg-[#f9d8b0]/30 px-3 py-1.5 font-mono text-sm text-amber-900 focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none"
+			/>
+		</div>
+
+		{#if yearValidationMessage}
+			<p class="font-lora text-xs text-amber-900/80">{yearValidationMessage}</p>
+		{/if}
+	</div>
+
+	<div class="flex flex-col gap-2">
+		<h2 class="font-lora font-bold tracking-wider text-amber-800 uppercase">Categories</h2>
+
+		<div class="flex flex-wrap items-center gap-x-2 gap-y-2">
+			{#each timelineFacetOptions.categories as category (category)}
+				<label
+					class="flex w-fit cursor-pointer items-center gap-2.5 rounded-full border px-3.5 py-1 transition-colors duration-150 hover:bg-amber-100/50 has-checked:bg-amber-600 has-checked:text-white"
+				>
+					<input
+						type="checkbox"
+						checked={filterState.categories.has(category)}
+						onchange={() => handleCategoryToggle(category)}
+						class="peer hidden"
+					/>
+					<span
+						class="font-lora transition-colors peer-checked:bg-amber-600 peer-checked:text-white select-none"
+					>
+						{category}
+					</span>
+				</label>
+			{/each}
+		</div>
+	</div>
+
+	<div class="flex flex-col gap-2">
+		<h2 class="font-lora font-bold tracking-wider text-amber-800 uppercase">Affiliations</h2>
+		<div class="flex flex-wrap items-center gap-x-2 gap-y-2">
+			{#each timelineFacetOptions.affiliations as affiliation (affiliation)}
+				<label
+					class="flex w-fit cursor-pointer items-center gap-2.5 rounded-full border px-3.5 py-1 transition-colors duration-150 hover:bg-amber-100/50 has-checked:bg-amber-600 has-checked:text-white"
+				>
+					<input
+						type="checkbox"
+						checked={filterState.affiliations.has(affiliation)}
+						onchange={() => {
+							handleAffiliationToggle(affiliation);
+						}}
+						class="peer hidden"
+					/>
+					<span class="font-lora transition-colors peer-checked:bg-amber-600 peer-checked:text-white select-none">{affiliation}</span>
+				</label>
+			{/each}
+		</div>
+	</div>
+
+	<button
+		type="button"
+		onclick={handleClearFilters}
+		disabled={!hasActiveFilters && !yearValidationMessage}
+		class="w-full rounded-full border border-amber-700/50 px-4 py-2 font-lora  font-medium text-amber-800 transition-colors duration-100 hover:bg-amber-200  cursor-pointer disabled:border-gray-300 disabled:text-gray-300 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+	>
+		Clear Filters
+	</button>
+</div>
+
 <div class="mx-auto mt-6 flex flex-row justify-center sm:container md:px-16">
 	<!-- Filters -->
 	<div
 		id="filter-container"
-		class="mr-12 mb-12 hidden h-fit min-w-xs space-y-6 rounded-3xl border border-amber-700/70 p-6 lg:block"
+		class="mr-12 mb-12 hidden h-fit xl:max-w-[calc(var(--container-sm)-1rem)] lg:max-w-[calc(var(--container-sm)-2rem)] space-y-3 rounded-3xl border border-amber-700/70 p-6 lg:block"
 	>
 		<div class="flex flex-row gap-2">
-			<h1 class="w-full text-center font-lora text-xl font-bold text-amber-800">FILTERS</h1>
+			<h1 class="w-full text-center font-lora text-xl font-bold text-[#845522]">FILTERS</h1>
 		</div>
 
-		<div class="space-y-3">
-			<h2 class="font-lora font-bold tracking-wider text-amber-800 uppercase">
-				Year Range
-			</h2>
+		<div class="space-y-2">
+			<h2 class="font-lora font-bold tracking-wider uppercase text-[#845522]">Year Range</h2>
 			<div class="flex items-center gap-2">
 				<input
 					type="number"
@@ -312,19 +413,17 @@
 				/>
 			</div>
 
-			{#if yearValidationMessage}
-				<p class="font-lora text-xs text-amber-900/80">{yearValidationMessage}</p>
-			{/if}
+			<p class="text-center font-lora text-sm text-amber-600/80">
+				Eariest year is {minimumYear} and latest year is {maximumYear}
+			</p>
 		</div>
 
 		<div class="space-y-2">
-			<h2 class="font-lora font-bold tracking-wider text-amber-800 uppercase">
-				Categories
-			</h2>
-			<div class="space-y-1.5">
+			<h2 class="font-lora font-bold tracking-wider uppercase text-[#845522]">Categories</h2>
+			<div class="flex flex-wrap items-center gap-x-2 gap-y-2">
 				{#each timelineFacetOptions.categories as category (category)}
 					<label
-						class="flex cursor-pointer items-center gap-2.5 rounded-lg px-2 py-1 transition-colors duration-150 hover:bg-amber-100/50"
+						class="flex w-fit cursor-pointer items-center gap-2.5 rounded-full border px-3.5 py-1 transition-colors duration-150 hover:bg-amber-100/50 has-checked:bg-amber-600 has-checked:text-white"
 					>
 						<input
 							type="checkbox"
@@ -332,22 +431,23 @@
 							onchange={() => {
 								handleCategoryToggle(category);
 							}}
-							class="h-4 w-4 rounded border-amber-700/50 text-amber-800 focus:ring-amber-700"
+							class="peer hidden"
 						/>
-						<span class="font-lora text-amber-900/80">{category}</span>
+						<span
+							class="font-lora transition-colors peer-checked:bg-amber-600 peer-checked:text-white select-none"
+							>{category}</span
+						>
 					</label>
 				{/each}
 			</div>
 		</div>
 
 		<div class="space-y-2">
-			<h2 class="font-lora font-bold tracking-wider text-amber-800 uppercase">
-				Affiliations
-			</h2>
-			<div class="space-y-1.5">
+			<h2 class="font-lora font-bold tracking-wider uppercase text-[#845522]">Affiliations</h2>
+			<div class="flex flex-wrap items-center gap-x-2 gap-y-2">
 				{#each timelineFacetOptions.affiliations as affiliation (affiliation)}
 					<label
-						class="flex cursor-pointer items-center gap-2.5 rounded-lg px-2 py-1 transition-colors duration-150 hover:bg-amber-100/50"
+						class="flex w-fit cursor-pointer items-center gap-2.5 rounded-full border px-3.5 py-1 transition-colors duration-150 hover:bg-amber-100/50 has-checked:bg-amber-600 has-checked:text-white"
 					>
 						<input
 							type="checkbox"
@@ -355,9 +455,12 @@
 							onchange={() => {
 								handleAffiliationToggle(affiliation);
 							}}
-							class="h-4 w-4 rounded border-amber-700/50 text-amber-800 focus:ring-amber-700"
+							class="peer hidden"
 						/>
-						<span class="font-lora text-amber-900/80">{affiliation}</span>
+						<span
+							class="font-lora transition-colors peer-checked:bg-amber-600 peer-checked:text-white select-none"
+							>{affiliation}</span
+						>
 					</label>
 				{/each}
 			</div>
@@ -367,17 +470,17 @@
 			type="button"
 			onclick={handleClearFilters}
 			disabled={!hasActiveFilters && !yearValidationMessage}
-			class="w-full rounded-full border border-amber-700/50 px-4 py-2 font-lora text-sm font-medium text-amber-800 transition-colors duration-200 hover:bg-amber-800 hover:text-white"
+			class="w-full rounded-full border border-amber-700/50 px-4 py-2 font-lora  font-medium text-amber-800 transition-colors duration-100 hover:bg-amber-200  cursor-pointer disabled:border-gray-300 disabled:text-gray-300 disabled:cursor-not-allowed disabled:hover:bg-transparent"
 		>
 			Clear Filters
 		</button>
 	</div>
 
 	{#if filteredTimelineEntries.length > 0}
-	<TimeLine />
+		<TimeLine />
 	{/if}
 
-	<div class="flex flex-col w-full">
+	<div class="flex w-full flex-col">
 		{#if filteredTimelineEntries.length > 0}
 			{#each filteredTimelineEntries as entry (entry.id)}
 				{#if isResearchEntry(entry)}
@@ -388,7 +491,9 @@
 			{/each}
 		{:else}
 			<!-- <NotFound /> -->
-			<div class="container mx-auto w-full bg-amber-100 py-12 px-8 md:px-10 rounded-3xl mb-12 md:mb-20 gap-4 flex flex-col items-center">
+			<div
+				class="container mx-auto mb-12 flex w-full flex-col items-center gap-4 rounded-3xl bg-amber-100 px-8 py-12 md:mb-20 md:px-10"
+			>
 				<h2 class="text-center font-lora text-2xl font-semibold text-amber-600">
 					Sorry, No matching timeline entries
 				</h2>
@@ -399,63 +504,3 @@
 		{/if}
 	</div>
 </div>
-
-<style>
-	#filter-container {
-		background:
-			linear-gradient(180deg, rgb(245 237 217 / 0.82), rgb(255 250 240 / 0.94));
-		border-color: var(--stroke-soft);
-		color: var(--ink-body);
-	}
-
-	#filter-container h1,
-	#filter-container h2 {
-		color: var(--ink-title);
-	}
-
-	#filter-container input[type='number'] {
-		background-color: rgb(255 250 240 / 0.88);
-		border-color: var(--button-outline);
-		color: var(--ink-body);
-	}
-
-	#filter-container input[type='number']:focus {
-		--tw-ring-color: var(--focus-ring);
-	}
-
-	#filter-container input[type='checkbox'] {
-		accent-color: var(--accent-primary);
-		background-color: rgb(255 250 240 / 0.88);
-		border-color: var(--button-outline);
-	}
-
-	#filter-container label:hover {
-		background-color: rgb(255 210 117 / 0.16);
-	}
-
-	#filter-container label span {
-		color: rgb(95 73 50 / 0.92);
-	}
-
-	#filter-container p {
-		color: var(--ink-muted);
-	}
-
-	#filter-container button {
-		background-color: rgb(255 250 240 / 0.56);
-		border-color: var(--button-outline);
-		color: var(--ink-title);
-	}
-
-	#filter-container button:hover:enabled {
-		background-color: var(--accent-primary);
-		border-color: var(--accent-primary);
-		color: var(--ink-inverse);
-	}
-
-	#filter-container button:disabled {
-		background-color: rgb(240 237 230 / 0.6);
-		border-color: var(--stroke-faint);
-		color: rgb(139 115 85 / 0.78);
-	}
-</style>

@@ -432,12 +432,10 @@ export function filterTimelineEntries(
 			(queryMatchIds?.has(entry.id) ?? false) ||
 			entry.searchText.includes(normalizedQuery);
 
-		const matchesYear =
-			entry.year >= filterState.startYear && entry.year <= filterState.endYear;
+		const matchesYear = entry.year >= filterState.startYear && entry.year <= filterState.endYear;
 
 		const matchesCategory =
-			filterState.categories.size === 0 ||
-			filterState.categories.has(entry.category);
+			filterState.categories.size === 0 || filterState.categories.has(entry.category);
 
 		const matchesAffiliation =
 			filterState.affiliations.size === 0 ||
