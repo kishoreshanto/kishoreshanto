@@ -273,11 +273,11 @@
 		class="mr-12 mb-12 hidden h-fit min-w-xs space-y-6 rounded-3xl border border-amber-700/70 p-6 lg:block"
 	>
 		<div class="flex flex-row gap-2">
-			<h1 class="w-full text-center font-crimson-text text-xl font-bold text-amber-800">FILTERS</h1>
+			<h1 class="w-full text-center font-lora text-xl font-bold text-amber-800">FILTERS</h1>
 		</div>
 
 		<div class="space-y-3">
-			<h2 class="font-crimson-text text-sm font-bold tracking-wider text-amber-800 uppercase">
+			<h2 class="font-lora font-bold tracking-wider text-amber-800 uppercase">
 				Year Range
 			</h2>
 			<div class="flex items-center gap-2">
@@ -293,7 +293,7 @@
 					onchange={(event) => {
 						applyStartYear(event.currentTarget.value);
 					}}
-					class="w-full rounded-lg border border-amber-700/40 bg-[#f9d8b0]/30 px-3 py-1.5 font-lora text-sm text-amber-900 focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none"
+					class="w-full rounded-lg border border-amber-700/40 bg-[#f9d8b0]/30 px-3 py-1.5 font-mono text-sm text-amber-900 focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none"
 				/>
 				<span class="text-sm font-medium text-amber-700">&ndash;</span>
 				<input
@@ -308,7 +308,7 @@
 					onchange={(event) => {
 						applyEndYear(event.currentTarget.value);
 					}}
-					class="w-full rounded-lg border border-amber-700/40 bg-[#f9d8b0]/30 px-3 py-1.5 font-lora text-sm text-amber-900 focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none"
+					class="w-full rounded-lg border border-amber-700/40 bg-[#f9d8b0]/30 px-3 py-1.5 font-mono text-sm text-amber-900 focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none"
 				/>
 			</div>
 
@@ -318,7 +318,7 @@
 		</div>
 
 		<div class="space-y-2">
-			<h2 class="font-crimson-text text-sm font-bold tracking-wider text-amber-800 uppercase">
+			<h2 class="font-lora font-bold tracking-wider text-amber-800 uppercase">
 				Categories
 			</h2>
 			<div class="space-y-1.5">
@@ -334,14 +334,14 @@
 							}}
 							class="h-4 w-4 rounded border-amber-700/50 text-amber-800 focus:ring-amber-700"
 						/>
-						<span class="font-lora text-sm text-amber-900/80">{category}</span>
+						<span class="font-lora text-amber-900/80">{category}</span>
 					</label>
 				{/each}
 			</div>
 		</div>
 
 		<div class="space-y-2">
-			<h2 class="font-crimson-text text-sm font-bold tracking-wider text-amber-800 uppercase">
+			<h2 class="font-lora font-bold tracking-wider text-amber-800 uppercase">
 				Affiliations
 			</h2>
 			<div class="space-y-1.5">
@@ -357,7 +357,7 @@
 							}}
 							class="h-4 w-4 rounded border-amber-700/50 text-amber-800 focus:ring-amber-700"
 						/>
-						<span class="font-lora text-sm text-amber-900/80">{affiliation}</span>
+						<span class="font-lora text-amber-900/80">{affiliation}</span>
 					</label>
 				{/each}
 			</div>
@@ -401,5 +401,61 @@
 </div>
 
 <style>
+	#filter-container {
+		background:
+			linear-gradient(180deg, rgb(245 237 217 / 0.82), rgb(255 250 240 / 0.94));
+		border-color: var(--stroke-soft);
+		color: var(--ink-body);
+	}
 
+	#filter-container h1,
+	#filter-container h2 {
+		color: var(--ink-title);
+	}
+
+	#filter-container input[type='number'] {
+		background-color: rgb(255 250 240 / 0.88);
+		border-color: var(--button-outline);
+		color: var(--ink-body);
+	}
+
+	#filter-container input[type='number']:focus {
+		--tw-ring-color: var(--focus-ring);
+	}
+
+	#filter-container input[type='checkbox'] {
+		accent-color: var(--accent-primary);
+		background-color: rgb(255 250 240 / 0.88);
+		border-color: var(--button-outline);
+	}
+
+	#filter-container label:hover {
+		background-color: rgb(255 210 117 / 0.16);
+	}
+
+	#filter-container label span {
+		color: rgb(95 73 50 / 0.92);
+	}
+
+	#filter-container p {
+		color: var(--ink-muted);
+	}
+
+	#filter-container button {
+		background-color: rgb(255 250 240 / 0.56);
+		border-color: var(--button-outline);
+		color: var(--ink-title);
+	}
+
+	#filter-container button:hover:enabled {
+		background-color: var(--accent-primary);
+		border-color: var(--accent-primary);
+		color: var(--ink-inverse);
+	}
+
+	#filter-container button:disabled {
+		background-color: rgb(240 237 230 / 0.6);
+		border-color: var(--stroke-faint);
+		color: rgb(139 115 85 / 0.78);
+	}
 </style>
