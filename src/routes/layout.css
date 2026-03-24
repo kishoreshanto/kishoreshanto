@@ -512,7 +512,7 @@
 /* High-level page styles: story */
 
 .story-card {
-	@apply max-h-120 rounded-4xl border border-antique-gold bg-amber-100/60 transition-all duration-300 hover:bg-amber-200 hover:shadow-lg hover:border-amber-600;
+	@apply max-h-120 rounded-4xl border border-antique-gold bg-amber-100/60 transition-all duration-300 hover:border-amber-600 hover:bg-amber-200 hover:shadow-lg;
 }
 
 .story-card img {

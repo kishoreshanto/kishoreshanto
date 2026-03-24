@@ -255,7 +255,7 @@
 			oninput={handleSearchInput}
 			placeholder="Search experiences, publications, roles, tools..."
 			autocomplete="off"
-			class="rounded-full text-center border border-gray-300 px-6 py-4 font-lora focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none xs:min-w-sm lg:min-w-xl"
+			class="rounded-full border border-gray-300 px-6 py-4 text-center font-lora focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none xs:min-w-sm lg:min-w-xl"
 		/>
 		<!-- <button
 			type="submit"
@@ -329,7 +329,7 @@
 						class="peer hidden"
 					/>
 					<span
-						class="font-lora transition-colors peer-checked:bg-amber-600 peer-checked:text-white select-none"
+						class="font-lora transition-colors select-none peer-checked:bg-amber-600 peer-checked:text-white"
 					>
 						{category}
 					</span>
@@ -353,7 +353,10 @@
 						}}
 						class="peer hidden"
 					/>
-					<span class="font-lora transition-colors peer-checked:bg-amber-600 peer-checked:text-white select-none">{affiliation}</span>
+					<span
+						class="font-lora transition-colors select-none peer-checked:bg-amber-600 peer-checked:text-white"
+						>{affiliation}</span
+					>
 				</label>
 			{/each}
 		</div>
@@ -363,7 +366,7 @@
 		type="button"
 		onclick={handleClearFilters}
 		disabled={!hasActiveFilters && !yearValidationMessage}
-		class="w-full rounded-full border border-amber-700/50 px-4 py-2 font-lora  font-medium text-amber-800 transition-colors duration-100 hover:bg-amber-200  cursor-pointer disabled:border-gray-300 disabled:text-gray-300 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+		class="w-full cursor-pointer rounded-full border border-amber-700/50 px-4 py-2 font-lora font-medium text-amber-800 transition-colors duration-100 hover:bg-amber-200 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-300 disabled:hover:bg-transparent"
 	>
 		Clear Filters
 	</button>
@@ -373,14 +376,14 @@
 	<!-- Filters -->
 	<div
 		id="filter-container"
-		class="mr-12 mb-12 hidden h-fit xl:max-w-[calc(var(--container-sm)-1rem)] lg:max-w-[calc(var(--container-sm)-2rem)] space-y-3 rounded-3xl border border-amber-700/70 p-6 lg:block"
+		class="mr-12 mb-12 hidden h-fit space-y-3 rounded-3xl border border-amber-700/70 p-6 lg:block lg:max-w-[calc(var(--container-sm)-2rem)] xl:max-w-[calc(var(--container-sm)-1rem)]"
 	>
 		<div class="flex flex-row gap-2">
 			<h1 class="w-full text-center font-lora text-xl font-bold text-[#845522]">FILTERS</h1>
 		</div>
 
 		<div class="space-y-2">
-			<h2 class="font-lora font-bold tracking-wider uppercase text-[#845522]">Year Range</h2>
+			<h2 class="font-lora font-bold tracking-wider text-[#845522] uppercase">Year Range</h2>
 			<div class="flex items-center gap-2">
 				<input
 					type="number"
@@ -419,7 +422,7 @@
 		</div>
 
 		<div class="space-y-2">
-			<h2 class="font-lora font-bold tracking-wider uppercase text-[#845522]">Categories</h2>
+			<h2 class="font-lora font-bold tracking-wider text-[#845522] uppercase">Categories</h2>
 			<div class="flex flex-wrap items-center gap-x-2 gap-y-2">
 				{#each timelineFacetOptions.categories as category (category)}
 					<label
@@ -434,7 +437,7 @@
 							class="peer hidden"
 						/>
 						<span
-							class="font-lora transition-colors peer-checked:bg-amber-600 peer-checked:text-white select-none"
+							class="font-lora transition-colors select-none peer-checked:bg-amber-600 peer-checked:text-white"
 							>{category}</span
 						>
 					</label>
@@ -443,7 +446,7 @@
 		</div>
 
 		<div class="space-y-2">
-			<h2 class="font-lora font-bold tracking-wider uppercase text-[#845522]">Affiliations</h2>
+			<h2 class="font-lora font-bold tracking-wider text-[#845522] uppercase">Affiliations</h2>
 			<div class="flex flex-wrap items-center gap-x-2 gap-y-2">
 				{#each timelineFacetOptions.affiliations as affiliation (affiliation)}
 					<label
@@ -458,7 +461,7 @@
 							class="peer hidden"
 						/>
 						<span
-							class="font-lora transition-colors peer-checked:bg-amber-600 peer-checked:text-white select-none"
+							class="font-lora transition-colors select-none peer-checked:bg-amber-600 peer-checked:text-white"
 							>{affiliation}</span
 						>
 					</label>
@@ -470,7 +473,7 @@
 			type="button"
 			onclick={handleClearFilters}
 			disabled={!hasActiveFilters && !yearValidationMessage}
-			class="w-full rounded-full border border-amber-700/50 px-4 py-2 font-lora  font-medium text-amber-800 transition-colors duration-100 hover:bg-amber-200  cursor-pointer disabled:border-gray-300 disabled:text-gray-300 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+			class="w-full cursor-pointer rounded-full border border-amber-700/50 px-4 py-2 font-lora font-medium text-amber-800 transition-colors duration-100 hover:bg-amber-200 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-300 disabled:hover:bg-transparent"
 		>
 			Clear Filters
 		</button>
