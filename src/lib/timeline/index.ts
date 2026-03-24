@@ -427,31 +427,21 @@ export function filterTimelineEntries(
 	const queryMatchIds = getQueryMatchIds(normalizedQuery, searchIndex);
 
 	return entries.filter((entry) => {
-		if (normalizedQuery) {
-			const matchesTokens = queryMatchIds?.has(entry.id) ?? false;
-			const matchesPhrase = entry.searchText.includes(normalizedQuery);
+		const matchesQuery =
+			!normalizedQuery ||
+			(queryMatchIds?.has(entry.id) ?? false) ||
+			entry.searchText.includes(normalizedQuery);
 
-			if (!matchesTokens && !matchesPhrase) {
-				return false;
-			}
-		}
+		const matchesYear = entry.year >= filterState.startYear && entry.year <= filterState.endYear;
 
-		if (entry.year < filterState.startYear || entry.year > filterState.endYear) {
-			return false;
-		}
+		const matchesCategory =
+			filterState.categories.size === 0 || filterState.categories.has(entry.category);
 
-		if (filterState.categories.size && !filterState.categories.has(entry.category)) {
-			return false;
-		}
+		const matchesAffiliation =
+			filterState.affiliations.size === 0 ||
+			entry.affiliations.some((affiliation) => filterState.affiliations.has(affiliation));
 
-		if (
-			filterState.affiliations.size &&
-			!entry.affiliations.some((affiliation) => filterState.affiliations.has(affiliation))
-		) {
-			return false;
-		}
-
-		return true;
+		return matchesQuery && matchesYear && matchesCategory && matchesAffiliation;
 	});
 }
 

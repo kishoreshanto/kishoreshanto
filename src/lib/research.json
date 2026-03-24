@@ -25,7 +25,7 @@
 		"id": "journal-array-vision-transformer-anomaly-detection",
 		"component": "research",
 		"date": "17th July, 2025",
-		"affiliations": ["Elsevier", "Array"],
+		"affiliations": ["United International University", "Elsevier"],
 		"search_terms": ["ViT", "SRU++", "video anomaly detection"],
 		"props": {
 			"date": "17th July, 2025",
@@ -50,7 +50,7 @@
 		"id": "conference-icca-fabric-defect-detection",
 		"component": "research",
 		"date": "10th June, 2025",
-		"affiliations": ["ACM", "ICCA"],
+		"affiliations": ["United International University", "ACM"],
 		"search_terms": ["ACM ICCA", "garment defect detection"],
 		"props": {
 			"date": "10th June, 2025",
@@ -69,7 +69,7 @@
 		"id": "journal-compbiomed-snoRNA-association",
 		"component": "research",
 		"date": "2nd April, 2025",
-		"affiliations": ["Elsevier", "Computers in Biology and Medicine"],
+		"affiliations": ["United International University", "Elsevier"],
 		"search_terms": ["snoRNA", "GBDT", "SVM", "CompBioMed"],
 		"props": {
 			"date": "2nd April, 2025",
@@ -94,7 +94,7 @@
 		"id": "research-password-strength-gpt2",
 		"component": "research",
 		"date": "6th September, 2024",
-		"affiliations": ["United International University"],
+		"affiliations": ["Independent"],
 		"search_terms": ["GPT-2", "GPT2", "password cracking"],
 		"props": {
 			"date": "6th September, 2024",
@@ -147,7 +147,7 @@
 		"id": "conference-iccit-random-forest-clustering",
 		"component": "research",
 		"date": "27th February, 2025",
-		"affiliations": ["IEEE", "IEEE Xplore", "ICCIT"],
+		"affiliations": ["United International University", "IEEE"],
 		"search_terms": ["random forest clustering", "K-means", "ICCIT"],
 		"props": {
 			"date": "27th February, 2025",

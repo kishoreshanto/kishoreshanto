@@ -107,7 +107,7 @@
 				</div>
 			</div>
 
-			<div class="mt-10 border-t border-amber-300 pt-4 text-center font-lora text-sm text-gray-600">
+			<div class="mt-10 border-t border-amber-300 pt-4 text-center font-lora text-gray-600">
 				<p>Copyright © {currentYear} {data.name}. All rights reserved.</p>
 			</div>
 		</div>

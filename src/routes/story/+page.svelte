@@ -4,8 +4,8 @@
 
 	let { data }: PageProps = $props();
 
-	const dateFormatter = new Intl.DateTimeFormat('en-US', {
-		month: 'short',
+	const dateFormatter = new Intl.DateTimeFormat('en-GB', {
+		month: 'long',
 		day: 'numeric',
 		year: 'numeric',
 		timeZone: 'UTC'
