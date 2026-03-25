@@ -1,8 +1,8 @@
 <!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
 
 <script lang="ts">
-	import data from '$lib/data_en.json';
-	import { getLocalTimeFromUTCOffset } from '$lib/utils';
+	import data from '$lib/data/personal.json';
+	import { getLocalTimeFromUTCOffset } from '$lib/utils/base';
 	import LocationIcon from '../visuals/icons/LocationIcon.svelte';
 	import TimeIcon from '../visuals/icons/TimeIcon.svelte';
 	import NotificationOffIcon from '../visuals/icons/NotificationOffIcon.svelte';

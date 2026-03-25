@@ -1,7 +1,11 @@
 <script lang="ts">
-	import { parseDateWithOrdinal } from '$lib/utils';
+	import { parseDateWithOrdinal } from '$lib/utils/base';
 
-	const { date }: DateMarkProps = $props();
+	interface Props {
+		date: string;
+	}
+
+	const { date }: Props = $props();
 
 	const parsedDate = $derived(parseDateWithOrdinal(date));
 </script>
