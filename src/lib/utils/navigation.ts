@@ -35,7 +35,9 @@ export function getTopLevelNavigationIndex(pathname: string): number {
 }
 
 export function getExactSwipeNavigationPath(pathname: string): TopLevelNavigationPath | null {
-	return getExactSwipeNavigationIndex(pathname) === -1 ? null : (pathname as TopLevelNavigationPath);
+	return getExactSwipeNavigationIndex(pathname) === -1
+		? null
+		: (pathname as TopLevelNavigationPath);
 }
 
 export function getAdjacentSwipeNavigationPath(
