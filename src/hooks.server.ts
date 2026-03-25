@@ -1,6 +1,5 @@
 import type { Handle } from '@sveltejs/kit';
 
-
 /**
  * Security headers to be added to all responses
  * - Strict-Transport-Security: Enforces secure (HTTPS) connections to the server

@@ -14,7 +14,6 @@ export interface ChatSessionStore {
 	nextMessageId: number;
 }
 
-
 export type TimelineEntryType = 'research' | 'work_experience';
 export type Rank = 'Q1' | 'Q2' | 'Q3' | 'Q4';
 
@@ -42,7 +41,6 @@ export interface WorkExperienceCardProps {
 	role?: string[];
 	key_deliverables?: string[];
 }
-
 
 type TimelineSearchMetadata = {
 	affiliations: string[];

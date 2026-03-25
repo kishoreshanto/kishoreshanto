@@ -26,7 +26,7 @@
 		NormalizedTimelineEntry,
 		NormalizedWorkExperienceTimelineEntry,
 		TimelineFilterState
-	} from '$lib/timeline/types';
+	} from '$lib/types';
 
 	type TimelineFilterPatch = Partial<TimelineFilterState>;
 
