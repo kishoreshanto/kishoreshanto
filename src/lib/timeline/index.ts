@@ -1,7 +1,7 @@
-import researchData from '$lib/research.json';
-import { clampYear } from '$lib/timeline-utils';
-import { parseDateWithOrdinal } from '$lib/utils';
-import workExperienceData from '$lib/work_experience.json';
+import researchData from '$lib/data/research.json';
+import { clampYear } from '$lib/utils/timeline';
+import { parseDateWithOrdinal } from '$lib/utils/base';
+import workExperienceData from '$lib/data/work_experience.json';
 
 import type {
 	NormalizedResearchTimelineEntry,
@@ -11,7 +11,7 @@ import type {
 	RawWorkExperienceTimelineEntry,
 	TimelineFacetOptions,
 	TimelineFilterState
-} from './types';
+} from '$lib/types';
 
 const rawResearchEntries: RawResearchTimelineEntry[] = researchData;
 const rawWorkExperienceEntries: RawWorkExperienceTimelineEntry[] = workExperienceData;

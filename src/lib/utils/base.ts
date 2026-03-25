@@ -1,3 +1,11 @@
+import type { Rank } from '$lib/types';
+
+type ParsedDate = {
+	day: string;
+	suffix: string;
+	rest: string;
+};
+
 export function isValidDate(dateString: string): boolean {
 	/**
 	 * Check if a date string is in the format "Month day, year"
