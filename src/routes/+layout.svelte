@@ -26,13 +26,35 @@
 		}
 	}
 
+	function isSmartphoneTouchDevice() {
+		if (!browser) {
+			return false;
+		}
+
+		const mobileNavigator = navigator as Navigator & {
+			userAgentData?: {
+				mobile?: boolean;
+			};
+		};
+		const mobileUserAgent =
+			mobileNavigator.userAgentData?.mobile ??
+			/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(mobileNavigator.userAgent);
+
+		return (
+			mobileUserAgent &&
+			window.matchMedia('(max-width: 767px)').matches &&
+			window.matchMedia('(hover: none) and (pointer: coarse)').matches &&
+			mobileNavigator.maxTouchPoints > 0
+		);
+	}
+
 	let { children } = $props();
 
 	let tabEls: HTMLAnchorElement[] = $state([]);
 	let pillX = $state(0);
 	let pillW = $state(0);
 	let ready = $state(false);
-	let touchSwipeEnabled = $state(false);
+	let touchSwipeEnabled = $state(isSmartphoneTouchDevice());
 	let swipeNavigationLocked = $state(false);
 
 	let activeIndex = $derived.by(() => {
@@ -41,7 +63,9 @@
 
 	let activeEl = $derived(tabEls[activeIndex]);
 	let activeSwipePath = $derived(getExactSwipeNavigationPath(page.url.pathname));
-	let swipeDisabled = $derived(!touchSwipeEnabled || activeSwipePath === null || swipeNavigationLocked);
+	let swipeDisabled = $derived(
+		!touchSwipeEnabled || activeSwipePath === null || swipeNavigationLocked
+	);
 
 	// Previous Version
 	//
@@ -54,6 +78,11 @@
 	// });
 
 	$effect(() => {
+		if (touchSwipeEnabled) {
+			ready = false;
+			return;
+		}
+
 		if (!activeEl) return;
 		pillX = activeEl.offsetLeft;
 		pillW = activeEl.offsetWidth;
@@ -65,22 +94,7 @@
 		const coarsePointerQuery = window.matchMedia('(hover: none) and (pointer: coarse)');
 
 		const updateTouchSwipeEnabled = () => {
-			const mobileNavigator = navigator as Navigator & {
-				userAgentData?: {
-					mobile?: boolean;
-				};
-			};
-			const mobileUserAgent =
-				mobileNavigator.userAgentData?.mobile ??
-				/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-					mobileNavigator.userAgent
-				);
-
-			touchSwipeEnabled =
-				mobileUserAgent &&
-				phoneViewportQuery.matches &&
-				coarsePointerQuery.matches &&
-				mobileNavigator.maxTouchPoints > 0;
+			touchSwipeEnabled = isSmartphoneTouchDevice();
 		};
 
 		updateTouchSwipeEnabled();
@@ -133,9 +147,9 @@
 		}
 
 		return new Promise<void>((resolve) => {
-			const transition = doc.startViewTransition!(async () => {
+			const transition = doc.startViewTransition!(() => {
 				resolve();
-				await navigation.complete;
+				navigation.complete;
 			});
 
 			void transition.finished.finally(() => {
@@ -168,16 +182,13 @@
 </nav>
 
 <main
-	class="app-shell"
 	use:swipe={{
 		onSwipeLeft: () => void navigateBySwipe(1),
 		onSwipeRight: () => void navigateBySwipe(-1),
 		disabled: swipeDisabled
 	}}
 >
-	<div class="route-shell">
-		{@render children()}
-	</div>
+	{@render children()}
 
 	<Footer />
 </main>

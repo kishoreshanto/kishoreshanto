@@ -311,10 +311,10 @@
 		scroll-behavior: auto;
 	}
 
-	::view-transition-old(route-content),
+	/* ::view-transition-old(route-content),
 	::view-transition-new(route-content) {
 		animation-duration: 1ms;
-	}
+	} */
 }
 
 /* Low-level primitives: surfaces, text, and actions */
@@ -454,6 +454,16 @@
 	transition:
 		transform var(--motion-slow) var(--easing-pill),
 		width var(--motion-slow) var(--easing-pill);
+}
+
+@media (max-width: 767px) and (hover: none) and (pointer: coarse) {
+	.navbar-pill {
+		display: none;
+	}
+
+	.navbar-tab--active {
+		background: var(--nav-pill-fill);
+	}
 }
 
 .navbar-tab {
