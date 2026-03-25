@@ -60,3 +60,7 @@ src/components/v1/*
 src/lib/v1/*
 docs/
 .github/*.md
+
+# LLMs
+.codex
+.claude
