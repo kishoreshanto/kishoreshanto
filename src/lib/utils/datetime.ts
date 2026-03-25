@@ -1,5 +1,31 @@
 import type { ParsedDate } from '$lib/types';
 
+const dateFormatterOptions = {
+	month: 'long',
+	day: 'numeric',
+	year: 'numeric',
+	timeZone: 'UTC'
+} as const;
+
+const dateFormatterCache = new Map<string, Intl.DateTimeFormat>();
+
+function getDateFormatter(region: string): Intl.DateTimeFormat {
+	const cachedFormatter = dateFormatterCache.get(region);
+
+	if (cachedFormatter) {
+		return cachedFormatter;
+	}
+
+	const formatter = new Intl.DateTimeFormat(region, dateFormatterOptions);
+	dateFormatterCache.set(region, formatter);
+
+	return formatter;
+}
+
+export function formatDate(date: string, region: string): string {
+	return getDateFormatter(region).format(new Date(date));
+}
+
 export function isValidDate(dateString: string): boolean {
 	/**
 	 * Check if a date string is in the format "Month day, year"

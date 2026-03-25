@@ -1,19 +1,11 @@
 <script lang="ts">
 	import TimeIcon from '$component/shared/svg/TimeIcon.svelte';
 	import type { PageProps } from './$types';
+	import { formatDate } from '$lib/utils/datetime';
+	import settings from '$lib/data/settings.json';
 
 	let { data }: PageProps = $props();
-
-	const dateFormatter = new Intl.DateTimeFormat('en-GB', {
-		month: 'long',
-		day: 'numeric',
-		year: 'numeric',
-		timeZone: 'UTC'
-	});
-
-	function formatDate(date: string) {
-		return dateFormatter.format(new Date(date));
-	}
+	let dateFormatterRegion = settings.date_time_format || 'en-US';
 </script>
 
 <main class="page-container">
@@ -40,8 +32,7 @@
 					<span aria-hidden="true">
 						<TimeIcon />
 					</span>
-
-					<p class="story-card-timestamp">{formatDate(story.date)}</p>
+					<p class="story-card-timestamp">{formatDate(story.date, dateFormatterRegion)}</p>
 				</div>
 			</div>
 		</a>

@@ -1,30 +1,29 @@
 <script lang="ts">
 	import TimeIcon from '$component/shared/svg/TimeIcon.svelte';
+	import { formatDate } from '$lib/utils/datetime';
+	import settings from '$lib/data/settings.json';
 	import type { PageProps } from './$types';
+
+	let dateFormatterRegion = settings.date_time_format || 'en-US';
 
 	type FontSize = 'small' | 'normal' | 'large';
 
 	let { data }: PageProps = $props();
 	let fontSize = $state<FontSize>('small');
 
-	const dateFormatter = new Intl.DateTimeFormat('en-US', {
-		month: 'long',
-		day: 'numeric',
-		year: 'numeric',
-		timeZone: 'UTC'
-	});
 	const fontSizeOptions: { value: FontSize; label: string; iconClass: string }[] = [
 		{ value: 'small', label: 'Small', iconClass: 'text-sm' },
 		{ value: 'normal', label: 'Normal', iconClass: 'text-base' },
 		{ value: 'large', label: 'Large', iconClass: 'text-xl' }
 	];
+
 	const fontSizeClasses: Record<FontSize, string> = {
 		small: 'text-base',
 		normal: 'text-base md:text-xl',
 		large: 'text-lg md:text-2xl'
 	};
 
-	let formattedDate = $derived(dateFormatter.format(new Date(data.story.date)));
+	let formattedDate = $derived(formatDate(data.story.date, dateFormatterRegion));
 	let storyParagraphs = $derived(data.story.storyBody.split(/\n\s*\n/).filter(Boolean));
 	let galleryImages = $derived(
 		data.story.imageUrls.filter((imageUrl) => imageUrl !== data.story.coverImageUrl)
