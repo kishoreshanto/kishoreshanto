@@ -12,7 +12,7 @@
 		timelineEntries,
 		timelineFacetOptions,
 		timelineSearchIndex
-	} from '$lib/timeline';
+	} from '$lib/utils/timeline';
 	import {
 		clearTimelineFilters,
 		toggleStringSet,
