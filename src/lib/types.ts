@@ -209,3 +209,35 @@ export type TimelineFacetOptions = {
 	/** Sorted list of available affiliation filters. */
 	affiliations: string[];
 };
+
+/**
+ * Structured shape returned by the parseDateWithOrdinal utility function, used to
+ */
+export type ParsedDate = {
+	/** Day of the month as a string, without the ordinal suffix. */
+	day: string;
+	/** Ordinal suffix for the day, e.g. "st", "nd", "rd", "th". */
+	suffix: string;
+	/** Remaining part of the date string after removing the day and suffix. */
+	rest: string;
+};
+
+/**
+ * Story shape used for the stories page, loaded directly from the JSON data source.
+ */
+export type Story = {
+	/** Stable story identifier used for keyed rendering and routing. */
+	id: string;
+	/** Human-readable date string shown in the story header. */
+	date: string;
+	/** URL of the cover image displayed at the top of the story. */
+	coverImageUrl: string;
+	/** Human-readable title of the story. */
+	storyTitle: string;
+	/** Short description shown in the story overview section. */
+	storyDescription: string;
+	/** Full story body content, which may include HTML markup. */
+	storyBody: string;
+	/** Optional list of additional image URLs rendered within the story body. */
+	imageUrls: string[];
+};
