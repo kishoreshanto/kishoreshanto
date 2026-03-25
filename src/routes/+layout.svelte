@@ -1,10 +1,20 @@
 <script lang="ts">
 	import './layout.css';
 	import { browser } from '$app/environment';
-	import { onNavigate } from '$app/navigation';
+	import { goto, onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import Footer from '$component/shared/Footer.svelte';
+	import { swipe } from '$lib/actions/swipe';
+	import {
+		getAdjacentSwipeNavigationPath,
+		getExactSwipeNavigationPath,
+		getRouteTransitionDirection,
+		getTopLevelNavigationIndex,
+		topLevelNavigationItems,
+		type SwipeStepDirection
+	} from '$lib/utils/navigation';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import { onMount } from 'svelte';
 
 	if (browser) {
 		const isLocalPreview = /^(localhost|127(?:\.\d+){3}|0\.0\.0\.0)$/.test(
@@ -18,28 +28,20 @@
 
 	let { children } = $props();
 
-	const navItems = [
-		{ label: 'Hey', href: '/' },
-		{ label: 'Timeline', href: '/timeline' },
-		{ label: 'Stories', href: '/story' },
-		{ label: 'Contact', href: '/contact' }
-		// { label: 'Chat', href: '/chat-with-me' } // For now, disabled
-	];
-
 	let tabEls: HTMLAnchorElement[] = $state([]);
 	let pillX = $state(0);
 	let pillW = $state(0);
 	let ready = $state(false);
+	let touchSwipeEnabled = $state(false);
+	let swipeNavigationLocked = $state(false);
 
 	let activeIndex = $derived.by(() => {
-		const path = page.url.pathname;
-		const idx = navItems.findIndex((item) =>
-			item.href === '/' ? path === '/' : path.startsWith(item.href)
-		);
-		return idx;
+		return getTopLevelNavigationIndex(page.url.pathname);
 	});
 
 	let activeEl = $derived(tabEls[activeIndex]);
+	let activeSwipePath = $derived(getExactSwipeNavigationPath(page.url.pathname));
+	let swipeDisabled = $derived(!touchSwipeEnabled || activeSwipePath === null || swipeNavigationLocked);
 
 	// Previous Version
 	//
@@ -58,17 +60,86 @@
 		ready = true;
 	});
 
+	onMount(() => {
+		const phoneViewportQuery = window.matchMedia('(max-width: 767px)');
+		const coarsePointerQuery = window.matchMedia('(hover: none) and (pointer: coarse)');
+
+		const updateTouchSwipeEnabled = () => {
+			const mobileNavigator = navigator as Navigator & {
+				userAgentData?: {
+					mobile?: boolean;
+				};
+			};
+			const mobileUserAgent =
+				mobileNavigator.userAgentData?.mobile ??
+				/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+					mobileNavigator.userAgent
+				);
+
+			touchSwipeEnabled =
+				mobileUserAgent &&
+				phoneViewportQuery.matches &&
+				coarsePointerQuery.matches &&
+				mobileNavigator.maxTouchPoints > 0;
+		};
+
+		updateTouchSwipeEnabled();
+		phoneViewportQuery.addEventListener('change', updateTouchSwipeEnabled);
+		coarsePointerQuery.addEventListener('change', updateTouchSwipeEnabled);
+
+		return () => {
+			phoneViewportQuery.removeEventListener('change', updateTouchSwipeEnabled);
+			coarsePointerQuery.removeEventListener('change', updateTouchSwipeEnabled);
+		};
+	});
+
+	async function navigateBySwipe(direction: SwipeStepDirection) {
+		if (swipeNavigationLocked) {
+			return;
+		}
+
+		const nextPath = getAdjacentSwipeNavigationPath(page.url.pathname, direction);
+
+		if (!nextPath) {
+			return;
+		}
+
+		swipeNavigationLocked = true;
+
+		try {
+			await goto(nextPath);
+		} finally {
+			swipeNavigationLocked = false;
+		}
+	}
+
 	onNavigate((navigation) => {
 		const doc = document as Document & {
 			startViewTransition?: (update: () => Promise<void> | void) => void;
 		};
+		const fromPathname = navigation.from?.url.pathname;
+		const toPathname = navigation.to?.url.pathname;
+		const routeDirection =
+			fromPathname && toPathname ? getRouteTransitionDirection(fromPathname, toPathname) : null;
 
-		if (!doc.startViewTransition) return;
+		if (routeDirection) {
+			document.documentElement.dataset.routeDirection = routeDirection;
+		} else {
+			delete document.documentElement.dataset.routeDirection;
+		}
+
+		if (!doc.startViewTransition) {
+			return;
+		}
 
 		return new Promise<void>((resolve) => {
-			doc.startViewTransition!(async () => {
+			const transition = doc.startViewTransition!(async () => {
 				resolve();
 				await navigation.complete;
+			});
+
+			void transition.finished.finally(() => {
+				delete document.documentElement.dataset.routeDirection;
 			});
 		});
 	});
@@ -83,7 +154,7 @@
 			style="transform: translateX({pillX}px); width: {pillW}px;"
 		></div>
 
-		{#each navItems as item, i (item.href)}
+		{#each topLevelNavigationItems as item, i (item.href)}
 			<a
 				href={item.href}
 				class="navbar-tab"
@@ -96,6 +167,17 @@
 	</div>
 </nav>
 
-{@render children()}
+<main
+	class="app-shell"
+	use:swipe={{
+		onSwipeLeft: () => void navigateBySwipe(1),
+		onSwipeRight: () => void navigateBySwipe(-1),
+		disabled: swipeDisabled
+	}}
+>
+	<div class="route-shell">
+		{@render children()}
+	</div>
 
-<Footer />
+	<Footer />
+</main>
