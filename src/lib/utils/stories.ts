@@ -1,4 +1,4 @@
-import rawStories from '$lib/stories.json';
+import rawStories from '$lib/data/stories.json';
 
 export type Story = {
 	id: string;
