@@ -1,6 +1,6 @@
 <script lang="ts">
 	import data from '$lib/data/personal.json';
-	import InstagramIcon from '../visuals/icons/InstagramIcon.svelte';
+	import InstagramIcon from '$component/shared/svg/InstagramIcon.svelte';
 
 	const show_instagram: boolean = data.show_instagram;
 	let instagram_url = $state<string>('');

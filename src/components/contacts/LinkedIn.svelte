@@ -1,6 +1,6 @@
 <script lang="ts">
 	import data from '$lib/data/personal.json';
-	import LinkedInIcon from '../visuals/icons/LinkedInIcon.svelte';
+	import LinkedInIcon from '$component/shared/svg/LinkedInIcon.svelte';
 
 	const show_linkedin: boolean = data.show_linkedin;
 	let linkedin_url = $state<string>('');

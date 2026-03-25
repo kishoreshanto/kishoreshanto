@@ -1,6 +1,6 @@
 <script lang="ts">
 	import data from '$lib/data/personal.json';
-	import DNDIcon from '../visuals/icons/DNDIcon.svelte';
+	import DNDIcon from '$component/shared/svg/DNDIcon.svelte';
 
 	const show_dnd: boolean = data.request_do_not_disturb;
 	let dnd_message = $state<string | undefined>();

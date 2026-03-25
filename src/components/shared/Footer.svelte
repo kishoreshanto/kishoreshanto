@@ -1,8 +1,8 @@
 <script lang="ts">
 	import data from '$lib/data/personal.json';
-	import EmailIcon from '$component/visuals/icons/EmailIcon.svelte';
-	import GithubIcon from '$component/visuals/icons/GithubIcon.svelte';
-	import LinkedInIcon from '$component/visuals/icons/LinkedInIcon.svelte';
+	import EmailIcon from '$component/shared/svg/EmailIcon.svelte';
+	import GithubIcon from '$component/shared/svg/GithubIcon.svelte';
+	import LinkedInIcon from '$component/shared/svg/LinkedInIcon.svelte';
 
 	type FooterLink = {
 		label: string;

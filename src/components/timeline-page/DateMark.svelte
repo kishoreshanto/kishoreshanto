@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { parseDateWithOrdinal } from '$lib/utils/base';
+	import { parseDateWithOrdinal } from '$lib/utils/datetime';
 
 	interface Props {
 		date: string;

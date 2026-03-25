@@ -2,10 +2,10 @@
 
 <script lang="ts">
 	import data from '$lib/data/personal.json';
-	import { getLocalTimeFromUTCOffset } from '$lib/utils/base';
-	import LocationIcon from '../visuals/icons/LocationIcon.svelte';
-	import TimeIcon from '../visuals/icons/TimeIcon.svelte';
-	import NotificationOffIcon from '../visuals/icons/NotificationOffIcon.svelte';
+	import { getLocalTimeFromUTCOffset } from '$lib/utils/datetime';
+	import LocationIcon from '$component/shared/svg/LocationIcon.svelte';
+	import TimeIcon from '$component/shared/svg/TimeIcon.svelte';
+	import NotificationOffIcon from '$component/shared/svg/NotificationOffIcon.svelte';
 
 	const show_locals: boolean = data.show_locals;
 	const current_city: string | undefined = data.current_city;

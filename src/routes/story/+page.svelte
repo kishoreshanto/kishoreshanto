@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TimeIcon from '$component/visuals/icons/TimeIcon.svelte';
+	import TimeIcon from '$component/shared/svg/TimeIcon.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();

@@ -2,8 +2,8 @@
 
 <script lang="ts">
 	import data from '$lib/data/personal.json';
-	import { parseDate } from '$lib/utils/base';
-	import UpdatedOnIcon from '../visuals/icons/UpdatedOnIcon.svelte';
+	import { parseDate } from '$lib/utils/datetime';
+	import UpdatedOnIcon from '$component/shared/svg/UpdatedOnIcon.svelte';
 
 	const show_last_updated: boolean = data.show_last_updated;
 	const last_updated: string = data.last_updated;

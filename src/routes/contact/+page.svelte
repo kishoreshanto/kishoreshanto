@@ -1,9 +1,9 @@
 <script lang="ts">
 	import data from '$lib/data/personal.json';
-	import EmailIcon from '$component/visuals/icons/EmailIcon.svelte';
-	import GithubIcon from '$component/visuals/icons/GithubIcon.svelte';
-	import InstagramIcon from '$component/visuals/icons/InstagramIcon.svelte';
-	import ResumeIcon from '$component/visuals/icons/ResumeIcon.svelte';
+	import EmailIcon from '$component/shared/svg/EmailIcon.svelte';
+	import GithubIcon from '$component/shared/svg/GithubIcon.svelte';
+	import InstagramIcon from '$component/shared/svg/InstagramIcon.svelte';
+	import ResumeIcon from '$component/shared/svg/ResumeIcon.svelte';
 
 	type IconComponent = typeof EmailIcon;
 
