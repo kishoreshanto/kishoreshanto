@@ -1,5 +1,5 @@
 <script lang="ts">
-	import data from '$lib/data_en.json';
+	import data from '$lib/data/personal.json';
 	import LinkedInIcon from '../visuals/icons/LinkedInIcon.svelte';
 
 	const show_linkedin: boolean = data.show_linkedin;

@@ -1,7 +1,7 @@
 <!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
 
 <script lang="ts">
-	import data from '$lib/data_en.json';
+	import data from '$lib/data/personal.json';
 
 	const show_interests: string[] | undefined = data.interest_and_passion;
 </script>

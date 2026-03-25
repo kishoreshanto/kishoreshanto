@@ -18,7 +18,7 @@
 		toggleStringSet,
 		updateEndYearState,
 		updateStartYearState
-	} from '$lib/timeline-utils';
+	} from '$lib/utils/timeline';
 	import { onDestroy, onMount, untrack } from 'svelte';
 
 	import type {

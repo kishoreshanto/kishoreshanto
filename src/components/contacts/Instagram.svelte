@@ -1,5 +1,5 @@
 <script lang="ts">
-	import data from '$lib/data_en.json';
+	import data from '$lib/data/personal.json';
 	import InstagramIcon from '../visuals/icons/InstagramIcon.svelte';
 
 	const show_instagram: boolean = data.show_instagram;
@@ -16,7 +16,7 @@
 	<a
 		target="_blank"
 		href={instagram_url}
-		class="flex translate-x-[1px] items-center gap-1 align-middle xs:translate-x-0"
+		class="flex translate-x-px items-center gap-1 align-middle xs:translate-x-0"
 	>
 		<InstagramIcon />
 		<h1

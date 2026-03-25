@@ -1,5 +1,5 @@
 <script lang="ts">
-	import data from '$lib/data_en.json';
+	import data from '$lib/data/personal.json';
 	import ResumeIcon from '../visuals/icons/ResumeIcon.svelte';
 
 	const show_resume: boolean = data.show_resume;

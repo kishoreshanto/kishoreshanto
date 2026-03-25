@@ -1,5 +1,5 @@
 <script lang="ts">
-	import data from '$lib/data_en.json';
+	import data from '$lib/data/personal.json';
 
 	const image_url: string = data.display_image_url;
 	const alt_text: string = data.display_image_alt;

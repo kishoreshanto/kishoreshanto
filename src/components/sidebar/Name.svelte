@@ -1,7 +1,7 @@
 <!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
 
 <script lang="ts">
-	import data from '$lib/data_en.json';
+	import data from '$lib/data/personal.json';
 
 	const name: string = data.name;
 	const show_legal_name: boolean = data.show_leagal_name;
