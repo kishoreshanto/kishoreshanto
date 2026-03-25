@@ -2,6 +2,7 @@ import researchData from '$lib/data/research.json';
 import workExperienceData from '$lib/data/work_experience.json';
 
 import { parseDateWithOrdinal } from '$lib/utils/datetime';
+import type { Rank } from '$lib/types';
 
 import type {
 	NormalizedResearchTimelineEntry,
@@ -593,3 +594,25 @@ export const timelineEntries: NormalizedTimelineEntry[] = [
 
 export const timelineFacetOptions = deriveTimelineFacetOptions(timelineEntries);
 export const timelineSearchIndex = buildTimelineSearchIndex(timelineEntries);
+
+export function rankColor(rank: string) {
+	/**
+	 * Get the color of the rank
+	 * @param rank - The rank to get the color of
+	 * @returns - The color of the rank
+	 */
+	const normalizedRank = rank.trim().toUpperCase() as Rank | '';
+
+	switch (normalizedRank) {
+		case 'Q1':
+			return 'border-emerald-200 bg-linear-to-r from-emerald-50 to-teal-50';
+		case 'Q2':
+			return 'border-blue-200 bg-linear-to-r from-blue-50 to-indigo-50';
+		case 'Q3':
+			return 'border-yellow-200 bg-linear-to-r from-yellow-50 to-orange-50';
+		case 'Q4':
+			return 'border-gray-200 bg-linear-to-r from-gray-50 to-gray-100';
+		default:
+			return 'border-gray-200 bg-linear-to-r from-gray-50 to-gray-100';
+	}
+}
