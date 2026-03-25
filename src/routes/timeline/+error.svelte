@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import RouteErrorView from '$component/RouteErrorView.svelte';
+	import RouteErrorView from '$component/shared/RouteErrorView.svelte';
 </script>
 
 <svelte:head>

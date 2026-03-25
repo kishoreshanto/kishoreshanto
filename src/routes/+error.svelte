@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import RouteErrorView from '$component/RouteErrorView.svelte';
+	import RouteErrorView from '$component/shared/RouteErrorView.svelte';
 
 	const title = $derived(
 		page.status === 404 ? 'That page does not exist here.' : 'This page could not be loaded.'
