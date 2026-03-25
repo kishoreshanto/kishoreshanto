@@ -1,6 +1,11 @@
 <script lang="ts">
-	let { current_time }: NotificationOffIconProps = $props();
-	import data from '$lib/data_en.json';
+	import data from '$lib/data/personal.json';
+
+	interface Props {
+		current_time: string;
+	}
+
+	let { current_time }: Props = $props();
 
 	const show_inactive: boolean = data.show_inactive;
 	const inactive_start = show_inactive ? data.inactive_start_time : undefined;
