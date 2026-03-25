@@ -1,6 +1,6 @@
 <script lang="ts">
-	import data from '$lib/data_en.json';
-	import GithubIcon from '../visuals/icons/GithubIcon.svelte';
+	import data from '$lib/data/personal.json';
+	import GithubIcon from '$component/shared/svg/GithubIcon.svelte';
 
 	const show_github: boolean = data.show_github;
 	let github_url = $state<string>('');

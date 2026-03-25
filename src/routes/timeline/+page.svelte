@@ -12,13 +12,13 @@
 		timelineEntries,
 		timelineFacetOptions,
 		timelineSearchIndex
-	} from '$lib/timeline';
+	} from '$lib/utils/timeline';
 	import {
 		clearTimelineFilters,
 		toggleStringSet,
 		updateEndYearState,
 		updateStartYearState
-	} from '$lib/timeline-utils';
+	} from '$lib/utils/timeline';
 	import { onDestroy, onMount, untrack } from 'svelte';
 
 	import type {
@@ -26,7 +26,7 @@
 		NormalizedTimelineEntry,
 		NormalizedWorkExperienceTimelineEntry,
 		TimelineFilterState
-	} from '$lib/timeline/types';
+	} from '$lib/types';
 
 	type TimelineFilterPatch = Partial<TimelineFilterState>;
 

@@ -1,5 +1,13 @@
 import type { Handle } from '@sveltejs/kit';
 
+/**
+ * Security headers to be added to all responses
+ * - Strict-Transport-Security: Enforces secure (HTTPS) connections to the server
+ * - X-Frame-Options: Prevents clickjacking by disallowing the page to be framed
+ * - X-Content-Type-Options: Prevents MIME-sniffing attacks by forcing the browser to respect the declared content type
+ * - Referrer-Policy: Controls how much referrer information is sent with requests
+ * - Permissions-Policy: Restricts access to powerful features like camera, microphone, and geolocation
+ */
 const securityHeaders = {
 	'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
 	'X-Frame-Options': 'DENY',

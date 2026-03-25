@@ -1,7 +1,7 @@
 <script lang="ts">
-	import data from '$lib/data_en.json';
-	import EmailIcon from '../visuals/icons/EmailIcon.svelte';
-	import { isEmailValid } from '$lib/utils';
+	import data from '$lib/data/personal.json';
+	import EmailIcon from '$component/shared/svg/EmailIcon.svelte';
+	import { isEmailValid } from '$lib/utils/misc';
 
 	const show_mail: boolean = data.show_mail;
 

@@ -1,15 +1,7 @@
-import rawStories from '$lib/stories.json';
+import rawStories from '$lib/data/stories.json';
+import type { Story } from '$lib/types';
 
-export type Story = {
-	id: string;
-	date: string;
-	coverImageUrl: string;
-	storyTitle: string;
-	storyDescription: string;
-	storyBody: string;
-	imageUrls: string[];
-};
-
+// Directly export the raw stories data as a typed array of Story objects.
 export const stories = rawStories as Story[];
 
 /**

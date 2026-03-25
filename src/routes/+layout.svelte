@@ -3,7 +3,7 @@
 	import { browser } from '$app/environment';
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
-	import Footer from '$component/Footer.svelte';
+	import Footer from '$component/shared/Footer.svelte';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 
 	if (browser) {

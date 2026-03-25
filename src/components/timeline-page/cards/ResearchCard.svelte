@@ -1,6 +1,7 @@
 <script lang="ts">
 	import PublicationRanking from '$component/timeline-page/cards/PublicationRanking.svelte';
-	import { rankColor } from '$lib/utils';
+	import { rankColor } from '$lib/utils/timeline';
+	import type { Rank, ResearchCardProps } from '$lib/types';
 	import DateMark from '../DateMark.svelte';
 
 	let {

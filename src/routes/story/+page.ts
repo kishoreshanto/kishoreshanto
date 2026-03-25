@@ -1,4 +1,4 @@
-import { stories } from '$lib/stories';
+import { stories } from '$lib/utils/stories';
 import type { PageLoad } from './$types';
 
 /**

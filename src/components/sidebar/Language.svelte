@@ -1,7 +1,7 @@
 <!-- YOU DO NOT NEED TO CHANGE THIS FILE -->
 
 <script lang="ts">
-	import data from '$lib/data_en.json';
+	import data from '$lib/data/personal.json';
 
 	const language: string[] | undefined = data.language;
 	const showLanguage: boolean | undefined = data.show_language;

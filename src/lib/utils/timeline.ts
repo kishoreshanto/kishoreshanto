@@ -1,7 +1,8 @@
-import researchData from '$lib/research.json';
-import { clampYear } from '$lib/timeline-utils';
-import { parseDateWithOrdinal } from '$lib/utils';
-import workExperienceData from '$lib/work_experience.json';
+import researchData from '$lib/data/research.json';
+import workExperienceData from '$lib/data/work_experience.json';
+
+import { parseDateWithOrdinal } from '$lib/utils/datetime';
+import type { Rank } from '$lib/types';
 
 import type {
 	NormalizedResearchTimelineEntry,
@@ -11,10 +12,151 @@ import type {
 	RawWorkExperienceTimelineEntry,
 	TimelineFacetOptions,
 	TimelineFilterState
-} from './types';
+} from '$lib/types';
 
 const rawResearchEntries: RawResearchTimelineEntry[] = researchData;
 const rawWorkExperienceEntries: RawWorkExperienceTimelineEntry[] = workExperienceData;
+
+export function clampYear(value: number, min: number, max: number): number {
+	/**
+	 * Clamp a value between a minimum and maximum value
+	 * @param value - The value to clamp
+	 * @param min - The minimum value
+	 * @param max - The maximum value
+	 * @returns - The clamped value
+	 */
+	if (Number.isNaN(value)) return min;
+	return Math.min(Math.max(value, min), max);
+}
+
+export function updateStartYearState(params: {
+	value: number;
+	endYear: number;
+	minimumYear: number;
+	maximumYear: number;
+}): { startYear: number; yearValidationMessage: string } {
+	/**
+	 * Update the start year state
+	 * @param value - The value to update the start year to
+	 * @param endYear - The end year
+	 * @param minimumYear - The minimum year
+	 * @param maximumYear - The maximum year
+	 * @returns - An object containing the next start year and year validation message
+	 */
+	const { value, endYear, minimumYear, maximumYear } = params;
+	const nextStartYear = clampYear(value, minimumYear, maximumYear);
+
+	if (value > endYear) {
+		return {
+			startYear: endYear,
+			yearValidationMessage: 'Start year cannot be greater than end year.'
+		};
+	}
+
+	if (value < minimumYear) {
+		return {
+			startYear: nextStartYear,
+			yearValidationMessage: `Start year cannot be earlier than ${minimumYear}.`
+		};
+	}
+
+	if (value > maximumYear) {
+		return {
+			startYear: nextStartYear,
+			yearValidationMessage: `Start year cannot be later than ${maximumYear}.`
+		};
+	}
+
+	return {
+		startYear: nextStartYear,
+		yearValidationMessage: ''
+	};
+}
+
+export function updateEndYearState(params: {
+	value: number;
+	startYear: number;
+	minimumYear: number;
+	maximumYear: number;
+	currentYear: number;
+	configuredEndYear: number;
+}): { endYear: number; yearValidationMessage: string } {
+	/**
+	 * Update the end year state
+	 * @param value - The value to update the end year to
+	 * @param startYear - The start year
+	 * @param minimumYear - The minimum year
+	 * @param maximumYear - The maximum year
+	 * @param currentYear - The current year
+	 * @param configuredEndYear - The configured end year
+	 * @returns - An object containing the next end year and year validation message
+	 */
+	const { value, startYear, minimumYear, maximumYear, currentYear, configuredEndYear } = params;
+	const nextEndYear = clampYear(value, minimumYear, maximumYear);
+
+	if (value < startYear) {
+		return {
+			endYear: startYear,
+			yearValidationMessage: 'End year cannot be earlier than start year.'
+		};
+	}
+
+	if (value > currentYear) {
+		return {
+			endYear: nextEndYear,
+			yearValidationMessage: `End year cannot be greater than the current year (${currentYear}).`
+		};
+	}
+
+	if (value > configuredEndYear) {
+		return {
+			endYear: nextEndYear,
+			yearValidationMessage: `End year cannot be later than ${configuredEndYear}.`
+		};
+	}
+
+	if (value < minimumYear) {
+		return {
+			endYear: nextEndYear,
+			yearValidationMessage: `End year cannot be earlier than ${minimumYear}.`
+		};
+	}
+
+	return {
+		endYear: nextEndYear,
+		yearValidationMessage: ''
+	};
+}
+
+export function toggleStringSet(source: Set<string>, value: string): Set<string> {
+	/**
+	 * Toggle a value in a set
+	 * @param source - The set to toggle the value in
+	 * @param value - The value to toggle
+	 * @returns - The next set
+	 */
+	const next = new Set(source);
+	if (next.has(value)) next.delete(value);
+	else next.add(value);
+	return next;
+}
+
+export function clearTimelineFilters(minimumYear: number, maximumYear: number) {
+	/**
+	 * Clear all timeline filters
+	 * @param minimumYear - The minimum year
+	 * @param maximumYear - The maximum year
+	 * @returns - An object containing the cleared timeline filters
+	 */
+	return {
+		query: '',
+		startYear: minimumYear,
+		endYear: maximumYear,
+		selectedCategories: new Set<string>(),
+		selectedAffiliations: new Set<string>(),
+		yearValidationMessage: ''
+	};
+}
 
 const monthIndexByName: Record<string, number> = {
 	January: 0,
@@ -452,3 +594,25 @@ export const timelineEntries: NormalizedTimelineEntry[] = [
 
 export const timelineFacetOptions = deriveTimelineFacetOptions(timelineEntries);
 export const timelineSearchIndex = buildTimelineSearchIndex(timelineEntries);
+
+export function rankColor(rank: string) {
+	/**
+	 * Get the color of the rank
+	 * @param rank - The rank to get the color of
+	 * @returns - The color of the rank
+	 */
+	const normalizedRank = rank.trim().toUpperCase() as Rank | '';
+
+	switch (normalizedRank) {
+		case 'Q1':
+			return 'border-emerald-200 bg-linear-to-r from-emerald-50 to-teal-50';
+		case 'Q2':
+			return 'border-blue-200 bg-linear-to-r from-blue-50 to-indigo-50';
+		case 'Q3':
+			return 'border-yellow-200 bg-linear-to-r from-yellow-50 to-orange-50';
+		case 'Q4':
+			return 'border-gray-200 bg-linear-to-r from-gray-50 to-gray-100';
+		default:
+			return 'border-gray-200 bg-linear-to-r from-gray-50 to-gray-100';
+	}
+}

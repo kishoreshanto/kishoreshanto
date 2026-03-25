@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { WorkExperienceCardProps } from '$lib/types';
 	import DateMark from '../DateMark.svelte';
 
 	let {

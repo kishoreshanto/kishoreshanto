@@ -1,6 +1,6 @@
 <script lang="ts">
-	import data from '$lib/data_en.json';
-	import ResumeIcon from '../visuals/icons/ResumeIcon.svelte';
+	import data from '$lib/data/personal.json';
+	import ResumeIcon from '$component/shared/svg/ResumeIcon.svelte';
 
 	const show_resume: boolean = data.show_resume;
 	const resume_url: string = data.resume_url;

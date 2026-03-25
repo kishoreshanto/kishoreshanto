@@ -1,5 +1,5 @@
 <script lang="ts">
-	import data from '$lib/data_en.json';
+	import data from '$lib/data/personal.json';
 	// import orcid_svg from '$lib/assets/icons/orcid.svg';
 
 	const show_orcid: boolean = data.show_orcid;

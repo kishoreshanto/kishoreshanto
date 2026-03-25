@@ -1,55 +1,8 @@
-import type { Component } from 'svelte';
+import type { ChatSessionStore } from './lib/types';
 
 declare global {
-	type Rank = 'Q1' | 'Q2' | 'Q3' | 'Q4';
-
-	type DateMarkProps = {
-		date: string;
-	};
-
-	type ParsedDate = {
-		day: string;
-		suffix: string;
-		rest: string;
-	};
-
-	interface ResearchCardProps {
-		date: string;
-		category: string;
-		highlight_right?: string;
-		title: string;
-		subtitle_1: string;
-		subtitle_2: string;
-		doi_url?: string;
-		overview: string;
-		keywords?: string[];
-		rank?: string;
-	}
-
-	interface WorkExperienceCardProps {
-		date: string;
-		category: string;
-		highlight_right?: string;
-		title: string;
-		subtitle_1: string;
-		subtitle_2: string;
-		overview: string;
-		role?: string[];
-		key_deliverables?: string[];
-	}
-
-	interface NotificationOffIconProps {
-		current_time: string;
-	}
-
-	interface ContactCard {
-		id: string;
-		label: string;
-		value: string;
-		href: string;
-		show: boolean;
-		external: boolean;
-		icon: Component<any>;
+	interface Window {
+		__ChatSession?: ChatSessionStore;
 	}
 
 	namespace App {

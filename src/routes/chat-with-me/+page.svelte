@@ -1,26 +1,14 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import type { ChatMessage, ChatRole, ChatSessionStore } from '$lib/types';
 	import { tick } from 'svelte';
 
-	type ChatRole = 'user' | 'assistant';
-
-	type ChatMessage = {
-		id: number;
-		role: ChatRole;
-		text: string;
-		sentAt: string;
-	};
-
-	class ChatSessionState {
+	class ChatSessionState implements ChatSessionStore {
 		draft = $state('');
 		messages = $state<ChatMessage[]>([]);
 		isResponding = $state(false);
 		nextMessageId = $state(1);
 	}
-
-	type ChatWindow = Window & {
-		__ksChatSession?: ChatSessionState;
-	};
 
 	const SAMPLE_RESPONSE = 'Message Received, Sample Response';
 
@@ -33,9 +21,8 @@
 			return createChatSessionState();
 		}
 
-		const host = window as ChatWindow;
-		host.__ksChatSession ??= createChatSessionState();
-		return host.__ksChatSession;
+		window.__ChatSession ??= createChatSessionState();
+		return window.__ChatSession;
 	}
 
 	function formatTimestamp(date: Date) {

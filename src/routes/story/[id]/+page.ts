@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { getStoryById } from '$lib/stories';
+import { getStoryById } from '$lib/utils/stories';
 import type { PageLoad } from './$types';
 
 /**
