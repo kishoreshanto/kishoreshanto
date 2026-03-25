@@ -1,5 +1,5 @@
 <script lang="ts">
-	import DateMark from '../DateMark.svelte';
+	import DateMark from './DateMark.svelte';
 
 	let date: string = 'OPPS...';
 </script>

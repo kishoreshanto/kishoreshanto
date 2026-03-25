@@ -1,5 +1,5 @@
 <script lang="ts">
-	import IntroSection from '$component/hero-page/IntroSection.svelte';
+	import IntroSection from '$component/homepage/IntroSection.svelte';
 	import profile from '$lib/data/personal.json';
 
 	const workingPrinciples = [
