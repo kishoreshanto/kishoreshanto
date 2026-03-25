@@ -12,7 +12,10 @@ export interface SwipeOptions {
 }
 
 type ResolvedSwipeOptions = Required<
-	Pick<SwipeOptions, 'threshold' | 'velocityThreshold' | 'axisLockRatio' | 'hapticDuration' | 'disabled'>
+	Pick<
+		SwipeOptions,
+		'threshold' | 'velocityThreshold' | 'axisLockRatio' | 'hapticDuration' | 'disabled'
+	>
 > &
 	Pick<SwipeOptions, 'onSwipeLeft' | 'onSwipeRight' | 'ignore'>;
 
@@ -64,7 +67,11 @@ export const swipe: Action<HTMLElement, SwipeOptions> = (node, initialOptions = 
 	}
 
 	function handleTouchStart(event: TouchEvent) {
-		if (options.disabled || event.touches.length !== 1 || shouldIgnoreTarget(options, event.target)) {
+		if (
+			options.disabled ||
+			event.touches.length !== 1 ||
+			shouldIgnoreTarget(options, event.target)
+		) {
 			reset();
 			return;
 		}
