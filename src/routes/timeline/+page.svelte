@@ -255,7 +255,7 @@
 			oninput={handleSearchInput}
 			placeholder="Search experiences, publications, roles, tools..."
 			autocomplete="off"
-			class="min-w-sm rounded-full border border-gray-300 px-6 py-4 text-center font-lora focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none lg:min-w-6xl"
+			class="min-w-sm rounded-full border border-gray-300 px-6 py-4 text-center font-lora focus:border-transparent focus:ring-2 focus:ring-amber-800 focus:outline-none lg:min-w-4xl md:min-w-lg"
 		/>
 		<!-- <button
 			type="submit"
