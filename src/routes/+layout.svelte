@@ -1,10 +1,10 @@
 <script lang="ts">
 	import './layout.css';
-	import { browser } from '$app/environment';
+	// import { browser } from '$app/environment';
 	import { goto, onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import Footer from '$component/shared/Footer.svelte';
-	import { swipe } from '$lib/actions/swipe';
+	import { swipe } from '$lib/utils/swipe';
 	import {
 		getAdjacentSwipeNavigationPath,
 		getExactSwipeNavigationPath,
@@ -14,20 +14,20 @@
 		type SwipeStepDirection
 	} from '$lib/utils/navigation';
 	import { isSmartphoneTouchDevice } from '$lib/utils/misc';
-	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	// import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 	import { onMount } from 'svelte';
 
 	/**
 	 * BLOCK: Speed Insights Integration
 	 * Inject the Speed Insights script in production environments to monitor real user performance metrics. We exclude local development environments to avoid skewing our analytics with test data.
 	 */
-	if (browser) {
-		const isLocalPreview = /^(localhost|127(?:\.\d+){3}|0\.0\.0\.0)$/.test(
-			window.location.hostname
-		);
+	// if (browser) {
+	// 	const isLocalPreview = /^(localhost|127(?:\.\d+){3}|0\.0\.0\.0)$/.test(
+	// 		window.location.hostname
+	// 	);
 
-		if (!isLocalPreview) injectSpeedInsights();
-	}
+	// 	if (!isLocalPreview) injectSpeedInsights();
+	// }
 
 	// Default props
 	let { children } = $props();
