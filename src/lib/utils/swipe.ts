@@ -96,6 +96,9 @@ export const swipe: Action<HTMLElement, SwipeOptions> = (node, initialOptions = 
 	let lastY = 0;
 	let startTime = 0;
 
+	/**
+	 * Resets all tracking state to prepare for a new gesture or cancel the current one.
+	 */
 	function reset() {
 		tracking = false;
 		startX = 0;
@@ -105,6 +108,10 @@ export const swipe: Action<HTMLElement, SwipeOptions> = (node, initialOptions = 
 		startTime = 0;
 	}
 
+	/**
+	 * Initializes swipe tracking when a touch gesture starts.
+	 * @param event - The touch start event emitted by the active pointer.
+	 */
 	function handleTouchStart(event: TouchEvent) {
 		if (
 			options.disabled ||
@@ -122,6 +129,10 @@ export const swipe: Action<HTMLElement, SwipeOptions> = (node, initialOptions = 
 		startTime = performance.now();
 	}
 
+	/**
+	 * Tracks the latest touch position while a swipe gesture is in progress.
+	 * @param event - The touch move event emitted by the active pointer.
+	 */
 	function handleTouchMove(event: TouchEvent) {
 		if (!tracking || event.touches.length !== 1) {
 			return;
@@ -132,6 +143,10 @@ export const swipe: Action<HTMLElement, SwipeOptions> = (node, initialOptions = 
 		lastY = touch.clientY;
 	}
 
+	/**
+	 * Finalizes swipe detection, evaluates the gesture, and dispatches callbacks.
+	 * @param event - The touch end event emitted when the gesture completes.
+	 */
 	function handleTouchEnd(event: TouchEvent) {
 		if (!tracking) {
 			return;
@@ -174,6 +189,9 @@ export const swipe: Action<HTMLElement, SwipeOptions> = (node, initialOptions = 
 		reset();
 	}
 
+	/**
+	 * Cancels swipe tracking and clears any in-progress gesture state.
+	 */
 	function handleTouchCancel() {
 		reset();
 	}
