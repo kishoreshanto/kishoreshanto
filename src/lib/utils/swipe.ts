@@ -1,16 +1,41 @@
+/**
+ * Swipe gesture action helpers used by touch-enabled components.
+ * Author: Kishore Shanto, ChatGPT Codex (GPT 5.4), Claude (Opus 4.6)
+ * Version: 1.0
+ * Created: 26 March 2026
+ *
+ * This module exposes a reusable Svelte action that detects horizontal swipe
+ * gestures and routes them to left or right callbacks with configurable
+ * thresholds and touch-target exclusions.
+ */
+
 import type { Action } from 'svelte/action';
 
+/**
+ * Configuration options for the swipe action.
+ */
 export interface SwipeOptions {
+	/** Callback invoked when a left swipe is detected. */
 	onSwipeLeft?: () => void;
+	/** Callback invoked when a right swipe is detected. */
 	onSwipeRight?: () => void;
+	/** Minimum horizontal distance required to trigger a swipe. */
 	threshold?: number;
+	/** Minimum swipe velocity required to trigger a swipe. */
 	velocityThreshold?: number;
+	/** Horizontal-to-vertical distance ratio used to lock axis detection. */
 	axisLockRatio?: number;
+	/** Optional vibration duration in milliseconds for supported devices. */
 	hapticDuration?: number;
+	/** Disables swipe detection when true. */
 	disabled?: boolean;
+	/** Custom predicate for skipping swipe handling on specific targets. */
 	ignore?: (target: EventTarget | null) => boolean;
 }
 
+/**
+ * Resolved swipe options with defaults applied to required values.
+ */
 type ResolvedSwipeOptions = Required<
 	Pick<
 		SwipeOptions,
@@ -26,6 +51,11 @@ const DEFAULT_HAPTIC_DURATION = 10;
 const IGNORED_TARGET_SELECTOR =
 	'input, textarea, select, [contenteditable="true"], [data-swipe-ignore]';
 
+/**
+ * Normalizes swipe options by applying defaults for required values.
+ * @param options - Partial swipe configuration supplied by the caller.
+ * @returns A fully resolved swipe configuration object.
+ */
 function resolveOptions(options: SwipeOptions = {}): ResolvedSwipeOptions {
 	return {
 		onSwipeLeft: options.onSwipeLeft,
@@ -39,6 +69,12 @@ function resolveOptions(options: SwipeOptions = {}): ResolvedSwipeOptions {
 	};
 }
 
+/**
+ * Determines whether the current touch target should be ignored.
+ * @param options - Resolved swipe configuration.
+ * @param target - Event target associated with the touch event.
+ * @returns True when the target should not participate in swipe handling.
+ */
 function shouldIgnoreTarget(options: ResolvedSwipeOptions, target: EventTarget | null): boolean {
 	if (options.ignore?.(target)) {
 		return true;
@@ -47,6 +83,9 @@ function shouldIgnoreTarget(options: ResolvedSwipeOptions, target: EventTarget |
 	return target instanceof Element && target.closest(IGNORED_TARGET_SELECTOR) !== null;
 }
 
+/**
+ * Svelte action that detects horizontal swipe gestures on an element.
+ */
 export const swipe: Action<HTMLElement, SwipeOptions> = (node, initialOptions = {}) => {
 	let options = resolveOptions(initialOptions);
 
