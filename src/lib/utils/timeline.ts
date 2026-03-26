@@ -2,9 +2,9 @@ import researchData from '$lib/data/research.json';
 import workExperienceData from '$lib/data/work_experience.json';
 
 import { parseDateWithOrdinal } from '$lib/utils/datetime';
-import type { Rank } from '$lib/types';
 
 import type {
+	Rank,
 	NormalizedResearchTimelineEntry,
 	NormalizedTimelineEntry,
 	NormalizedWorkExperienceTimelineEntry,
