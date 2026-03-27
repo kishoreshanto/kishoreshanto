@@ -1,6 +1,7 @@
 <script lang="ts">
 	import TimeIcon from '$component/shared/svg/TimeIcon.svelte';
 	import { formatDate } from '$lib/utils/datetime';
+	import { parseTextMarkup, textParseClasses } from '$lib/utils/textParse';
 	import settings from '$lib/data/settings.json';
 	import type { PageProps } from './$types';
 
@@ -24,7 +25,7 @@
 	};
 
 	let formattedDate = $derived(formatDate(data.story.date, dateFormatterRegion));
-	let storyParagraphs = $derived(data.story.storyBody.split(/\n\s*\n/).filter(Boolean));
+	let parsedStoryBody = $derived(parseTextMarkup(data.story.storyBody));
 	let galleryImages = $derived(
 		data.story.imageUrls.filter((imageUrl) => imageUrl !== data.story.coverImageUrl)
 	);
@@ -79,7 +80,7 @@
 				alt={data.story.storyTitle}
 				decoding="async"
 				fetchpriority="high"
-				class="aspect-auto max-h-105 w-full rounded-2xl object-cover lg:max-h-132 lg:min-h-96 lg:max-w-lg"
+				class="aspect-auto max-h-105 w-full rounded-4xl object-cover lg:max-h-132 lg:min-h-96 lg:max-w-lg"
 			/>
 
 			<div>
@@ -104,18 +105,8 @@
 		<hr class="my-8 border-amber-700" />
 
 		<div class="space-y-8">
-			<div class="space-y-5">
-				{#each storyParagraphs as paragraph, index (paragraph)}
-					<p
-						class={[
-							'text-justify font-lora text-black transition-[font-size,line-height] duration-200',
-							fontSizeClasses[fontSize],
-							index === 0 && 'story-paragraph'
-						]}
-					>
-						{paragraph}
-					</p>
-				{/each}
+			<div class={[textParseClasses.root, fontSizeClasses[fontSize]]}>
+				{@html parsedStoryBody}
 			</div>
 
 			{#if galleryImages.length > 0}
@@ -123,14 +114,14 @@
 					<h3 class="font-mono text-sm tracking-[0.2em] text-amber-700 uppercase">
 						Here are some memories:
 					</h3>
-					<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+					<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 						{#each galleryImages as imageUrl (imageUrl)}
 							<img
 								src={imageUrl}
 								alt={`${data.story.storyTitle} gallery image`}
 								loading="lazy"
 								decoding="async"
-								class="h-64 w-full rounded-3xl object-cover"
+								class="h-64 w-full rounded-4xl object-cover"
 							/>
 						{/each}
 					</div>
