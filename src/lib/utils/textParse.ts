@@ -1,5 +1,19 @@
+/**
+ * Text markup parsing helpers used by story rendering.
+ * Author: Kishore Shanto, ChatGPT Codex (GPT 5.4), Claude (Opus 4.6)
+ * Version: 1.0
+ * Created: 27 March 2026
+ *
+ * This module converts a lightweight markdown-like text format into HTML with
+ * consistent styling classes for headings, paragraphs, inline emphasis, and
+ * blockquotes.
+ */
+
 type HeadingLevel = 1 | 2 | 3;
 
+/**
+ * CSS class names used by the text markup renderer.
+ */
 type TextParseClasses = {
 	root: string;
 	paragraph: string;
@@ -14,6 +28,9 @@ type TextParseClasses = {
 	blockquoteAuthor: string;
 };
 
+/**
+ * Shared CSS classes used when rendering parsed text markup.
+ */
 export const textParseClasses: TextParseClasses = {
 	root: 'space-y-5 font-lora text-black transition-[font-size,line-height] duration-200',
 	paragraph: 'text-justify leading-relaxed',
@@ -25,12 +42,18 @@ export const textParseClasses: TextParseClasses = {
 	italic: 'italic',
 	blockquote: 'px-5 text-lg',
 	blockquoteText: 'block text-center italic font-bold text-amber-500',
-	blockquoteAuthor: 'block text-amber-500 text-center italic opacity-60 md:pr-[calc(var(--page-padding)*2)]',
+	blockquoteAuthor:
+		'block text-amber-500 text-center italic opacity-60 md:pr-[calc(var(--page-padding)*2)]'
 };
 
 const ESCAPED_ASTERISK_PLACEHOLDER = '__TEXT_PARSE_ESCAPED_ASTERISK__';
 const QUOTE_PATTERN = />([\s\S]+?)\s*-{2,3}\s*([\s\S]+?)</g;
 
+/**
+ * Escapes HTML-sensitive characters so user content can be safely rendered.
+ * @param value - Raw text content to escape.
+ * @returns The escaped HTML string.
+ */
 function escapeHtml(value: string): string {
 	return value
 		.replaceAll('&', '&amp;')
@@ -40,6 +63,11 @@ function escapeHtml(value: string): string {
 		.replaceAll("'", '&#39;');
 }
 
+/**
+ * Renders inline emphasis markers such as bold and italic text.
+ * @param content - Raw inline content to transform.
+ * @returns HTML string with inline markup converted to spans.
+ */
 function renderInlineMarkup(content: string): string {
 	const escapedContent = escapeHtml(content).replace(/\\\*/g, ESCAPED_ASTERISK_PLACEHOLDER);
 	const boldText = escapedContent.replace(/(?<!\\)\*\*(.+?)(?<!\\)\*\*/g, (_, text: string) => {
@@ -53,6 +81,12 @@ function renderInlineMarkup(content: string): string {
 	return italicText.replaceAll(ESCAPED_ASTERISK_PLACEHOLDER, '*');
 }
 
+/**
+ * Renders a heading element for the requested heading level.
+ * @param level - Heading level from 1 through 3.
+ * @param content - Heading text content to render.
+ * @returns HTML string representing the heading.
+ */
 function renderHeading(level: HeadingLevel, content: string): string {
 	const levelClass =
 		level === 1
@@ -64,10 +98,22 @@ function renderHeading(level: HeadingLevel, content: string): string {
 	return `<span role="heading" aria-level="${level}" class="${levelClass}">${renderInlineMarkup(content.trim())}</span>`;
 }
 
+/**
+ * Renders a blockquote with its quote text and author attribution.
+ * @param quote - Quoted text to display.
+ * @param author - Attribution text to display after the quote.
+ * @returns HTML string representing the blockquote wrapper.
+ */
 function renderBlockquote(quote: string, author: string): string {
 	return `<div class="${textParseClasses.blockquote}"><span class="${textParseClasses.blockquoteText}">${renderInlineMarkup(quote.trim())}</span><span class="${textParseClasses.blockquoteAuthor}">— ${renderInlineMarkup(author.trim())}</span></div>`;
 }
 
+/**
+ * Renders a paragraph, applying the first-paragraph styling when needed.
+ * @param content - Paragraph text content to render.
+ * @param isFirstParagraph - Whether the paragraph is the first rendered paragraph.
+ * @returns HTML string representing the paragraph.
+ */
 function renderParagraph(content: string, isFirstParagraph: boolean): string {
 	const paragraphClass = isFirstParagraph
 		? `${textParseClasses.paragraph} ${textParseClasses.firstParagraph}`
@@ -76,6 +122,11 @@ function renderParagraph(content: string, isFirstParagraph: boolean): string {
 	return `<p class="${paragraphClass}">${renderInlineMarkup(content.trim())}</p>`;
 }
 
+/**
+ * Parses the supported story text markup into sanitized HTML.
+ * @param content - Raw story body content using the lightweight markup syntax.
+ * @returns The rendered HTML string, or an empty string for blank input.
+ */
 export function parseTextMarkup(content: string): string {
 	const normalizedContent = content.replace(/\r\n?/g, '\n').trim();
 
@@ -86,6 +137,10 @@ export function parseTextMarkup(content: string): string {
 	const renderedBlocks: string[] = [];
 	let hasRenderedParagraph = false;
 
+	/**
+	 * Renders a text segment, splitting it into paragraphs and blockquotes.
+	 * @param segment - The text segment to parse.
+	 */
 	const renderTextSegment = (segment: string) => {
 		let lastIndex = 0;
 
@@ -114,6 +169,9 @@ export function parseTextMarkup(content: string): string {
 		const lines = block.split('\n');
 		const paragraphLines: string[] = [];
 
+		/**
+		 * Flushes accumulated paragraph lines into the rendered output.
+		 */
 		const flushParagraphLines = () => {
 			if (paragraphLines.length === 0) {
 				return;
