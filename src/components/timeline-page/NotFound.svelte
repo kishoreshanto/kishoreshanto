@@ -1,5 +1,4 @@
 <div id="card-container" class="card-container">
-
 	<div class="card-body">
 		<!-- Highlight -->
 		<div class="card-highlight">

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import BackToTop from "$component/shared/BackToTop.svelte";
+	import BackToTop from '$component/shared/BackToTop.svelte';
 	let { children } = $props();
 </script>
 

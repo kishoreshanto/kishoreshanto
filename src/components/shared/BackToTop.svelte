@@ -1,5 +1,5 @@
 <script lang="ts">
-	import UpArrowIcon from "./svg/UpArrowIcon.svelte";
+	import UpArrowIcon from './svg/UpArrowIcon.svelte';
 
 	let scrollY = $state(0);
 
@@ -19,20 +19,17 @@
 
 <button
 	type="button"
-	class="timeline-back-to-top fixed inline-flex z-80 items-center gap-2 p-3.5 md:px-3.5 md:py-4 rounded-full opacity-0 uppercase transform-[translateY(1rem)_scale(0.96)] border-amber-600/20 border-2 hover:border-amber-600 bottom-8 right-8 md:bottom-7 md:right-7 text-amber-600/70 hover:text-amber-600 bg-amber-100/20 backdrop-blur-sm shadow-sm"
+	class="timeline-back-to-top fixed right-8 bottom-8 z-80 inline-flex transform-[translateY(1rem)_scale(0.96)] items-center gap-2 rounded-full border-2 border-amber-600/20 bg-amber-100/20 p-3.5 text-amber-600/70 uppercase opacity-0 shadow-sm backdrop-blur-sm hover:border-amber-600 hover:text-amber-600 md:right-7 md:bottom-7 md:px-3.5 md:py-4"
 	class:timeline-back-to-top--visible={showBackToTop}
 	onclick={scrollToTop}
 	aria-label="Back to top"
->   
-    
-    
-    <UpArrowIcon />
-	<span class="hidden md:block font-lora font-bold cursor-pointer ">Back to Top</span>
+>
+	<UpArrowIcon />
+	<span class="hidden cursor-pointer font-lora font-bold md:block">Back to Top</span>
 </button>
 
 <style>
 	.timeline-back-to-top {
-
 		transition:
 			opacity var(--motion-fast) var(--easing-standard),
 			transform var(--motion-base) var(--easing-pill),
