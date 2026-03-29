@@ -311,10 +311,10 @@
 		scroll-behavior: auto;
 	}
 
-	::view-transition-old(route-content),
+	/* ::view-transition-old(route-content),
 	::view-transition-new(route-content) {
 		animation-duration: 1ms;
-	}
+	} */
 }
 
 /* Low-level primitives: surfaces, text, and actions */
@@ -455,6 +455,16 @@
 		transform var(--motion-slow) var(--easing-pill),
 		width var(--motion-slow) var(--easing-pill);
 }
+
+/* @media (max-width: 767px) and (hover: none) and (pointer: coarse) {
+	.navbar-pill {
+		display: none;
+	}
+
+	.navbar-tab--active {
+		background: var(--nav-pill-fill);
+	}
+} */
 
 .navbar-tab {
 	@apply relative z-10 block cursor-pointer rounded-full font-lora font-bold tracking-wide uppercase select-none xxs:px-3.5 xxs:py-3.5 xxs:text-[0.7rem] xs:px-4 xs:py-3 xs:text-[0.85rem] md:px-6 md:py-3 md:text-[1rem];

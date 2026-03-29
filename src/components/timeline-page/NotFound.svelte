@@ -1,12 +1,4 @@
-<script lang="ts">
-	import DateMark from './DateMark.svelte';
-
-	let date: string = 'OPPS...';
-</script>
-
 <div id="card-container" class="card-container">
-	<DateMark {date} />
-
 	<div class="card-body">
 		<!-- Highlight -->
 		<div class="card-highlight">

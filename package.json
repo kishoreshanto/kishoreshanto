@@ -45,9 +45,5 @@
 	},
 	"overrides": {
 		"cookie": "^0.7.2"
-	},
-	"dependencies": {
-		"@tailwindcss/vite": "^4.1.11",
-		"@vercel/speed-insights": "^1.2.0"
 	}
 }
