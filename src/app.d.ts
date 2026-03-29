@@ -2,6 +2,7 @@ import type { ChatSessionStore } from './lib/types';
 
 declare global {
 	const __COMMIT_HASH__: string;
+	const __BUILD_VERSION__: string;
 
 	interface Window {
 		__ChatSession?: ChatSessionStore;
