@@ -1,8 +1,12 @@
 <script lang="ts">
 	import data from '$lib/data/personal.json';
+	import settings from '$lib/data/settings.json';
 	import EmailIcon from '$component/shared/svg/EmailIcon.svelte';
 	import GithubIcon from '$component/shared/svg/GithubIcon.svelte';
 	import LinkedInIcon from '$component/shared/svg/LinkedInIcon.svelte';
+
+	// Latest commit hash injected at build time from Vite config.
+	const latestCommitHash = __COMMIT_HASH__;
 
 	type FooterLink = {
 		label: string;
@@ -72,7 +76,7 @@
 							>Updated on {currentDate}, {currentYear}</span
 						>
 						<span class="w-fit rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2"
-							>{data.version}</span
+							>{settings.version} ({latestCommitHash})</span
 						>
 					</div>
 				</div>

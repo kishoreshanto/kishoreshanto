@@ -3,8 +3,30 @@ import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import compression from 'vite-plugin-compression';
+import { execSync } from 'node:child_process';
+
+function resolveCommitHash() {
+	const envHash =
+		process.env.VERCEL_GIT_COMMIT_SHA ?? process.env.GITHUB_SHA ?? process.env.COMMIT_HASH;
+
+	if (envHash) {
+		return envHash.slice(0, 7);
+	}
+
+	try {
+		return execSync('git rev-parse --short HEAD').toString().trim();
+	} catch {
+		return 'dev';
+	}
+}
+
+const latestCommitHash = resolveCommitHash();
 
 export default defineConfig({
+	define: {
+		__COMMIT_HASH__: JSON.stringify(latestCommitHash)
+	},
+
 	plugins: [
 		sveltekit(),
 		tailwindcss(),
