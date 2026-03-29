@@ -49,7 +49,9 @@ export default defineConfig({
 				// Separate chunks for better caching
 				manualChunks: {
 					// Vendor chunk for external dependencies: svelte, @vercel/speed-insights/sveltekit
-					vendor: ['svelte', '@vercel/speed-insights/sveltekit']
+					// vendor: ['svelte', '@vercel/speed-insights/sveltekit']
+					vendor: ['svelte']
+
 				}
 			}
 		},
