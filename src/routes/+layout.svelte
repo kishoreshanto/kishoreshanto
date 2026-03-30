@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	// import { browser } from '$app/environment';
-	import { goto, onNavigate } from '$app/navigation';
+	import { afterNavigate, goto, onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import Footer from '$component/shared/Footer.svelte';
 	import { swipe } from '$lib/utils/swipe';
@@ -39,16 +39,54 @@
 	let ready = $state(false);
 	let touchSwipeEnabled = $state(isSmartphoneTouchDevice());
 	let swipeNavigationLocked = $state(false);
+	let pendingPillIndex = $state<number | null>(null);
+	let pendingPillResetTimer = $state<ReturnType<typeof window.setTimeout> | null>(null);
 
 	// Derived state
 	let activeIndex = $derived.by(() => {
 		return getTopLevelNavigationIndex(page.url.pathname);
 	});
-	let activeEl = $derived(tabEls[activeIndex]);
+	let pillIndex = $derived(
+		touchSwipeEnabled && pendingPillIndex !== null ? pendingPillIndex : activeIndex
+	);
+	let pillEl = $derived(tabEls[pillIndex]);
 	let activeSwipePath = $derived(getExactSwipeNavigationPath(page.url.pathname));
 	let swipeDisabled = $derived(
 		!touchSwipeEnabled || activeSwipePath === null || swipeNavigationLocked
 	);
+
+	function clearPendingPillResetTimer() {
+		if (pendingPillResetTimer === null) return;
+
+		clearTimeout(pendingPillResetTimer);
+		pendingPillResetTimer = null;
+	}
+
+	function resetPendingPill() {
+		clearPendingPillResetTimer();
+		pendingPillIndex = null;
+	}
+
+	function schedulePendingPillReset() {
+		clearPendingPillResetTimer();
+
+		pendingPillResetTimer = window.setTimeout(() => {
+			pendingPillResetTimer = null;
+			pendingPillIndex = null;
+		}, 450);
+	}
+
+	function handleNavPointerDown(index: number, href: string) {
+		if (!touchSwipeEnabled || page.url.pathname === href) return;
+
+		pendingPillIndex = index;
+		ready = true;
+		schedulePendingPillReset();
+	}
+
+	function handleNavPointerCancel() {
+		resetPendingPill();
+	}
 
 	// Effects - 1
 	$effect(() => {
@@ -59,11 +97,11 @@
 		// }
 
 		// If there's no active element (e.g. on a non-matching route), we can skip the pill positioning logic
-		if (!activeEl) return;
+		if (!pillEl) return;
 
 		// Position and size the pill to match the active tab
-		pillX = activeEl.offsetLeft;
-		pillW = activeEl.offsetWidth;
+		pillX = pillEl.offsetLeft;
+		pillW = pillEl.offsetWidth;
 
 		// Mark the pill as ready to animate after the initial positioning
 		ready = true;
@@ -84,7 +122,12 @@
 		return () => {
 			phoneViewportQuery.removeEventListener('change', updateTouchSwipeEnabled);
 			coarsePointerQuery.removeEventListener('change', updateTouchSwipeEnabled);
+			clearPendingPillResetTimer();
 		};
+	});
+
+	afterNavigate(() => {
+		resetPendingPill();
 	});
 
 	async function navigateBySwipe(direction: SwipeStepDirection) {
@@ -107,6 +150,8 @@
 		const doc = document as Document & {
 			startViewTransition?: (update: () => Promise<void> | void) => void;
 		};
+
+		clearPendingPillResetTimer();
 
 		// Uncomment the below lines to disable view transitions on smartphones and touch devices, where they may cause jank and perform poorly. The route direction data attribute will still be set, allowing for CSS-based transition effects if desired.
 		if (isSmartphoneTouchDevice() || !doc.startViewTransition) {
@@ -142,7 +187,11 @@
 
 <!-- Universal Navigation Bar -->
 <nav class="universal-navbar">
-	<div class="universal-navbar-container">
+	<div
+		class="universal-navbar-container"
+		data-sveltekit-preload-data={touchSwipeEnabled ? 'false' : undefined}
+		data-sveltekit-preload-code={touchSwipeEnabled ? 'viewport' : undefined}
+	>
 		<div
 			class="navbar-pill"
 			class:navbar-pill--ready={ready}
@@ -154,6 +203,8 @@
 				href={item.href}
 				class="navbar-tab"
 				class:navbar-tab--active={activeIndex === i}
+				onpointerdown={() => handleNavPointerDown(i, item.href)}
+				onpointercancel={handleNavPointerCancel}
 				bind:this={tabEls[i]}
 			>
 				{item.label}

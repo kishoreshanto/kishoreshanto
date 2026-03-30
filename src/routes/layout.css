@@ -133,6 +133,7 @@
 
 	/* High-level tokens: navigation */
 	--nav-pill-fill: rgb(132 85 34 / 0.94);
+	--nav-pill-motion: var(--motion-slow);
 	--nav-tab-hover: rgb(190 115 34);
 	--nav-tab-ink: rgb(44 24 16 / 0.72);
 
@@ -452,19 +453,19 @@
 
 .navbar-pill--ready {
 	transition:
-		transform var(--motion-slow) var(--easing-pill),
-		width var(--motion-slow) var(--easing-pill);
+		transform var(--nav-pill-motion) var(--easing-pill),
+		width var(--nav-pill-motion) var(--easing-pill);
 }
 
-/* @media (max-width: 767px) and (hover: none) and (pointer: coarse) {
-	.navbar-pill {
-		display: none;
+@media (max-width: 767px) and (hover: none) and (pointer: coarse) {
+	:root {
+		--nav-pill-motion: 180ms;
 	}
 
-	.navbar-tab--active {
-		background: var(--nav-pill-fill);
+	.navbar-pill {
+		will-change: transform, width;
 	}
-} */
+}
 
 .navbar-tab {
 	@apply relative z-10 block cursor-pointer rounded-full font-lora font-bold tracking-wide uppercase select-none xxs:px-3.5 xxs:py-3.5 xxs:text-[0.7rem] xs:px-4 xs:py-3 xs:text-[0.85rem] md:px-6 md:py-3 md:text-[1rem];
