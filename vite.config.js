@@ -3,8 +3,55 @@ import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import compression from 'vite-plugin-compression';
+import { execSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
+
+function resolveCommitHash() {
+	const envHash =
+		process.env.VERCEL_GIT_COMMIT_SHA ?? process.env.GITHUB_SHA ?? process.env.COMMIT_HASH;
+
+	if (envHash) {
+		return envHash.slice(0, 7);
+	}
+
+	try {
+		return execSync('git rev-parse --short HEAD').toString().trim();
+	} catch {
+		return 'dev';
+	}
+}
+
+function resolveBuildVersion() {
+	const envVersion = process.env.BUILD_VERSION ?? process.env.npm_package_version;
+
+	if (envVersion) {
+		return envVersion;
+	}
+
+	try {
+		const packageJson = JSON.parse(
+			readFileSync(new URL('./package.json', import.meta.url), 'utf8')
+		);
+
+		if (typeof packageJson?.version === 'string') {
+			return packageJson.version;
+		}
+	} catch {
+		// Fall through to the default value when package metadata is unavailable.
+	}
+
+	return 'dev';
+}
+
+const latestCommitHash = resolveCommitHash();
+const buildVersion = resolveBuildVersion();
 
 export default defineConfig({
+	define: {
+		__COMMIT_HASH__: JSON.stringify(latestCommitHash),
+		__BUILD_VERSION__: JSON.stringify(buildVersion)
+	},
+
 	plugins: [
 		sveltekit(),
 		tailwindcss(),

@@ -4,6 +4,12 @@
 	import GithubIcon from '$component/shared/svg/GithubIcon.svelte';
 	import LinkedInIcon from '$component/shared/svg/LinkedInIcon.svelte';
 
+	// Latest commit hash injected at build time from Vite config.
+	const latestCommitHash = __COMMIT_HASH__;
+
+	// Build number or version injected at build time from Vite config.
+	const buildVersion = __BUILD_VERSION__;
+
 	type FooterLink = {
 		label: string;
 		href: string;
@@ -63,7 +69,7 @@
 					</p>
 
 					<div
-						class="flex flex-col gap-2 font-mono text-xs tracking-wider text-amber-800/84 uppercase sm:text-sm"
+						class="flex flex-col gap-2 font-mono text-xs tracking-wider text-amber-800/84 sm:text-sm"
 					>
 						<!-- <span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2"
 							>Based in {data.current_city}</span
@@ -72,7 +78,7 @@
 							>Updated on {currentDate}, {currentYear}</span
 						>
 						<span class="w-fit rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2"
-							>{data.version}</span
+							>{buildVersion} ({latestCommitHash})</span
 						>
 					</div>
 				</div>
