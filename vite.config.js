@@ -29,7 +29,9 @@ function resolveBuildVersion() {
 	}
 
 	try {
-		const packageJson = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'));
+		const packageJson = JSON.parse(
+			readFileSync(new URL('./package.json', import.meta.url), 'utf8')
+		);
 
 		if (typeof packageJson?.version === 'string') {
 			return packageJson.version;
