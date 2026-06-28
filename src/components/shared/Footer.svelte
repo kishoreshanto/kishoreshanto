@@ -67,8 +67,10 @@
 						This portfolio is designed as a warm, readable home for my work, stories, and
 						experiments.
 					</p>
+				</div>
 
-					<div
+				<div class="space-y-2">
+				<div
 						class="flex flex-col gap-2 font-mono text-xs tracking-wider text-amber-800/84 sm:text-sm"
 					>
 						<!-- <span class="rounded-full border border-amber-800/14 bg-amber-100/82 px-3 py-2"
@@ -81,41 +83,10 @@
 							>{buildVersion} ({latestCommitHash})</span
 						>
 					</div>
-				</div>
-
-				<div class="space-y-2">
-					<p
-						class="font-mono text-[0.76rem] font-semibold tracking-wider text-amber-700/80 uppercase"
-					>
-						Connect
-					</p>
-					<div class="flex flex-row flex-wrap gap-4 md:flex-col md:gap-1">
-						{#each connectLinks as link (link.label)}
-							<a
-								class="flex items-center gap-1 rounded-full border border-amber-800/12 bg-amber-50/70 px-1.5 transition-colors duration-200 hover:bg-amber-200/90"
-								href={link.href}
-								target={link.external ? '_blank' : undefined}
-								rel={link.external ? 'noopener noreferrer' : undefined}
-							>
-								<span
-									class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100/20"
-								>
-									{#if link.icon}
-										<link.icon />
-									{/if}
-								</span>
-								<span class="pr-3.5 font-lora text-sm text-amber-800 md:text-base"
-									>{link.label}</span
-								>
-							</a>
-						{/each}
-					</div>
+					
 				</div>
 			</div>
 
-			<div class="mt-10 border-t border-amber-300 pt-4 text-center font-lora text-gray-600">
-				<p>Copyright © {currentYear} {data.name}. All rights reserved.</p>
-			</div>
 		</div>
 	</div>
 </footer>
