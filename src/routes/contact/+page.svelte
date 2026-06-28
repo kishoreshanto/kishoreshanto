@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './contact.css';
 	import data from '$lib/data/personal.json';
 	import EmailIcon from '$component/shared/svg/EmailIcon.svelte';
 	import GithubIcon from '$component/shared/svg/GithubIcon.svelte';
@@ -20,10 +21,6 @@
 	};
 
 	const orcidId = data.orcid_url.split('/').pop() ?? '';
-	const timezoneLabel = `UTC${data.current_gmt_offset >= 0 ? '+' : '-'}${Math.abs(data.current_gmt_offset)}`;
-	const quietHoursLabel = `${String(data.inactive_start_time).padStart(2, '0')}:00-${String(
-		data.inactive_end_time
-	).padStart(2, '0')}:00`;
 
 	const cards: ContactCard[] = [
 		{
@@ -103,24 +100,6 @@
 </script>
 
 <main class="mx-5 mb-20 md:container md:mx-auto md:px-10">
-	<!-- <section class="grid">
-		<div class="hero-card surface-card-soft rounded-4xl px-6 py-8 sm:px-8 lg:px-10 font-lora">
-			<p class="contact-kicker">Reach out</p>
-			<h2
-				class="mt-3 text-2xl leading-tight font-semibold text-amber-600 md:text-3xl"
-			>
-				Let&apos;s make something thoughtful, useful, and a little memorable.
-			</h2>
-
-
-			<div class="mt-8 flex flex-wrap gap-3">
-				{#each conversationTags as tag (tag)}
-					<span class="contact-tag">{tag}</span>
-				{/each}
-			</div>
-		</div>
-	</section> -->
-
 	<section class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
 		{#each visibleCards as card (card.id)}
 			<a
@@ -192,60 +171,3 @@
 		{/each}
 	</section>
 </main>
-
-<style>
-	.contact-card {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		border-radius: 1.75rem;
-		border: 1px solid rgb(132 85 34 / 0.16);
-		background: linear-gradient(180deg, rgb(255 250 240 / 0.84), rgb(245 237 217 / 0.72));
-		padding: 1.5rem;
-		box-shadow: 0 22px 44px -34px rgb(44 24 16 / 0.26);
-		transition:
-			transform 180ms ease,
-			border-color 180ms ease,
-			box-shadow 180ms ease,
-			background-color 180ms ease;
-	}
-
-	.contact-card:hover {
-		border-color: rgb(132 85 34 / 0.28);
-		background: linear-gradient(180deg, rgba(255, 234, 192, 0.84), rgba(254, 228, 161, 0.72));
-		box-shadow: 0 26px 52px -32px rgb(44 24 16 / 0.32);
-	}
-
-	.contact-card-kicker {
-		font-family: var(--font-mono);
-		font-size: 0.72rem;
-		font-weight: 600;
-		letter-spacing: 0.2em;
-		text-transform: uppercase;
-		color: rgb(168 103 0 / 0.72);
-	}
-
-	.contact-icon-wrap {
-		display: flex;
-		height: 3rem;
-		width: 3rem;
-		flex-shrink: 0;
-		align-items: center;
-		justify-content: center;
-		border-radius: 1rem;
-		background: rgb(196 154 60 / 0.14);
-		border: 1px solid rgb(132 85 34 / 0.12);
-	}
-
-	.contact-icon-wrap :global(svg) {
-		width: 1.35rem;
-		height: 1.35rem;
-		fill: rgb(132 85 34);
-	}
-
-	@media (min-width: 768px) {
-		.contact-card {
-			padding: 1.75rem;
-		}
-	}
-</style>
