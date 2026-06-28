@@ -120,7 +120,7 @@
 		<div class="flex-1">
 			{@render children()}
 		</div>
-		
+
 		{#if !isAcademic}
 			<Footer />
 		{/if}
