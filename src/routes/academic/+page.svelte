@@ -1,0 +1,1 @@
+<h1>This is academic page</h1>

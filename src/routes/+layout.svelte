@@ -2,7 +2,9 @@
 	import './layout.css';
 	// import { browser } from '$app/environment';
 	import { onNavigate } from '$app/navigation';
-	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
+	// import { page } from '$app/state';
+	import type { LayoutProps } from './$types';
 	import Footer from '$component/shared/Footer.svelte';
 	import {
 		getRouteTransitionDirection,
@@ -24,8 +26,7 @@
 	// 	if (!isLocalPreview) injectSpeedInsights();
 	// }
 
-	// Default props
-	let { children } = $props();
+	let { data, children }: LayoutProps = $props();
 
 	// State variables
 	let tabEls: HTMLAnchorElement[] = $state([]);
@@ -34,8 +35,9 @@
 	let ready = $state(false);
 
 	// Derived state
+	let isAcademic = $derived(data.url.pathname.startsWith('/academic'));
 	let activeIndex = $derived.by(() => {
-		return getTopLevelNavigationIndex(page.url.pathname);
+		return getTopLevelNavigationIndex(data.url.pathname);
 	});
 	let activeEl = $derived(tabEls[activeIndex]);
 
@@ -90,33 +92,37 @@
 </script>
 
 <div class="flex min-h-dvh flex-col">
-	<!-- Universal Navigation Bar -->
-	<nav class="universal-navbar">
-		<div class="universal-navbar-container">
-			<div
-				class="navbar-pill"
-				class:navbar-pill--ready={ready}
-				style="transform: translateX({pillX}px); width: {pillW}px;"
-			></div>
+	{#if !isAcademic}
+		<!-- Universal Navigation Bar -->
+		<nav class="universal-navbar">
+			<div class="universal-navbar-container">
+				<div
+					class="navbar-pill"
+					class:navbar-pill--ready={ready}
+					style="transform: translateX({pillX}px); width: {pillW}px;"
+				></div>
 
-			{#each topLevelNavigationItems as item, i (item.href)}
-				<a
-					href={item.href}
-					class="navbar-tab"
-					class:navbar-tab--active={activeIndex === i}
-					bind:this={tabEls[i]}
-				>
-					{item.label}
-				</a>
-			{/each}
-		</div>
-	</nav>
+				{#each topLevelNavigationItems as item, i (item.href)}
+					<a
+						href={resolve(item.href)}
+						class="navbar-tab"
+						class:navbar-tab--active={activeIndex === i}
+						bind:this={tabEls[i]}
+					>
+						{item.label}
+					</a>
+				{/each}
+			</div>
+		</nav>
+	{/if}
 
 	<main class="flex flex-1 flex-col">
 		<div class="flex-1">
 			{@render children()}
 		</div>
-
-		<Footer />
+		
+		{#if !isAcademic}
+			<Footer />
+		{/if}
 	</main>
 </div>
