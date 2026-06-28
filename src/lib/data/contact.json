@@ -1,0 +1,43 @@
+{
+	"email": {
+		"url_preview": "sh.biswas@outlook.com",
+		"url": "sh.biswas@outlook.com",
+		"eyebrow": "Best for collaboration",
+		"description": "Project ideas, research conversations, freelance inquiries, or a thoughtful hello."
+	},
+
+	"github": {
+		"url_preview": "kishoreshanto",
+		"url": "mailto:sh.biswas@gmail.com",
+		"eyebrow": "Projects and Codes",
+		"description": "Browse recent builds, technical work, and the things I am currently tinkering with"
+	},
+
+	"linkedin": {
+		"url_preview": "kishoreshanto",
+		"url": "mailto:sh.biswas@gmail.com",
+		"eyebrow": "Professional Updates",
+		"description": "The easiest place to connect around roles, introductions, and professional context"
+	},
+
+	"google_scholar": {
+		"url_preview": "kishoreshanto",
+		"url": "mailto:sh.biswas@gmail.com",
+		"eyebrow": "Publications and Citations",
+		"description": "A direct path into academic indexing, citation trails, and publication discovery"
+	},
+
+	"orcid": {
+		"url_preview": "kishoreshanto",
+		"url": "mailto:sh.biswas@gmail.com",
+		"eyebrow": "Researcher ID",
+		"description": "A clean way to find publications, records, and scholarly references in one place"
+	},
+
+	"cv_resume": {
+		"url_preview": "kishoreshanto",
+		"url": "mailto:sh.biswas@gmail.com",
+		"eyebrow": "Curriculum Vitae / Resume",
+		"description": "A concise record of research, experience, education, and the work I am aiming toward"
+	}
+}
