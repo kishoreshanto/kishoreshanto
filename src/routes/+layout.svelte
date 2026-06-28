@@ -89,30 +89,34 @@
 	});
 </script>
 
-<!-- Universal Navigation Bar -->
-<nav class="universal-navbar">
-	<div class="universal-navbar-container">
-		<div
-			class="navbar-pill"
-			class:navbar-pill--ready={ready}
-			style="transform: translateX({pillX}px); width: {pillW}px;"
-		></div>
+<div class="flex min-h-dvh flex-col">
+	<!-- Universal Navigation Bar -->
+	<nav class="universal-navbar">
+		<div class="universal-navbar-container">
+			<div
+				class="navbar-pill"
+				class:navbar-pill--ready={ready}
+				style="transform: translateX({pillX}px); width: {pillW}px;"
+			></div>
 
-		{#each topLevelNavigationItems as item, i (item.href)}
-			<a
-				href={item.href}
-				class="navbar-tab"
-				class:navbar-tab--active={activeIndex === i}
-				bind:this={tabEls[i]}
-			>
-				{item.label}
-			</a>
-		{/each}
-	</div>
-</nav>
+			{#each topLevelNavigationItems as item, i (item.href)}
+				<a
+					href={item.href}
+					class="navbar-tab"
+					class:navbar-tab--active={activeIndex === i}
+					bind:this={tabEls[i]}
+				>
+					{item.label}
+				</a>
+			{/each}
+		</div>
+	</nav>
 
-<main>
-	{@render children()}
+	<main class="flex flex-1 flex-col">
+		<div class="flex-1">
+			{@render children()}
+		</div>
 
-	<Footer />
-</main>
+		<Footer />
+	</main>
+</div>
