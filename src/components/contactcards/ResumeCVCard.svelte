@@ -19,7 +19,7 @@
 
 				<div>
 					<p class="contact-card-kicker">{contactData.cv_resume.eyebrow}</p>
-					<h3 class="font-lora text-2xl font-semibold text-amber-600">Resume / CV</h3>
+					<h3 class="font-lora text-2xl font-semibold text-amber-600">CV</h3>
 				</div>
 			</div>
 
