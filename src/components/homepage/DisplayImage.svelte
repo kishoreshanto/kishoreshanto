@@ -12,5 +12,5 @@
 	height="864"
 	decoding="async"
 	fetchpriority="high"
-	class="h-36 w-36 rounded-full border-4 border-amber-700 shadow-lg lg:h-48 lg:w-48"
+	class="h-36 w-36 rounded-full border-4 border-amber-700 shadow-lg lg:h-60 lg:w-60"
 />
