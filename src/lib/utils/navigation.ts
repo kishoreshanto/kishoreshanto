@@ -26,7 +26,7 @@ type NavigationItem = {
 export const topLevelNavigationItems = [
 	{ label: 'Hey', href: '/' },
 	{ label: 'Timeline', href: '/timeline' },
-	{ label: 'Stories', href: '/story' },
+	{ label: 'Blog', href: '/story' },
 	{ label: 'Contact', href: '/contact' }
 ] as const satisfies readonly NavigationItem[];
 
