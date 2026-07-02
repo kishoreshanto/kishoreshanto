@@ -3,6 +3,8 @@
 	import { page } from '$app/state';
 	import { fly } from 'svelte/transition';
 
+	import personal_data from '$lib/data/personal.json';
+
 	let { children } = $props();
 	let isMenuOpen = $state(false);
 
@@ -31,10 +33,7 @@
 		body {
 			font-family: 'Lora', serif;
 		}
-
-		/* Fix the print styles */
-		@media print {
-		}
+		
 	</style>
 </svelte:head>
 
@@ -44,7 +43,7 @@
 		class="relative mb-6 flex items-center justify-between border-t-2 border-b-2 border-gray-200 px-4 py-4"
 	>
 		<div class="brand-font text-2xl text-gray-800">
-			Hello, I'm <span class="font-bold text-amber-600">Biswas</span>
+			Hello, I'm <span class="font-bold text-amber-600">{personal_data.name.split(' ')[1]}</span>
 		</div>
 
 		<button
