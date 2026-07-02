@@ -104,11 +104,14 @@
 </div>
 
 <!-- Mobile View -->
-<div id="contact-mobile" class="mt-4 grid grid-cols-3 justify-items-start gap-y-2 lg:hidden">
+<div
+	id="contact-mobile"
+	class="mt-4 grid grid-cols-3 justify-items-center gap-y-2 md:grid-cols-6 lg:hidden"
+>
 	<a
 		{...emailLink}
 		aria-label={`Email: ${contactData.email.url_preview}`}
-		class="flex items-center gap-2 pl-3 text-amber-700 transition hover:text-amber-600 sm:pl-10"
+		class="flex items-center gap-2 font-semibold text-amber-700 transition hover:text-amber-600"
 	>
 		<EmailIcon />
 		Email
@@ -116,7 +119,7 @@
 	<a
 		{...linkedinLink}
 		aria-label={`LinkedIn: ${contactData.linkedin.url_preview}`}
-		class="flex items-center gap-2 pl-3 text-amber-700 transition hover:text-amber-600 sm:pl-10"
+		class="flex items-center gap-2 font-semibold text-amber-700 transition hover:text-amber-600"
 	>
 		<LinkedInIcon />
 		Linkedin
@@ -124,7 +127,7 @@
 	<a
 		{...githubLink}
 		aria-label={`GitHub: ${contactData.github.url_preview}`}
-		class="flex items-center gap-2 pl-3 text-amber-700 transition hover:text-amber-600 sm:pl-10"
+		class="flex items-center gap-2 font-semibold text-amber-700 transition hover:text-amber-600"
 	>
 		<GithubIcon />
 		Github
@@ -132,7 +135,7 @@
 	<a
 		{...scholarLink}
 		aria-label={`Google Scholar: ${contactData.google_scholar.url_preview}`}
-		class="flex items-center gap-2 pl-3 text-amber-700 transition hover:text-amber-600 sm:pl-10"
+		class="flex items-center gap-2 font-semibold text-amber-700 transition hover:text-amber-600"
 	>
 		<GoogleScholarIcon />
 		Scholar
@@ -140,7 +143,7 @@
 	<a
 		{...orcidLink}
 		aria-label={`ORCID: ${contactData.orcid.url_preview}`}
-		class="flex items-center gap-2 pl-3 text-amber-700 transition hover:text-amber-600 sm:pl-10"
+		class="flex items-center gap-2 font-semibold text-amber-700 transition hover:text-amber-600"
 	>
 		<OrcidIcon />
 		ORCID
@@ -148,7 +151,7 @@
 	<a
 		{...resumeLink}
 		aria-label={`CV or Resume: ${contactData.cv_resume.url_preview}`}
-		class="flex items-center gap-2 pl-3 text-amber-700 transition hover:text-amber-600 sm:pl-10"
+		class="flex items-center gap-2 font-semibold text-amber-700 transition hover:text-amber-600"
 	>
 		<ResumeIcon />
 		View CV
