@@ -8,34 +8,34 @@
 
 	"github": {
 		"url_preview": "kishoreshanto",
-		"url": "mailto:sh.biswas@gmail.com",
+		"url": "https://github.com/kishoreshanto",
 		"eyebrow": "Projects and Codes",
 		"description": "Browse recent builds, technical work, and the things I am currently tinkering with"
 	},
 
 	"linkedin": {
-		"url_preview": "kishoreshanto",
-		"url": "mailto:sh.biswas@gmail.com",
+		"url_preview": "sh-biswas",
+		"url": "https://linkedin.com/in/sh-biswas",
 		"eyebrow": "Professional Updates",
 		"description": "The easiest place to connect around roles, introductions, and professional context"
 	},
 
 	"google_scholar": {
-		"url_preview": "kishoreshanto",
-		"url": "mailto:sh.biswas@gmail.com",
+		"url_preview": "Google Scholar",
+		"url": "https://scholar.google.com/citations?user=eDvLrOcAAAAJ&hl=en",
 		"eyebrow": "Publications and Citations",
 		"description": "A direct path into academic indexing, citation trails, and publication discovery"
 	},
 
 	"orcid": {
-		"url_preview": "kishoreshanto",
-		"url": "mailto:sh.biswas@gmail.com",
+		"url_preview": "0009-0009-1147-0095",
+		"url": "https://orcid.org/0009-0009-1147-0095",
 		"eyebrow": "Researcher ID",
 		"description": "A clean way to find publications, records, and scholarly references in one place"
 	},
 
 	"cv_resume": {
-		"url_preview": "kishoreshanto",
+		"url_preview": "View CV",
 		"url": "mailto:sh.biswas@gmail.com",
 		"eyebrow": "Curriculum Vitae / Resume",
 		"description": "A concise record of research, experience, education, and the work I am aiming toward"
