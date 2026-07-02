@@ -20,6 +20,7 @@
 <svelte:head>
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 		/* Set font family */
 		.brand-font {
