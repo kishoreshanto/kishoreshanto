@@ -33,7 +33,6 @@
 		body {
 			font-family: 'Lora', serif;
 		}
-		
 	</style>
 </svelte:head>
 
