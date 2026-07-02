@@ -3,7 +3,7 @@
 	viewBox="0 0 256 256"
 	width="22px"
 	height="22px"
-	class="translate-y-[0.050rem] fill-amber-700"
+	class="c translate-y-[0.050rem]"
 >
 	<path
 		d="M256,128c0,70.7-57.3,128-128,128S0,198.7,0,128S57.3,0,128,0S256,57.3,256,128z"
